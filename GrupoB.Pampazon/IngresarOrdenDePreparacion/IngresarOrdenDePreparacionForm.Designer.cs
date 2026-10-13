@@ -48,6 +48,13 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             label8 = new Label();
+            label9 = new Label();
+            comboBox1 = new ComboBox();
+            label10 = new Label();
+            textBox6 = new TextBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -90,6 +97,7 @@
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(325, 31);
             textBox2.TabIndex = 4;
+            textBox2.Text = "[Nombre del ciente]";
             // 
             // label3
             // 
@@ -219,17 +227,90 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(16, 505);
+            label8.Location = new Point(16, 504);
             label8.Name = "label8";
-            label8.Size = new Size(630, 25);
+            label8.Size = new Size(678, 25);
             label8.TabIndex = 13;
-            label8.Text = "DETALLE DE PRODUCTOS SOLICITADOS VS. INVENTARIO DISPONIBLE";
+            label8.Text = "GESTION DE EXCEPCIONES Y RESOLUCION DE LA ORDEN DE PREPARACION";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.ForeColor = SystemColors.ControlText;
+            label9.Location = new Point(16, 549);
+            label9.Name = "label9";
+            label9.Size = new Size(168, 25);
+            label9.TabIndex = 14;
+            label9.Text = "Motivo del rechazo:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(16, 577);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(324, 33);
+            comboBox1.TabIndex = 15;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = SystemColors.ControlText;
+            label10.Location = new Point(390, 549);
+            label10.Name = "label10";
+            label10.Size = new Size(276, 25);
+            label10.TabIndex = 16;
+            label10.Text = "Detalle / Justificacion del rechazo:";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(390, 579);
+            textBox6.Multiline = true;
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(488, 160);
+            textBox6.TabIndex = 17;
+            // 
+            // button1
+            // 
+            button1.ForeColor = SystemColors.ControlText;
+            button1.Location = new Point(941, 590);
+            button1.Name = "button1";
+            button1.Size = new Size(338, 34);
+            button1.TabIndex = 18;
+            button1.Text = "Rechazar Orden";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.ForeColor = SystemColors.ControlText;
+            button2.Location = new Point(941, 641);
+            button2.Name = "button2";
+            button2.Size = new Size(338, 34);
+            button2.TabIndex = 19;
+            button2.Text = "Solicitar Aprobacion de Bulto ";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.ForeColor = SystemColors.ControlText;
+            button3.Location = new Point(941, 690);
+            button3.Name = "button3";
+            button3.Size = new Size(338, 34);
+            button3.TabIndex = 20;
+            button3.Text = "Aprobar Orden de Preparacion";
+            button3.UseVisualStyleBackColor = true;
             // 
             // IngresarOrdenDePreparacionForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1291, 789);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(textBox6);
+            Controls.Add(label10);
+            Controls.Add(comboBox1);
+            Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(listView1);
             Controls.Add(label7);
@@ -273,5 +354,12 @@
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
         private Label label8;
+        private Label label9;
+        private ComboBox comboBox1;
+        private Label label10;
+        private TextBox textBox6;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
