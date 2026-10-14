@@ -87,6 +87,7 @@
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(170, 31);
             textBox1.TabIndex = 2;
+            textBox1.Text = " [ID Orden Web]";
             // 
             // textBox2
             // 
@@ -97,7 +98,7 @@
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(325, 31);
             textBox2.TabIndex = 4;
-            textBox2.Text = "[Nombre del ciente]";
+            textBox2.Text = " [Nombre del ciente]";
             // 
             // label3
             // 
@@ -117,8 +118,9 @@
             textBox3.Location = new Point(941, 61);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(343, 31);
+            textBox3.Size = new Size(284, 31);
             textBox3.TabIndex = 6;
+            textBox3.Text = " [XX-XXXXXXXX-X]";
             // 
             // label4
             // 
@@ -140,6 +142,7 @@
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(170, 31);
             textBox4.TabIndex = 8;
+            textBox4.Text = " [dd/mm/aa]";
             // 
             // label5
             // 
@@ -161,6 +164,7 @@
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(290, 31);
             textBox5.TabIndex = 10;
+            textBox5.Text = " [Pallet/Fulfillment]";
             // 
             // label6
             // 
@@ -188,7 +192,7 @@
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
             listView1.Location = new Point(16, 250);
             listView1.Name = "listView1";
-            listView1.Size = new Size(1268, 225);
+            listView1.Size = new Size(1209, 225);
             listView1.TabIndex = 12;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -201,7 +205,7 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Descripcion del Producto";
-            columnHeader2.Width = 350;
+            columnHeader2.Width = 320;
             // 
             // columnHeader3
             // 
@@ -255,7 +259,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = SystemColors.ControlText;
-            label10.Location = new Point(390, 549);
+            label10.Location = new Point(366, 547);
             label10.Name = "label10";
             label10.Size = new Size(276, 25);
             label10.TabIndex = 16;
@@ -263,7 +267,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(390, 579);
+            textBox6.Location = new Point(366, 577);
             textBox6.Multiline = true;
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(488, 160);
@@ -272,9 +276,9 @@
             // button1
             // 
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(941, 590);
+            button1.Location = new Point(888, 582);
             button1.Name = "button1";
-            button1.Size = new Size(338, 34);
+            button1.Size = new Size(315, 34);
             button1.TabIndex = 18;
             button1.Text = "Rechazar Orden";
             button1.UseVisualStyleBackColor = true;
@@ -282,9 +286,9 @@
             // button2
             // 
             button2.ForeColor = SystemColors.ControlText;
-            button2.Location = new Point(941, 641);
+            button2.Location = new Point(888, 641);
             button2.Name = "button2";
-            button2.Size = new Size(338, 34);
+            button2.Size = new Size(315, 34);
             button2.TabIndex = 19;
             button2.Text = "Solicitar Aprobacion de Bulto ";
             button2.UseVisualStyleBackColor = true;
@@ -292,9 +296,9 @@
             // button3
             // 
             button3.ForeColor = SystemColors.ControlText;
-            button3.Location = new Point(941, 690);
+            button3.Location = new Point(888, 696);
             button3.Name = "button3";
-            button3.Size = new Size(338, 34);
+            button3.Size = new Size(315, 34);
             button3.TabIndex = 20;
             button3.Text = "Aprobar Orden de Preparacion";
             button3.UseVisualStyleBackColor = true;
@@ -303,7 +307,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1291, 789);
+            ClientSize = new Size(1236, 789);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
