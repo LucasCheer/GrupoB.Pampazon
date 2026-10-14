@@ -54,5 +54,10 @@ namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
         {
 
         }
+
+        private void EmitirOrdenDeEntrega_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

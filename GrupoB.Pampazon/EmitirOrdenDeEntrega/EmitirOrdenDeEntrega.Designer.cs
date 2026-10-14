@@ -30,8 +30,8 @@
         {
             ListViewItem listViewItem1 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "P-1000", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "11/10/2026", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Mercado 1", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "4", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)) }, -1);
             ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
-            ListViewItem listViewItem3 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "CEM-01", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "Bolsa Cemento 50kg", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "1234***OCULTO", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Escaneado", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)) }, -1);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "CEM-02", "Bolsa Cal 25kg", "4567***OCULTO", "Pendiente de escaneo" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
+            ListViewItem listViewItem3 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "CEM-01", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "Bolsa Cemento 35kg", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "123456789", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Escaneado", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)) }, -1);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] { "CEM-02", "Bolsa Cal 25kg", "365799321", "Pendiente de escaneo" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
             groupBox1 = new GroupBox();
             listView1 = new ListView();
             colPedido = new ColumnHeader();
@@ -149,7 +149,7 @@
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(144, 30);
             textBox3.TabIndex = 8;
-            textBox3.Text = "1234567";
+            textBox3.Text = "123456789";
             // 
             // label4
             // 
@@ -174,9 +174,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(420, 45);
             label3.Name = "label3";
-            label3.Size = new Size(119, 23);
+            label3.Size = new Size(112, 23);
             label3.TabIndex = 5;
-            label3.Text = "OP asociados:";
+            label3.Text = "OP asociado:";
             label3.Click += label3_Click;
             // 
             // textBox1
@@ -215,12 +215,12 @@
             // colSKU
             // 
             colSKU.Text = "SKU";
-            colSKU.Width = 150;
+            colSKU.Width = 100;
             // 
             // colDesc
             // 
             colDesc.Text = "Descripcion";
-            colDesc.Width = 150;
+            colDesc.Width = 200;
             // 
             // colBar
             // 
@@ -351,6 +351,7 @@
             Controls.Add(groupBox1);
             Name = "EmitirOrdenDeEntrega";
             Text = "EmitirOrdenDeEntrega";
+            Load += EmitirOrdenDeEntrega_Load;
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
