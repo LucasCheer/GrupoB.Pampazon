@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ListViewItem listViewItem1 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "P-1000", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "11/10/2026", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Mercado 1", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "4", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)) }, -1);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
+            ListViewItem listViewItem3 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "CEM-01", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "Bolsa Cemento 50kg", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "1234***OCULTO", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Escaneado", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)) }, -1);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] { "CEM-02", "Bolsa Cal 25kg", "4567***OCULTO", "Pendiente de escaneo" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
             groupBox1 = new GroupBox();
             listView1 = new ListView();
             colPedido = new ColumnHeader();
@@ -81,6 +85,7 @@
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView1.Columns.AddRange(new ColumnHeader[] { colPedido, colFecha, colCliente, colBulto });
             listView1.ForeColor = SystemColors.InfoText;
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
             listView1.Location = new Point(6, 29);
             listView1.Name = "listView1";
             listView1.Size = new Size(710, 144);
@@ -141,8 +146,10 @@
             // 
             textBox3.Location = new Point(157, 244);
             textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
             textBox3.Size = new Size(144, 30);
             textBox3.TabIndex = 8;
+            textBox3.Text = "1234567";
             // 
             // label4
             // 
@@ -160,6 +167,7 @@
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(144, 30);
             textBox2.TabIndex = 6;
+            textBox2.Text = "OP-4000";
             // 
             // label3
             // 
@@ -178,6 +186,7 @@
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(144, 30);
             textBox1.TabIndex = 4;
+            textBox1.Text = "Mercado 2";
             // 
             // label2
             // 
@@ -193,6 +202,8 @@
             listView2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView2.Columns.AddRange(new ColumnHeader[] { colSKU, colDesc, colBar, colEstad });
             listView2.ForeColor = SystemColors.InfoText;
+            listViewItem4.Tag = "";
+            listView2.Items.AddRange(new ListViewItem[] { listViewItem3, listViewItem4 });
             listView2.Location = new Point(6, 87);
             listView2.Name = "listView2";
             listView2.Size = new Size(710, 144);
@@ -249,6 +260,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(362, 30);
             textBox4.TabIndex = 9;
+            textBox4.Text = "Av. Córdoba";
             // 
             // dateTimePicker1
             // 
@@ -264,6 +276,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(362, 31);
             comboBox1.TabIndex = 12;
+            comboBox1.Text = "Logística Rápida S.A.";
             // 
             // label7
             // 
