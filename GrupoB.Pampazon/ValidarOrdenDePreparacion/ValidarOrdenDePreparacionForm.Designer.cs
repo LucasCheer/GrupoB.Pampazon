@@ -1,6 +1,6 @@
-﻿namespace GrupoB.Pampazon.IngresarOrdenDePreparacion
+﻿namespace GrupoB.Pampazon.ValidarOrdenDePreparacion
 {
-    partial class IngresarOrdenDePreparacionForm
+    partial class ValidarOrdenDePreparacionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -299,7 +299,7 @@
             button3.Text = "Aprobar Orden de Preparacion";
             button3.UseVisualStyleBackColor = true;
             // 
-            // IngresarOrdenDePreparacionForm
+            // ValidarOrdenDePreparacionForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -326,8 +326,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.HotTrack;
-            Name = "IngresarOrdenDePreparacionForm";
-            Text = "IngresarOrdenDePreparacionForm";
+            Name = "ValidarOrdenDePreparacionForm";
+            Text = "ValidarOrdenDePreparacionForm";
             ResumeLayout(false);
             PerformLayout();
         }
