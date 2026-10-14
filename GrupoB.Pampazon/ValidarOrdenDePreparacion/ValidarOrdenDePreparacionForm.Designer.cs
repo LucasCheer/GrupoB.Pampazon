@@ -231,7 +231,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(16, 504);
+            label8.Location = new Point(16, 513);
             label8.Name = "label8";
             label8.Size = new Size(678, 25);
             label8.TabIndex = 13;
@@ -276,17 +276,17 @@
             // button1
             // 
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(888, 582);
+            button1.Location = new Point(888, 610);
             button1.Name = "button1";
             button1.Size = new Size(315, 34);
             button1.TabIndex = 18;
-            button1.Text = "Rechazar Orden";
+            button1.Text = "Rechazar Orden de Preparacion";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             button2.ForeColor = SystemColors.ControlText;
-            button2.Location = new Point(888, 641);
+            button2.Location = new Point(909, 481);
             button2.Name = "button2";
             button2.Size = new Size(315, 34);
             button2.TabIndex = 19;
@@ -296,7 +296,7 @@
             // button3
             // 
             button3.ForeColor = SystemColors.ControlText;
-            button3.Location = new Point(888, 696);
+            button3.Location = new Point(888, 669);
             button3.Name = "button3";
             button3.Size = new Size(315, 34);
             button3.TabIndex = 20;
@@ -307,7 +307,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1236, 789);
+            ClientSize = new Size(1236, 751);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
