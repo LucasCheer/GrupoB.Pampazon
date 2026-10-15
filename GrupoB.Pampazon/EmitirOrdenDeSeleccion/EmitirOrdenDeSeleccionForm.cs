@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoB.Pampazon.EmitirOrdenDeSeleccion;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ namespace GrupoB.Pampazon.NewFolder
 {
     public partial class EmitirOrdenDeSeleccionForm : Form
     {
+        private readonly EmitirOrdenDeSeleccionModelo modelo = new();
         public EmitirOrdenDeSeleccionForm()
         {
             InitializeComponent();

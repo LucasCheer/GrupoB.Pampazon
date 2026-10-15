@@ -8,9 +8,11 @@ using System.Windows.Forms;
 
 namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
 {
-    public partial class DespacharPedidoLiberarCamion : Form
+    public partial class DespacharPedidoLiberarCamionForm : Form
     {
-        public DespacharPedidoLiberarCamion()
+
+        private readonly DespacharPedidoLiberarCamionModelo modelo = new();
+        public DespacharPedidoLiberarCamionForm()
         {
             InitializeComponent();
         }

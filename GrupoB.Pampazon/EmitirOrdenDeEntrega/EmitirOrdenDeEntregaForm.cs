@@ -8,9 +8,11 @@ using System.Windows.Forms;
 
 namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
 {
-    public partial class EmitirOrdenDeEntrega : Form
+    public partial class EmitirOrdenDeEntregaForm : Form
     {
-        public EmitirOrdenDeEntrega()
+
+        private readonly EmitirOrdenDeEntregaModelo modelo = new();
+        public EmitirOrdenDeEntregaForm()
         {
             InitializeComponent();
         }

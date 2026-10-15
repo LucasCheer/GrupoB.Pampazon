@@ -1,6 +1,6 @@
 ﻿namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
 {
-    partial class CumplimentarOrdenDeSeleccion
+    partial class CumplimentarOrdenDeSeleccionForm
     {
         /// <summary>
         /// Required designer variable.

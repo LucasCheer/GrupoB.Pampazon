@@ -1,6 +1,6 @@
 ﻿namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
 {
-    partial class EmitirOrdenDeEntrega
+    partial class EmitirOrdenDeEntregaForm
     {
         /// <summary>
         /// Required designer variable.

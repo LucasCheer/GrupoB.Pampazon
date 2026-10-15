@@ -1,6 +1,6 @@
 ﻿namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
 {
-    partial class DespacharPedidoLiberarCamion
+    partial class DespacharPedidoLiberarCamionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -296,7 +296,6 @@
             label6.Size = new Size(357, 20);
             label6.TabIndex = 17;
             label6.Text = "⚠ Aún no se ha verificado físicamente el transporte";
-            label6.Click += this.label6_Click;
             // 
             // button3
             // 
@@ -307,7 +306,6 @@
             button3.TabIndex = 16;
             button3.Text = "Liberar";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += this.button3_Click;
             // 
             // button4
             // 

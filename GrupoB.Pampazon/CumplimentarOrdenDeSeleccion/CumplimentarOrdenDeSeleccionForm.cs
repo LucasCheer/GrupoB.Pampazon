@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
 {
-    public partial class CumplimentarOrdenDeSeleccion : Form
+    public partial class CumplimentarOrdenDeSeleccionForm : Form
     {
-        public CumplimentarOrdenDeSeleccion()
+        private readonly CumplimentarOrdenDeSeleccionModelo modelo = new();
+        public CumplimentarOrdenDeSeleccionForm()
         {
             InitializeComponent();
         }
