@@ -1,4 +1,4 @@
-﻿namespace GrupoB.Pampazon.NewFolder
+﻿namespace GrupoB.Pampazon
 {
     partial class EmitirOrdenDeSeleccionForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
+            opLIST = new ListView();
             Número = new ColumnHeader();
             Fecha_recibida = new ColumnHeader();
             Cliente = new ColumnHeader();
@@ -40,31 +40,35 @@
             Cantcol = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             listView3 = new ListView();
+            SKUCOL = new ColumnHeader();
+            DescripCOL = new ColumnHeader();
+            cantidadcol = new ColumnHeader();
+            UBICOL = new ColumnHeader();
+            OPsasociadaCOL = new ColumnHeader();
             CantSelCOL = new ColumnHeader();
             button3 = new Button();
             button4 = new Button();
             label1 = new Label();
             label3 = new Label();
             UbicacionCOL = new ColumnHeader();
-            SKUCOL = new ColumnHeader();
-            DescripCOL = new ColumnHeader();
-            cantidadcol = new ColumnHeader();
-            UBICOL = new ColumnHeader();
             label4 = new Label();
-            OPsasociadaCOL = new ColumnHeader();
             label5 = new Label();
+            clienteBox = new ComboBox();
+            label6 = new Label();
+            limpiarBTN = new Button();
+            buscarBTN = new Button();
             SuspendLayout();
             // 
-            // listView1
+            // opLIST
             // 
-            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { Número, Fecha_recibida, Cliente, ProductoCOL, cantidad });
-            listView1.Location = new Point(14, 101);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(765, 232);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            opLIST.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            opLIST.Columns.AddRange(new ColumnHeader[] { Número, Fecha_recibida, Cliente, ProductoCOL, cantidad });
+            opLIST.Location = new Point(14, 136);
+            opLIST.Name = "opLIST";
+            opLIST.Size = new Size(765, 232);
+            opLIST.TabIndex = 0;
+            opLIST.UseCompatibleStateImageBehavior = false;
+            opLIST.View = View.Details;
             // 
             // Número
             // 
@@ -93,17 +97,15 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 339);
+            button1.Location = new Point(12, 374);
             button1.Name = "button1";
             button1.Size = new Size(763, 29);
             button1.TabIndex = 2;
             button1.Text = "Agregar a orden de selección";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(15, 679);
+            button2.Location = new Point(15, 697);
             button2.Name = "button2";
             button2.Size = new Size(763, 29);
             button2.TabIndex = 3;
@@ -134,12 +136,36 @@
             // 
             listView3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView3.Columns.AddRange(new ColumnHeader[] { SKUCOL, DescripCOL, cantidadcol, UBICOL, OPsasociadaCOL });
-            listView3.Location = new Point(12, 425);
+            listView3.Location = new Point(12, 452);
             listView3.Name = "listView3";
             listView3.Size = new Size(766, 236);
             listView3.TabIndex = 7;
             listView3.UseCompatibleStateImageBehavior = false;
             listView3.View = View.Details;
+            // 
+            // SKUCOL
+            // 
+            SKUCOL.Text = "SKU";
+            // 
+            // DescripCOL
+            // 
+            DescripCOL.Text = "Descripción";
+            DescripCOL.Width = 250;
+            // 
+            // cantidadcol
+            // 
+            cantidadcol.Text = "Cantidad";
+            cantidadcol.Width = 100;
+            // 
+            // UBICOL
+            // 
+            UBICOL.Text = "Ubicación (X-Y-Z)";
+            UBICOL.Width = 170;
+            // 
+            // OPsasociadaCOL
+            // 
+            OPsasociadaCOL.Text = "OP(s) Asociada(s)";
+            OPsasociadaCOL.Width = 150;
             // 
             // CantSelCOL
             // 
@@ -168,7 +194,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 78);
+            label1.Location = new Point(12, 107);
             label1.Name = "label1";
             label1.Size = new Size(234, 20);
             label1.TabIndex = 1;
@@ -178,35 +204,15 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(15, 392);
+            label3.Location = new Point(14, 426);
             label3.Name = "label3";
             label3.Size = new Size(254, 20);
             label3.TabIndex = 10;
             label3.Text = "Consolidado de selección para almacen";
-            label3.Click += label3_Click;
             // 
             // UbicacionCOL
             // 
             UbicacionCOL.Text = "Ubicación (X-Y-Z)";
-            // 
-            // SKUCOL
-            // 
-            SKUCOL.Text = "SKU";
-            // 
-            // DescripCOL
-            // 
-            DescripCOL.Text = "Descripción";
-            DescripCOL.Width = 250;
-            // 
-            // cantidadcol
-            // 
-            cantidadcol.Text = "Cantidad";
-            cantidadcol.Width = 100;
-            // 
-            // UBICOL
-            // 
-            UBICOL.Text = "Ubicación (X-Y-Z)";
-            UBICOL.Width = 170;
             // 
             // label4
             // 
@@ -218,11 +224,6 @@
             label4.TabIndex = 11;
             label4.Text = "Las ordenes de preparación se pueden agrupar en una misma orden de seleccion";
             // 
-            // OPsasociadaCOL
-            // 
-            OPsasociadaCOL.Text = "OP(s) Asociada(s)";
-            OPsasociadaCOL.Width = 150;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -233,11 +234,54 @@
             label5.TabIndex = 12;
             label5.Text = "Las OPs asociadas estarán listadas por coma. Se manejará a nivel modelo la relacion";
             // 
+            // clienteBox
+            // 
+            clienteBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            clienteBox.FormattingEnabled = true;
+            clienteBox.Location = new Point(95, 60);
+            clienteBox.Name = "clienteBox";
+            clienteBox.Size = new Size(432, 28);
+            clienteBox.TabIndex = 14;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(15, 64);
+            label6.Name = "label6";
+            label6.Size = new Size(52, 20);
+            label6.TabIndex = 16;
+            label6.Text = "Cliente";
+            // 
+            // limpiarBTN
+            // 
+            limpiarBTN.Location = new Point(651, 60);
+            limpiarBTN.Name = "limpiarBTN";
+            limpiarBTN.Size = new Size(130, 29);
+            limpiarBTN.TabIndex = 18;
+            limpiarBTN.Text = "Limpiar filtro";
+            limpiarBTN.UseVisualStyleBackColor = true;
+            limpiarBTN.Click += limpiarBTN_Click;
+            // 
+            // buscarBTN
+            // 
+            buscarBTN.Location = new Point(533, 60);
+            buscarBTN.Name = "buscarBTN";
+            buscarBTN.Size = new Size(112, 29);
+            buscarBTN.TabIndex = 19;
+            buscarBTN.Text = "Buscar";
+            buscarBTN.UseVisualStyleBackColor = true;
+            buscarBTN.Click += buscarBTN_Click;
+            // 
             // EmitirOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(790, 809);
+            Controls.Add(buscarBTN);
+            Controls.Add(limpiarBTN);
+            Controls.Add(label6);
+            Controls.Add(clienteBox);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -248,17 +292,19 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
-            Controls.Add(listView1);
+            Controls.Add(opLIST);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "EmitirOrdenDeSeleccionForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Emitir orden de selección";
+            Load += EmitirOrdenDeSeleccionForm_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ListView listView1;
+        private ListView opLIST;
         private ColumnHeader Número;
         private ColumnHeader Fecha_recibida;
         private ColumnHeader Cliente;
@@ -283,5 +329,10 @@
         private Label label4;
         private ColumnHeader OPsasociadaCOL;
         private Label label5;
+        private ComboBox clienteBox;
+        private Label label6;
+        private Button button5;
+        private Button limpiarBTN;
+        private Button buscarBTN;
     }
 }
