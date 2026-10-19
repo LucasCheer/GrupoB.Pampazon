@@ -34,12 +34,11 @@
             Cliente = new ColumnHeader();
             ProductoCOL = new ColumnHeader();
             cantidad = new ColumnHeader();
-            button1 = new Button();
-            button2 = new Button();
+            quitardeOSBTN = new Button();
             label2 = new Label();
             Cantcol = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
-            listView3 = new ListView();
+            osLIST = new ListView();
             SKUCOL = new ColumnHeader();
             DescripCOL = new ColumnHeader();
             cantidadcol = new ColumnHeader();
@@ -51,21 +50,23 @@
             label1 = new Label();
             label3 = new Label();
             UbicacionCOL = new ColumnHeader();
-            label4 = new Label();
-            label5 = new Label();
             clienteBox = new ComboBox();
             label6 = new Label();
             limpiarBTN = new Button();
             buscarBTN = new Button();
+            agregaraOSBTN = new Button();
+            allCHCK = new CheckBox();
             SuspendLayout();
             // 
             // opLIST
             // 
             opLIST.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             opLIST.Columns.AddRange(new ColumnHeader[] { Número, Fecha_recibida, Cliente, ProductoCOL, cantidad });
+            opLIST.FullRowSelect = true;
             opLIST.Location = new Point(14, 136);
             opLIST.Name = "opLIST";
             opLIST.Size = new Size(765, 232);
+            opLIST.Sorting = SortOrder.Descending;
             opLIST.TabIndex = 0;
             opLIST.UseCompatibleStateImageBehavior = false;
             opLIST.View = View.Details;
@@ -95,22 +96,15 @@
             cantidad.Text = "Cantidad";
             cantidad.Width = 153;
             // 
-            // button1
+            // quitardeOSBTN
             // 
-            button1.Location = new Point(12, 374);
-            button1.Name = "button1";
-            button1.Size = new Size(763, 29);
-            button1.TabIndex = 2;
-            button1.Text = "Agregar a orden de selección";
-            // 
-            // button2
-            // 
-            button2.Location = new Point(15, 697);
-            button2.Name = "button2";
-            button2.Size = new Size(763, 29);
-            button2.TabIndex = 3;
-            button2.Text = "Quitar de orden de selección";
-            button2.UseVisualStyleBackColor = true;
+            quitardeOSBTN.Location = new Point(15, 697);
+            quitardeOSBTN.Name = "quitardeOSBTN";
+            quitardeOSBTN.Size = new Size(763, 29);
+            quitardeOSBTN.TabIndex = 3;
+            quitardeOSBTN.Text = "Quitar de orden de selección";
+            quitardeOSBTN.UseVisualStyleBackColor = true;
+            quitardeOSBTN.Click += quitardeOSBTN_Click_1;
             // 
             // label2
             // 
@@ -132,16 +126,17 @@
             columnHeader3.Text = "Cliente";
             columnHeader3.Width = 254;
             // 
-            // listView3
+            // osLIST
             // 
-            listView3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView3.Columns.AddRange(new ColumnHeader[] { SKUCOL, DescripCOL, cantidadcol, UBICOL, OPsasociadaCOL });
-            listView3.Location = new Point(12, 452);
-            listView3.Name = "listView3";
-            listView3.Size = new Size(766, 236);
-            listView3.TabIndex = 7;
-            listView3.UseCompatibleStateImageBehavior = false;
-            listView3.View = View.Details;
+            osLIST.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            osLIST.Columns.AddRange(new ColumnHeader[] { SKUCOL, DescripCOL, cantidadcol, UBICOL, OPsasociadaCOL });
+            osLIST.FullRowSelect = true;
+            osLIST.Location = new Point(12, 452);
+            osLIST.Name = "osLIST";
+            osLIST.Size = new Size(766, 236);
+            osLIST.TabIndex = 7;
+            osLIST.UseCompatibleStateImageBehavior = false;
+            osLIST.View = View.Details;
             // 
             // SKUCOL
             // 
@@ -214,26 +209,6 @@
             // 
             UbicacionCOL.Text = "Ubicación (X-Y-Z)";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(138, 516);
-            label4.Name = "label4";
-            label4.Size = new Size(518, 20);
-            label4.TabIndex = 11;
-            label4.Text = "Las ordenes de preparación se pueden agrupar en una misma orden de seleccion";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(138, 552);
-            label5.Name = "label5";
-            label5.Size = new Size(526, 20);
-            label5.TabIndex = 12;
-            label5.Text = "Las OPs asociadas estarán listadas por coma. Se manejará a nivel modelo la relacion";
-            // 
             // clienteBox
             // 
             clienteBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -273,24 +248,44 @@
             buscarBTN.UseVisualStyleBackColor = true;
             buscarBTN.Click += buscarBTN_Click;
             // 
+            // agregaraOSBTN
+            // 
+            agregaraOSBTN.Location = new Point(14, 385);
+            agregaraOSBTN.Name = "agregaraOSBTN";
+            agregaraOSBTN.Size = new Size(763, 29);
+            agregaraOSBTN.TabIndex = 20;
+            agregaraOSBTN.Text = "Agregar a orden de selección";
+            agregaraOSBTN.UseVisualStyleBackColor = true;
+            agregaraOSBTN.Click += agregaraOSBTN_Click;
+            // 
+            // allCHCK
+            // 
+            allCHCK.AutoSize = true;
+            allCHCK.Location = new Point(631, 103);
+            allCHCK.Name = "allCHCK";
+            allCHCK.Size = new Size(148, 24);
+            allCHCK.TabIndex = 21;
+            allCHCK.Text = "Seleccionar todas";
+            allCHCK.UseVisualStyleBackColor = true;
+            allCHCK.CheckedChanged += allCHCK_CheckedChanged;
+            // 
             // EmitirOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(790, 809);
+            Controls.Add(allCHCK);
+            Controls.Add(agregaraOSBTN);
             Controls.Add(buscarBTN);
             Controls.Add(limpiarBTN);
             Controls.Add(label6);
             Controls.Add(clienteBox);
-            Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(button4);
             Controls.Add(button3);
-            Controls.Add(listView3);
+            Controls.Add(osLIST);
             Controls.Add(label2);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(quitardeOSBTN);
             Controls.Add(label1);
             Controls.Add(opLIST);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -309,11 +304,11 @@
         private ColumnHeader Fecha_recibida;
         private ColumnHeader Cliente;
         private Button button1;
-        private Button button2;
+        private Button quitardeOSBTN;
         private Label label2;
         private ColumnHeader Cantcol;
         private ColumnHeader columnHeader3;
-        private ListView listView3;
+        private ListView osLIST;
         private ColumnHeader CantSelCOL;
         private Button button3;
         private Button button4;
@@ -326,13 +321,13 @@
         private ColumnHeader DescripCOL;
         private ColumnHeader cantidadcol;
         private ColumnHeader UBICOL;
-        private Label label4;
         private ColumnHeader OPsasociadaCOL;
-        private Label label5;
         private ComboBox clienteBox;
         private Label label6;
         private Button button5;
         private Button limpiarBTN;
         private Button buscarBTN;
+        private Button agregaraOSBTN;
+        private CheckBox allCHCK;
     }
 }

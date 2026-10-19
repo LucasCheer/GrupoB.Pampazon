@@ -8,8 +8,8 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
     {
         public string NumeroOP { get; set; }
         public DateTime FechaRecibida { get; set; }
-        public int ClienteID { get; set; }
-        public string Producto { get; set; }
+        public string RazonSocial { get; set; }
+        public string ProductoSKU { get; set; }
         public int Cantidad { get; set; }
     }
 }

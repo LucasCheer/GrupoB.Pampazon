@@ -4,9 +4,11 @@ using System.Text;
 
 namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
 {
-    internal class Cliente
+    // Entidad Cliente con su propio catálogo de SKUs
+    public class Cliente
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public int ClienteID { get; set; }
+        public string RazonSocial { get; set; }
+        public List<Producto> CatálogoSKUs { get; set; } = new List<Producto>();
     }
 }
