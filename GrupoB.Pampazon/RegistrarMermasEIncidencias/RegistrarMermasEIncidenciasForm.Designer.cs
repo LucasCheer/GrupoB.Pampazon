@@ -260,7 +260,7 @@
             button1.Name = "button1";
             button1.Size = new Size(293, 34);
             button1.TabIndex = 35;
-            button1.Text = "Registrar Merma";
+            button1.Text = "Reportar Incidencia";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
