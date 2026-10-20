@@ -154,7 +154,7 @@
             textBox2.Location = new Point(513, 355);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(547, 138);
+            textBox2.Size = new Size(547, 152);
             textBox2.TabIndex = 6;
             // 
             // button2
