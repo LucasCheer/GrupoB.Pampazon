@@ -6,7 +6,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -14,458 +14,357 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
             lblTitulo = new Label();
-            lblDatosGenerales = new Label();
-            lblNumeroOrdenPreparacion = new Label();
-            txtNumeroOrdenPreparacion = new TextBox();
-            lblNumeroOrdenSeleccion = new Label();
-            txtNumeroOrdenSeleccion = new TextBox();
-            lblCliente = new Label();
+            grpOrden = new GroupBox();
+            txtFecha = new TextBox();
+            lblFecha = new Label();
             txtCliente = new TextBox();
-            lblFechaRecepcion = new Label();
-            txtFechaRecepcion = new TextBox();
-            lblOperador = new Label();
-            txtOperador = new TextBox();
-            lblEstado = new Label();
-            txtEstado = new TextBox();
-            lblVerificacionMercaderia = new Label();
-            lvProductosRecibidos = new ListView();
+            lblCliente = new Label();
+            txtOrdenPreparacion = new TextBox();
+            lblOrdenPreparacion = new Label();
+            grpMercaderia = new GroupBox();
+            lvProductos = new ListView();
             colSku = new ColumnHeader();
             colDescripcion = new ColumnHeader();
-            colCantidadEsperada = new ColumnHeader();
-            colCantidadRecibida = new ColumnHeader();
-            colDiferencia = new ColumnHeader();
-            colCondicion = new ColumnHeader();
-            colVerificado = new ColumnHeader();
-            btnMarcarVerificado = new Button();
-            btnRegistrarIncidencia = new Button();
-            lblArmadoBultos = new Label();
+            colCantidadOp = new ColumnHeader();
+            grpBultos = new GroupBox();
+            btnGenerarEtiqueta = new Button();
+            btnAgregarBulto = new Button();
+            nudPeso = new NumericUpDown();
+            lblPeso = new Label();
+            cboTipoEmbalaje = new ComboBox();
+            lblTipoEmbalaje = new Label();
             lvBultos = new ListView();
             colNumeroBulto = new ColumnHeader();
             colTipoEmbalaje = new ColumnHeader();
-            colCantidadProductos = new ColumnHeader();
-            colPesoTotal = new ColumnHeader();
-            colEstadoEtiqueta = new ColumnHeader();
-            colObservaciones = new ColumnHeader();
-            btnCrearBulto = new Button();
-            btnEditarBulto = new Button();
-            btnEliminarBulto = new Button();
-            btnGenerarEtiqueta = new Button();
+            colProductos = new ColumnHeader();
+            colPeso = new ColumnHeader();
+            colEtiqueta = new ColumnHeader();
             btnConfirmarLote = new Button();
             btnCancelar = new Button();
+            grpOrden.SuspendLayout();
+            grpMercaderia.SuspendLayout();
+            grpBultos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudPeso).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI Black", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(16, 12);
+            lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.Location = new Point(10, 7);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(443, 30);
-            lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "ACONDICIONAMIENTO Y EMPAQUETADO DEL LOTE";
+            lblTitulo.Size = new Size(400, 30);
+            lblTitulo.TabIndex = 5;
+            lblTitulo.Text = "ACONDICIONAR Y EMPAQUETAR LOTE";
             // 
-            // lblDatosGenerales
+            // grpOrden
             // 
-            lblDatosGenerales.AutoSize = true;
-            lblDatosGenerales.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDatosGenerales.Location = new Point(16, 56);
-            lblDatosGenerales.Name = "lblDatosGenerales";
-            lblDatosGenerales.Size = new Size(159, 25);
-            lblDatosGenerales.TabIndex = 1;
-            lblDatosGenerales.Text = "DATOS GENERALES";
+            grpOrden.Controls.Add(txtFecha);
+            grpOrden.Controls.Add(lblFecha);
+            grpOrden.Controls.Add(txtCliente);
+            grpOrden.Controls.Add(lblCliente);
+            grpOrden.Controls.Add(txtOrdenPreparacion);
+            grpOrden.Controls.Add(lblOrdenPreparacion);
+            grpOrden.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpOrden.Location = new Point(10, 45);
+            grpOrden.Margin = new Padding(3, 2, 3, 2);
+            grpOrden.Name = "grpOrden";
+            grpOrden.Padding = new Padding(3, 2, 3, 2);
+            grpOrden.Size = new Size(815, 55);
+            grpOrden.TabIndex = 4;
+            grpOrden.TabStop = false;
+            grpOrden.Text = "ORDEN DE PREPARACIÓN";
             // 
-            // lblNumeroOrdenPreparacion
+            // txtFecha
             // 
-            lblNumeroOrdenPreparacion.AutoSize = true;
-            lblNumeroOrdenPreparacion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNumeroOrdenPreparacion.Location = new Point(16, 93);
-            lblNumeroOrdenPreparacion.Name = "lblNumeroOrdenPreparacion";
-            lblNumeroOrdenPreparacion.Size = new Size(72, 25);
-            lblNumeroOrdenPreparacion.TabIndex = 2;
-            lblNumeroOrdenPreparacion.Text = "N.º OP:";
+            txtFecha.Location = new Point(655, 20);
+            txtFecha.Margin = new Padding(3, 2, 3, 2);
+            txtFecha.Name = "txtFecha";
+            txtFecha.ReadOnly = true;
+            txtFecha.Size = new Size(140, 26);
+            txtFecha.TabIndex = 0;
             // 
-            // txtNumeroOrdenPreparacion
+            // lblFecha
             // 
-            txtNumeroOrdenPreparacion.BackColor = SystemColors.ControlLight;
-            txtNumeroOrdenPreparacion.BorderStyle = BorderStyle.FixedSingle;
-            txtNumeroOrdenPreparacion.Location = new Point(94, 90);
-            txtNumeroOrdenPreparacion.Name = "txtNumeroOrdenPreparacion";
-            txtNumeroOrdenPreparacion.ReadOnly = true;
-            txtNumeroOrdenPreparacion.Size = new Size(150, 31);
-            txtNumeroOrdenPreparacion.TabIndex = 3;
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(599, 23);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(42, 15);
+            lblFecha.TabIndex = 1;
+            lblFecha.Text = "Fecha:";
             // 
-            // lblNumeroOrdenSeleccion
+            // txtCliente
             // 
-            lblNumeroOrdenSeleccion.AutoSize = true;
-            lblNumeroOrdenSeleccion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNumeroOrdenSeleccion.Location = new Point(270, 93);
-            lblNumeroOrdenSeleccion.Name = "lblNumeroOrdenSeleccion";
-            lblNumeroOrdenSeleccion.Size = new Size(73, 25);
-            lblNumeroOrdenSeleccion.TabIndex = 4;
-            lblNumeroOrdenSeleccion.Text = "N.º OS:";
-            // 
-            // txtNumeroOrdenSeleccion
-            // 
-            txtNumeroOrdenSeleccion.BackColor = SystemColors.ControlLight;
-            txtNumeroOrdenSeleccion.BorderStyle = BorderStyle.FixedSingle;
-            txtNumeroOrdenSeleccion.Location = new Point(349, 90);
-            txtNumeroOrdenSeleccion.Name = "txtNumeroOrdenSeleccion";
-            txtNumeroOrdenSeleccion.ReadOnly = true;
-            txtNumeroOrdenSeleccion.Size = new Size(150, 31);
-            txtNumeroOrdenSeleccion.TabIndex = 5;
+            txtCliente.Location = new Point(324, 20);
+            txtCliente.Margin = new Padding(3, 2, 3, 2);
+            txtCliente.Name = "txtCliente";
+            txtCliente.ReadOnly = true;
+            txtCliente.Size = new Size(260, 26);
+            txtCliente.TabIndex = 4;
             // 
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCliente.Location = new Point(528, 93);
+            lblCliente.Location = new Point(256, 23);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(76, 25);
-            lblCliente.TabIndex = 6;
+            lblCliente.Size = new Size(49, 15);
+            lblCliente.TabIndex = 5;
             lblCliente.Text = "Cliente:";
             // 
-            // txtCliente
+            // txtOrdenPreparacion
             // 
-            txtCliente.BackColor = SystemColors.ControlLight;
-            txtCliente.BorderStyle = BorderStyle.FixedSingle;
-            txtCliente.Location = new Point(610, 90);
-            txtCliente.Name = "txtCliente";
-            txtCliente.ReadOnly = true;
-            txtCliente.Size = new Size(346, 31);
-            txtCliente.TabIndex = 7;
+            txtOrdenPreparacion.Location = new Point(81, 20);
+            txtOrdenPreparacion.Margin = new Padding(3, 2, 3, 2);
+            txtOrdenPreparacion.Name = "txtOrdenPreparacion";
+            txtOrdenPreparacion.ReadOnly = true;
+            txtOrdenPreparacion.Size = new Size(154, 26);
+            txtOrdenPreparacion.TabIndex = 6;
             // 
-            // lblFechaRecepcion
+            // lblOrdenPreparacion
             // 
-            lblFechaRecepcion.AutoSize = true;
-            lblFechaRecepcion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFechaRecepcion.Location = new Point(982, 93);
-            lblFechaRecepcion.Name = "lblFechaRecepcion";
-            lblFechaRecepcion.Size = new Size(64, 25);
-            lblFechaRecepcion.TabIndex = 8;
-            lblFechaRecepcion.Text = "Fecha:";
+            lblOrdenPreparacion.AutoSize = true;
+            lblOrdenPreparacion.Location = new Point(13, 23);
+            lblOrdenPreparacion.Name = "lblOrdenPreparacion";
+            lblOrdenPreparacion.Size = new Size(46, 15);
+            lblOrdenPreparacion.TabIndex = 7;
+            lblOrdenPreparacion.Text = "N.º OP:";
             // 
-            // txtFechaRecepcion
+            // grpMercaderia
             // 
-            txtFechaRecepcion.BackColor = SystemColors.ControlLight;
-            txtFechaRecepcion.BorderStyle = BorderStyle.FixedSingle;
-            txtFechaRecepcion.Location = new Point(1052, 90);
-            txtFechaRecepcion.Name = "txtFechaRecepcion";
-            txtFechaRecepcion.ReadOnly = true;
-            txtFechaRecepcion.Size = new Size(220, 31);
-            txtFechaRecepcion.TabIndex = 9;
+            grpMercaderia.Controls.Add(lvProductos);
+            grpMercaderia.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpMercaderia.Location = new Point(10, 109);
+            grpMercaderia.Margin = new Padding(3, 2, 3, 2);
+            grpMercaderia.Name = "grpMercaderia";
+            grpMercaderia.Padding = new Padding(3, 2, 3, 2);
+            grpMercaderia.Size = new Size(815, 142);
+            grpMercaderia.TabIndex = 3;
+            grpMercaderia.TabStop = false;
+            grpMercaderia.Text = "MERCADERÍA DE LA ORDEN";
             // 
-            // lblOperador
+            // lvProductos
             // 
-            lblOperador.AutoSize = true;
-            lblOperador.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblOperador.Location = new Point(16, 142);
-            lblOperador.Name = "lblOperador";
-            lblOperador.Size = new Size(94, 25);
-            lblOperador.TabIndex = 10;
-            lblOperador.Text = "Operador:";
-            // 
-            // txtOperador
-            // 
-            txtOperador.BackColor = SystemColors.ControlLight;
-            txtOperador.BorderStyle = BorderStyle.FixedSingle;
-            txtOperador.Location = new Point(116, 139);
-            txtOperador.Name = "txtOperador";
-            txtOperador.ReadOnly = true;
-            txtOperador.Size = new Size(383, 31);
-            txtOperador.TabIndex = 11;
-            // 
-            // lblEstado
-            // 
-            lblEstado.AutoSize = true;
-            lblEstado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEstado.Location = new Point(528, 142);
-            lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(71, 25);
-            lblEstado.TabIndex = 12;
-            lblEstado.Text = "Estado:";
-            // 
-            // txtEstado
-            // 
-            txtEstado.BackColor = SystemColors.ControlLight;
-            txtEstado.BorderStyle = BorderStyle.FixedSingle;
-            txtEstado.Location = new Point(610, 139);
-            txtEstado.Name = "txtEstado";
-            txtEstado.ReadOnly = true;
-            txtEstado.Size = new Size(346, 31);
-            txtEstado.TabIndex = 13;
-            // 
-            // lblVerificacionMercaderia
-            // 
-            lblVerificacionMercaderia.AutoSize = true;
-            lblVerificacionMercaderia.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVerificacionMercaderia.Location = new Point(16, 194);
-            lblVerificacionMercaderia.Name = "lblVerificacionMercaderia";
-            lblVerificacionMercaderia.Size = new Size(274, 25);
-            lblVerificacionMercaderia.TabIndex = 14;
-            lblVerificacionMercaderia.Text = "VERIFICACION DE MERCADERIA";
-            // 
-            // lvProductosRecibidos
-            // 
-            lvProductosRecibidos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lvProductosRecibidos.Columns.AddRange(new ColumnHeader[] { colSku, colDescripcion, colCantidadEsperada, colCantidadRecibida, colDiferencia, colCondicion, colVerificado });
-            lvProductosRecibidos.FullRowSelect = true;
-            lvProductosRecibidos.GridLines = true;
-            lvProductosRecibidos.Location = new Point(16, 226);
-            lvProductosRecibidos.MultiSelect = false;
-            lvProductosRecibidos.Name = "lvProductosRecibidos";
-            lvProductosRecibidos.Size = new Size(1256, 210);
-            lvProductosRecibidos.TabIndex = 15;
-            lvProductosRecibidos.UseCompatibleStateImageBehavior = false;
-            lvProductosRecibidos.View = View.Details;
+            lvProductos.Columns.AddRange(new ColumnHeader[] { colSku, colDescripcion, colCantidadOp });
+            lvProductos.FullRowSelect = true;
+            lvProductos.GridLines = true;
+            lvProductos.Location = new Point(13, 22);
+            lvProductos.Margin = new Padding(3, 2, 3, 2);
+            lvProductos.MultiSelect = false;
+            lvProductos.Name = "lvProductos";
+            lvProductos.Size = new Size(789, 110);
+            lvProductos.TabIndex = 0;
+            lvProductos.UseCompatibleStateImageBehavior = false;
+            lvProductos.View = View.Details;
+            lvProductos.SelectedIndexChanged += lvProductos_SelectedIndexChanged;
             // 
             // colSku
             // 
             colSku.Text = "SKU";
-            colSku.Width = 110;
+            colSku.Width = 170;
             // 
             // colDescripcion
             // 
-            colDescripcion.Text = "Descripcion";
-            colDescripcion.Width = 300;
+            colDescripcion.Text = "Descripción";
+            colDescripcion.Width = 430;
             // 
-            // colCantidadEsperada
+            // colCantidadOp
             // 
-            colCantidadEsperada.Text = "Cant. esperada";
-            colCantidadEsperada.Width = 145;
+            colCantidadOp.Text = "Cantidad a empaquetar";
+            colCantidadOp.Width = 170;
             // 
-            // colCantidadRecibida
+            // grpBultos
             // 
-            colCantidadRecibida.Text = "Cant. recibida";
-            colCantidadRecibida.Width = 145;
+            grpBultos.Controls.Add(btnGenerarEtiqueta);
+            grpBultos.Controls.Add(btnAgregarBulto);
+            grpBultos.Controls.Add(nudPeso);
+            grpBultos.Controls.Add(lblPeso);
+            grpBultos.Controls.Add(cboTipoEmbalaje);
+            grpBultos.Controls.Add(lblTipoEmbalaje);
+            grpBultos.Controls.Add(lvBultos);
+            grpBultos.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpBultos.Location = new Point(10, 260);
+            grpBultos.Margin = new Padding(3, 2, 3, 2);
+            grpBultos.Name = "grpBultos";
+            grpBultos.Padding = new Padding(3, 2, 3, 2);
+            grpBultos.Size = new Size(815, 184);
+            grpBultos.TabIndex = 2;
+            grpBultos.TabStop = false;
+            grpBultos.Text = "ARMADO DE BULTOS";
             // 
-            // colDiferencia
+            // btnGenerarEtiqueta
             // 
-            colDiferencia.Text = "Diferencia";
-            colDiferencia.Width = 115;
+            btnGenerarEtiqueta.Location = new Point(640, 58);
+            btnGenerarEtiqueta.Margin = new Padding(3, 2, 3, 2);
+            btnGenerarEtiqueta.Name = "btnGenerarEtiqueta";
+            btnGenerarEtiqueta.Size = new Size(155, 30);
+            btnGenerarEtiqueta.TabIndex = 0;
+            btnGenerarEtiqueta.Text = "Generar etiqueta";
+            btnGenerarEtiqueta.UseVisualStyleBackColor = true;
             // 
-            // colCondicion
+            // btnAgregarBulto
             // 
-            colCondicion.Text = "Condicion";
-            colCondicion.Width = 150;
+            btnAgregarBulto.Location = new Point(534, 19);
+            btnAgregarBulto.Margin = new Padding(3, 2, 3, 2);
+            btnAgregarBulto.Name = "btnAgregarBulto";
+            btnAgregarBulto.Size = new Size(158, 28);
+            btnAgregarBulto.TabIndex = 1;
+            btnAgregarBulto.Text = "Agregar bulto";
+            btnAgregarBulto.UseVisualStyleBackColor = true;
             // 
-            // colVerificado
+            // nudPeso
             // 
-            colVerificado.Text = "Verificado";
-            colVerificado.Width = 145;
+            nudPeso.DecimalPlaces = 2;
+            nudPeso.Location = new Point(407, 21);
+            nudPeso.Margin = new Padding(3, 2, 3, 2);
+            nudPeso.Name = "nudPeso";
+            nudPeso.Size = new Size(101, 26);
+            nudPeso.TabIndex = 2;
+            nudPeso.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
-            // btnMarcarVerificado
+            // lblPeso
             // 
-            btnMarcarVerificado.Location = new Point(816, 446);
-            btnMarcarVerificado.Name = "btnMarcarVerificado";
-            btnMarcarVerificado.Size = new Size(221, 34);
-            btnMarcarVerificado.TabIndex = 16;
-            btnMarcarVerificado.Text = "Marcar como verificado";
-            btnMarcarVerificado.UseVisualStyleBackColor = true;
+            lblPeso.AutoSize = true;
+            lblPeso.Location = new Point(324, 24);
+            lblPeso.Name = "lblPeso";
+            lblPeso.Size = new Size(61, 15);
+            lblPeso.TabIndex = 3;
+            lblPeso.Text = "Peso (kg):";
             // 
-            // btnRegistrarIncidencia
+            // cboTipoEmbalaje
             // 
-            btnRegistrarIncidencia.Location = new Point(1051, 446);
-            btnRegistrarIncidencia.Name = "btnRegistrarIncidencia";
-            btnRegistrarIncidencia.Size = new Size(221, 34);
-            btnRegistrarIncidencia.TabIndex = 17;
-            btnRegistrarIncidencia.Text = "Registrar incidencia";
-            btnRegistrarIncidencia.UseVisualStyleBackColor = true;
+            cboTipoEmbalaje.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipoEmbalaje.Items.AddRange(new object[] { "Caja", "Bolsa", "Pallet" });
+            cboTipoEmbalaje.Location = new Point(152, 21);
+            cboTipoEmbalaje.Margin = new Padding(3, 2, 3, 2);
+            cboTipoEmbalaje.Name = "cboTipoEmbalaje";
+            cboTipoEmbalaje.Size = new Size(154, 27);
+            cboTipoEmbalaje.TabIndex = 4;
             // 
-            // lblArmadoBultos
+            // lblTipoEmbalaje
             // 
-            lblArmadoBultos.AutoSize = true;
-            lblArmadoBultos.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblArmadoBultos.Location = new Point(16, 505);
-            lblArmadoBultos.Name = "lblArmadoBultos";
-            lblArmadoBultos.Size = new Size(184, 25);
-            lblArmadoBultos.TabIndex = 18;
-            lblArmadoBultos.Text = "ARMADO DE BULTOS";
+            lblTipoEmbalaje.AutoSize = true;
+            lblTipoEmbalaje.Location = new Point(13, 24);
+            lblTipoEmbalaje.Name = "lblTipoEmbalaje";
+            lblTipoEmbalaje.Size = new Size(104, 15);
+            lblTipoEmbalaje.TabIndex = 5;
+            lblTipoEmbalaje.Text = "Tipo de embalaje:";
             // 
             // lvBultos
             // 
-            lvBultos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lvBultos.Columns.AddRange(new ColumnHeader[] { colNumeroBulto, colTipoEmbalaje, colCantidadProductos, colPesoTotal, colEstadoEtiqueta, colObservaciones });
+            lvBultos.Columns.AddRange(new ColumnHeader[] { colNumeroBulto, colTipoEmbalaje, colProductos, colPeso, colEtiqueta });
             lvBultos.FullRowSelect = true;
             lvBultos.GridLines = true;
-            lvBultos.Location = new Point(16, 537);
+            lvBultos.Location = new Point(13, 58);
+            lvBultos.Margin = new Padding(3, 2, 3, 2);
             lvBultos.MultiSelect = false;
             lvBultos.Name = "lvBultos";
-            lvBultos.Size = new Size(1256, 185);
-            lvBultos.TabIndex = 19;
+            lvBultos.Size = new Size(614, 106);
+            lvBultos.TabIndex = 6;
             lvBultos.UseCompatibleStateImageBehavior = false;
             lvBultos.View = View.Details;
             // 
             // colNumeroBulto
             // 
             colNumeroBulto.Text = "N.º bulto";
-            colNumeroBulto.Width = 110;
+            colNumeroBulto.Width = 95;
             // 
             // colTipoEmbalaje
             // 
             colTipoEmbalaje.Text = "Tipo de embalaje";
-            colTipoEmbalaje.Width = 200;
+            colTipoEmbalaje.Width = 160;
             // 
-            // colCantidadProductos
+            // colProductos
             // 
-            colCantidadProductos.Text = "Productos";
-            colCantidadProductos.Width = 140;
+            colProductos.Text = "Productos";
+            colProductos.Width = 120;
             // 
-            // colPesoTotal
+            // colPeso
             // 
-            colPesoTotal.Text = "Peso total";
-            colPesoTotal.Width = 140;
+            colPeso.Text = "Peso";
+            colPeso.Width = 100;
             // 
-            // colEstadoEtiqueta
+            // colEtiqueta
             // 
-            colEstadoEtiqueta.Text = "Etiqueta";
-            colEstadoEtiqueta.Width = 160;
-            // 
-            // colObservaciones
-            // 
-            colObservaciones.Text = "Observaciones";
-            colObservaciones.Width = 420;
-            // 
-            // btnCrearBulto
-            // 
-            btnCrearBulto.Location = new Point(16, 732);
-            btnCrearBulto.Name = "btnCrearBulto";
-            btnCrearBulto.Size = new Size(160, 34);
-            btnCrearBulto.TabIndex = 20;
-            btnCrearBulto.Text = "Crear bulto";
-            btnCrearBulto.UseVisualStyleBackColor = true;
-            // 
-            // btnEditarBulto
-            // 
-            btnEditarBulto.Location = new Point(187, 732);
-            btnEditarBulto.Name = "btnEditarBulto";
-            btnEditarBulto.Size = new Size(160, 34);
-            btnEditarBulto.TabIndex = 21;
-            btnEditarBulto.Text = "Editar bulto";
-            btnEditarBulto.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminarBulto
-            // 
-            btnEliminarBulto.Location = new Point(358, 732);
-            btnEliminarBulto.Name = "btnEliminarBulto";
-            btnEliminarBulto.Size = new Size(160, 34);
-            btnEliminarBulto.TabIndex = 22;
-            btnEliminarBulto.Text = "Eliminar bulto";
-            btnEliminarBulto.UseVisualStyleBackColor = true;
-            // 
-            // btnGenerarEtiqueta
-            // 
-            btnGenerarEtiqueta.Location = new Point(529, 732);
-            btnGenerarEtiqueta.Name = "btnGenerarEtiqueta";
-            btnGenerarEtiqueta.Size = new Size(180, 34);
-            btnGenerarEtiqueta.TabIndex = 23;
-            btnGenerarEtiqueta.Text = "Generar etiqueta";
-            btnGenerarEtiqueta.UseVisualStyleBackColor = true;
+            colEtiqueta.Text = "Etiqueta";
+            colEtiqueta.Width = 120;
             // 
             // btnConfirmarLote
             // 
-            btnConfirmarLote.Enabled = false;
-            btnConfirmarLote.Location = new Point(890, 792);
+            btnConfirmarLote.Location = new Point(536, 457);
+            btnConfirmarLote.Margin = new Padding(3, 2, 3, 2);
             btnConfirmarLote.Name = "btnConfirmarLote";
-            btnConfirmarLote.Size = new Size(244, 38);
-            btnConfirmarLote.TabIndex = 24;
+            btnConfirmarLote.Size = new Size(184, 30);
+            btnConfirmarLote.TabIndex = 1;
             btnConfirmarLote.Text = "Confirmar lote preparado";
             btnConfirmarLote.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(1146, 792);
+            btnCancelar.Location = new Point(720, 457);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(126, 38);
-            btnCancelar.TabIndex = 25;
+            btnCancelar.Size = new Size(105, 30);
+            btnCancelar.TabIndex = 0;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // AcondicionarYEmpaquetarLoteForm
             // 
-            AcceptButton = btnConfirmarLote;
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancelar;
-            ClientSize = new Size(1288, 850);
+            ClientSize = new Size(837, 500);
             Controls.Add(btnCancelar);
             Controls.Add(btnConfirmarLote);
-            Controls.Add(btnGenerarEtiqueta);
-            Controls.Add(btnEliminarBulto);
-            Controls.Add(btnEditarBulto);
-            Controls.Add(btnCrearBulto);
-            Controls.Add(lvBultos);
-            Controls.Add(lblArmadoBultos);
-            Controls.Add(btnRegistrarIncidencia);
-            Controls.Add(btnMarcarVerificado);
-            Controls.Add(lvProductosRecibidos);
-            Controls.Add(lblVerificacionMercaderia);
-            Controls.Add(txtEstado);
-            Controls.Add(lblEstado);
-            Controls.Add(txtOperador);
-            Controls.Add(lblOperador);
-            Controls.Add(txtFechaRecepcion);
-            Controls.Add(lblFechaRecepcion);
-            Controls.Add(txtCliente);
-            Controls.Add(lblCliente);
-            Controls.Add(txtNumeroOrdenSeleccion);
-            Controls.Add(lblNumeroOrdenSeleccion);
-            Controls.Add(txtNumeroOrdenPreparacion);
-            Controls.Add(lblNumeroOrdenPreparacion);
-            Controls.Add(lblDatosGenerales);
+            Controls.Add(grpBultos);
+            Controls.Add(grpMercaderia);
+            Controls.Add(grpOrden);
             Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "AcondicionarYEmpaquetarLoteForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Acondicionar y empaquetar lote";
+            grpOrden.ResumeLayout(false);
+            grpOrden.PerformLayout();
+            grpMercaderia.ResumeLayout(false);
+            grpBultos.ResumeLayout(false);
+            grpBultos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudPeso).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
-
         private Label lblTitulo;
-        private Label lblDatosGenerales;
-        private Label lblNumeroOrdenPreparacion;
-        private TextBox txtNumeroOrdenPreparacion;
-        private Label lblNumeroOrdenSeleccion;
-        private TextBox txtNumeroOrdenSeleccion;
+        private GroupBox grpOrden;
+        private Label lblOrdenPreparacion;
+        private TextBox txtOrdenPreparacion;
         private Label lblCliente;
         private TextBox txtCliente;
-        private Label lblFechaRecepcion;
-        private TextBox txtFechaRecepcion;
-        private Label lblOperador;
-        private TextBox txtOperador;
-        private Label lblEstado;
-        private TextBox txtEstado;
-        private Label lblVerificacionMercaderia;
-        private ListView lvProductosRecibidos;
+        private Label lblFecha;
+        private TextBox txtFecha;
+        private GroupBox grpMercaderia;
+        private ListView lvProductos;
         private ColumnHeader colSku;
         private ColumnHeader colDescripcion;
-        private ColumnHeader colCantidadEsperada;
-        private ColumnHeader colCantidadRecibida;
-        private ColumnHeader colDiferencia;
-        private ColumnHeader colCondicion;
-        private ColumnHeader colVerificado;
-        private Button btnMarcarVerificado;
-        private Button btnRegistrarIncidencia;
-        private Label lblArmadoBultos;
+        private ColumnHeader colCantidadOp;
+        private GroupBox grpBultos;
+        private Label lblTipoEmbalaje;
+        private ComboBox cboTipoEmbalaje;
+        private Label lblPeso;
+        private NumericUpDown nudPeso;
+        private Button btnAgregarBulto;
         private ListView lvBultos;
         private ColumnHeader colNumeroBulto;
         private ColumnHeader colTipoEmbalaje;
-        private ColumnHeader colCantidadProductos;
-        private ColumnHeader colPesoTotal;
-        private ColumnHeader colEstadoEtiqueta;
-        private ColumnHeader colObservaciones;
-        private Button btnCrearBulto;
-        private Button btnEditarBulto;
-        private Button btnEliminarBulto;
+        private ColumnHeader colProductos;
+        private ColumnHeader colPeso;
+        private ColumnHeader colEtiqueta;
         private Button btnGenerarEtiqueta;
         private Button btnConfirmarLote;
         private Button btnCancelar;
