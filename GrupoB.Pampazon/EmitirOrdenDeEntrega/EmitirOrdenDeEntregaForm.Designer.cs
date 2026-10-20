@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "P-1000", "11/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1);
+            ListViewItem listViewItem3 = new ListViewItem(new string[] { "P-1000", "11/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1);
             groupBox1 = new GroupBox();
             listView1 = new ListView();
             colPedido = new ColumnHeader();
@@ -73,7 +73,7 @@
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView1.Columns.AddRange(new ColumnHeader[] { colPedido, colFecha, colCliente, colBulto });
             listView1.ForeColor = SystemColors.InfoText;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem3, listViewItem4 });
             listView1.Location = new Point(5, 22);
             listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
