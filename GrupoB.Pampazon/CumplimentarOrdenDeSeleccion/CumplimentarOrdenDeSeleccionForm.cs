@@ -15,5 +15,20 @@ namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
         {
             InitializeComponent();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
