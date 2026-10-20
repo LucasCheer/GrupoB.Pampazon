@@ -10,9 +10,11 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
 {
     public partial class ControlarMermasEIncidenciasForm : Form
     {
+        private readonly ControlarMermasEIncidenciasModelo modelo = new();
         public ControlarMermasEIncidenciasForm()
         {
             InitializeComponent();
         }
+
     }
 }
