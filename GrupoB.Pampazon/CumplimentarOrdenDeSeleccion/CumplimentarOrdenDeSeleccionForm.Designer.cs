@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "1", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "12-43-2", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "CEM-01", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Bolsa Cemento 35kg", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "50"), new ListViewItem.ListViewSubItem(null, "Retirado") }, -1);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "2", "14-10-1", "CEM-02", "Bolsa Cal 25kg", "20", "Pendiente" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
+            ListViewItem listViewItem3 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "1", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "12-43-2", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0)), new ListViewItem.ListViewSubItem(null, "CEM-01", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Bolsa Cemento 35kg", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "50"), new ListViewItem.ListViewSubItem(null, "Retirado") }, -1);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] { "2", "14-10-1", "CEM-02", "Bolsa Cal 25kg", "20", "Pendiente" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
             groupBox2 = new GroupBox();
             textBox2 = new TextBox();
             label3 = new Label();
             button1 = new Button();
-            textBox1 = new TextBox();
             label2 = new Label();
             label1 = new Label();
             groupBox1 = new GroupBox();
@@ -46,16 +45,17 @@
             colCant = new ColumnHeader();
             button3 = new Button();
             button4 = new Button();
+            comboBox1 = new ComboBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(comboBox1);
             groupBox2.Controls.Add(textBox2);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(textBox1);
             groupBox2.Controls.Add(label2);
             groupBox2.FlatStyle = FlatStyle.System;
             groupBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -100,15 +100,6 @@
             button1.Text = "Cargar Hoja de Ruta";
             button1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(193, 25);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(126, 26);
-            textBox1.TabIndex = 4;
-            textBox1.Text = "PICK-5000";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -150,8 +141,8 @@
             listView2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView2.Columns.AddRange(new ColumnHeader[] { colOrden, colCoord, colSKU, colDesc, colCant });
             listView2.ForeColor = SystemColors.InfoText;
-            listViewItem2.Tag = "";
-            listView2.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
+            listViewItem4.Tag = "";
+            listView2.Items.AddRange(new ListViewItem[] { listViewItem3, listViewItem4 });
             listView2.Location = new Point(5, 29);
             listView2.Margin = new Padding(3, 2, 3, 2);
             listView2.Name = "listView2";
@@ -210,6 +201,15 @@
             button4.Text = "Cancelar";
             button4.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(193, 27);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(126, 27);
+            comboBox1.TabIndex = 12;
+            comboBox1.Text = "PICK-5000";
+            // 
             // CumplimentarOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -232,7 +232,6 @@
 
         private GroupBox groupBox2;
         private Button button1;
-        private TextBox textBox1;
         private Label label2;
         private Label label1;
         private TextBox textBox2;
@@ -246,5 +245,6 @@
         private ColumnHeader colCant;
         private Button button3;
         private Button button4;
+        private ComboBox comboBox1;
     }
 }

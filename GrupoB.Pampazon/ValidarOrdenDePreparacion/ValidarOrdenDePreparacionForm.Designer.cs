@@ -61,9 +61,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(8, 5);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(726, 25);
+            label1.Size = new Size(479, 15);
             label1.TabIndex = 0;
             label1.Text = "DATOS GENERALES DE LA ORDEN DE PREPARACION (RECEPCIONADA VIA WEB)";
             // 
@@ -72,9 +73,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(16, 63);
+            label2.Location = new Point(11, 38);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(144, 25);
+            label2.Size = new Size(95, 15);
             label2.TabIndex = 1;
             label2.Text = "ID Orden Web:";
             // 
@@ -82,10 +84,11 @@
             // 
             textBox1.BackColor = SystemColors.ControlLight;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(166, 61);
+            textBox1.Location = new Point(116, 37);
+            textBox1.Margin = new Padding(2, 2, 2, 2);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(170, 31);
+            textBox1.Size = new Size(120, 23);
             textBox1.TabIndex = 2;
             textBox1.Text = " [ID Orden Web]";
             // 
@@ -93,10 +96,11 @@
             // 
             textBox2.BackColor = SystemColors.ControlLight;
             textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(452, 61);
+            textBox2.Location = new Point(316, 37);
+            textBox2.Margin = new Padding(2, 2, 2, 2);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(325, 31);
+            textBox2.Size = new Size(228, 23);
             textBox2.TabIndex = 4;
             textBox2.Text = " [Nombre del ciente]";
             // 
@@ -105,9 +109,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ControlText;
-            label3.Location = new Point(366, 63);
+            label3.Location = new Point(256, 38);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(80, 25);
+            label3.Size = new Size(54, 15);
             label3.TabIndex = 3;
             label3.Text = "Cliente:";
             // 
@@ -115,10 +120,11 @@
             // 
             textBox3.BackColor = SystemColors.ControlLight;
             textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(941, 61);
+            textBox3.Location = new Point(659, 37);
+            textBox3.Margin = new Padding(2, 2, 2, 2);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(284, 31);
+            textBox3.Size = new Size(199, 23);
             textBox3.TabIndex = 6;
             textBox3.Text = " [XX-XXXXXXXX-X]";
             // 
@@ -127,9 +133,10 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ControlText;
-            label4.Location = new Point(809, 63);
+            label4.Location = new Point(566, 38);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(126, 25);
+            label4.Size = new Size(86, 15);
             label4.TabIndex = 5;
             label4.Text = "CUIT Cliente:";
             // 
@@ -137,10 +144,11 @@
             // 
             textBox4.BackColor = SystemColors.ControlLight;
             textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(166, 131);
+            textBox4.Location = new Point(116, 79);
+            textBox4.Margin = new Padding(2, 2, 2, 2);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(170, 31);
+            textBox4.Size = new Size(120, 23);
             textBox4.TabIndex = 8;
             textBox4.Text = " [dd/mm/aa]";
             // 
@@ -149,9 +157,10 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.ControlText;
-            label5.Location = new Point(16, 133);
+            label5.Location = new Point(11, 80);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(142, 25);
+            label5.Size = new Size(94, 15);
             label5.TabIndex = 7;
             label5.Text = "Fecha Entrega:";
             // 
@@ -159,10 +168,11 @@
             // 
             textBox5.BackColor = SystemColors.ControlLight;
             textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(487, 131);
+            textBox5.Location = new Point(341, 79);
+            textBox5.Margin = new Padding(2, 2, 2, 2);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
-            textBox5.Size = new Size(290, 31);
+            textBox5.Size = new Size(204, 23);
             textBox5.TabIndex = 10;
             textBox5.Text = " [Pallet/Fulfillment]";
             // 
@@ -171,9 +181,10 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ControlText;
-            label6.Location = new Point(366, 133);
+            label6.Location = new Point(256, 80);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(115, 25);
+            label6.Size = new Size(77, 15);
             label6.TabIndex = 9;
             label6.Text = "Modalidad:";
             // 
@@ -181,18 +192,20 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(12, 206);
+            label7.Location = new Point(8, 124);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(630, 25);
+            label7.Size = new Size(416, 15);
             label7.TabIndex = 11;
             label7.Text = "DETALLE DE PRODUCTOS SOLICITADOS VS. INVENTARIO DISPONIBLE";
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
-            listView1.Location = new Point(16, 250);
+            listView1.Location = new Point(11, 150);
+            listView1.Margin = new Padding(2, 2, 2, 2);
             listView1.Name = "listView1";
-            listView1.Size = new Size(1209, 225);
+            listView1.Size = new Size(950, 137);
             listView1.TabIndex = 12;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -231,9 +244,10 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(14, 490);
+            label8.Location = new Point(10, 294);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(678, 25);
+            label8.Size = new Size(450, 15);
             label8.TabIndex = 13;
             label8.Text = "GESTION DE EXCEPCIONES Y RESOLUCION DE LA ORDEN DE PREPARACION";
             // 
@@ -241,44 +255,49 @@
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.ControlText;
-            label9.Location = new Point(14, 526);
+            label9.Location = new Point(10, 316);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(168, 25);
+            label9.Size = new Size(111, 15);
             label9.TabIndex = 14;
             label9.Text = "Motivo del rechazo:";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(14, 554);
+            comboBox1.Location = new Point(10, 332);
+            comboBox1.Margin = new Padding(2, 2, 2, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(324, 33);
+            comboBox1.Size = new Size(228, 23);
             comboBox1.TabIndex = 15;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.ForeColor = SystemColors.ControlText;
-            label10.Location = new Point(364, 524);
+            label10.Location = new Point(255, 314);
+            label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(276, 25);
+            label10.Size = new Size(185, 15);
             label10.TabIndex = 16;
             label10.Text = "Detalle / Justificacion del rechazo:";
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(364, 554);
+            textBox6.Location = new Point(255, 332);
+            textBox6.Margin = new Padding(2, 2, 2, 2);
             textBox6.Multiline = true;
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(488, 160);
+            textBox6.Size = new Size(343, 98);
             textBox6.TabIndex = 17;
             // 
             // button1
             // 
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(886, 594);
+            button1.Location = new Point(620, 356);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(315, 34);
+            button1.Size = new Size(220, 20);
             button1.TabIndex = 18;
             button1.Text = "Rechazar Orden de Preparacion";
             button1.UseVisualStyleBackColor = true;
@@ -286,9 +305,10 @@
             // button2
             // 
             button2.ForeColor = SystemColors.ControlText;
-            button2.Location = new Point(886, 554);
+            button2.Location = new Point(620, 332);
+            button2.Margin = new Padding(2, 2, 2, 2);
             button2.Name = "button2";
-            button2.Size = new Size(315, 34);
+            button2.Size = new Size(220, 20);
             button2.TabIndex = 19;
             button2.Text = "Solicitar Aprobacion de Bulto ";
             button2.UseVisualStyleBackColor = true;
@@ -296,18 +316,19 @@
             // button3
             // 
             button3.ForeColor = SystemColors.ControlText;
-            button3.Location = new Point(886, 646);
+            button3.Location = new Point(620, 388);
+            button3.Margin = new Padding(2, 2, 2, 2);
             button3.Name = "button3";
-            button3.Size = new Size(315, 34);
+            button3.Size = new Size(220, 20);
             button3.TabIndex = 20;
             button3.Text = "Aprobar Orden de Preparacion";
             button3.UseVisualStyleBackColor = true;
             // 
             // ValidarOrdenDePreparacionForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1236, 751);
+            ClientSize = new Size(981, 451);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -330,6 +351,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.HotTrack;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "ValidarOrdenDePreparacionForm";
             Text = "ValidarOrdenDePreparacionForm";
             ResumeLayout(false);
