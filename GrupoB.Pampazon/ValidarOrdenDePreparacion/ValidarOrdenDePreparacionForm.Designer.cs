@@ -231,7 +231,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(16, 513);
+            label8.Location = new Point(14, 490);
             label8.Name = "label8";
             label8.Size = new Size(678, 25);
             label8.TabIndex = 13;
@@ -241,7 +241,7 @@
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.ControlText;
-            label9.Location = new Point(16, 549);
+            label9.Location = new Point(14, 526);
             label9.Name = "label9";
             label9.Size = new Size(168, 25);
             label9.TabIndex = 14;
@@ -250,7 +250,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(16, 577);
+            comboBox1.Location = new Point(14, 554);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(324, 33);
             comboBox1.TabIndex = 15;
@@ -259,7 +259,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = SystemColors.ControlText;
-            label10.Location = new Point(366, 547);
+            label10.Location = new Point(364, 524);
             label10.Name = "label10";
             label10.Size = new Size(276, 25);
             label10.TabIndex = 16;
@@ -267,7 +267,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(366, 577);
+            textBox6.Location = new Point(364, 554);
             textBox6.Multiline = true;
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(488, 160);
@@ -276,7 +276,7 @@
             // button1
             // 
             button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(888, 610);
+            button1.Location = new Point(886, 594);
             button1.Name = "button1";
             button1.Size = new Size(315, 34);
             button1.TabIndex = 18;
@@ -286,7 +286,7 @@
             // button2
             // 
             button2.ForeColor = SystemColors.ControlText;
-            button2.Location = new Point(909, 481);
+            button2.Location = new Point(886, 554);
             button2.Name = "button2";
             button2.Size = new Size(315, 34);
             button2.TabIndex = 19;
@@ -296,7 +296,7 @@
             // button3
             // 
             button3.ForeColor = SystemColors.ControlText;
-            button3.Location = new Point(888, 669);
+            button3.Location = new Point(886, 646);
             button3.Name = "button3";
             button3.Size = new Size(315, 34);
             button3.TabIndex = 20;
