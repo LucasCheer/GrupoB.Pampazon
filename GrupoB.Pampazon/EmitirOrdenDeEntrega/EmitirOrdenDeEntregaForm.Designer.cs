@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem3 = new ListViewItem(new ListViewItem.ListViewSubItem[] { new ListViewItem.ListViewSubItem(null, "P-1000", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "11/10/2026", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "Mercado 1", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)), new ListViewItem.ListViewSubItem(null, "4", SystemColors.InfoText, SystemColors.Window, new Font("Segoe UI", 10.2F)) }, -1);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, Color.Empty, new Font("Segoe UI", 10.2F));
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "P-1000", "11/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1);
             groupBox1 = new GroupBox();
             listView1 = new ListView();
             colPedido = new ColumnHeader();
@@ -39,6 +39,9 @@
             label1 = new Label();
             colEstado = new ColumnHeader();
             groupBox3 = new GroupBox();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            textBox5 = new TextBox();
             textBox4 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             label7 = new Label();
@@ -46,9 +49,6 @@
             label5 = new Label();
             button1 = new Button();
             button2 = new Button();
-            textBox5 = new TextBox();
-            textBox1 = new TextBox();
-            label2 = new Label();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
@@ -73,7 +73,7 @@
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView1.Columns.AddRange(new ColumnHeader[] { colPedido, colFecha, colCliente, colBulto });
             listView1.ForeColor = SystemColors.InfoText;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem3, listViewItem4 });
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2 });
             listView1.Location = new Point(5, 22);
             listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
@@ -138,6 +138,35 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "DATOS DE DESPACHO";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(174, 138);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(321, 26);
+            textBox1.TabIndex = 14;
+            textBox1.Text = "12-345-678";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(18, 141);
+            label2.Name = "label2";
+            label2.Size = new Size(127, 19);
+            label2.TabIndex = 15;
+            label2.Text = "DNI transportista:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(174, 33);
+            textBox5.Margin = new Padding(3, 2, 3, 2);
+            textBox5.Name = "textBox5";
+            textBox5.ReadOnly = true;
+            textBox5.Size = new Size(321, 26);
+            textBox5.TabIndex = 9;
+            textBox5.Text = "Logística Rápida S.A.";
+            // 
             // textBox4
             // 
             textBox4.Location = new Point(174, 65);
@@ -150,6 +179,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.CalendarMonthBackground = SystemColors.MenuHighlight;
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Location = new Point(174, 104);
             dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
@@ -207,35 +237,6 @@
             button2.Text = "Emitir Orden";
             button2.UseVisualStyleBackColor = true;
             // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(174, 33);
-            textBox5.Margin = new Padding(3, 2, 3, 2);
-            textBox5.Name = "textBox5";
-            textBox5.ReadOnly = true;
-            textBox5.Size = new Size(321, 26);
-            textBox5.TabIndex = 9;
-            textBox5.Text = "Logística Rápida S.A.";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(174, 138);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(321, 26);
-            textBox1.TabIndex = 14;
-            textBox1.Text = "12-345-678";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(18, 141);
-            label2.Name = "label2";
-            label2.Size = new Size(127, 19);
-            label2.TabIndex = 15;
-            label2.Text = "DNI transportista:";
-            // 
             // EmitirOrdenDeEntregaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -284,5 +285,7 @@
         private TextBox textBox5;
         private TextBox textBox1;
         private Label label2;
+        private ListViewItem listViewItem1;
+        private ListViewItem listViewItem2;
     }
 }
