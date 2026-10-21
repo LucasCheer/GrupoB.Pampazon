@@ -45,8 +45,7 @@
             UBICOL = new ColumnHeader();
             OPsasociadaCOL = new ColumnHeader();
             CantSelCOL = new ColumnHeader();
-            button3 = new Button();
-            button4 = new Button();
+            cancelarBTN = new Button();
             label1 = new Label();
             label3 = new Label();
             UbicacionCOL = new ColumnHeader();
@@ -56,6 +55,7 @@
             buscarBTN = new Button();
             agregaraOSBTN = new Button();
             allCHCK = new CheckBox();
+            generarOSBTN = new Button();
             SuspendLayout();
             // 
             // opLIST
@@ -167,23 +167,15 @@
             CantSelCOL.Text = "Cantidad";
             CantSelCOL.Width = 100;
             // 
-            // button3
+            // cancelarBTN
             // 
-            button3.Location = new Point(447, 754);
-            button3.Name = "button3";
-            button3.Size = new Size(213, 29);
-            button3.TabIndex = 8;
-            button3.Text = "Generar orden de selección";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(677, 754);
-            button4.Name = "button4";
-            button4.Size = new Size(101, 29);
-            button4.TabIndex = 9;
-            button4.Text = "Cancelar";
-            button4.UseVisualStyleBackColor = true;
+            cancelarBTN.Location = new Point(677, 754);
+            cancelarBTN.Name = "cancelarBTN";
+            cancelarBTN.Size = new Size(101, 29);
+            cancelarBTN.TabIndex = 9;
+            cancelarBTN.Text = "Cancelar";
+            cancelarBTN.UseVisualStyleBackColor = true;
+            cancelarBTN.Click += button4_Click;
             // 
             // label1
             // 
@@ -269,11 +261,22 @@
             allCHCK.UseVisualStyleBackColor = true;
             allCHCK.CheckedChanged += allCHCK_CheckedChanged;
             // 
+            // generarOSBTN
+            // 
+            generarOSBTN.Location = new Point(458, 754);
+            generarOSBTN.Name = "generarOSBTN";
+            generarOSBTN.Size = new Size(213, 29);
+            generarOSBTN.TabIndex = 22;
+            generarOSBTN.Text = "Generar orden de selección";
+            generarOSBTN.UseVisualStyleBackColor = true;
+            generarOSBTN.Click += generarOSBTN_Click_1;
+            // 
             // EmitirOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(790, 809);
+            Controls.Add(generarOSBTN);
             Controls.Add(allCHCK);
             Controls.Add(agregaraOSBTN);
             Controls.Add(buscarBTN);
@@ -281,8 +284,7 @@
             Controls.Add(label6);
             Controls.Add(clienteBox);
             Controls.Add(label3);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(cancelarBTN);
             Controls.Add(osLIST);
             Controls.Add(label2);
             Controls.Add(quitardeOSBTN);
@@ -311,7 +313,7 @@
         private ListView osLIST;
         private ColumnHeader CantSelCOL;
         private Button button3;
-        private Button button4;
+        private Button cancelarBTN;
         private ColumnHeader ProductoCOL;
         private ColumnHeader cantidad;
         private Label label1;
@@ -329,5 +331,6 @@
         private Button buscarBTN;
         private Button agregaraOSBTN;
         private CheckBox allCHCK;
+        private Button generarOSBTN;
     }
 }

@@ -200,5 +200,65 @@ namespace GrupoB.Pampazon
             }
             opLIST.EndUpdate();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Salir?",
+                "Confirmar salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+        private void generarOSBTN_Click_1(object sender, EventArgs e)
+        {
+            if (this.osLIST.Items.Count == 0)
+            {
+                MessageBox.Show(
+                    "Debe agregar al menos un producto a la orden.",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            // 2. Procesar la generación de la orden
+            try
+            {
+                // Deshabilitar el botón temporalmente para evitar doble clic
+                generarOSBTN.Enabled = false;
+
+
+                MessageBox.Show(
+                    "La orden de selección se ha generado correctamente.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Ocurrió un error al generar la orden: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            finally
+            {
+                // Volver a habilitar el botón
+                generarOSBTN.Enabled = true;
+            }
+        }
     }
 }
