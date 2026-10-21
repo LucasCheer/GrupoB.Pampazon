@@ -2,24 +2,48 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
 {
     internal class AcondicionarYEmpaquetarLoteModelo
     {
+        private readonly List<ProductoParaEmpaquetar> productos =
+        [
+            new("PROD-B", "Monitor 24 Pulgadas", 100),
+            new("PROD-C", "Teclado mecánico", 40),
+            new("PROD-D", "Mouse inalámbrico", 60)
+        ];
+
+        private readonly List<BultoDePrueba> bultos = [];
+
         public string NumeroOrdenPreparacion { get; } = "OP001";
 
         public string Cliente { get; } = "TechNew";
 
         public DateTime FechaRecepcion { get; } = DateTime.Today.AddDays(-5);
 
-        public IReadOnlyList<ProductoParaEmpaquetar> Productos { get; } =
-        [
-            new("PROD-B", "Monitor 24 Pulgadas", 100)
-        ];
+        public IReadOnlyList<ProductoParaEmpaquetar> Productos => productos;
 
-        public IReadOnlyList<BultoDePrueba> Bultos { get; } =
-        [
-            new("BUL-001", "Caja", "25 × PROD-B", 20.00m, "ETQ-001"),
-            new("BUL-002", "Caja", "25 × PROD-B", 20.00m, "ETQ-002"),
-            new("BUL-003", "Caja", "25 × PROD-B", 20.00m, "ETQ-003"),
-            new("BUL-004", "Caja", "25 × PROD-B", 20.00m, "ETQ-004")
-        ];
+        public IReadOnlyList<BultoDePrueba> Bultos => bultos;
+
+        public BultoDePrueba AgregarBulto(
+            ProductoParaEmpaquetar producto,
+            string tipoEmbalaje,
+            decimal peso)
+        {
+            if (!productos.Contains(producto))
+            {
+                throw new InvalidOperationException("El SKU ya fue empaquetado.");
+            }
+
+            var bulto = new BultoDePrueba(
+                $"BUL-{bultos.Count + 1:000}",
+                tipoEmbalaje,
+                producto.Sku,
+                producto.Cantidad,
+                peso,
+                "Sin generar");
+
+            bultos.Add(bulto);
+            productos.Remove(producto);
+
+            return bulto;
+        }
     }
 
     internal record ProductoParaEmpaquetar(string Sku, string Descripcion, int Cantidad);
@@ -27,7 +51,11 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
     internal record BultoDePrueba(
         string Numero,
         string TipoEmbalaje,
-        string Productos,
+        string Sku,
+        int Cantidad,
         decimal Peso,
-        string Etiqueta);
+        string Etiqueta)
+    {
+        public string Productos => $"{Cantidad} × {Sku}";
+    }
 }

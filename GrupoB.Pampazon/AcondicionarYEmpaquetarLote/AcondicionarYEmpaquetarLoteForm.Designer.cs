@@ -56,7 +56,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.Location = new Point(10, 7);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(400, 30);
+            lblTitulo.Size = new Size(453, 32);
             lblTitulo.TabIndex = 5;
             lblTitulo.Text = "ACONDICIONAR Y EMPAQUETAR LOTE";
             // 
@@ -92,7 +92,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lblFecha.AutoSize = true;
             lblFecha.Location = new Point(599, 23);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(42, 15);
+            lblFecha.Size = new Size(51, 19);
             lblFecha.TabIndex = 1;
             lblFecha.Text = "Fecha:";
             // 
@@ -110,7 +110,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lblCliente.AutoSize = true;
             lblCliente.Location = new Point(256, 23);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(49, 15);
+            lblCliente.Size = new Size(59, 19);
             lblCliente.TabIndex = 5;
             lblCliente.Text = "Cliente:";
             // 
@@ -128,7 +128,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lblOrdenPreparacion.AutoSize = true;
             lblOrdenPreparacion.Location = new Point(13, 23);
             lblOrdenPreparacion.Name = "lblOrdenPreparacion";
-            lblOrdenPreparacion.Size = new Size(46, 15);
+            lblOrdenPreparacion.Size = new Size(58, 19);
             lblOrdenPreparacion.TabIndex = 7;
             lblOrdenPreparacion.Text = "N.º OP:";
             // 
@@ -154,7 +154,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lvProductos.Margin = new Padding(3, 2, 3, 2);
             lvProductos.MultiSelect = false;
             lvProductos.Name = "lvProductos";
-            lvProductos.Size = new Size(789, 110);
+            lvProductos.Size = new Size(782, 110);
             lvProductos.TabIndex = 0;
             lvProductos.UseCompatibleStateImageBehavior = false;
             lvProductos.View = View.Details;
@@ -229,7 +229,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lblPeso.AutoSize = true;
             lblPeso.Location = new Point(324, 24);
             lblPeso.Name = "lblPeso";
-            lblPeso.Size = new Size(61, 15);
+            lblPeso.Size = new Size(76, 19);
             lblPeso.TabIndex = 3;
             lblPeso.Text = "Peso (kg):";
             // 
@@ -248,7 +248,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lblTipoEmbalaje.AutoSize = true;
             lblTipoEmbalaje.Location = new Point(13, 24);
             lblTipoEmbalaje.Name = "lblTipoEmbalaje";
-            lblTipoEmbalaje.Size = new Size(104, 15);
+            lblTipoEmbalaje.Size = new Size(130, 19);
             lblTipoEmbalaje.TabIndex = 5;
             lblTipoEmbalaje.Text = "Tipo de embalaje:";
             // 
