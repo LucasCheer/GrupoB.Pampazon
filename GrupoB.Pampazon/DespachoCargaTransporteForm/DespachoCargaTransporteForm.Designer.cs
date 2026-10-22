@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem7 = new ListViewItem(new string[] { "BLT-1000-1", "P-1000" }, -1);
-            ListViewItem listViewItem8 = new ListViewItem(new string[] { "BLT-1000-2", "P-1000" }, -1);
-            ListViewItem listViewItem9 = new ListViewItem(new string[] { "BLT-1001-1", "P-1001" }, -1);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "BLT-1000-1", "P-1000" }, -1);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "BLT-1000-2", "P-1000" }, -1);
+            ListViewItem listViewItem3 = new ListViewItem(new string[] { "BLT-1001-1", "P-1001" }, -1);
             label1 = new Label();
             groupBox2 = new GroupBox();
+            button1 = new Button();
             textBox7 = new TextBox();
             label7 = new Label();
             groupBox1 = new GroupBox();
+            listView1 = new ListView();
+            bultocol = new ColumnHeader();
+            colFecha = new ColumnHeader();
             textBox3 = new TextBox();
             label4 = new Label();
             textBox6 = new TextBox();
             label9 = new Label();
-            button1 = new Button();
-            listView1 = new ListView();
-            bultocol = new ColumnHeader();
-            colFecha = new ColumnHeader();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -74,6 +74,17 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "IDENTIFICACIÓN DEL TRANSPORTE EN PUERTA";
             groupBox2.Enter += groupBox2_Enter;
+            // 
+            // button1
+            // 
+            button1.FlatStyle = FlatStyle.System;
+            button1.Location = new Point(335, 30);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(148, 23);
+            button1.TabIndex = 18;
+            button1.Text = "Consultar cargas";
+            button1.UseVisualStyleBackColor = true;
             // 
             // textBox7
             // 
@@ -111,6 +122,30 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "CAJAS ASIGNADAS";
             // 
+            // listView1
+            // 
+            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            listView1.Columns.AddRange(new ColumnHeader[] { bultocol, colFecha });
+            listView1.ForeColor = SystemColors.InfoText;
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
+            listView1.Location = new Point(6, 53);
+            listView1.Margin = new Padding(3, 2, 3, 2);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(364, 127);
+            listView1.TabIndex = 20;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // bultocol
+            // 
+            bultocol.Text = "ID Bulto";
+            bultocol.Width = 153;
+            // 
+            // colFecha
+            // 
+            colFecha.Text = "N°Pedido";
+            colFecha.Width = 200;
+            // 
             // textBox3
             // 
             textBox3.Location = new Point(172, 191);
@@ -137,7 +172,7 @@
             textBox6.Margin = new Padding(3, 2, 3, 2);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
-            textBox6.Size = new Size(317, 26);
+            textBox6.Size = new Size(204, 26);
             textBox6.TabIndex = 15;
             textBox6.Text = "Logística Rápida S.A.";
             // 
@@ -150,41 +185,6 @@
             label9.TabIndex = 14;
             label9.Text = "Transporte validado:";
             label9.Click += label9_Click;
-            // 
-            // button1
-            // 
-            button1.FlatStyle = FlatStyle.System;
-            button1.Location = new Point(335, 30);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 23);
-            button1.TabIndex = 18;
-            button1.Text = "Consultar cargas";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { bultocol, colFecha });
-            listView1.ForeColor = SystemColors.InfoText;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem7, listViewItem8, listViewItem9 });
-            listView1.Location = new Point(6, 53);
-            listView1.Margin = new Padding(3, 2, 3, 2);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(364, 127);
-            listView1.TabIndex = 20;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // bultocol
-            // 
-            bultocol.Text = "ID Bulto";
-            bultocol.Width = 153;
-            // 
-            // colFecha
-            // 
-            colFecha.Text = "N°Pedido";
-            colFecha.Width = 200;
             // 
             // DespachoCargaTransporteForm
             // 
