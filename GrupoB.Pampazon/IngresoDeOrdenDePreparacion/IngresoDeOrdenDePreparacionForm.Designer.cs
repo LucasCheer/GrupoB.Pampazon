@@ -203,7 +203,7 @@
             // 
             button1.Location = new Point(540, 357);
             button1.Name = "button1";
-            button1.Size = new Size(193, 34);
+            button1.Size = new Size(347, 34);
             button1.TabIndex = 16;
             button1.Text = "Agregar a la Orden";
             button1.UseVisualStyleBackColor = true;
