@@ -37,7 +37,6 @@
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
-            button1 = new Button();
             label2 = new Label();
             textBox1 = new TextBox();
             label3 = new Label();
@@ -103,21 +102,12 @@
             columnHeader6.Text = "Causa Reportada";
             columnHeader6.Width = 200;
             // 
-            // button1
-            // 
-            button1.Location = new Point(937, 251);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 2;
-            button1.Text = "Ver Detalle";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(24, 286);
+            label2.Location = new Point(24, 430);
             label2.Name = "label2";
             label2.Size = new Size(380, 25);
             label2.TabIndex = 3;
@@ -125,16 +115,16 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(33, 355);
+            textBox1.Location = new Point(24, 285);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(440, 202);
+            textBox1.Size = new Size(1036, 127);
             textBox1.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 321);
+            label3.Location = new Point(24, 257);
             label3.Name = "label3";
             label3.Size = new Size(281, 25);
             label3.TabIndex = 5;
@@ -143,7 +133,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(515, 321);
+            label4.Location = new Point(26, 464);
             label4.Name = "label4";
             label4.Size = new Size(305, 25);
             label4.TabIndex = 7;
@@ -151,15 +141,15 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(513, 355);
+            textBox2.Location = new Point(24, 498);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(547, 152);
+            textBox2.Size = new Size(1036, 119);
             textBox2.TabIndex = 6;
             // 
             // button2
             // 
-            button2.Location = new Point(513, 513);
+            button2.Location = new Point(519, 623);
             button2.Name = "button2";
             button2.Size = new Size(277, 44);
             button2.TabIndex = 8;
@@ -168,7 +158,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(815, 513);
+            button3.Location = new Point(815, 623);
             button3.Name = "button3";
             button3.Size = new Size(245, 44);
             button3.TabIndex = 9;
@@ -179,7 +169,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1072, 587);
+            ClientSize = new Size(1072, 679);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(label4);
@@ -187,7 +177,6 @@
             Controls.Add(label3);
             Controls.Add(textBox1);
             Controls.Add(label2);
-            Controls.Add(button1);
             Controls.Add(listView1);
             Controls.Add(label1);
             Name = "ControlarMermasEIncidenciasForm";
@@ -207,7 +196,6 @@
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
-        private Button button1;
         private Label label2;
         private TextBox textBox1;
         private Label label3;

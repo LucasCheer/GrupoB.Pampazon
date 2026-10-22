@@ -78,7 +78,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(228, 58);
+            label3.Location = new Point(248, 58);
             label3.Name = "label3";
             label3.Size = new Size(119, 25);
             label3.TabIndex = 2;
@@ -87,7 +87,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(425, 58);
+            label4.Location = new Point(490, 58);
             label4.Name = "label4";
             label4.Size = new Size(191, 25);
             label4.TabIndex = 3;
@@ -100,27 +100,27 @@
             textBox1.Location = new Point(31, 87);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(183, 31);
+            textBox1.Size = new Size(188, 31);
             textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
             textBox2.BackColor = SystemColors.ControlLight;
             textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(425, 87);
+            textBox2.Location = new Point(490, 87);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(261, 31);
+            textBox2.Size = new Size(435, 31);
             textBox2.TabIndex = 5;
             // 
             // textBox3
             // 
             textBox3.BackColor = SystemColors.ControlLight;
             textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(228, 87);
+            textBox3.Location = new Point(248, 87);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(176, 31);
+            textBox3.Size = new Size(207, 31);
             textBox3.TabIndex = 6;
             // 
             // label5
@@ -179,15 +179,15 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(257, 316);
+            textBox5.Location = new Point(716, 160);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(429, 31);
+            textBox5.Size = new Size(209, 31);
             textBox5.TabIndex = 15;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(23, 316);
+            label9.Location = new Point(716, 131);
             label9.Name = "label9";
             label9.Size = new Size(218, 25);
             label9.TabIndex = 14;
@@ -198,7 +198,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = SystemColors.HotTrack;
-            label14.Location = new Point(21, 383);
+            label14.Location = new Point(26, 331);
             label14.Name = "label14";
             label14.Size = new Size(508, 25);
             label14.TabIndex = 26;
@@ -207,7 +207,7 @@
             // comboBox4
             // 
             comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(23, 494);
+            comboBox4.Location = new Point(28, 426);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(245, 33);
             comboBox4.TabIndex = 28;
@@ -215,7 +215,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(23, 466);
+            label15.Location = new Point(28, 398);
             label15.Name = "label15";
             label15.Size = new Size(240, 25);
             label15.TabIndex = 27;
@@ -224,7 +224,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(23, 530);
+            label16.Location = new Point(28, 478);
             label16.Name = "label16";
             label16.Size = new Size(162, 25);
             label16.TabIndex = 29;
@@ -232,7 +232,7 @@
             // 
             // textBox11
             // 
-            textBox11.Location = new Point(23, 558);
+            textBox11.Location = new Point(28, 506);
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(245, 31);
             textBox11.TabIndex = 30;
@@ -240,7 +240,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(305, 424);
+            label18.Location = new Point(310, 372);
             label18.Name = "label18";
             label18.Size = new Size(371, 25);
             label18.TabIndex = 33;
@@ -248,26 +248,26 @@
             // 
             // textBox12
             // 
-            textBox12.Location = new Point(305, 452);
+            textBox12.Location = new Point(310, 400);
             textBox12.Multiline = true;
             textBox12.Name = "textBox12";
-            textBox12.Size = new Size(371, 172);
+            textBox12.Size = new Size(615, 172);
             textBox12.TabIndex = 34;
             // 
             // button1
             // 
-            button1.Location = new Point(25, 649);
+            button1.Location = new Point(310, 602);
             button1.Name = "button1";
-            button1.Size = new Size(293, 34);
+            button1.Size = new Size(272, 34);
             button1.TabIndex = 35;
             button1.Text = "Reportar Incidencia";
             button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(349, 649);
+            button2.Location = new Point(627, 602);
             button2.Name = "button2";
-            button2.Size = new Size(315, 34);
+            button2.Size = new Size(269, 34);
             button2.TabIndex = 36;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
@@ -277,14 +277,14 @@
             comboBox6.FormattingEnabled = true;
             comboBox6.Location = new Point(257, 268);
             comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(429, 33);
+            comboBox6.Size = new Size(668, 33);
             comboBox6.TabIndex = 37;
             // 
             // RegistrarMermasEIncidenciasForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(705, 689);
+            ClientSize = new Size(947, 649);
             Controls.Add(comboBox6);
             Controls.Add(button2);
             Controls.Add(button1);
