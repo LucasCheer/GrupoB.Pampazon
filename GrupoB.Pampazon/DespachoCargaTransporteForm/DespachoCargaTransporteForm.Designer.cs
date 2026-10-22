@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "BLT-1000-1", "P-1000" }, -1);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "BLT-1000-2", "P-1000" }, -1);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "BLT-1001-1", "P-1001" }, -1);
+            ListViewItem listViewItem7 = new ListViewItem(new string[] { "BLT-1000-1", "P-1000" }, -1);
+            ListViewItem listViewItem8 = new ListViewItem(new string[] { "BLT-1000-2", "P-1000" }, -1);
+            ListViewItem listViewItem9 = new ListViewItem(new string[] { "BLT-1001-1", "P-1001" }, -1);
             label1 = new Label();
             groupBox2 = new GroupBox();
             button1 = new Button();
@@ -120,14 +120,14 @@
             groupBox1.Size = new Size(655, 228);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
-            groupBox1.Text = "CAJAS ASIGNADAS";
+            groupBox1.Text = "CAJAS ASIGNADAS PARA HOY";
             // 
             // listView1
             // 
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listView1.Columns.AddRange(new ColumnHeader[] { bultocol, colFecha });
             listView1.ForeColor = SystemColors.InfoText;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem7, listViewItem8, listViewItem9 });
             listView1.Location = new Point(6, 53);
             listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
