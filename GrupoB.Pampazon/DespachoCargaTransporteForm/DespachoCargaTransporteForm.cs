@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
 {
-    public partial class DespacharPedidoLiberarCamionForm : Form
+    public partial class DespachoCargaTransporteForm : Form
     {
 
-        private readonly DespacharPedidoLiberarCamionModelo modelo = new();
-        public DespacharPedidoLiberarCamionForm()
+        private readonly DespachoCargaTransporteModelo modelo = new();
+        public DespachoCargaTransporteForm()
         {
             InitializeComponent();
         }
@@ -38,6 +38,11 @@ namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
 {
-    internal class DespacharPedidoLiberarCamionModelo
+    internal class DespachoCargaTransporteModelo
     {
     }
 }
