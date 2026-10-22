@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
+namespace GrupoB.Pampazon.DespachoCargaTransporte
 {
     internal class DespachoCargaTransporteModelo
     {
