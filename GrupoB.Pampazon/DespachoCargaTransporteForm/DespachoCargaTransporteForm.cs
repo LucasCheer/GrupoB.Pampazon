@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
+namespace GrupoB.Pampazon.DespachoCargaTransporte
 {
     public partial class DespachoCargaTransporteForm : Form
     {
