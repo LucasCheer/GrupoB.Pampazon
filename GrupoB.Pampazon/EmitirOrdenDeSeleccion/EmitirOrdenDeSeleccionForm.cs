@@ -1,5 +1,6 @@
 ﻿using GrupoB.Pampazon.EmitirOrdenDeSeleccion;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +32,7 @@ namespace GrupoB.Pampazon
             CargarOrdenesEnListView(modelo.ops);
         }
 
-        private void CargarOrdenesEnListView(IEnumerable<OPs> ordenes)
+        private void CargarOrdenesEnListView(List<OP> ordenes)
         {
             this.opLIST.Items.Clear();
             foreach (var orden in ordenes)
@@ -39,8 +40,7 @@ namespace GrupoB.Pampazon
                 ListViewItem item = new ListViewItem(orden.NumeroOP);
                 item.SubItems.Add(orden.FechaRecibida.ToShortDateString());
                 item.SubItems.Add(orden.RazonSocial);
-                item.SubItems.Add(orden.ProductoSKU);
-                item.SubItems.Add(orden.Cantidad.ToString());
+
 
                 // Guardamos el objeto OP completo en la propiedad Tag para no perder sus datos
                 item.Tag = orden;
@@ -63,7 +63,7 @@ namespace GrupoB.Pampazon
                 return;
             }
 
-            var ordenesFiltradas = modelo.ops.Where(o => o.RazonSocial == this.clienteBox.Text);
+            List<OP> ordenesFiltradas = modelo.ops.Where(o => o.RazonSocial == this.clienteBox.Text).ToList();
             CargarOrdenesEnListView(ordenesFiltradas);
         }
 
@@ -74,7 +74,7 @@ namespace GrupoB.Pampazon
                 ListViewItem itemSeleccionado = opLIST.SelectedItems[i];
 
                 // Recuperar la entidad OP asociada a la fila
-                OPs opOriginal = itemSeleccionado.Tag as OPs;
+                OP opOriginal = itemSeleccionado.Tag as OP;
 
                 string op = itemSeleccionado.Text;
                 string producto = itemSeleccionado.SubItems[3].Text;
@@ -87,7 +87,7 @@ namespace GrupoB.Pampazon
                 string opAsociada = op;
 
                 ListViewItem itemExistente = null;
-                foreach (ListViewItem itemConsolidado in osLIST.Items)
+                foreach (ListViewItem itemConsolidado in opdetailsLIST.Items)
                 {
                     if (itemConsolidado.Text == sku)
                     {
@@ -112,7 +112,7 @@ namespace GrupoB.Pampazon
                     // Agregar la OP a la lista guardada en Tag
                     if (opOriginal != null)
                     {
-                        var listaGuardada = itemExistente.Tag as List<OPs>;
+                        var listaGuardada = itemExistente.Tag as List<OP>;
                         listaGuardada?.Add(opOriginal);
                     }
                 }
@@ -126,11 +126,11 @@ namespace GrupoB.Pampazon
                     nuevoItem.SubItems.Add(opAsociada);
 
                     // Guardamos una lista con la OP dentro del Tag de la nueva fila
-                    var listaOPs = new List<OPs>();
+                    var listaOPs = new List<OP>();
                     if (opOriginal != null) listaOPs.Add(opOriginal);
                     nuevoItem.Tag = listaOPs;
 
-                    osLIST.Items.Add(nuevoItem);
+                    opdetailLIST.Items.Add(nuevoItem);
                 }
 
                 // 1. Remover de opLIST
@@ -151,18 +151,18 @@ namespace GrupoB.Pampazon
 
         private void quitardeOSBTN_Click_1(object sender, EventArgs e)
         {
-            if (osLIST.SelectedItems.Count == 0)
+            if (opdetailsLIST.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione un elemento del consolidado para quitar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            for (int i = osLIST.SelectedItems.Count - 1; i >= 0; i--)
+            for (int i = opdetailsLIST.SelectedItems.Count - 1; i >= 0; i--)
             {
-                ListViewItem itemConsolidado = osLIST.SelectedItems[i];
+                ListViewItem itemConsolidado = opdetailsLIST.SelectedItems[i];
 
                 // Recuperar todas las OPs asociadas guardadas en Tag
-                List<OPs> opsAsociadas = itemConsolidado.Tag as List<OPs>;
+                List<OP> opsAsociadas = itemConsolidado.Tag as List<OP>;
 
                 if (opsAsociadas != null)
                 {
@@ -174,13 +174,13 @@ namespace GrupoB.Pampazon
                 }
 
                 // 2. Eliminar el ítem consolidado de osLIST
-                osLIST.Items.Remove(itemConsolidado);
+                opdetailsLIST.Items.Remove(itemConsolidado);
             }
 
             // 3. Refrescar la lista de arriba respetando el filtro actual (si lo hay)
             if (this.clienteBox.SelectedIndex != -1 && this.clienteBox.SelectedValue != null)
             {
-                var ordenesFiltradas = modelo.ops.Where(o => o.RazonSocial == this.clienteBox.Text);
+                List<OP> ordenesFiltradas = modelo.ops.Where(o => o.RazonSocial == this.clienteBox.Text).ToList();
                 CargarOrdenesEnListView(ordenesFiltradas);
             }
             else
@@ -217,7 +217,7 @@ namespace GrupoB.Pampazon
         }
         private void generarOSBTN_Click_1(object sender, EventArgs e)
         {
-            if (this.osLIST.Items.Count == 0)
+            if (this.opdetailsLIST.Items.Count == 0)
             {
                 MessageBox.Show(
                     "Debe agregar al menos un producto a la orden.",
@@ -260,5 +260,98 @@ namespace GrupoB.Pampazon
                 generarOSBTN.Enabled = true;
             }
         }
+
+        private void opLIST_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView listaActual = sender as ListView;
+
+            if (listaActual == null || listaActual.SelectedItems.Count == 0)
+                return;
+
+            // Guardar la OP seleccionada antes de modificar las selecciones
+            ListViewItem itemSeleccionado = listaActual.SelectedItems[0];
+            OP opSeleccionada = itemSeleccionado.Tag as OP;
+
+            if (opSeleccionada == null)
+                return;
+
+            // Deseleccionar la otra lista
+            if (listaActual == this.opLIST)
+                this.opselectLIST.SelectedItems.Clear();
+            else
+                this.opLIST.SelectedItems.Clear();
+
+            // Cargar el detalle de la OP seleccionada
+            CargarDetalleDeOrden(opSeleccionada);
+        }
+
+        private void CargarDetalleDeOrden(OP op)
+        {
+            opdetailsLIST.BeginUpdate();
+
+            try
+            {
+                opdetailsLIST.Items.Clear();
+
+                foreach (DetalleOP detalle in op.Productos)
+                {
+                    ListViewItem item = new ListViewItem(detalle.SKU);
+                    item.SubItems.Add(detalle.Descripcion);
+                    item.SubItems.Add(detalle.Cantidad.ToString());
+
+                    opdetailsLIST.Items.Add(item);
+                }
+            }
+            finally
+            {
+                opdetailsLIST.EndUpdate();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MoverElementosSeleccionados(this.opLIST, this.opselectLIST);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            // Mover de la lista derecha (oplistpendientes) a la izquierda (oplist)
+            MoverElementosSeleccionados(this.opselectLIST, this.opLIST);
+        }
+
+        //Método auxiliar para mover los ítems seleccionados de una lista de origen a una de destino.
+
+        private void MoverElementosSeleccionados(ListView origen, ListView destino)
+        {
+            // Validar si hay al menos un elemento seleccionado
+            if (origen.SelectedItems.Count > 0)
+            {
+                // Desactivar temporalmente el rediseño visual para mejorar el rendimiento
+                origen.BeginUpdate();
+                destino.BeginUpdate();
+
+                // Recorrer de atrás hacia adelante para evitar saltos de índice al eliminar
+                int i = origen.SelectedItems.Count - 1;
+                while (i >= 0)
+                {
+                    ListViewItem itemOriginal = origen.SelectedItems[i];
+
+                    // Clonar el ítem completo con sus subelementos (# OP, Fecha recibida, Cliente)
+                    ListViewItem itemClonado = (ListViewItem)itemOriginal.Clone();
+
+                    // Agregar al destino y quitar del origen
+                    destino.Items.Add(itemClonado);
+                    origen.Items.Remove(itemOriginal);
+
+                    i = i - 1;
+                }
+
+                // Reactivar el rediseño visual
+                origen.EndUpdate();
+                destino.EndUpdate();
+            }
+        }
+
+
     }
 }
