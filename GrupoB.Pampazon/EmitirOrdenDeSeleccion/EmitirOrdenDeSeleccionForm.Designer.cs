@@ -39,7 +39,7 @@
             DescripCOL = new ColumnHeader();
             cantidadcol = new ColumnHeader();
             UBICOL = new ColumnHeader();
-            TipoCOL = new ColumnHeader();
+            ModalidadCOL = new ColumnHeader();
             CantSelCOL = new ColumnHeader();
             cancelarBTN = new Button();
             UbicacionCOL = new ColumnHeader();
@@ -65,7 +65,7 @@
             detailSKUCOL = new ColumnHeader();
             detailDESCCOL = new ColumnHeader();
             detailCANTCOL = new ColumnHeader();
-            detailTIPOCOL = new ColumnHeader();
+            detailMODALIDADCOL = new ColumnHeader();
             label4 = new Label();
             listView1 = new ListView();
             opAfectadasCOL = new ColumnHeader();
@@ -125,7 +125,7 @@
             // consoLIST
             // 
             consoLIST.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            consoLIST.Columns.AddRange(new ColumnHeader[] { SKUCOL, DescripCOL, cantidadcol, UBICOL, TipoCOL });
+            consoLIST.Columns.AddRange(new ColumnHeader[] { SKUCOL, DescripCOL, cantidadcol, UBICOL, this.ModalidadCOL });
             consoLIST.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             consoLIST.FullRowSelect = true;
             consoLIST.Location = new Point(4, 52);
@@ -141,7 +141,6 @@
             // 
             // DescripCOL
             // 
-            DescripCOL.DisplayIndex = 2;
             DescripCOL.Text = "Descripción";
             DescripCOL.Width = 250;
             // 
@@ -157,11 +156,11 @@
             UBICOL.Text = "Ubicación (X-Y-Z)";
             UBICOL.Width = 170;
             // 
-            // TipoCOL
+            // ModalidadCOL
             // 
-            TipoCOL.DisplayIndex = 1;
-            TipoCOL.Text = "Tipo";
-            TipoCOL.Width = 200;
+            this.ModalidadCOL.DisplayIndex = 2;
+            this.ModalidadCOL.Text = "Modalidad";
+            this.ModalidadCOL.Width = 200;
             // 
             // CantSelCOL
             // 
@@ -308,7 +307,7 @@
             // 
             // opdetailsLIST
             // 
-            opdetailsLIST.Columns.AddRange(new ColumnHeader[] { detailSKUCOL, detailDESCCOL, detailCANTCOL, detailTIPOCOL });
+            opdetailsLIST.Columns.AddRange(new ColumnHeader[] { detailSKUCOL, detailDESCCOL, detailCANTCOL, detailMODALIDADCOL });
             opdetailsLIST.Location = new Point(16, 389);
             opdetailsLIST.Name = "opdetailsLIST";
             opdetailsLIST.Size = new Size(1134, 158);
@@ -323,7 +322,6 @@
             // 
             // detailDESCCOL
             // 
-            detailDESCCOL.DisplayIndex = 2;
             detailDESCCOL.Text = "Descripción";
             detailDESCCOL.Width = 500;
             // 
@@ -333,11 +331,11 @@
             detailCANTCOL.Text = "Cantidad";
             detailCANTCOL.Width = 200;
             // 
-            // detailTIPOCOL
+            // detailMODALIDADCOL
             // 
-            detailTIPOCOL.DisplayIndex = 1;
-            detailTIPOCOL.Text = "Tipo";
-            detailTIPOCOL.Width = 200;
+            detailMODALIDADCOL.DisplayIndex = 2;
+            detailMODALIDADCOL.Text = "Modalidad";
+            detailMODALIDADCOL.Width = 200;
             // 
             // label4
             // 
@@ -508,6 +506,7 @@
         private ColumnHeader DescripCOL;
         private ColumnHeader cantidadcol;
         private ColumnHeader UBICOL;
+        private ColumnHeader ModalidadCOL;
         private ComboBox clienteBox;
         private Button button5;
         private CheckBox allCHCK;
@@ -544,7 +543,7 @@
         private Label label1;
         private GroupBox groupBox1;
         private GroupBox groupBox4;
-        private ColumnHeader detailTIPOCOL;
+        private ColumnHeader detailMODALIDADCOL;
         private Label label6;
     }
 }
