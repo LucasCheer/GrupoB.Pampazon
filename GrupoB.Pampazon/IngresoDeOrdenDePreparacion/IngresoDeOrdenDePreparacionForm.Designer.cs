@@ -50,14 +50,13 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             label11 = new Label();
             textBox4 = new TextBox();
-            columnHeader4 = new ColumnHeader();
             button2 = new Button();
-            button3 = new Button();
             button4 = new Button();
             button5 = new Button();
-            columnHeader5 = new ColumnHeader();
             SuspendLayout();
             // 
             // label1
@@ -66,92 +65,105 @@
             label1.BackColor = SystemColors.ButtonFace;
             label1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.HotTrack;
-            label1.Location = new Point(28, 24);
+            label1.Location = new Point(22, 19);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(407, 25);
+            label1.Size = new Size(330, 20);
             label1.TabIndex = 0;
             label1.Text = "DATOS GENERALES DE LA ORDEN Y CLIENTE";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(34, 76);
+            label2.Location = new Point(27, 61);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(154, 25);
+            label2.Size = new Size(129, 20);
             label2.TabIndex = 1;
             label2.Text = "Cliente / Empresa:";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(194, 76);
+            comboBox1.Location = new Point(155, 61);
+            comboBox1.Margin = new Padding(2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(351, 33);
+            comboBox1.Size = new Size(282, 28);
             comboBox1.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(571, 76);
+            label3.Location = new Point(460, 61);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(111, 25);
+            label3.Size = new Size(93, 20);
             label3.TabIndex = 3;
             label3.Text = "CUIT Cliente:";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(688, 76);
+            textBox1.Location = new Point(561, 61);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(199, 31);
+            textBox1.Size = new Size(160, 27);
             textBox1.TabIndex = 4;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(34, 137);
+            label4.Location = new Point(27, 110);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(142, 25);
+            label4.Size = new Size(120, 20);
             label4.TabIndex = 5;
             label4.Text = "Fecha Solicitada:";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(194, 137);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(155, 110);
+            dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(351, 31);
+            dateTimePicker1.Size = new Size(162, 27);
             dateTimePicker1.TabIndex = 6;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(571, 142);
+            label5.Location = new Point(460, 210);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(102, 25);
+            label5.Size = new Size(85, 20);
             label5.TabIndex = 7;
             label5.Text = "Modalidad:";
             // 
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(688, 139);
+            comboBox2.Location = new Point(597, 210);
+            comboBox2.Margin = new Padding(2);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(199, 33);
+            comboBox2.Size = new Size(160, 28);
             comboBox2.TabIndex = 8;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(34, 200);
+            label6.Location = new Point(460, 110);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(117, 25);
+            label6.Size = new Size(97, 20);
             label6.TabIndex = 9;
             label6.Text = "Transportista:";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(194, 200);
+            textBox2.Location = new Point(561, 107);
+            textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(300, 31);
+            textBox2.Size = new Size(160, 27);
             textBox2.TabIndex = 10;
             // 
             // label7
@@ -160,50 +172,56 @@
             label7.BackColor = SystemColors.ButtonFace;
             label7.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.HotTrack;
-            label7.Location = new Point(28, 260);
+            label7.Location = new Point(22, 171);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(355, 25);
+            label7.Size = new Size(288, 20);
             label7.TabIndex = 11;
             label7.Text = "INGRESO DE PRODUCTOS A LA ORDEN";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(34, 309);
+            label8.Location = new Point(33, 210);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(228, 25);
+            label8.Size = new Size(114, 20);
             label8.TabIndex = 12;
-            label8.Text = "Seleccionar SKU del Cliente:";
+            label8.Text = "SKU del Cliente:";
             // 
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(277, 309);
+            comboBox3.Location = new Point(185, 210);
+            comboBox3.Margin = new Padding(2);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(244, 33);
+            comboBox3.Size = new Size(196, 28);
             comboBox3.TabIndex = 13;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(117, 359);
+            label9.Location = new Point(460, 275);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(145, 25);
+            label9.Size = new Size(121, 20);
             label9.TabIndex = 14;
             label9.Text = "Cantidad a Pedir:";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(277, 359);
+            textBox3.Location = new Point(597, 272);
+            textBox3.Margin = new Padding(2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(244, 31);
+            textBox3.Size = new Size(160, 27);
             textBox3.TabIndex = 15;
             // 
             // button1
             // 
-            button1.Location = new Point(540, 357);
+            button1.Location = new Point(27, 320);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(347, 34);
+            button1.Size = new Size(730, 27);
             button1.TabIndex = 16;
             button1.Text = "Agregar a la Orden";
             button1.UseVisualStyleBackColor = true;
@@ -214,18 +232,20 @@
             label10.BackColor = SystemColors.ButtonFace;
             label10.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.HotTrack;
-            label10.Location = new Point(28, 405);
+            label10.Location = new Point(22, 369);
+            label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(365, 25);
+            label10.Size = new Size(295, 20);
             label10.TabIndex = 17;
             label10.Text = "DETALLE DE PRODUCTOS EN LA ORDEN";
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
-            listView1.Location = new Point(34, 437);
+            listView1.Location = new Point(27, 395);
+            listView1.Margin = new Padding(2);
             listView1.Name = "listView1";
-            listView1.Size = new Size(853, 146);
+            listView1.Size = new Size(730, 146);
             listView1.TabIndex = 18;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -245,12 +265,23 @@
             columnHeader3.Text = "Cant. Pedida";
             columnHeader3.Width = 120;
             // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Peso Unitario";
+            columnHeader4.Width = 120;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Modalidad";
+            columnHeader5.Width = 200;
+            // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(540, 312);
+            label11.Location = new Point(33, 275);
+            label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(177, 25);
+            label11.Size = new Size(148, 20);
             label11.TabIndex = 19;
             label11.Text = "Cantidad Disponible:";
             // 
@@ -258,66 +289,50 @@
             // 
             textBox4.BackColor = SystemColors.AppWorkspace;
             textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(723, 311);
+            textBox4.Location = new Point(185, 272);
+            textBox4.Margin = new Padding(2);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(164, 31);
+            textBox4.Size = new Size(132, 27);
             textBox4.TabIndex = 20;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Peso Unitario";
-            columnHeader4.Width = 150;
             // 
             // button2
             // 
-            button2.Location = new Point(765, 589);
+            button2.Location = new Point(659, 545);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(122, 34);
+            button2.Size = new Size(98, 27);
             button2.TabIndex = 21;
             button2.Text = "Quitar ";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            button3.Location = new Point(336, 644);
-            button3.Name = "button3";
-            button3.Size = new Size(313, 34);
-            button3.TabIndex = 22;
-            button3.Text = "Solicitar Aprobacion";
-            button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            button4.Location = new Point(655, 644);
+            button4.Location = new Point(597, 606);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
-            button4.Size = new Size(232, 34);
+            button4.Size = new Size(160, 27);
             button4.TabIndex = 23;
             button4.Text = "Cancelar";
             button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            button5.Location = new Point(46, 644);
+            button5.Location = new Point(362, 606);
+            button5.Margin = new Padding(2);
             button5.Name = "button5";
-            button5.Size = new Size(284, 34);
+            button5.Size = new Size(227, 27);
             button5.TabIndex = 24;
             button5.Text = "Ingresar Orden de Preparacion";
             button5.UseVisualStyleBackColor = true;
             // 
-            // columnHeader5
-            // 
-            columnHeader5.Text = "Estado";
-            columnHeader5.Width = 200;
-            // 
             // IngresoDeOrdenDePreparacionForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 690);
+            ClientSize = new Size(774, 644);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(textBox4);
             Controls.Add(label11);
@@ -340,6 +355,7 @@
             Controls.Add(comboBox1);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(2);
             Name = "IngresoDeOrdenDePreparacionForm";
             Text = "IngresoDeOrdenDePreparacionForm";
             ResumeLayout(false);
@@ -374,7 +390,6 @@
         private TextBox textBox4;
         private ColumnHeader columnHeader4;
         private Button button2;
-        private Button button3;
         private ColumnHeader columnHeader5;
         private Button button4;
         private Button button5;
