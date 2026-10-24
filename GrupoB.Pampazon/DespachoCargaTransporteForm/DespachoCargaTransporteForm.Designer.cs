@@ -30,7 +30,7 @@
         {
             ListViewItem listViewItem1 = new ListViewItem(new string[] { "MER-1000-1", "P-1000" }, -1);
             ListViewItem listViewItem2 = new ListViewItem(new string[] { "MER-1000-2", "P-1000" }, -1);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "MER-1001-1", "P-1001" }, -1);
+            ListViewItem listViewItem3 = new ListViewItem(new string[] { "BLT-1001-1", "P-1001" }, -1);
             label1 = new Label();
             groupBox2 = new GroupBox();
             button1 = new Button();
@@ -39,7 +39,6 @@
             groupBox1 = new GroupBox();
             listView1 = new ListView();
             merccol = new ColumnHeader();
-            colFecha = new ColumnHeader();
             textBox3 = new TextBox();
             label4 = new Label();
             textBox6 = new TextBox();
@@ -128,13 +127,13 @@
             // listView1
             // 
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { merccol, colFecha });
+            listView1.Columns.AddRange(new ColumnHeader[] { merccol });
             listView1.ForeColor = SystemColors.InfoText;
             listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
             listView1.Location = new Point(6, 53);
             listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
-            listView1.Size = new Size(364, 127);
+            listView1.Size = new Size(159, 127);
             listView1.TabIndex = 20;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -143,11 +142,6 @@
             // 
             merccol.Text = "ID Mercadería";
             merccol.Width = 153;
-            // 
-            // colFecha
-            // 
-            colFecha.Text = "N°Pedido";
-            colFecha.Width = 200;
             // 
             // textBox3
             // 
@@ -253,7 +247,6 @@
         private Button button1;
         private ListView listView1;
         private ColumnHeader merccol;
-        private ColumnHeader colFecha;
         private Button button2;
         private Button button3;
         private CheckBox checkBox1;

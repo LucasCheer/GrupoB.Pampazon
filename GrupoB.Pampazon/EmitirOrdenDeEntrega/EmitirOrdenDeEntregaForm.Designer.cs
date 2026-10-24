@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "P-1000", "09/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "P-1002", "10/10/2026" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "P-1003", "11/10/2026" }, -1);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "OP-1000", "09/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "OP-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem3 = new ListViewItem(new string[] { "OP-1002", "10/10/2026" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] { "OP-1003", "11/10/2026" }, -1);
             groupBox1 = new GroupBox();
             listView1 = new ListView();
             colPedido = new ColumnHeader();
