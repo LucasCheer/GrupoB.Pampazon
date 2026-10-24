@@ -1,4 +1,4 @@
-﻿namespace GrupoB.Pampazon.DespacharPedidoLiberarCamion
+﻿namespace GrupoB.Pampazon.DespachoCargaTransporte
 {
     partial class DespachoCargaTransporteForm
     {

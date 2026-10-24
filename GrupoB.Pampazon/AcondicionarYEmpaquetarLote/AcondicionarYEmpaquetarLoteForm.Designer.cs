@@ -29,27 +29,13 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             colSku = new ColumnHeader();
             colDescripcion = new ColumnHeader();
             colCantidadOp = new ColumnHeader();
-            grpBultos = new GroupBox();
-            btnGenerarEtiqueta = new Button();
-            btnAgregarBulto = new Button();
-            nudPeso = new NumericUpDown();
-            lblPeso = new Label();
-            cboTipoEmbalaje = new ComboBox();
-            lblTipoEmbalaje = new Label();
-            lvBultos = new ListView();
-            colNumeroBulto = new ColumnHeader();
-            colTipoEmbalaje = new ColumnHeader();
-            colProductos = new ColumnHeader();
-            colPeso = new ColumnHeader();
-            colEtiqueta = new ColumnHeader();
+            btnImprimirEtiqueta = new Button();
             btnConfirmarLote = new Button();
             btnCancelar = new Button();
             grpOrden.SuspendLayout();
             grpMercaderia.SuspendLayout();
-            grpBultos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudPeso).BeginInit();
             SuspendLayout();
-            // 
+            //
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
@@ -140,7 +126,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             grpMercaderia.Margin = new Padding(3, 2, 3, 2);
             grpMercaderia.Name = "grpMercaderia";
             grpMercaderia.Padding = new Padding(3, 2, 3, 2);
-            grpMercaderia.Size = new Size(815, 142);
+            grpMercaderia.Size = new Size(815, 335);
             grpMercaderia.TabIndex = 3;
             grpMercaderia.TabStop = false;
             grpMercaderia.Text = "MERCADERÍA DE LA ORDEN";
@@ -154,11 +140,10 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             lvProductos.Margin = new Padding(3, 2, 3, 2);
             lvProductos.MultiSelect = false;
             lvProductos.Name = "lvProductos";
-            lvProductos.Size = new Size(782, 110);
+            lvProductos.Size = new Size(782, 303);
             lvProductos.TabIndex = 0;
             lvProductos.UseCompatibleStateImageBehavior = false;
             lvProductos.View = View.Details;
-            lvProductos.SelectedIndexChanged += lvProductos_SelectedIndexChanged;
             // 
             // colSku
             // 
@@ -175,121 +160,15 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             colCantidadOp.Text = "Cantidad a empaquetar";
             colCantidadOp.Width = 170;
             // 
-            // grpBultos
-            // 
-            grpBultos.Controls.Add(btnGenerarEtiqueta);
-            grpBultos.Controls.Add(btnAgregarBulto);
-            grpBultos.Controls.Add(nudPeso);
-            grpBultos.Controls.Add(lblPeso);
-            grpBultos.Controls.Add(cboTipoEmbalaje);
-            grpBultos.Controls.Add(lblTipoEmbalaje);
-            grpBultos.Controls.Add(lvBultos);
-            grpBultos.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            grpBultos.Location = new Point(10, 260);
-            grpBultos.Margin = new Padding(3, 2, 3, 2);
-            grpBultos.Name = "grpBultos";
-            grpBultos.Padding = new Padding(3, 2, 3, 2);
-            grpBultos.Size = new Size(815, 184);
-            grpBultos.TabIndex = 2;
-            grpBultos.TabStop = false;
-            grpBultos.Text = "ARMADO DE BULTOS";
-            // 
-            // btnGenerarEtiqueta
-            // 
-            btnGenerarEtiqueta.Location = new Point(640, 58);
-            btnGenerarEtiqueta.Margin = new Padding(3, 2, 3, 2);
-            btnGenerarEtiqueta.Name = "btnGenerarEtiqueta";
-            btnGenerarEtiqueta.Size = new Size(155, 30);
-            btnGenerarEtiqueta.TabIndex = 0;
-            btnGenerarEtiqueta.Text = "Generar etiqueta";
-            btnGenerarEtiqueta.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarBulto
-            // 
-            btnAgregarBulto.Location = new Point(534, 19);
-            btnAgregarBulto.Margin = new Padding(3, 2, 3, 2);
-            btnAgregarBulto.Name = "btnAgregarBulto";
-            btnAgregarBulto.Size = new Size(158, 28);
-            btnAgregarBulto.TabIndex = 1;
-            btnAgregarBulto.Text = "Agregar bulto";
-            btnAgregarBulto.UseVisualStyleBackColor = true;
-            // 
-            // nudPeso
-            // 
-            nudPeso.DecimalPlaces = 2;
-            nudPeso.Location = new Point(407, 21);
-            nudPeso.Margin = new Padding(3, 2, 3, 2);
-            nudPeso.Name = "nudPeso";
-            nudPeso.Size = new Size(101, 26);
-            nudPeso.TabIndex = 2;
-            nudPeso.Value = new decimal(new int[] { 20, 0, 0, 0 });
-            // 
-            // lblPeso
-            // 
-            lblPeso.AutoSize = true;
-            lblPeso.Location = new Point(324, 24);
-            lblPeso.Name = "lblPeso";
-            lblPeso.Size = new Size(76, 19);
-            lblPeso.TabIndex = 3;
-            lblPeso.Text = "Peso (kg):";
-            // 
-            // cboTipoEmbalaje
-            // 
-            cboTipoEmbalaje.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTipoEmbalaje.Items.AddRange(new object[] { "Caja", "Bolsa", "Pallet" });
-            cboTipoEmbalaje.Location = new Point(152, 21);
-            cboTipoEmbalaje.Margin = new Padding(3, 2, 3, 2);
-            cboTipoEmbalaje.Name = "cboTipoEmbalaje";
-            cboTipoEmbalaje.Size = new Size(154, 27);
-            cboTipoEmbalaje.TabIndex = 4;
-            // 
-            // lblTipoEmbalaje
-            // 
-            lblTipoEmbalaje.AutoSize = true;
-            lblTipoEmbalaje.Location = new Point(13, 24);
-            lblTipoEmbalaje.Name = "lblTipoEmbalaje";
-            lblTipoEmbalaje.Size = new Size(130, 19);
-            lblTipoEmbalaje.TabIndex = 5;
-            lblTipoEmbalaje.Text = "Tipo de embalaje:";
-            // 
-            // lvBultos
-            // 
-            lvBultos.Columns.AddRange(new ColumnHeader[] { colNumeroBulto, colTipoEmbalaje, colProductos, colPeso, colEtiqueta });
-            lvBultos.FullRowSelect = true;
-            lvBultos.GridLines = true;
-            lvBultos.Location = new Point(13, 58);
-            lvBultos.Margin = new Padding(3, 2, 3, 2);
-            lvBultos.MultiSelect = false;
-            lvBultos.Name = "lvBultos";
-            lvBultos.Size = new Size(614, 106);
-            lvBultos.TabIndex = 6;
-            lvBultos.UseCompatibleStateImageBehavior = false;
-            lvBultos.View = View.Details;
-            // 
-            // colNumeroBulto
-            // 
-            colNumeroBulto.Text = "N.º bulto";
-            colNumeroBulto.Width = 95;
-            // 
-            // colTipoEmbalaje
-            // 
-            colTipoEmbalaje.Text = "Tipo de embalaje";
-            colTipoEmbalaje.Width = 160;
-            // 
-            // colProductos
-            // 
-            colProductos.Text = "Productos";
-            colProductos.Width = 120;
-            // 
-            // colPeso
-            // 
-            colPeso.Text = "Peso";
-            colPeso.Width = 100;
-            // 
-            // colEtiqueta
-            // 
-            colEtiqueta.Text = "Etiqueta";
-            colEtiqueta.Width = 120;
+            // btnImprimirEtiqueta
+            //
+            btnImprimirEtiqueta.Location = new Point(372, 457);
+            btnImprimirEtiqueta.Margin = new Padding(3, 2, 3, 2);
+            btnImprimirEtiqueta.Name = "btnImprimirEtiqueta";
+            btnImprimirEtiqueta.Size = new Size(158, 30);
+            btnImprimirEtiqueta.TabIndex = 2;
+            btnImprimirEtiqueta.Text = "Imprimir etiqueta";
+            btnImprimirEtiqueta.UseVisualStyleBackColor = true;
             // 
             // btnConfirmarLote
             // 
@@ -320,7 +199,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             ClientSize = new Size(837, 500);
             Controls.Add(btnCancelar);
             Controls.Add(btnConfirmarLote);
-            Controls.Add(grpBultos);
+            Controls.Add(btnImprimirEtiqueta);
             Controls.Add(grpMercaderia);
             Controls.Add(grpOrden);
             Controls.Add(lblTitulo);
@@ -333,9 +212,6 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             grpOrden.ResumeLayout(false);
             grpOrden.PerformLayout();
             grpMercaderia.ResumeLayout(false);
-            grpBultos.ResumeLayout(false);
-            grpBultos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudPeso).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -353,19 +229,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
         private ColumnHeader colSku;
         private ColumnHeader colDescripcion;
         private ColumnHeader colCantidadOp;
-        private GroupBox grpBultos;
-        private Label lblTipoEmbalaje;
-        private ComboBox cboTipoEmbalaje;
-        private Label lblPeso;
-        private NumericUpDown nudPeso;
-        private Button btnAgregarBulto;
-        private ListView lvBultos;
-        private ColumnHeader colNumeroBulto;
-        private ColumnHeader colTipoEmbalaje;
-        private ColumnHeader colProductos;
-        private ColumnHeader colPeso;
-        private ColumnHeader colEtiqueta;
-        private Button btnGenerarEtiqueta;
+        private Button btnImprimirEtiqueta;
         private Button btnConfirmarLote;
         private Button btnCancelar;
     }
