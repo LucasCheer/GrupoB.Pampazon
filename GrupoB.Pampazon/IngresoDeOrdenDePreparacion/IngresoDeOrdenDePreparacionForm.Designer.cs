@@ -56,6 +56,8 @@
             button2 = new Button();
             button4 = new Button();
             button5 = new Button();
+            textBox5 = new TextBox();
+            label12 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -125,13 +127,13 @@
             dateTimePicker1.Location = new Point(194, 138);
             dateTimePicker1.Margin = new Padding(2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(352, 31);
+            dateTimePicker1.Size = new Size(189, 31);
             dateTimePicker1.TabIndex = 6;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(584, 323);
+            label5.Location = new Point(584, 365);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(102, 25);
@@ -141,7 +143,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(701, 320);
+            comboBox2.Location = new Point(701, 362);
             comboBox2.Margin = new Padding(2);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(237, 33);
@@ -150,19 +152,19 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(575, 138);
+            label6.Location = new Point(398, 138);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(117, 25);
+            label6.Size = new Size(99, 25);
             label6.TabIndex = 9;
-            label6.Text = "Transportista:";
+            label6.Text = "Transporte:";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(701, 134);
+            textBox2.Location = new Point(511, 135);
             textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(237, 31);
+            textBox2.Size = new Size(434, 31);
             textBox2.TabIndex = 10;
             // 
             // label7
@@ -171,7 +173,7 @@
             label7.BackColor = SystemColors.ButtonFace;
             label7.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.HotTrack;
-            label7.Location = new Point(28, 214);
+            label7.Location = new Point(28, 256);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(355, 25);
@@ -181,7 +183,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(53, 262);
+            label8.Location = new Point(53, 304);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(135, 25);
@@ -191,7 +193,7 @@
             // comboBox3
             // 
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(194, 262);
+            comboBox3.Location = new Point(194, 304);
             comboBox3.Margin = new Padding(2);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(281, 33);
@@ -200,7 +202,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(43, 323);
+            label9.Location = new Point(43, 365);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
             label9.Size = new Size(145, 25);
@@ -209,7 +211,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(194, 323);
+            textBox3.Location = new Point(194, 365);
             textBox3.Margin = new Padding(2);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(281, 31);
@@ -217,7 +219,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(33, 378);
+            button1.Location = new Point(33, 420);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(912, 34);
@@ -231,7 +233,7 @@
             label10.BackColor = SystemColors.ButtonFace;
             label10.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.HotTrack;
-            label10.Location = new Point(28, 461);
+            label10.Location = new Point(28, 489);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
             label10.Size = new Size(365, 25);
@@ -241,7 +243,7 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
-            listView1.Location = new Point(34, 494);
+            listView1.Location = new Point(34, 522);
             listView1.Margin = new Padding(2);
             listView1.Name = "listView1";
             listView1.Size = new Size(912, 182);
@@ -272,7 +274,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(511, 264);
+            label11.Location = new Point(511, 306);
             label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
             label11.Size = new Size(177, 25);
@@ -283,7 +285,7 @@
             // 
             textBox4.BackColor = SystemColors.AppWorkspace;
             textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(701, 260);
+            textBox4.Location = new Point(701, 302);
             textBox4.Margin = new Padding(2);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
@@ -292,7 +294,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(824, 681);
+            button2.Location = new Point(824, 709);
             button2.Margin = new Padding(2);
             button2.Name = "button2";
             button2.Size = new Size(122, 34);
@@ -320,11 +322,31 @@
             button5.Text = "Ingresar Orden de Preparacion";
             button5.UseVisualStyleBackColor = true;
             // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(198, 195);
+            textBox5.Margin = new Padding(2);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(237, 31);
+            textBox5.TabIndex = 26;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(26, 198);
+            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(153, 25);
+            label12.TabIndex = 25;
+            label12.Text = "DNI Transportista:";
+            // 
             // IngresoDeOrdenDePreparacionForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(968, 805);
+            Controls.Add(textBox5);
+            Controls.Add(label12);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button2);
@@ -386,5 +408,7 @@
         private ColumnHeader columnHeader5;
         private Button button4;
         private Button button5;
+        private TextBox textBox5;
+        private Label label12;
     }
 }
