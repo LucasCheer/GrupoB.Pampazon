@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem7 = new ListViewItem(new string[] { "BLT-1000-1", "P-1000" }, -1);
-            ListViewItem listViewItem8 = new ListViewItem(new string[] { "BLT-1000-2", "P-1000" }, -1);
-            ListViewItem listViewItem9 = new ListViewItem(new string[] { "BLT-1001-1", "P-1001" }, -1);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "MER-1000-1", "P-1000" }, -1);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "MER-1000-2", "P-1000" }, -1);
+            ListViewItem listViewItem3 = new ListViewItem(new string[] { "MER-1001-1", "P-1001" }, -1);
             label1 = new Label();
             groupBox2 = new GroupBox();
             button1 = new Button();
@@ -38,12 +38,15 @@
             label7 = new Label();
             groupBox1 = new GroupBox();
             listView1 = new ListView();
-            bultocol = new ColumnHeader();
+            merccol = new ColumnHeader();
             colFecha = new ColumnHeader();
             textBox3 = new TextBox();
             label4 = new Label();
             textBox6 = new TextBox();
             label9 = new Label();
+            button2 = new Button();
+            button3 = new Button();
+            checkBox1 = new CheckBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -69,7 +72,7 @@
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(655, 59);
+            groupBox2.Size = new Size(501, 59);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             groupBox2.Text = "IDENTIFICACIÓN DEL TRANSPORTE EN PUERTA";
@@ -117,7 +120,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(655, 228);
+            groupBox1.Size = new Size(501, 228);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "CAJAS ASIGNADAS PARA HOY";
@@ -125,9 +128,9 @@
             // listView1
             // 
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { bultocol, colFecha });
+            listView1.Columns.AddRange(new ColumnHeader[] { merccol, colFecha });
             listView1.ForeColor = SystemColors.InfoText;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem7, listViewItem8, listViewItem9 });
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3 });
             listView1.Location = new Point(6, 53);
             listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
@@ -136,10 +139,10 @@
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             // 
-            // bultocol
+            // merccol
             // 
-            bultocol.Text = "ID Bulto";
-            bultocol.Width = 153;
+            merccol.Text = "ID Mercadería";
+            merccol.Width = 153;
             // 
             // colFecha
             // 
@@ -186,11 +189,43 @@
             label9.Text = "Transporte validado:";
             label9.Click += label9_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(327, 350);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 11;
+            button2.Text = "Cerrar";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(216, 350);
+            button3.Name = "button3";
+            button3.Size = new Size(105, 23);
+            button3.TabIndex = 12;
+            button3.Text = "Registrar carga";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(14, 355);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(196, 19);
+            checkBox1.TabIndex = 13;
+            checkBox1.Text = "Cajas entregadas al transportista";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // DespachoCargaTransporteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(509, 350);
+            ClientSize = new Size(527, 393);
+            Controls.Add(checkBox1);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(label1);
@@ -217,7 +252,10 @@
         private Label label4;
         private Button button1;
         private ListView listView1;
-        private ColumnHeader bultocol;
+        private ColumnHeader merccol;
         private ColumnHeader colFecha;
+        private Button button2;
+        private Button button3;
+        private CheckBox checkBox1;
     }
 }
