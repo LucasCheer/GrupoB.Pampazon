@@ -32,27 +32,27 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            NumeroIncidenciaText = new TextBox();
+            OperarioText = new TextBox();
+            FechaYHoraText = new TextBox();
             label5 = new Label();
             label6 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
+            SectorDepositoCombo = new ComboBox();
+            EtapaOperativaCombo = new ComboBox();
             label7 = new Label();
             label8 = new Label();
-            textBox5 = new TextBox();
+            CoordenadaText = new TextBox();
             label9 = new Label();
             label14 = new Label();
-            comboBox4 = new ComboBox();
+            TipoCausaIncidenciaCombo = new ComboBox();
             label15 = new Label();
             label16 = new Label();
-            textBox11 = new TextBox();
+            CantAfectadaText = new TextBox();
             label18 = new Label();
-            textBox12 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            comboBox6 = new ComboBox();
+            JustificacionIncidenciaText = new TextBox();
+            ReportarBtn = new Button();
+            CancelarBtn = new Button();
+            SKUProductoCombo = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -93,35 +93,35 @@
             label4.TabIndex = 3;
             label4.Text = "Operario Responsable:";
             // 
-            // textBox1
+            // NumeroIncidenciaText
             // 
-            textBox1.BackColor = SystemColors.ControlLight;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(31, 87);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(188, 31);
-            textBox1.TabIndex = 4;
+            NumeroIncidenciaText.BackColor = SystemColors.ControlLight;
+            NumeroIncidenciaText.BorderStyle = BorderStyle.FixedSingle;
+            NumeroIncidenciaText.Location = new Point(31, 87);
+            NumeroIncidenciaText.Name = "NumeroIncidenciaText";
+            NumeroIncidenciaText.ReadOnly = true;
+            NumeroIncidenciaText.Size = new Size(188, 31);
+            NumeroIncidenciaText.TabIndex = 4;
             // 
-            // textBox2
+            // OperarioText
             // 
-            textBox2.BackColor = SystemColors.ControlLight;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(490, 87);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(435, 31);
-            textBox2.TabIndex = 5;
+            OperarioText.BackColor = SystemColors.ControlLight;
+            OperarioText.BorderStyle = BorderStyle.FixedSingle;
+            OperarioText.Location = new Point(490, 87);
+            OperarioText.Name = "OperarioText";
+            OperarioText.ReadOnly = true;
+            OperarioText.Size = new Size(435, 31);
+            OperarioText.TabIndex = 5;
             // 
-            // textBox3
+            // FechaYHoraText
             // 
-            textBox3.BackColor = SystemColors.ControlLight;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(248, 87);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(207, 31);
-            textBox3.TabIndex = 6;
+            FechaYHoraText.BackColor = SystemColors.ControlLight;
+            FechaYHoraText.BorderStyle = BorderStyle.FixedSingle;
+            FechaYHoraText.Location = new Point(248, 87);
+            FechaYHoraText.Name = "FechaYHoraText";
+            FechaYHoraText.ReadOnly = true;
+            FechaYHoraText.Size = new Size(207, 31);
+            FechaYHoraText.TabIndex = 6;
             // 
             // label5
             // 
@@ -141,21 +141,21 @@
             label6.TabIndex = 8;
             label6.Text = "Etapa Operativa:";
             // 
-            // comboBox1
+            // SectorDepositoCombo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(31, 158);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(289, 33);
-            comboBox1.TabIndex = 9;
+            SectorDepositoCombo.FormattingEnabled = true;
+            SectorDepositoCombo.Location = new Point(31, 158);
+            SectorDepositoCombo.Name = "SectorDepositoCombo";
+            SectorDepositoCombo.Size = new Size(289, 33);
+            SectorDepositoCombo.TabIndex = 9;
             // 
-            // comboBox2
+            // EtapaOperativaCombo
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(359, 158);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(327, 33);
-            comboBox2.TabIndex = 10;
+            EtapaOperativaCombo.FormattingEnabled = true;
+            EtapaOperativaCombo.Location = new Point(359, 158);
+            EtapaOperativaCombo.Name = "EtapaOperativaCombo";
+            EtapaOperativaCombo.Size = new Size(327, 33);
+            EtapaOperativaCombo.TabIndex = 10;
             // 
             // label7
             // 
@@ -177,12 +177,12 @@
             label8.TabIndex = 12;
             label8.Text = "Codigo SKU - Producto :";
             // 
-            // textBox5
+            // CoordenadaText
             // 
-            textBox5.Location = new Point(716, 160);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(209, 31);
-            textBox5.TabIndex = 15;
+            CoordenadaText.Location = new Point(716, 160);
+            CoordenadaText.Name = "CoordenadaText";
+            CoordenadaText.Size = new Size(209, 31);
+            CoordenadaText.TabIndex = 15;
             // 
             // label9
             // 
@@ -204,13 +204,13 @@
             label14.TabIndex = 26;
             label14.Text = "CLASIFICACION DE MERMA / CAUSA DE LA INCIDENCIA";
             // 
-            // comboBox4
+            // TipoCausaIncidenciaCombo
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(28, 426);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(245, 33);
-            comboBox4.TabIndex = 28;
+            TipoCausaIncidenciaCombo.FormattingEnabled = true;
+            TipoCausaIncidenciaCombo.Location = new Point(28, 426);
+            TipoCausaIncidenciaCombo.Name = "TipoCausaIncidenciaCombo";
+            TipoCausaIncidenciaCombo.Size = new Size(245, 33);
+            TipoCausaIncidenciaCombo.TabIndex = 28;
             // 
             // label15
             // 
@@ -230,12 +230,12 @@
             label16.TabIndex = 29;
             label16.Text = "Cantidad Afectada:";
             // 
-            // textBox11
+            // CantAfectadaText
             // 
-            textBox11.Location = new Point(28, 506);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(245, 31);
-            textBox11.TabIndex = 30;
+            CantAfectadaText.Location = new Point(28, 506);
+            CantAfectadaText.Name = "CantAfectadaText";
+            CantAfectadaText.Size = new Size(245, 31);
+            CantAfectadaText.TabIndex = 30;
             // 
             // label18
             // 
@@ -246,66 +246,66 @@
             label18.TabIndex = 33;
             label18.Text = "Detalle / Justificacion Tecnica de la incidencia :";
             // 
-            // textBox12
+            // JustificacionIncidenciaText
             // 
-            textBox12.Location = new Point(310, 400);
-            textBox12.Multiline = true;
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(615, 172);
-            textBox12.TabIndex = 34;
+            JustificacionIncidenciaText.Location = new Point(310, 400);
+            JustificacionIncidenciaText.Multiline = true;
+            JustificacionIncidenciaText.Name = "JustificacionIncidenciaText";
+            JustificacionIncidenciaText.Size = new Size(615, 172);
+            JustificacionIncidenciaText.TabIndex = 34;
             // 
-            // button1
+            // ReportarBtn
             // 
-            button1.Location = new Point(310, 602);
-            button1.Name = "button1";
-            button1.Size = new Size(272, 34);
-            button1.TabIndex = 35;
-            button1.Text = "Reportar Incidencia";
-            button1.UseVisualStyleBackColor = true;
+            ReportarBtn.Location = new Point(310, 602);
+            ReportarBtn.Name = "ReportarBtn";
+            ReportarBtn.Size = new Size(272, 34);
+            ReportarBtn.TabIndex = 35;
+            ReportarBtn.Text = "Reportar Incidencia";
+            ReportarBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // CancelarBtn
             // 
-            button2.Location = new Point(627, 602);
-            button2.Name = "button2";
-            button2.Size = new Size(269, 34);
-            button2.TabIndex = 36;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
+            CancelarBtn.Location = new Point(627, 602);
+            CancelarBtn.Name = "CancelarBtn";
+            CancelarBtn.Size = new Size(269, 34);
+            CancelarBtn.TabIndex = 36;
+            CancelarBtn.Text = "Cancelar";
+            CancelarBtn.UseVisualStyleBackColor = true;
             // 
-            // comboBox6
+            // SKUProductoCombo
             // 
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(257, 268);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(668, 33);
-            comboBox6.TabIndex = 37;
+            SKUProductoCombo.FormattingEnabled = true;
+            SKUProductoCombo.Location = new Point(257, 268);
+            SKUProductoCombo.Name = "SKUProductoCombo";
+            SKUProductoCombo.Size = new Size(668, 33);
+            SKUProductoCombo.TabIndex = 37;
             // 
             // RegistrarMermasEIncidenciasForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(947, 649);
-            Controls.Add(comboBox6);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox12);
+            Controls.Add(SKUProductoCombo);
+            Controls.Add(CancelarBtn);
+            Controls.Add(ReportarBtn);
+            Controls.Add(JustificacionIncidenciaText);
             Controls.Add(label18);
-            Controls.Add(textBox11);
+            Controls.Add(CantAfectadaText);
             Controls.Add(label16);
-            Controls.Add(comboBox4);
+            Controls.Add(TipoCausaIncidenciaCombo);
             Controls.Add(label15);
             Controls.Add(label14);
-            Controls.Add(textBox5);
+            Controls.Add(CoordenadaText);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(EtapaOperativaCombo);
+            Controls.Add(SectorDepositoCombo);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(FechaYHoraText);
+            Controls.Add(OperarioText);
+            Controls.Add(NumeroIncidenciaText);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -322,26 +322,26 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox NumeroIncidenciaText;
+        private TextBox OperarioText;
+        private TextBox FechaYHoraText;
         private Label label5;
         private Label label6;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private ComboBox SectorDepositoCombo;
+        private ComboBox EtapaOperativaCombo;
         private Label label7;
         private Label label8;
-        private TextBox textBox5;
+        private TextBox CoordenadaText;
         private Label label9;
         private Label label14;
-        private ComboBox comboBox4;
+        private ComboBox TipoCausaIncidenciaCombo;
         private Label label15;
         private Label label16;
-        private TextBox textBox11;
+        private TextBox CantAfectadaText;
         private Label label18;
-        private TextBox textBox12;
-        private Button button1;
-        private Button button2;
-        private ComboBox comboBox6;
+        private TextBox JustificacionIncidenciaText;
+        private Button ReportarBtn;
+        private Button CancelarBtn;
+        private ComboBox SKUProductoCombo;
     }
 }
