@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            listView1 = new ListView();
-            Columna = new ColumnHeader();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
+            IncidenciasPendientesListView = new ListView();
+            NumeroIncidenciaCol = new ColumnHeader();
+            FechaHoraCol = new ColumnHeader();
+            OperarioCol = new ColumnHeader();
+            SKUDescripcionCol = new ColumnHeader();
+            UbicacionCol = new ColumnHeader();
+            CantCol = new ColumnHeader();
+            CausaCol = new ColumnHeader();
             label2 = new Label();
-            textBox1 = new TextBox();
+            JustificacionOperadorText = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            textBox2 = new TextBox();
-            button2 = new Button();
-            button3 = new Button();
+            JustificacionAuditoriaText = new TextBox();
+            AprobarBtn = new Button();
+            RechazarBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -57,50 +57,50 @@
             label1.TabIndex = 0;
             label1.Text = "INCIDENCIAS PENDIENTES DE REVISION";
             // 
-            // listView1
+            // IncidenciasPendientesListView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Columna, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
-            listView1.Location = new Point(24, 78);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(1036, 161);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            IncidenciasPendientesListView.Columns.AddRange(new ColumnHeader[] { NumeroIncidenciaCol, FechaHoraCol, OperarioCol, SKUDescripcionCol, UbicacionCol, CantCol, CausaCol });
+            IncidenciasPendientesListView.Location = new Point(24, 78);
+            IncidenciasPendientesListView.Name = "IncidenciasPendientesListView";
+            IncidenciasPendientesListView.Size = new Size(1036, 161);
+            IncidenciasPendientesListView.TabIndex = 1;
+            IncidenciasPendientesListView.UseCompatibleStateImageBehavior = false;
+            IncidenciasPendientesListView.View = View.Details;
             // 
-            // Columna
+            // NumeroIncidenciaCol
             // 
-            Columna.Text = "N° Incidencia";
-            Columna.Width = 120;
+            NumeroIncidenciaCol.Text = "N° Incidencia";
+            NumeroIncidenciaCol.Width = 120;
             // 
-            // columnHeader1
+            // FechaHoraCol
             // 
-            columnHeader1.Text = "Fecha/Hora";
-            columnHeader1.Width = 120;
+            FechaHoraCol.Text = "Fecha/Hora";
+            FechaHoraCol.Width = 120;
             // 
-            // columnHeader2
+            // OperarioCol
             // 
-            columnHeader2.Text = "Operario Reportante";
-            columnHeader2.Width = 200;
+            OperarioCol.Text = "Operario Reportante";
+            OperarioCol.Width = 200;
             // 
-            // columnHeader3
+            // SKUDescripcionCol
             // 
-            columnHeader3.Text = "SKU / Descripcion";
-            columnHeader3.Width = 200;
+            SKUDescripcionCol.Text = "SKU / Descripcion";
+            SKUDescripcionCol.Width = 200;
             // 
-            // columnHeader4
+            // UbicacionCol
             // 
-            columnHeader4.Text = "Ubicacion";
-            columnHeader4.Width = 120;
+            UbicacionCol.Text = "Ubicacion";
+            UbicacionCol.Width = 120;
             // 
-            // columnHeader5
+            // CantCol
             // 
-            columnHeader5.Text = "Cant.";
-            columnHeader5.Width = 100;
+            CantCol.Text = "Cant.";
+            CantCol.Width = 100;
             // 
-            // columnHeader6
+            // CausaCol
             // 
-            columnHeader6.Text = "Causa Reportada";
-            columnHeader6.Width = 200;
+            CausaCol.Text = "Causa Reportada";
+            CausaCol.Width = 200;
             // 
             // label2
             // 
@@ -113,13 +113,13 @@
             label2.TabIndex = 3;
             label2.Text = "AUDITORIA Y REVISION DEL SUPERVISOR";
             // 
-            // textBox1
+            // JustificacionOperadorText
             // 
-            textBox1.Location = new Point(24, 285);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(1036, 127);
-            textBox1.TabIndex = 4;
+            JustificacionOperadorText.Location = new Point(24, 285);
+            JustificacionOperadorText.Multiline = true;
+            JustificacionOperadorText.Name = "JustificacionOperadorText";
+            JustificacionOperadorText.Size = new Size(1036, 127);
+            JustificacionOperadorText.TabIndex = 4;
             // 
             // label3
             // 
@@ -139,45 +139,45 @@
             label4.TabIndex = 7;
             label4.Text = "Dictamen / Justificacion de Auditoria:";
             // 
-            // textBox2
+            // JustificacionAuditoriaText
             // 
-            textBox2.Location = new Point(24, 498);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(1036, 119);
-            textBox2.TabIndex = 6;
+            JustificacionAuditoriaText.Location = new Point(24, 498);
+            JustificacionAuditoriaText.Multiline = true;
+            JustificacionAuditoriaText.Name = "JustificacionAuditoriaText";
+            JustificacionAuditoriaText.Size = new Size(1036, 119);
+            JustificacionAuditoriaText.TabIndex = 6;
             // 
-            // button2
+            // AprobarBtn
             // 
-            button2.Location = new Point(519, 623);
-            button2.Name = "button2";
-            button2.Size = new Size(277, 44);
-            button2.TabIndex = 8;
-            button2.Text = "APROBAR BAJA DEFINITIVA";
-            button2.UseVisualStyleBackColor = true;
+            AprobarBtn.Location = new Point(519, 623);
+            AprobarBtn.Name = "AprobarBtn";
+            AprobarBtn.Size = new Size(277, 44);
+            AprobarBtn.TabIndex = 8;
+            AprobarBtn.Text = "APROBAR BAJA DEFINITIVA";
+            AprobarBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // RechazarBtn
             // 
-            button3.Location = new Point(815, 623);
-            button3.Name = "button3";
-            button3.Size = new Size(245, 44);
-            button3.TabIndex = 9;
-            button3.Text = "RECHAZAR / REINTEGRAR";
-            button3.UseVisualStyleBackColor = true;
+            RechazarBtn.Location = new Point(815, 623);
+            RechazarBtn.Name = "RechazarBtn";
+            RechazarBtn.Size = new Size(245, 44);
+            RechazarBtn.TabIndex = 9;
+            RechazarBtn.Text = "RECHAZAR / REINTEGRAR";
+            RechazarBtn.UseVisualStyleBackColor = true;
             // 
             // ControlarMermasEIncidenciasForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1072, 679);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(RechazarBtn);
+            Controls.Add(AprobarBtn);
             Controls.Add(label4);
-            Controls.Add(textBox2);
+            Controls.Add(JustificacionAuditoriaText);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(JustificacionOperadorText);
             Controls.Add(label2);
-            Controls.Add(listView1);
+            Controls.Add(IncidenciasPendientesListView);
             Controls.Add(label1);
             Name = "ControlarMermasEIncidenciasForm";
             Text = "ControlarMermasEIncidenciasForm";
@@ -188,20 +188,20 @@
         #endregion
 
         private Label label1;
-        private ListView listView1;
-        private ColumnHeader Columna;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ColumnHeader columnHeader6;
+        private ListView IncidenciasPendientesListView;
+        private ColumnHeader NumeroIncidenciaCol;
+        private ColumnHeader FechaHoraCol;
+        private ColumnHeader OperarioCol;
+        private ColumnHeader SKUDescripcionCol;
+        private ColumnHeader UbicacionCol;
+        private ColumnHeader CantCol;
+        private ColumnHeader CausaCol;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox JustificacionOperadorText;
         private Label label3;
         private Label label4;
-        private TextBox textBox2;
-        private Button button2;
-        private Button button3;
+        private TextBox JustificacionAuditoriaText;
+        private Button AprobarBtn;
+        private Button RechazarBtn;
     }
 }
