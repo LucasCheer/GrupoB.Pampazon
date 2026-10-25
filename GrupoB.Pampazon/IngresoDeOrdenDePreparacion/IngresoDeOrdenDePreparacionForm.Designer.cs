@@ -30,33 +30,33 @@
         {
             label1 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            ClienteCombo = new ComboBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            CUITClienteText = new TextBox();
             label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            FechaSolicitadaDateTimePicker = new DateTimePicker();
             label5 = new Label();
-            comboBox2 = new ComboBox();
+            ModalidadCombo = new ComboBox();
             label6 = new Label();
-            textBox2 = new TextBox();
+            TransporteText = new TextBox();
             label7 = new Label();
             label8 = new Label();
-            comboBox3 = new ComboBox();
+            SKUCombo = new ComboBox();
             label9 = new Label();
-            textBox3 = new TextBox();
-            button1 = new Button();
+            CantAPedirText = new TextBox();
+            AgregarALaOrdenBtn = new Button();
             label10 = new Label();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader5 = new ColumnHeader();
+            DetallesDeProductosListView = new ListView();
+            SKUCol = new ColumnHeader();
+            DescripcionCol = new ColumnHeader();
+            CantPedidaCol = new ColumnHeader();
+            ModalidadCol = new ColumnHeader();
             label11 = new Label();
-            textBox4 = new TextBox();
-            button2 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            textBox5 = new TextBox();
+            CantDisponibleText = new TextBox();
+            QuitarBtn = new Button();
+            CancelarBtn = new Button();
+            IngresarOPBtn = new Button();
+            DNITransportistaText = new TextBox();
             label12 = new Label();
             SuspendLayout();
             // 
@@ -83,14 +83,14 @@
             label2.TabIndex = 1;
             label2.Text = "Cliente / Empresa:";
             // 
-            // comboBox1
+            // ClienteCombo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(194, 76);
-            comboBox1.Margin = new Padding(2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(352, 33);
-            comboBox1.TabIndex = 2;
+            ClienteCombo.FormattingEnabled = true;
+            ClienteCombo.Location = new Point(194, 76);
+            ClienteCombo.Margin = new Padding(2);
+            ClienteCombo.Name = "ClienteCombo";
+            ClienteCombo.Size = new Size(352, 33);
+            ClienteCombo.TabIndex = 2;
             // 
             // label3
             // 
@@ -102,14 +102,14 @@
             label3.TabIndex = 3;
             label3.Text = "CUIT Cliente:";
             // 
-            // textBox1
+            // CUITClienteText
             // 
-            textBox1.Location = new Point(701, 76);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(244, 31);
-            textBox1.TabIndex = 4;
-            textBox1.TextChanged += textBox1_TextChanged;
+            CUITClienteText.Location = new Point(701, 76);
+            CUITClienteText.Margin = new Padding(2);
+            CUITClienteText.Name = "CUITClienteText";
+            CUITClienteText.Size = new Size(244, 31);
+            CUITClienteText.TabIndex = 4;
+            CUITClienteText.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -121,14 +121,14 @@
             label4.TabIndex = 5;
             label4.Text = "Fecha Solicitada:";
             // 
-            // dateTimePicker1
+            // FechaSolicitadaDateTimePicker
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(194, 138);
-            dateTimePicker1.Margin = new Padding(2);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(189, 31);
-            dateTimePicker1.TabIndex = 6;
+            FechaSolicitadaDateTimePicker.Format = DateTimePickerFormat.Short;
+            FechaSolicitadaDateTimePicker.Location = new Point(194, 138);
+            FechaSolicitadaDateTimePicker.Margin = new Padding(2);
+            FechaSolicitadaDateTimePicker.Name = "FechaSolicitadaDateTimePicker";
+            FechaSolicitadaDateTimePicker.Size = new Size(189, 31);
+            FechaSolicitadaDateTimePicker.TabIndex = 6;
             // 
             // label5
             // 
@@ -140,14 +140,14 @@
             label5.TabIndex = 7;
             label5.Text = "Modalidad:";
             // 
-            // comboBox2
+            // ModalidadCombo
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(701, 362);
-            comboBox2.Margin = new Padding(2);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(237, 33);
-            comboBox2.TabIndex = 8;
+            ModalidadCombo.FormattingEnabled = true;
+            ModalidadCombo.Location = new Point(701, 362);
+            ModalidadCombo.Margin = new Padding(2);
+            ModalidadCombo.Name = "ModalidadCombo";
+            ModalidadCombo.Size = new Size(237, 33);
+            ModalidadCombo.TabIndex = 8;
             // 
             // label6
             // 
@@ -159,13 +159,13 @@
             label6.TabIndex = 9;
             label6.Text = "Transporte:";
             // 
-            // textBox2
+            // TransporteText
             // 
-            textBox2.Location = new Point(511, 135);
-            textBox2.Margin = new Padding(2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(434, 31);
-            textBox2.TabIndex = 10;
+            TransporteText.Location = new Point(511, 135);
+            TransporteText.Margin = new Padding(2);
+            TransporteText.Name = "TransporteText";
+            TransporteText.Size = new Size(434, 31);
+            TransporteText.TabIndex = 10;
             // 
             // label7
             // 
@@ -190,14 +190,14 @@
             label8.TabIndex = 12;
             label8.Text = "SKU del Cliente:";
             // 
-            // comboBox3
+            // SKUCombo
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(194, 304);
-            comboBox3.Margin = new Padding(2);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(281, 33);
-            comboBox3.TabIndex = 13;
+            SKUCombo.FormattingEnabled = true;
+            SKUCombo.Location = new Point(194, 304);
+            SKUCombo.Margin = new Padding(2);
+            SKUCombo.Name = "SKUCombo";
+            SKUCombo.Size = new Size(281, 33);
+            SKUCombo.TabIndex = 13;
             // 
             // label9
             // 
@@ -209,23 +209,23 @@
             label9.TabIndex = 14;
             label9.Text = "Cantidad a Pedir:";
             // 
-            // textBox3
+            // CantAPedirText
             // 
-            textBox3.Location = new Point(194, 365);
-            textBox3.Margin = new Padding(2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(281, 31);
-            textBox3.TabIndex = 15;
+            CantAPedirText.Location = new Point(194, 365);
+            CantAPedirText.Margin = new Padding(2);
+            CantAPedirText.Name = "CantAPedirText";
+            CantAPedirText.Size = new Size(281, 31);
+            CantAPedirText.TabIndex = 15;
             // 
-            // button1
+            // AgregarALaOrdenBtn
             // 
-            button1.Location = new Point(33, 420);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(912, 34);
-            button1.TabIndex = 16;
-            button1.Text = "Agregar a la Orden";
-            button1.UseVisualStyleBackColor = true;
+            AgregarALaOrdenBtn.Location = new Point(33, 420);
+            AgregarALaOrdenBtn.Margin = new Padding(2);
+            AgregarALaOrdenBtn.Name = "AgregarALaOrdenBtn";
+            AgregarALaOrdenBtn.Size = new Size(912, 34);
+            AgregarALaOrdenBtn.TabIndex = 16;
+            AgregarALaOrdenBtn.Text = "Agregar a la Orden";
+            AgregarALaOrdenBtn.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -240,36 +240,36 @@
             label10.TabIndex = 17;
             label10.Text = "DETALLE DE PRODUCTOS EN LA ORDEN";
             // 
-            // listView1
+            // DetallesDeProductosListView
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader5 });
-            listView1.Location = new Point(34, 522);
-            listView1.Margin = new Padding(2);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(912, 182);
-            listView1.TabIndex = 18;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            DetallesDeProductosListView.Columns.AddRange(new ColumnHeader[] { SKUCol, DescripcionCol, CantPedidaCol, ModalidadCol });
+            DetallesDeProductosListView.Location = new Point(34, 522);
+            DetallesDeProductosListView.Margin = new Padding(2);
+            DetallesDeProductosListView.Name = "DetallesDeProductosListView";
+            DetallesDeProductosListView.Size = new Size(912, 182);
+            DetallesDeProductosListView.TabIndex = 18;
+            DetallesDeProductosListView.UseCompatibleStateImageBehavior = false;
+            DetallesDeProductosListView.View = View.Details;
             // 
-            // columnHeader1
+            // SKUCol
             // 
-            columnHeader1.Text = "SKU";
-            columnHeader1.Width = 100;
+            SKUCol.Text = "SKU";
+            SKUCol.Width = 100;
             // 
-            // columnHeader2
+            // DescripcionCol
             // 
-            columnHeader2.Text = "Descripcion del Producto";
-            columnHeader2.Width = 250;
+            DescripcionCol.Text = "Descripcion del Producto";
+            DescripcionCol.Width = 250;
             // 
-            // columnHeader3
+            // CantPedidaCol
             // 
-            columnHeader3.Text = "Cant. Pedida";
-            columnHeader3.Width = 120;
+            CantPedidaCol.Text = "Cant. Pedida";
+            CantPedidaCol.Width = 120;
             // 
-            // columnHeader5
+            // ModalidadCol
             // 
-            columnHeader5.Text = "Modalidad";
-            columnHeader5.Width = 200;
+            ModalidadCol.Text = "Modalidad";
+            ModalidadCol.Width = 200;
             // 
             // label11
             // 
@@ -281,54 +281,54 @@
             label11.TabIndex = 19;
             label11.Text = "Cantidad Disponible:";
             // 
-            // textBox4
+            // CantDisponibleText
             // 
-            textBox4.BackColor = SystemColors.AppWorkspace;
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(701, 302);
-            textBox4.Margin = new Padding(2);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(237, 31);
-            textBox4.TabIndex = 20;
+            CantDisponibleText.BackColor = SystemColors.AppWorkspace;
+            CantDisponibleText.BorderStyle = BorderStyle.FixedSingle;
+            CantDisponibleText.Location = new Point(701, 302);
+            CantDisponibleText.Margin = new Padding(2);
+            CantDisponibleText.Name = "CantDisponibleText";
+            CantDisponibleText.ReadOnly = true;
+            CantDisponibleText.Size = new Size(237, 31);
+            CantDisponibleText.TabIndex = 20;
             // 
-            // button2
+            // QuitarBtn
             // 
-            button2.Location = new Point(824, 709);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(122, 34);
-            button2.TabIndex = 21;
-            button2.Text = "Quitar ";
-            button2.UseVisualStyleBackColor = true;
+            QuitarBtn.Location = new Point(824, 709);
+            QuitarBtn.Margin = new Padding(2);
+            QuitarBtn.Name = "QuitarBtn";
+            QuitarBtn.Size = new Size(122, 34);
+            QuitarBtn.TabIndex = 21;
+            QuitarBtn.Text = "Quitar ";
+            QuitarBtn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // CancelarBtn
             // 
-            button4.Location = new Point(746, 758);
-            button4.Margin = new Padding(2);
-            button4.Name = "button4";
-            button4.Size = new Size(200, 34);
-            button4.TabIndex = 23;
-            button4.Text = "Cancelar";
-            button4.UseVisualStyleBackColor = true;
+            CancelarBtn.Location = new Point(746, 758);
+            CancelarBtn.Margin = new Padding(2);
+            CancelarBtn.Name = "CancelarBtn";
+            CancelarBtn.Size = new Size(200, 34);
+            CancelarBtn.TabIndex = 23;
+            CancelarBtn.Text = "Cancelar";
+            CancelarBtn.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // IngresarOPBtn
             // 
-            button5.Location = new Point(452, 758);
-            button5.Margin = new Padding(2);
-            button5.Name = "button5";
-            button5.Size = new Size(284, 34);
-            button5.TabIndex = 24;
-            button5.Text = "Ingresar Orden de Preparacion";
-            button5.UseVisualStyleBackColor = true;
+            IngresarOPBtn.Location = new Point(452, 758);
+            IngresarOPBtn.Margin = new Padding(2);
+            IngresarOPBtn.Name = "IngresarOPBtn";
+            IngresarOPBtn.Size = new Size(284, 34);
+            IngresarOPBtn.TabIndex = 24;
+            IngresarOPBtn.Text = "Ingresar Orden de Preparacion";
+            IngresarOPBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // DNITransportistaText
             // 
-            textBox5.Location = new Point(198, 195);
-            textBox5.Margin = new Padding(2);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(237, 31);
-            textBox5.TabIndex = 26;
+            DNITransportistaText.Location = new Point(198, 195);
+            DNITransportistaText.Margin = new Padding(2);
+            DNITransportistaText.Name = "DNITransportistaText";
+            DNITransportistaText.Size = new Size(237, 31);
+            DNITransportistaText.TabIndex = 26;
             // 
             // label12
             // 
@@ -345,30 +345,30 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(968, 805);
-            Controls.Add(textBox5);
+            Controls.Add(DNITransportistaText);
             Controls.Add(label12);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button2);
-            Controls.Add(textBox4);
+            Controls.Add(IngresarOPBtn);
+            Controls.Add(CancelarBtn);
+            Controls.Add(QuitarBtn);
+            Controls.Add(CantDisponibleText);
             Controls.Add(label11);
-            Controls.Add(listView1);
+            Controls.Add(DetallesDeProductosListView);
             Controls.Add(label10);
-            Controls.Add(button1);
-            Controls.Add(textBox3);
+            Controls.Add(AgregarALaOrdenBtn);
+            Controls.Add(CantAPedirText);
             Controls.Add(label9);
-            Controls.Add(comboBox3);
+            Controls.Add(SKUCombo);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(textBox2);
+            Controls.Add(TransporteText);
             Controls.Add(label6);
-            Controls.Add(comboBox2);
+            Controls.Add(ModalidadCombo);
             Controls.Add(label5);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(FechaSolicitadaDateTimePicker);
             Controls.Add(label4);
-            Controls.Add(textBox1);
+            Controls.Add(CUITClienteText);
             Controls.Add(label3);
-            Controls.Add(comboBox1);
+            Controls.Add(ClienteCombo);
             Controls.Add(label2);
             Controls.Add(label1);
             Margin = new Padding(2);
@@ -382,33 +382,33 @@
 
         private Label label1;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox ClienteCombo;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox CUITClienteText;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker FechaSolicitadaDateTimePicker;
         private Label label5;
-        private ComboBox comboBox2;
+        private ComboBox ModalidadCombo;
         private Label label6;
-        private TextBox textBox2;
+        private TextBox TransporteText;
         private Label label7;
         private Label label8;
-        private ComboBox comboBox3;
+        private ComboBox SKUCombo;
         private Label label9;
-        private TextBox textBox3;
-        private Button button1;
+        private TextBox CantAPedirText;
+        private Button AgregarALaOrdenBtn;
         private Label label10;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
+        private ListView DetallesDeProductosListView;
+        private ColumnHeader SKUCol;
+        private ColumnHeader DescripcionCol;
+        private ColumnHeader CantPedidaCol;
         private Label label11;
-        private TextBox textBox4;
-        private Button button2;
-        private ColumnHeader columnHeader5;
-        private Button button4;
-        private Button button5;
-        private TextBox textBox5;
+        private TextBox CantDisponibleText;
+        private Button QuitarBtn;
+        private ColumnHeader ModalidadCol;
+        private Button CancelarBtn;
+        private Button IngresarOPBtn;
+        private TextBox DNITransportistaText;
         private Label label12;
     }
 }
