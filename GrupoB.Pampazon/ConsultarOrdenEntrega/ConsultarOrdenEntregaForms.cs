@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GrupoB.Pampazon
+namespace GrupoB.Pampazon.ConsultarOrdenEntrega
 {
-    public partial class ConsultarOrdenEntregaForm : Form
+    public partial class ConsultarOrdenEntregaForms : Form
     {
-        public ConsultarOrdenEntregaForm()
+        public ConsultarOrdenEntregaForms()
         {
             InitializeComponent();
         }
