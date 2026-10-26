@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,12 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
         public RegistrarMermasEIncidenciasForm()
         {
             InitializeComponent();
+
+            SectorDepositoCombo.SelectedIndexChanged += SectorDepositoCombo_SelectedIndexChanged;
+            ReportarBtn.Click += ReportarBtn_Click;
+            CancelarBtn.Click += CancelarBtn_Click;
+
+            CargarDatosIniciales();
         }
 
         private void RegistrarMermasEIncidenciasForm_Load(object sender, EventArgs e)
