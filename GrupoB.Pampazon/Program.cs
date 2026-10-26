@@ -1,4 +1,4 @@
-using GrupoB.Pampazon.IngresoDeOrdenDePreparacion;
+using GrupoB.Pampazon.RegistrarMermasEIncidencias;
 
 namespace GrupoB.Pampazon
 {
@@ -13,7 +13,7 @@ namespace GrupoB.Pampazon
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EmitirOrdenDeSeleccionForm());
+            Application.Run(new RegistrarMermasEIncidenciasForm());
         }
     }
 }

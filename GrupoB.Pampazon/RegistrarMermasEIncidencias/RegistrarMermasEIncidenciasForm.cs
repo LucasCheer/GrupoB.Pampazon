@@ -87,10 +87,22 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 return;
             }
 
-            if (CoordenadaText.Enabled && string.IsNullOrWhiteSpace(CoordenadaText.Text))
+            if (CoordenadaText.Enabled)
             {
-                MessageBox.Show("Debe ingresar la coordenada física X-Y-Z para el sector Almacén.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                string coordenada = CoordenadaText.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(coordenada))
+                {
+                    MessageBox.Show("Debe ingresar la coordenada física X-Y-Z para el sector Almacén.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Valida estrictamente el formato XX-XX-XX
+                if (!System.Text.RegularExpressions.Regex.IsMatch(coordenada, @"^[A-Za-z0-9]{2}-[A-Za-z0-9]{2}-[A-Za-z0-9]{2}$"))
+                {
+                    MessageBox.Show("El formato de la coordenada es inválido. Debe ser estrictamente XX-XX-XX (ejemplo: 12-34-56).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             if (SKUProductoCombo.SelectedItem == null)
