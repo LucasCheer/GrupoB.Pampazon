@@ -137,7 +137,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 return;
             }
 
-            MessageBox.Show($"Incidencia {NumeroIncidenciaText.Text} registrada con éxito.Las {cantidad} unidades del SKU {sku.CodigoSKU} han pasado a estado 'En Cuarentena'.",
+            MessageBox.Show($"Incidencia {NumeroIncidenciaText.Text} registrada con éxito. Las {cantidad} unidades del SKU {sku.CodigoSKU} han pasado a estado 'En Cuarentena'.",
                 "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             CargarDatosIniciales();
