@@ -11,9 +11,9 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
         {
             return new List<SKUMerma>
             {
-                new SKUMerma { CodigoSKU = "SKU-PMP-001", Descripcion = "Aceite de Girasol 1L", StockDisponible = 150 },
-                new SKUMerma { CodigoSKU = "SKU-PMP-002", Descripcion = "Harina de Trigo 0000 1kg", StockDisponible = 80 },
-                new SKUMerma { CodigoSKU = "SKU-PMP-003", Descripcion = "Fideos Tallarines 500g", StockDisponible = 200 }
+                new SKUMerma { CodigoSKU = "SKU-PMP-001", Descripcion = "Aceite de Girasol 1L", InventarioDisponible = 150 },
+                new SKUMerma { CodigoSKU = "SKU-PMP-002", Descripcion = "Harina de Trigo 0000 1kg", InventarioDisponible = 80 },
+                new SKUMerma { CodigoSKU = "SKU-PMP-003", Descripcion = "Fideos Tallarines 500g", InventarioDisponible = 200 }
             };
         }
 
