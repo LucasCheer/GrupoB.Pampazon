@@ -86,6 +86,7 @@
             label6 = new Label();
             groupBox4 = new GroupBox();
             agregartodasBTN = new Button();
+            button3 = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -235,7 +236,7 @@
             // 
             // agregarBTN
             // 
-            agregarBTN.Location = new Point(540, 202);
+            agregarBTN.Location = new Point(537, 202);
             agregarBTN.Name = "agregarBTN";
             agregarBTN.Size = new Size(95, 29);
             agregarBTN.TabIndex = 20;
@@ -245,7 +246,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(540, 236);
+            button2.Location = new Point(537, 236);
             button2.Name = "button2";
             button2.Size = new Size(95, 29);
             button2.TabIndex = 33;
@@ -527,7 +528,7 @@
             // 
             // agregartodasBTN
             // 
-            agregartodasBTN.Location = new Point(540, 144);
+            agregartodasBTN.Location = new Point(537, 144);
             agregartodasBTN.Name = "agregartodasBTN";
             agregartodasBTN.Size = new Size(95, 52);
             agregartodasBTN.TabIndex = 41;
@@ -535,11 +536,21 @@
             agregartodasBTN.UseVisualStyleBackColor = true;
             agregartodasBTN.Click += agregartodasBTN_Click;
             // 
+            // button3
+            // 
+            button3.Location = new Point(537, 271);
+            button3.Name = "button3";
+            button3.Size = new Size(95, 52);
+            button3.TabIndex = 42;
+            button3.Text = "Quitar todas <<";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // EmitirOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1174, 923);
+            Controls.Add(button3);
             Controls.Add(agregartodasBTN);
             Controls.Add(listView1);
             Controls.Add(label4);
@@ -636,5 +647,6 @@
         private Label label3;
         private Label opDINLBLD;
         private Button buscarBTN;
+        private Button button3;
     }
 }
