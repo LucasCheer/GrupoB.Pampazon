@@ -10,6 +10,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
         public string NumeroOP { get; set; }
         public DateTime FechaRecibida { get; set; }
         public string RazonSocial { get; set; }
+        public string Estado { get; set; }
         public List<DetalleOP> Productos { get; set; } = new List<DetalleOP>();
 
 

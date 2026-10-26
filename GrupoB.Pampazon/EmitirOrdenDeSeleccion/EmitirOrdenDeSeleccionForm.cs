@@ -20,6 +20,8 @@ namespace GrupoB.Pampazon
             InitializeComponent();
         }
 
+        //Carga ordenes en la lista de ordenes pendientes al iniciar el formulario y 
+        //filtro por cliente
         private void EmitirOrdenDeSeleccionForm_Load_1(object sender, EventArgs e)
         {
             this.clienteBox.DisplayMember = "RazonSocial";
@@ -32,28 +34,26 @@ namespace GrupoB.Pampazon
             CargarOrdenesEnListView(modelo.ops);
         }
 
+        //Funcion que carga las ordenes en la lista de ordenes pendientes
         private void CargarOrdenesEnListView(List<OP> ordenes)
         {
             this.opLIST.Items.Clear();
             foreach (var orden in ordenes)
             {
-                ListViewItem item = new ListViewItem(orden.NumeroOP);
-                item.SubItems.Add(orden.FechaRecibida.ToShortDateString());
-                item.SubItems.Add(orden.RazonSocial);
+                if (orden.Estado == "Pendiente")
+                {
+                    ListViewItem item = new ListViewItem(orden.NumeroOP);
+                    item.SubItems.Add(orden.FechaRecibida.ToShortDateString());
+                    //item.SubItems.Add(orden.RazonSocial);
 
 
-                // Guardamos el objeto OP completo en la propiedad Tag para no perder sus datos
-                item.Tag = orden;
-
-                this.opLIST.Items.Add(item);
+                    // Guardamos el objeto OP completo en la propiedad Tag para no perder sus datos
+                    item.Tag = orden;
+                    this.opLIST.Items.Add(item);
+                }
             }
         }
 
-        private void limpiarBTN_Click(object sender, EventArgs e)
-        {
-            this.clienteBox.SelectedIndex = -1;
-            CargarOrdenesEnListView(modelo.ops);
-        }
 
         private void buscarBTN_Click(object sender, EventArgs e)
         {
@@ -83,7 +83,6 @@ namespace GrupoB.Pampazon
                 string sku = "SKU-" + producto.Replace(" ", "").ToUpper();
                 string descripcion = producto;
                 string cantidad = cantidadStr;
-                string ubicacion = "A-01-05";
                 string opAsociada = op;
 
                 ListViewItem itemExistente = null;
@@ -122,7 +121,6 @@ namespace GrupoB.Pampazon
                     ListViewItem nuevoItem = new ListViewItem(sku);
                     nuevoItem.SubItems.Add(descripcion);
                     nuevoItem.SubItems.Add(cantidad);
-                    nuevoItem.SubItems.Add(ubicacion);
                     nuevoItem.SubItems.Add(opAsociada);
 
                     // Guardamos una lista con la OP dentro del Tag de la nueva fila
@@ -142,10 +140,7 @@ namespace GrupoB.Pampazon
                     modelo.ops.Remove(opOriginal);
                 }
             }
-            if (this.allCHCK.Checked)
-            {
-                this.allCHCK.Checked = false;
-            }
+
         }
 
 
@@ -189,17 +184,6 @@ namespace GrupoB.Pampazon
             }
         }
 
-        private void allCHCK_CheckedChanged(object sender, EventArgs e)
-        {
-            bool seleccionar = this.allCHCK.Checked;
-
-            opLIST.BeginUpdate(); // Evita el parpadeo visual al seleccionar muchos ítems
-            foreach (ListViewItem item in opLIST.Items)
-            {
-                item.Selected = seleccionar;
-            }
-            opLIST.EndUpdate();
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -352,6 +336,61 @@ namespace GrupoB.Pampazon
             }
         }
 
+        private void buscarBTN_Click_2(object sender, EventArgs e)
+        {
+            string cliente = clienteBox.Text;
+            string numeroOP = opTX.Text.Trim();
 
+            var ordenesFiltradas = modelo.ops
+                .Where(op =>
+                    op.Estado == "Pendiente" &&
+                    (cliente == "" || op.RazonSocial == cliente) &&
+                    (numeroOP == "" || op.NumeroOP.ToString() == numeroOP)
+                )
+                .ToList();
+
+            opLIST.Items.Clear();
+
+            foreach (var op in ordenesFiltradas)
+            {
+                var item = new ListViewItem(op.NumeroOP.ToString());
+                item.SubItems.Add(op.FechaRecibida.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(op.RazonSocial);
+
+                opLIST.Items.Add(item);
+            }
+        }
+
+
+
+
+        private void agregartodasBTN_Click(object sender, EventArgs e)
+        {
+            if (opLIST.Items.Count == 0)
+            {
+                MessageBox.Show(
+                    "No hay órdenes de preparación pendientes para agregar.",
+                    "Atención",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+
+            // Seleccionar todas las órdenes de la lista izquierda
+            foreach (ListViewItem item in opLIST.Items)
+            {
+                item.Selected = true;
+            }
+
+            // Mover todas las órdenes a la lista derecha
+            MoverElementosSeleccionados(opLIST, opselectLIST);
+        }
+
+        private void limpiarBTN_Click_1(object sender, EventArgs e)
+        {
+            this.clienteBox.SelectedIndex = -1;
+            CargarOrdenesEnListView(modelo.ops);
+        }
     }
 }
