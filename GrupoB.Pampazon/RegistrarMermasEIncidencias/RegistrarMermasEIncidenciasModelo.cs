@@ -19,7 +19,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
 
         public List<string> ObtenerSectores()
         {
-            return new List<string> { "- Seleccionar Etapa -", "Almacenamiento/Estiba", "Picking", "Packing", "Recepción" };
+            return new List<string> { "- Seleccionar Sector -", "Almacén", "Preparación", "Descarga", "Despacho" };
         }
         
         public List<string> ObtenerEtapas()
