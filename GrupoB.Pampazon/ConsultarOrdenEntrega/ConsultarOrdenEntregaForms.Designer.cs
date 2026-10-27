@@ -71,6 +71,7 @@
             button2.TabIndex = 22;
             button2.Text = "Cerrar";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // listView1
             // 
@@ -103,8 +104,8 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Checked = true;
-            checkBox1.CheckState = CheckState.Indeterminate;
+            checkBox1.Checked = false;
+            checkBox1.CheckState = CheckState.Unchecked;
             checkBox1.Location = new Point(10, 73);
             checkBox1.Margin = new Padding(3, 4, 3, 4);
             checkBox1.Name = "checkBox1";
@@ -112,6 +113,7 @@
             checkBox1.TabIndex = 13;
             checkBox1.Text = "Mostrar órdenes de entrega con pedidos pendientes";
             checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // comboBox1
             // 
@@ -132,6 +134,7 @@
             button1.TabIndex = 9;
             button1.Text = "Consultar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
