@@ -98,7 +98,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 }
 
                 // Valida estrictamente el formato XX-XX-XX
-                if (!System.Text.RegularExpressions.Regex.IsMatch(coordenada, @"^[A-Za-z0-9]{2}-[A-Za-z0-9]{2}-[A-Za-z0-9]{2}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(coordenada, @"^\d{2}-\d{2}-\d{2}$"))
                 {
                     MessageBox.Show("El formato de la coordenada es inválido. Debe ser estrictamente XX-XX-XX (ejemplo: 12-34-56).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
