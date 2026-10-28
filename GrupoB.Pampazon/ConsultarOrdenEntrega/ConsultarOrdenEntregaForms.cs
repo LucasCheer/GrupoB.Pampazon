@@ -20,31 +20,31 @@ namespace GrupoB.Pampazon.ConsultarOrdenEntrega
 
         private void CargarDatosIniciales()
         {
-            checkBox1.Checked = false;
-            comboBox1.Items.Clear();
+            checkBoxOrdenesConPendientes.Checked = false;
+            comboBoxNumeroOrdenEntrega.Items.Clear();
             foreach (string codigoOrden in modelo.ObtenerCodigosOrdenes(false))
             {
-                comboBox1.Items.Add(codigoOrden);
+                comboBoxNumeroOrdenEntrega.Items.Add(codigoOrden);
             }
-            comboBox1.Text = modelo.ObtenerPlaceholder();
+            comboBoxNumeroOrdenEntrega.Text = modelo.ObtenerPlaceholder();
             ActualizarListaPedidos(new List<Pedido>());
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxOrdenesConPendientes_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox1.Items.Clear();
-            List<string> ordenesFiltradas = modelo.ObtenerCodigosOrdenes(checkBox1.Checked);
+            comboBoxNumeroOrdenEntrega.Items.Clear();
+            List<string> ordenesFiltradas = modelo.ObtenerCodigosOrdenes(checkBoxOrdenesConPendientes.Checked);
             foreach (string codigoOrden in ordenesFiltradas)
             {
-                comboBox1.Items.Add(codigoOrden);
+                comboBoxNumeroOrdenEntrega.Items.Add(codigoOrden);
             }
-            comboBox1.Text = modelo.ObtenerPlaceholder();
+            comboBoxNumeroOrdenEntrega.Text = modelo.ObtenerPlaceholder();
             ActualizarListaPedidos(new List<Pedido>());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void botonConsultar_Click(object sender, EventArgs e)
         {
-            string ordenSeleccionada = comboBox1.Text;
+            string ordenSeleccionada = comboBoxNumeroOrdenEntrega.Text;
 
             if (string.IsNullOrWhiteSpace(ordenSeleccionada) || ordenSeleccionada == modelo.ObtenerPlaceholder())
             {
@@ -71,8 +71,8 @@ namespace GrupoB.Pampazon.ConsultarOrdenEntrega
 
         private void ActualizarListaPedidos(List<Pedido> pedidos)
         {
-            listView1.BeginUpdate();
-            listView1.Items.Clear();
+            listaPedidos.BeginUpdate();
+            listaPedidos.Items.Clear();
             foreach (Pedido p in pedidos)
             {
                 ListViewItem item = new ListViewItem(new string[]
@@ -81,12 +81,12 @@ namespace GrupoB.Pampazon.ConsultarOrdenEntrega
                     p.FechaPedido.ToString("dd\\/MM\\/yyyy"),
                     p.Estado.ToString()
                 });
-                listView1.Items.Add(item);
+                listaPedidos.Items.Add(item);
             }
-            listView1.EndUpdate();
+            listaPedidos.EndUpdate();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void botonCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
