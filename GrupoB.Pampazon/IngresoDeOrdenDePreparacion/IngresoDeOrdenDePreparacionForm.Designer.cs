@@ -109,7 +109,6 @@
             CUITClienteText.Name = "CUITClienteText";
             CUITClienteText.Size = new Size(244, 31);
             CUITClienteText.TabIndex = 4;
-            CUITClienteText.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
