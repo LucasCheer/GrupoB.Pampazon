@@ -82,7 +82,7 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text) || JustificacionAuditoriaText.Text.Trim().Length & lt; 10)
+            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text) || JustificacionAuditoriaText.Text.Trim().Length < 10)
             {
                 MessageBox.Show("El dictamen del supervisor debe contener al menos 10 caracteres explicativos.",
                     "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
