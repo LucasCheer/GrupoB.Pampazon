@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
         public ControlarMermasEIncidenciasForm()
         {
             InitializeComponent();
+
+            // Vinculamos los eventos a sus respectivos métodos
+            this.Load += ControlarMermasEIncidenciasForm_Load;
+            IncidenciasPendientesListView.SelectedIndexChanged += IncidenciasPendientesListView_SelectedIndexChanged;
+
+            AprobarBtn.Click += AprobarBtn_Click;
+            RechazarBtn.Click += RechazarBtn_Click;
         }
 
         private void ControlarMermasEIncidenciasForm_Load(object sender, EventArgs e)
@@ -74,9 +82,9 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text))
+            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text) || JustificacionAuditoriaText.Text.Trim().Length < 10)
             {
-                MessageBox.Show("Debe ingresar el dictamen / justificación de la auditoría.",
+                MessageBox.Show("El dictamen del supervisor debe contener al menos 10 caracteres explicativos.",
                     "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -89,7 +97,32 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
             // Refresca el ListView (la incidencia desaparece)
             CargarGrillaIncidencias();
         }
-        
+
+        // Botón: RECHAZAR / REINTEGRAR
+        private void RechazarBtn_Click(object sender, EventArgs e)
+        {
+            if (incidenciaSeleccionada == null)
+            {
+                MessageBox.Show("Debe seleccionar una incidencia de la lista superior.",
+                    "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text))
+            {
+                MessageBox.Show("Debe ingresar el dictamen o motivo de rechazo.",
+                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            modelo.RechazarYReintegrar(incidenciaSeleccionada, JustificacionAuditoriaText.Text.Trim());
+
+            MessageBox.Show($"Incidencia {incidenciaSeleccionada.NumeroIncidencia} rechazada. Las {incidenciaSeleccionada.Cantidad} unidades se reintegraron al inventario disponible.",
+                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Refresca el ListView
+            CargarGrillaIncidencias();
+        }
         private void LimpiarCampos()
         {
             incidenciaSeleccionada = null;
