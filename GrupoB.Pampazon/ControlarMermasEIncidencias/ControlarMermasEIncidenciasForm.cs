@@ -89,7 +89,32 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
             // Refresca el ListView (la incidencia desaparece)
             CargarGrillaIncidencias();
         }
-        
+
+        // Botón: RECHAZAR / REINTEGRAR
+        private void RechazarBtn_Click(object sender, EventArgs e)
+        {
+            if (incidenciaSeleccionada == null)
+            {
+                MessageBox.Show("Debe seleccionar una incidencia de la lista superior.",
+                    "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text))
+            {
+                MessageBox.Show("Debe ingresar el dictamen o motivo de rechazo.",
+                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            modelo.RechazarYReintegrar(incidenciaSeleccionada, JustificacionAuditoriaText.Text.Trim());
+
+            MessageBox.Show($"Incidencia {incidenciaSeleccionada.NumeroIncidencia} rechazada. Las {incidenciaSeleccionada.Cantidad} unidades se reintegraron al inventario disponible.",
+                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Refresca el ListView
+            CargarGrillaIncidencias();
+        }
         private void LimpiarCampos()
         {
             incidenciaSeleccionada = null;
