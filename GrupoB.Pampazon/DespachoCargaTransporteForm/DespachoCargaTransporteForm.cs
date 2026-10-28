@@ -20,30 +20,30 @@ namespace GrupoB.Pampazon.DespachoCargaTransporte
         /// </summary>
         private void ConfigurarControlesReadOnly()
         {
-            textBox7.ReadOnly = true; // Transporte validado
-            textBox3.ReadOnly = true; // Total de cajas a subir
+            TransporteValidadoText.ReadOnly = true; // Transporte validado
+            TotalCajasText.ReadOnly = true; // Total de cajas a subir
         }
 
         /// <summary>
-        /// Botón 'Consultar cargas' (button1) - Pasos 3, 4 y 5
+        /// Botón 'Consultar cargas' (ConsultarCargasBtn) - Pasos 3, 4 y 5
         /// </summary>
-        private void button1_Click(object sender, EventArgs e)
+        private void ConsultarCargasBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                string dni = textBox6.Text; // DNI Transportista
+                string dni = DNITransportistaText.Text; // DNI Transportista
                 DespachoDTO dto = modelo.ConsultarCargas(dni);
 
                 // Paso 5: Mostrar datos en pantalla
-                textBox7.Text = dto.TransporteValidado;
+                TransporteValidadoText.Text = dto.TransporteValidado;
 
-                listView1.Items.Clear();
+                CajasListView.Items.Clear();
                 foreach (string cajaId in dto.ListaCajas)
                 {
-                    listView1.Items.Add(new ListViewItem(cajaId));
+                    CajasListView.Items.Add(new ListViewItem(cajaId));
                 }
 
-                textBox3.Text = dto.TotalCajas.ToString();
+                TotalCajasText.Text = dto.TotalCajas.ToString();
             }
             catch (Exception ex)
             {
@@ -54,13 +54,13 @@ namespace GrupoB.Pampazon.DespachoCargaTransporte
         }
 
         /// <summary>
-        /// Botón 'Registrar carga' (button2) - Pasos 8 al 14
+        /// Botón 'Registrar carga' (RegistrarCargaBtn) - Pasos 8 al 14
         /// </summary>
-        private void button2_Click(object sender, EventArgs e)
+        private void RegistrarCargaBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                bool confirmacionTildada = checkBox1.Checked; // Casilla 'Cajas entregadas'
+                bool confirmacionTildada = CajasEntregadasCheck.Checked; // Casilla 'Cajas entregadas'
 
                 if (modelo.RegistrarCarga(confirmacionTildada))
                 {
@@ -83,31 +83,26 @@ namespace GrupoB.Pampazon.DespachoCargaTransporte
         }
 
         /// <summary>
-        /// Botón 'Cerrar' (button3)
+        /// Botón 'Cerrar' (CerrarBtn)
         /// </summary>
-        private void button3_Click(object sender, EventArgs e)
+        private void CerrarBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void LimpiarCamposCargas()
         {
-            textBox7.Clear();
-            listView1.Items.Clear();
-            textBox3.Clear();
-            checkBox1.Checked = false;
+            TransporteValidadoText.Clear();
+            CajasListView.Items.Clear();
+            TotalCajasText.Clear();
+            CajasEntregadasCheck.Checked = false;
         }
 
         private void LimpiarTodo()
         {
-            textBox6.Clear();
+            DNITransportistaText.Clear();
             LimpiarCamposCargas();
             modelo.LimpiarDatos();
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

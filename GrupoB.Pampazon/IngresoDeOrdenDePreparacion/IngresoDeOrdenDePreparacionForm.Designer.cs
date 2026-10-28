@@ -91,6 +91,8 @@
             ClienteCombo.Name = "ClienteCombo";
             ClienteCombo.Size = new Size(352, 33);
             ClienteCombo.TabIndex = 2;
+            ClienteCombo.DropDownStyle = ComboBoxStyle.DropDownList;
+            ClienteCombo.SelectedIndexChanged += ClienteCombo_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -147,6 +149,7 @@
             ModalidadCombo.Name = "ModalidadCombo";
             ModalidadCombo.Size = new Size(237, 33);
             ModalidadCombo.TabIndex = 8;
+            ModalidadCombo.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // label6
             // 
@@ -197,6 +200,8 @@
             SKUCombo.Name = "SKUCombo";
             SKUCombo.Size = new Size(281, 33);
             SKUCombo.TabIndex = 13;
+            SKUCombo.DropDownStyle = ComboBoxStyle.DropDownList;
+            SKUCombo.SelectedIndexChanged += SKUCombo_SelectedIndexChanged;
             // 
             // label9
             // 
@@ -225,6 +230,7 @@
             AgregarALaOrdenBtn.TabIndex = 16;
             AgregarALaOrdenBtn.Text = "Agregar a la Orden";
             AgregarALaOrdenBtn.UseVisualStyleBackColor = true;
+            AgregarALaOrdenBtn.Click += AgregarALaOrdenBtn_Click;
             // 
             // label10
             // 
@@ -300,6 +306,7 @@
             QuitarBtn.TabIndex = 21;
             QuitarBtn.Text = "Quitar ";
             QuitarBtn.UseVisualStyleBackColor = true;
+            QuitarBtn.Click += QuitarBtn_Click;
             // 
             // CancelarBtn
             // 
@@ -310,6 +317,7 @@
             CancelarBtn.TabIndex = 23;
             CancelarBtn.Text = "Cancelar";
             CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
             // 
             // IngresarOPBtn
             // 
@@ -320,6 +328,7 @@
             IngresarOPBtn.TabIndex = 24;
             IngresarOPBtn.Text = "Ingresar Orden de Preparacion";
             IngresarOPBtn.UseVisualStyleBackColor = true;
+            IngresarOPBtn.Click += IngresarOPBtn_Click;
             // 
             // DNITransportistaText
             // 

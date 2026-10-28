@@ -30,19 +30,19 @@
         {
             label1 = new Label();
             groupBox2 = new GroupBox();
-            button1 = new Button();
-            textBox7 = new TextBox();
+            ConsultarCargasBtn = new Button();
+            DNITransportistaText = new TextBox();
             label7 = new Label();
             groupBox1 = new GroupBox();
-            listView1 = new ListView();
-            merccol = new ColumnHeader();
-            textBox3 = new TextBox();
+            CajasListView = new ListView();
+            IDMercaderiaCol = new ColumnHeader();
+            TotalCajasText = new TextBox();
             label4 = new Label();
-            textBox6 = new TextBox();
+            TransporteValidadoText = new TextBox();
             label9 = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            checkBox1 = new CheckBox();
+            RegistrarCargaBtn = new Button();
+            CerrarBtn = new Button();
+            CajasEntregadasCheck = new CheckBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -60,8 +60,8 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(textBox7);
+            groupBox2.Controls.Add(ConsultarCargasBtn);
+            groupBox2.Controls.Add(DNITransportistaText);
             groupBox2.Controls.Add(label7);
             groupBox2.FlatStyle = FlatStyle.System;
             groupBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -74,26 +74,25 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "IDENTIFICACIÓN DEL TRANSPORTE EN PUERTA";
             // 
-            // button1
+            // ConsultarCargasBtn
             // 
-            button1.FlatStyle = FlatStyle.System;
-            button1.Location = new Point(479, 50);
-            button1.Margin = new Padding(4, 3, 4, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(211, 38);
-            button1.TabIndex = 18;
-            button1.Text = "Consultar cargas";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            ConsultarCargasBtn.FlatStyle = FlatStyle.System;
+            ConsultarCargasBtn.Location = new Point(479, 50);
+            ConsultarCargasBtn.Margin = new Padding(4, 3, 4, 3);
+            ConsultarCargasBtn.Name = "ConsultarCargasBtn";
+            ConsultarCargasBtn.Size = new Size(211, 38);
+            ConsultarCargasBtn.TabIndex = 18;
+            ConsultarCargasBtn.Text = "Consultar cargas";
+            ConsultarCargasBtn.UseVisualStyleBackColor = true;
+            ConsultarCargasBtn.Click += ConsultarCargasBtn_Click;
             // 
-            // textBox7
+            // DNITransportistaText
             // 
-            textBox7.Location = new Point(286, 45);
-            textBox7.Margin = new Padding(4, 3, 4, 3);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(178, 35);
-            textBox7.TabIndex = 12;
-            textBox7.TextChanged += textBox7_TextChanged;
+            DNITransportistaText.Location = new Point(286, 45);
+            DNITransportistaText.Margin = new Padding(4, 3, 4, 3);
+            DNITransportistaText.Name = "DNITransportistaText";
+            DNITransportistaText.Size = new Size(178, 35);
+            DNITransportistaText.TabIndex = 12;
             // 
             // label7
             // 
@@ -107,10 +106,10 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(listView1);
-            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(CajasListView);
+            groupBox1.Controls.Add(TotalCajasText);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBox6);
+            groupBox1.Controls.Add(TransporteValidadoText);
             groupBox1.Controls.Add(label9);
             groupBox1.FlatStyle = FlatStyle.System;
             groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -123,33 +122,33 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "CAJAS ASIGNADAS PARA HOY";
             // 
-            // listView1
+            // CajasListView
             // 
-            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { merccol });
-            listView1.ForeColor = SystemColors.InfoText;
-            listView1.Location = new Point(9, 88);
-            listView1.Margin = new Padding(4, 3, 4, 3);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(225, 209);
-            listView1.TabIndex = 20;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            CajasListView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CajasListView.Columns.AddRange(new ColumnHeader[] { IDMercaderiaCol });
+            CajasListView.ForeColor = SystemColors.InfoText;
+            CajasListView.Location = new Point(9, 88);
+            CajasListView.Margin = new Padding(4, 3, 4, 3);
+            CajasListView.Name = "CajasListView";
+            CajasListView.Size = new Size(225, 209);
+            CajasListView.TabIndex = 20;
+            CajasListView.UseCompatibleStateImageBehavior = false;
+            CajasListView.View = View.Details;
             // 
-            // merccol
+            // IDMercaderiaCol
             // 
-            merccol.Text = "ID Mercadería";
-            merccol.Width = 153;
+            IDMercaderiaCol.Text = "ID Mercadería";
+            IDMercaderiaCol.Width = 153;
             // 
-            // textBox3
+            // TotalCajasText
             // 
-            textBox3.Location = new Point(246, 318);
-            textBox3.Margin = new Padding(4, 3, 4, 3);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(80, 35);
-            textBox3.TabIndex = 19;
-            textBox3.TextAlign = HorizontalAlignment.Center;
+            TotalCajasText.Location = new Point(246, 318);
+            TotalCajasText.Margin = new Padding(4, 3, 4, 3);
+            TotalCajasText.Name = "TotalCajasText";
+            TotalCajasText.ReadOnly = true;
+            TotalCajasText.Size = new Size(80, 35);
+            TotalCajasText.TabIndex = 19;
+            TotalCajasText.TextAlign = HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -161,14 +160,14 @@
             label4.TabIndex = 18;
             label4.Text = "Total de cajas a subir:";
             // 
-            // textBox6
+            // TransporteValidadoText
             // 
-            textBox6.Location = new Point(237, 38);
-            textBox6.Margin = new Padding(4, 3, 4, 3);
-            textBox6.Name = "textBox6";
-            textBox6.ReadOnly = true;
-            textBox6.Size = new Size(290, 35);
-            textBox6.TabIndex = 15;
+            TransporteValidadoText.Location = new Point(237, 38);
+            TransporteValidadoText.Margin = new Padding(4, 3, 4, 3);
+            TransporteValidadoText.Name = "TransporteValidadoText";
+            TransporteValidadoText.ReadOnly = true;
+            TransporteValidadoText.Size = new Size(290, 35);
+            TransporteValidadoText.TabIndex = 15;
             // 
             // label9
             // 
@@ -180,47 +179,47 @@
             label9.TabIndex = 14;
             label9.Text = "Transporte validado:";
             // 
-            // button2
+            // RegistrarCargaBtn
             // 
-            button2.Location = new Point(309, 583);
-            button2.Margin = new Padding(4, 5, 4, 5);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 38);
-            button2.TabIndex = 11;
-            button2.Text = "Registrar carga";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            RegistrarCargaBtn.Location = new Point(309, 583);
+            RegistrarCargaBtn.Margin = new Padding(4, 5, 4, 5);
+            RegistrarCargaBtn.Name = "RegistrarCargaBtn";
+            RegistrarCargaBtn.Size = new Size(150, 38);
+            RegistrarCargaBtn.TabIndex = 11;
+            RegistrarCargaBtn.Text = "Registrar carga";
+            RegistrarCargaBtn.UseVisualStyleBackColor = true;
+            RegistrarCargaBtn.Click += RegistrarCargaBtn_Click;
             // 
-            // button3
+            // CerrarBtn
             // 
-            button3.Location = new Point(467, 583);
-            button3.Margin = new Padding(4, 5, 4, 5);
-            button3.Name = "button3";
-            button3.Size = new Size(107, 38);
-            button3.TabIndex = 12;
-            button3.Text = "Cerrar";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            CerrarBtn.Location = new Point(467, 583);
+            CerrarBtn.Margin = new Padding(4, 5, 4, 5);
+            CerrarBtn.Name = "CerrarBtn";
+            CerrarBtn.Size = new Size(107, 38);
+            CerrarBtn.TabIndex = 12;
+            CerrarBtn.Text = "Cerrar";
+            CerrarBtn.UseVisualStyleBackColor = true;
+            CerrarBtn.Click += CerrarBtn_Click;
             // 
-            // checkBox1
+            // CajasEntregadasCheck
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(20, 592);
-            checkBox1.Margin = new Padding(4, 5, 4, 5);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(295, 29);
-            checkBox1.TabIndex = 13;
-            checkBox1.Text = "Cajas entregadas al transportista";
-            checkBox1.UseVisualStyleBackColor = true;
+            CajasEntregadasCheck.AutoSize = true;
+            CajasEntregadasCheck.Location = new Point(20, 592);
+            CajasEntregadasCheck.Margin = new Padding(4, 5, 4, 5);
+            CajasEntregadasCheck.Name = "CajasEntregadasCheck";
+            CajasEntregadasCheck.Size = new Size(295, 29);
+            CajasEntregadasCheck.TabIndex = 13;
+            CajasEntregadasCheck.Text = "Cajas entregadas al transportista";
+            CajasEntregadasCheck.UseVisualStyleBackColor = true;
             // 
             // DespachoCargaTransporteForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(753, 655);
-            Controls.Add(checkBox1);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(CajasEntregadasCheck);
+            Controls.Add(CerrarBtn);
+            Controls.Add(RegistrarCargaBtn);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(label1);
@@ -239,17 +238,17 @@
         private Label label1;
         private GroupBox groupBox2;
         private GroupBox groupBox1;
-        private TextBox textBox6;
+        private TextBox TransporteValidadoText;
         private Label label9;
-        private TextBox textBox7;
+        private TextBox DNITransportistaText;
         private Label label7;
-        private TextBox textBox3;
+        private TextBox TotalCajasText;
         private Label label4;
-        private Button button1;
-        private ListView listView1;
-        private ColumnHeader merccol;
-        private Button button2;
-        private Button button3;
-        private CheckBox checkBox1;
+        private Button ConsultarCargasBtn;
+        private ListView CajasListView;
+        private ColumnHeader IDMercaderiaCol;
+        private Button RegistrarCargaBtn;
+        private Button CerrarBtn;
+        private CheckBox CajasEntregadasCheck;
     }
 }

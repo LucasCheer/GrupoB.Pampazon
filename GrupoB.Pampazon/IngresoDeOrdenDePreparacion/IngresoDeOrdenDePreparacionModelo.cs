@@ -58,6 +58,21 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             };
         }
 
+        // CUIT de cada cliente del mock (datos de prueba; 11 dígitos para pasar ValidarCabecera)
+        private readonly Dictionary<string, string> cuitClientes = new Dictionary<string, string>
+        {
+            { "Empresa Alfa S.A.", "30-71234567-8" },
+            { "Logística Beta S.R.L.", "30-79876543-2" }
+        };
+
+        public string ObtenerCuitPorCliente(string cliente)
+        {
+            if (string.IsNullOrWhiteSpace(cliente))
+                return string.Empty;
+
+            return cuitClientes.TryGetValue(cliente, out string? cuit) ? cuit : string.Empty;
+        }
+
         public List<string> ObtenerClientesActivos()
         {
             return new List<string>(catalogoClientes.Keys);

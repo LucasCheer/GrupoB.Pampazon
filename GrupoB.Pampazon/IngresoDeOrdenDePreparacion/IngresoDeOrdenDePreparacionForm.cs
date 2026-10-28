@@ -48,6 +48,16 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 SKUCombo.ValueMember = "SKU";
                 SKUCombo.SelectedIndex = -1;
 
+                // Completa el CUIT del cliente seleccionado
+                CUITClienteText.Text = modelo.ObtenerCuitPorCliente(clienteSeleccionado);
+
+                CantDisponibleText.Clear();
+            }
+            else
+            {
+                // Sin cliente seleccionado: no deben quedar SKUs ni CUIT de otro cliente
+                SKUCombo.DataSource = null;
+                CUITClienteText.Clear();
                 CantDisponibleText.Clear();
             }
         }
