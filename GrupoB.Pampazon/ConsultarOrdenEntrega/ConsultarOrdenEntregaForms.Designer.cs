@@ -32,59 +32,59 @@
             ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Entregado" }, -1);
             ListViewItem listViewItem3 = new ListViewItem(new string[] { "P-1002", "11/10/2026", "Pendiente" }, -1);
             ListViewItem listViewItem4 = new ListViewItem(new string[] { "P-1003", "11/10/2026", "Pendiente" }, -1);
-            groupBox2 = new GroupBox();
-            button2 = new Button();
-            listView1 = new ListView();
+            contenedorConsultarOE = new GroupBox();
+            botonCerrar = new Button();
+            listaPedidos = new ListView();
             colPedido = new ColumnHeader();
             fechacol = new ColumnHeader();
             estadoCol = new ColumnHeader();
-            checkBox1 = new CheckBox();
-            comboBox1 = new ComboBox();
-            button1 = new Button();
-            label2 = new Label();
-            groupBox2.SuspendLayout();
+            checkBoxOrdenesConPendientes = new CheckBox();
+            comboBoxNumeroOrdenEntrega = new ComboBox();
+            botonConsultar = new Button();
+            labelNumOrdenEntrega = new Label();
+            contenedorConsultarOE.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox2
+            // contenedorConsultarOE
             // 
-            groupBox2.Controls.Add(button2);
-            groupBox2.Controls.Add(listView1);
-            groupBox2.Controls.Add(checkBox1);
-            groupBox2.Controls.Add(comboBox1);
-            groupBox2.Controls.Add(button1);
-            groupBox2.Controls.Add(label2);
-            groupBox2.FlatStyle = FlatStyle.System;
-            groupBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(12, 12);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(539, 376);
-            groupBox2.TabIndex = 10;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "CONSULTAR ORDEN DE ENTREGA";
+            contenedorConsultarOE.Controls.Add(botonCerrar);
+            contenedorConsultarOE.Controls.Add(listaPedidos);
+            contenedorConsultarOE.Controls.Add(checkBoxOrdenesConPendientes);
+            contenedorConsultarOE.Controls.Add(comboBoxNumeroOrdenEntrega);
+            contenedorConsultarOE.Controls.Add(botonConsultar);
+            contenedorConsultarOE.Controls.Add(labelNumOrdenEntrega);
+            contenedorConsultarOE.FlatStyle = FlatStyle.System;
+            contenedorConsultarOE.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contenedorConsultarOE.Location = new Point(12, 12);
+            contenedorConsultarOE.Name = "contenedorConsultarOE";
+            contenedorConsultarOE.Size = new Size(539, 376);
+            contenedorConsultarOE.TabIndex = 10;
+            contenedorConsultarOE.TabStop = false;
+            contenedorConsultarOE.Text = "CONSULTAR ORDEN DE ENTREGA";
             // 
-            // button2
+            // botonCerrar
             // 
-            button2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(371, 323);
-            button2.Name = "button2";
-            button2.Size = new Size(123, 36);
-            button2.TabIndex = 22;
-            button2.Text = "Cerrar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            botonCerrar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            botonCerrar.Location = new Point(371, 323);
+            botonCerrar.Name = "botonCerrar";
+            botonCerrar.Size = new Size(123, 36);
+            botonCerrar.TabIndex = 22;
+            botonCerrar.Text = "Cerrar";
+            botonCerrar.UseVisualStyleBackColor = true;
+            botonCerrar.Click += botonCerrar_Click;
             // 
-            // listView1
+            // listaPedidos
             // 
-            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { colPedido, fechacol, estadoCol });
-            listView1.ForeColor = SystemColors.InfoText;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4 });
-            listView1.Location = new Point(7, 132);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(364, 184);
-            listView1.TabIndex = 21;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listaPedidos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            listaPedidos.Columns.AddRange(new ColumnHeader[] { colPedido, fechacol, estadoCol });
+            listaPedidos.ForeColor = SystemColors.InfoText;
+            listaPedidos.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4 });
+            listaPedidos.Location = new Point(7, 132);
+            listaPedidos.Name = "listaPedidos";
+            listaPedidos.Size = new Size(364, 184);
+            listaPedidos.TabIndex = 21;
+            listaPedidos.UseCompatibleStateImageBehavior = false;
+            listaPedidos.View = View.Details;
             // 
             // colPedido
             // 
@@ -101,74 +101,74 @@
             estadoCol.Text = "Estado";
             estadoCol.Width = 100;
             // 
-            // checkBox1
+            // checkBoxOrdenesConPendientes
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Checked = false;
-            checkBox1.CheckState = CheckState.Unchecked;
-            checkBox1.Location = new Point(10, 73);
-            checkBox1.Margin = new Padding(3, 4, 3, 4);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(450, 27);
-            checkBox1.TabIndex = 13;
-            checkBox1.Text = "Mostrar órdenes de entrega con pedidos pendientes";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            checkBoxOrdenesConPendientes.AutoSize = true;
+            checkBoxOrdenesConPendientes.Checked = false;
+            checkBoxOrdenesConPendientes.CheckState = CheckState.Unchecked;
+            checkBoxOrdenesConPendientes.Location = new Point(10, 73);
+            checkBoxOrdenesConPendientes.Margin = new Padding(3, 4, 3, 4);
+            checkBoxOrdenesConPendientes.Name = "checkBoxOrdenesConPendientes";
+            checkBoxOrdenesConPendientes.Size = new Size(450, 27);
+            checkBoxOrdenesConPendientes.TabIndex = 13;
+            checkBoxOrdenesConPendientes.Text = "Mostrar órdenes de entrega con pedidos pendientes";
+            checkBoxOrdenesConPendientes.UseVisualStyleBackColor = true;
+            checkBoxOrdenesConPendientes.CheckedChanged += checkBoxOrdenesConPendientes_CheckedChanged;
             // 
-            // comboBox1
+            // comboBoxNumeroOrdenEntrega
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(221, 29);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(143, 31);
-            comboBox1.TabIndex = 12;
-            comboBox1.Text = "OE-1000-1";
+            comboBoxNumeroOrdenEntrega.FormattingEnabled = true;
+            comboBoxNumeroOrdenEntrega.Location = new Point(221, 29);
+            comboBoxNumeroOrdenEntrega.Margin = new Padding(3, 4, 3, 4);
+            comboBoxNumeroOrdenEntrega.Name = "comboBoxNumeroOrdenEntrega";
+            comboBoxNumeroOrdenEntrega.Size = new Size(143, 31);
+            comboBoxNumeroOrdenEntrega.TabIndex = 12;
+            comboBoxNumeroOrdenEntrega.Text = "OE-1000-1";
             // 
-            // button1
+            // botonConsultar
             // 
-            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(371, 28);
-            button1.Name = "button1";
-            button1.Size = new Size(123, 36);
-            button1.TabIndex = 9;
-            button1.Text = "Consultar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            botonConsultar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            botonConsultar.Location = new Point(371, 28);
+            botonConsultar.Name = "botonConsultar";
+            botonConsultar.Size = new Size(123, 36);
+            botonConsultar.TabIndex = 9;
+            botonConsultar.Text = "Consultar";
+            botonConsultar.UseVisualStyleBackColor = true;
+            botonConsultar.Click += botonConsultar_Click;
             // 
-            // label2
+            // labelNumOrdenEntrega
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(6, 35);
-            label2.Name = "label2";
-            label2.Size = new Size(197, 23);
-            label2.TabIndex = 3;
-            label2.Text = "Nro. Orden de Entrega:";
+            labelNumOrdenEntrega.AutoSize = true;
+            labelNumOrdenEntrega.Location = new Point(6, 35);
+            labelNumOrdenEntrega.Name = "labelNumOrdenEntrega";
+            labelNumOrdenEntrega.Size = new Size(197, 23);
+            labelNumOrdenEntrega.TabIndex = 3;
+            labelNumOrdenEntrega.Text = "Nro. Orden de Entrega:";
             // 
             // ConsultarOrdenEntregaForms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 408);
-            Controls.Add(groupBox2);
+            Controls.Add(contenedorConsultarOE);
             Name = "ConsultarOrdenEntregaForms";
             Text = "ConsultarOrdenEntregaForms";
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            contenedorConsultarOE.ResumeLayout(false);
+            contenedorConsultarOE.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox2;
-        private Button button2;
-        private ListView listView1;
+        private GroupBox contenedorConsultarOE;
+        private Button botonCerrar;
+        private ListView listaPedidos;
         private ColumnHeader colPedido;
         private ColumnHeader fechacol;
         private ColumnHeader estadoCol;
-        private CheckBox checkBox1;
-        private ComboBox comboBox1;
-        private Button button1;
-        private Label label2;
+        private CheckBox checkBoxOrdenesConPendientes;
+        private ComboBox comboBoxNumeroOrdenEntrega;
+        private Button botonConsultar;
+        private Label labelNumOrdenEntrega;
     }
 }
