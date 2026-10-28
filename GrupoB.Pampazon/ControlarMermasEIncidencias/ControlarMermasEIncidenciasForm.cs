@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
         public ControlarMermasEIncidenciasForm()
         {
             InitializeComponent();
+
+            // Vinculamos los eventos a sus respectivos métodos
+            this.Load += ControlarMermasEIncidenciasForm_Load;
+            IncidenciasPendientesListView.SelectedIndexChanged += IncidenciasPendientesListView_SelectedIndexChanged;
+
+            AprobarBtn.Click += AprobarBtn_Click;
+            RechazarBtn.Click += RechazarBtn_Click;
         }
 
         private void ControlarMermasEIncidenciasForm_Load(object sender, EventArgs e)
