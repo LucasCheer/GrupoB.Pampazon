@@ -16,6 +16,12 @@ namespace GrupoB.Pampazon.DespachoCargaTransporte
     {
         private DespachoDTO despachoActual;
 
+        // Constructor sin parámetros para instanciarse correctamente desde el Form
+        public DespachoCargaTransporteModelo()
+        {
+            despachoActual = null;
+        }
+
         /// <summary>
         /// Valida y consulta las cargas asignadas para el DNI del transportista.
         /// Pasos 3, 4 y 5 del Caso de Uso, e implementa excepciones 3.1, 4.1 y 4.2.

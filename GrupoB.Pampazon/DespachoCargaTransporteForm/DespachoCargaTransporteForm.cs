@@ -104,5 +104,10 @@ namespace GrupoB.Pampazon.DespachoCargaTransporte
             LimpiarCamposCargas();
             modelo.LimpiarDatos();
         }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
