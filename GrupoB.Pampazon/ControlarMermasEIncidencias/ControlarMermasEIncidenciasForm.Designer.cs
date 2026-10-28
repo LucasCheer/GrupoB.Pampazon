@@ -60,6 +60,7 @@
             // IncidenciasPendientesListView
             // 
             IncidenciasPendientesListView.Columns.AddRange(new ColumnHeader[] { NumeroIncidenciaCol, FechaHoraCol, OperarioCol, SKUDescripcionCol, UbicacionCol, CantCol, CausaCol });
+            IncidenciasPendientesListView.FullRowSelect = true;
             IncidenciasPendientesListView.Location = new Point(24, 78);
             IncidenciasPendientesListView.Name = "IncidenciasPendientesListView";
             IncidenciasPendientesListView.Size = new Size(1036, 161);
@@ -118,6 +119,7 @@
             JustificacionOperadorText.Location = new Point(24, 285);
             JustificacionOperadorText.Multiline = true;
             JustificacionOperadorText.Name = "JustificacionOperadorText";
+            JustificacionOperadorText.ReadOnly = true;
             JustificacionOperadorText.Size = new Size(1036, 127);
             JustificacionOperadorText.TabIndex = 4;
             // 
