@@ -12,167 +12,104 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
     public partial class RegistrarMermasEIncidenciasForm : Form
     {
         private readonly RegistrarMermasEIncidenciasModelo modelo = new();
+
         public RegistrarMermasEIncidenciasForm()
         {
             InitializeComponent();
 
-            SectorDepositoCombo.SelectedIndexChanged += SectorDepositoCombo_SelectedIndexChanged;
-            ReportarBtn.Click += ReportarBtn_Click;
-            CancelarBtn.Click += CancelarBtn_Click;
-
-            CargarDatosIniciales();
+            modelo = new RegistrarMermasEIncidenciasModelo();
+            InicializarPantalla();
         }
-
-        private void RegistrarMermasEIncidenciasForm_Load(object sender, EventArgs e)
+        private void InicializarPantalla()
         {
-            CargarDatosIniciales();
-        }
-
-        private void CargarDatosIniciales()
-        {
-            // 1. Cargar datos inmutables de cabecera
+            // Carga de datos de lectura y combos desde el modelo
             NumeroIncidenciaText.Text = modelo.GenerarNuevoNumeroIncidencia();
             FechaYHoraText.Text = modelo.ObtenerFechaHoraActual();
             OperarioText.Text = modelo.ObtenerOperarioLogueado();
+            OperarioText.ReadOnly = true;
+            NumeroIncidenciaText.ReadOnly = true;
+            FechaYHoraText.ReadOnly = true;
 
-            // 2. Cargar listas desplegables
             SectorDepositoCombo.DataSource = modelo.ObtenerSectores();
+            SectorDepositoCombo.SelectedIndex = -1;
+
             EtapaOperativaCombo.DataSource = modelo.ObtenerEtapas();
+            EtapaOperativaCombo.SelectedIndex = -1;
+
             TipoCausaIncidenciaCombo.DataSource = modelo.ObtenerTipoCausa();
+            TipoCausaIncidenciaCombo.SelectedIndex = -1;
 
             SKUProductoCombo.DataSource = modelo.ObtenerSKUsDePrueba();
+            SKUProductoCombo.DisplayMember = "Descripcion";
+            SKUProductoCombo.ValueMember = "CodigoSKU";
+            SKUProductoCombo.SelectedIndex = -1;
 
-            // 3. Regla inicial: Coordenada deshabilitada por defecto
-            CoordenadaText.Enabled = false;
-            CoordenadaText.Text = "";
-            CantAfectadaText.Text = "";
-            JustificacionIncidenciaText.Text = "";
+            LimpiarTodo();
         }
 
-        // Regla: La Coordenada X-Y-Z solo se habilita si el Sector es "Almacén"
         private void SectorDepositoCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sectorSeleccionado = SectorDepositoCombo.SelectedItem != null ? SectorDepositoCombo.SelectedItem.ToString() : "";
-
-            if (sectorSeleccionado == "Almacén")
+            string sector = SectorDepositoCombo.SelectedItem?.ToString(); 
+            CoordenadaText.Enabled = (sector == "Almacén"); 
+            if (!CoordenadaText.Enabled)
             {
-                CoordenadaText.Enabled = true;
-            }
-            else
-            {
-                CoordenadaText.Enabled = false;
-                CoordenadaText.Text = ""; // Se limpia al cambiar a otro sector
+                CoordenadaText.Clear();
             }
         }
 
-        // Actualiza el inventario disponible al cambiar de SKU
-        private void SKUProductoCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // No requiere actualizar ningún TextBox de stock en la UI.
-            // La validación contra el stock disponible se hace internamente al hacer clic en Reportar.
-        }
-
-        // Botón Principal: Validar e Ingresar Incidencia
         private void ReportarBtn_Click(object sender, EventArgs e)
         {
-            if (SectorDepositoCombo.SelectedIndex <= 0)
+            try
             {
-                MessageBox.Show("Debe seleccionar un sector del depósito.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Extrae los valores directamente de los controles de pantalla
+                string sector = SectorDepositoCombo.SelectedItem?.ToString(); 
+                string etapa = EtapaOperativaCombo.SelectedItem?.ToString(); 
+                string coordenada = CoordenadaText.Text; 
+                SKUMerma skuSeleccionado = SKUProductoCombo.SelectedItem as SKUMerma; 
+                string tipoCausa = TipoCausaIncidenciaCombo.SelectedItem?.ToString(); 
+                string cantidadTexto = CantAfectadaText.Text; 
+                string justificacion = JustificacionIncidenciaText.Text;
+
+                string numeroIncidencia = modelo.RegistrarIncidencia(
+                    sector,
+                    etapa,
+                    coordenada,
+                    skuSeleccionado,
+                    tipoCausa,
+                    cantidadTexto,
+                    justificacion
+                );
+
+                MessageBox.Show($"Incidencia de merma registrada con éxito en estado 'A Revisión'.\\n\\nNúmero Identificador: {numeroIncidencia}",
+                    "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarTodo();
             }
-
-            if (EtapaOperativaCombo.SelectedIndex <= 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar una etapa operativa.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show(ex.Message, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            if (CoordenadaText.Enabled)
-            {
-                string coordenada = CoordenadaText.Text.Trim();
-
-                if (string.IsNullOrWhiteSpace(coordenada))
-                {
-                    MessageBox.Show("Debe ingresar la coordenada física X-Y-Z para el sector Almacén.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Valida estrictamente el formato XX-XX-XX
-                if (!System.Text.RegularExpressions.Regex.IsMatch(coordenada, @"^\d{2}-\d{2}-\d{2}$"))
-                {
-                    MessageBox.Show("El formato de la coordenada es inválido. Debe ser estrictamente XX-XX-XX (ejemplo: 12-34-56).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-
-            if (SKUProductoCombo.SelectedItem == null)
-            {
-                MessageBox.Show("Debe seleccionar un producto SKU.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (TipoCausaIncidenciaCombo.SelectedIndex <= 0)
-            {
-                MessageBox.Show("Debe seleccionar el tipo / causa de la incidencia.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int cantidad;
-            if (!int.TryParse(CantAfectadaText.Text, out cantidad) || cantidad <= 0)
-            {
-                MessageBox.Show("La cantidad afectada debe ser un número entero mayor a cero.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            SKUMerma sku = (SKUMerma)SKUProductoCombo.SelectedItem;
-            if (cantidad > sku.InventarioDisponible)
-            {
-                MessageBox.Show($"La cantidad afectada ({cantidad}) no puede superar el stock disponible ({sku.InventarioDisponible}).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(JustificacionIncidenciaText.Text) || JustificacionIncidenciaText.Text.Trim().Length < 10)
-            {
-                MessageBox.Show("Debe ingresar una justificación técnica de al menos 10 caracteres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // A) Obtenemos el objeto SKU seleccionado en el ComboBox
-            SKUMerma skuSeleccionado = (SKUMerma)SKUProductoCombo.SelectedItem;
-
-            // B) Armamos el objeto 'nuevaIncidencia' con la información ingresada por el usuario
-            IncidenciaMerma nuevaIncidencia = new IncidenciaMerma
-            {
-                NumeroIncidencia = NumeroIncidenciaText.Text,
-                FechaHora = FechaYHoraText.Text,
-                OperarioResponsable = OperarioText.Text,
-                Sector = SectorDepositoCombo.SelectedItem.ToString(),
-                EtapaOperativa = EtapaOperativaCombo.SelectedItem.ToString(),
-                CoordenadaXYZ = CoordenadaText.Enabled ? CoordenadaText.Text.Trim() : "N/A",
-                SKU = skuSeleccionado.CodigoSKU,
-                TipoCausa = TipoCausaIncidenciaCombo.SelectedItem.ToString(),
-                CantidadAfectada = cantidad,
-                JustificacionTecnica = JustificacionIncidenciaText.Text.Trim()
-            };
-
-            // C) Le pasamos los datos al Modelo para que ejecute la operación
-            bool exito = modelo.RegistrarIncidencia(nuevaIncidencia);
-
-            if (exito)
-            {
-                MessageBox.Show($"Incidencia {nuevaIncidencia.NumeroIncidencia} registrada exitosamente.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                CargarDatosIniciales();
-            }
-
-           
         }
 
-        // Botón Cancelar: Cierra la ventana sin pedir confirmación
-        private void CancelarBtn_Click(object sender, EventArgs e)
+        private void CancelarBtn_Click(object sender, EventArgs e) 
+        { 
+            this.Close(); 
+        }
+
+        private void LimpiarTodo()
         {
-            this.Close();
+            SectorDepositoCombo.SelectedIndex = -1; 
+            EtapaOperativaCombo.SelectedIndex = -1; 
+            CoordenadaText.Clear(); 
+            CoordenadaText.Enabled = false; 
+            SKUProductoCombo.SelectedIndex = -1; 
+            TipoCausaIncidenciaCombo.SelectedIndex = -1; 
+            CantAfectadaText.Clear(); 
+            JustificacionIncidenciaText.Clear();
+
+            // Refresca el correlativo y datos del servidor
+            NumeroIncidenciaText.Text = modelo.GenerarNuevoNumeroIncidencia(); 
+            FechaYHoraText.Text = modelo.ObtenerFechaHoraActual();
         }
     }
 }
