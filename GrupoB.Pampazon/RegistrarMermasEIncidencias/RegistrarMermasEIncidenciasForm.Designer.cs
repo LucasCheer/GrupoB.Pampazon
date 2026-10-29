@@ -273,6 +273,7 @@
             CancelarBtn.TabIndex = 36;
             CancelarBtn.Text = "Cancelar";
             CancelarBtn.UseVisualStyleBackColor = true;
+            CancelarBtn.Click += CancelarBtn_Click;
             // 
             // SKUProductoCombo
             // 
