@@ -67,6 +67,7 @@
             IncidenciasPendientesListView.TabIndex = 1;
             IncidenciasPendientesListView.UseCompatibleStateImageBehavior = false;
             IncidenciasPendientesListView.View = View.Details;
+            IncidenciasPendientesListView.SelectedIndexChanged += IncidenciasPendientesListView_SelectedIndexChanged;
             // 
             // NumeroIncidenciaCol
             // 
