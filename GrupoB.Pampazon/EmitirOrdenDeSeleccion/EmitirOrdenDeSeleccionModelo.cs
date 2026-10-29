@@ -36,15 +36,23 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
             new DetalleOP { SKU = "CAB-COB-04MM-05", Descripcion = "Rollo Cable Cobre 4mm (100m)", Cantidad = 150 },
             new DetalleOP { SKU = "ELEC-KEY-MEC-01", Descripcion = "Teclado Mecánico Español", Cantidad = 45 }
         },Estado = "Finalizada"
-    }
+    },
+        new OP{NumeroOP = "OP006",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "A S.A",
+        Productos = new List<DetalleOP>
+        {
+            new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 200 },
+            new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 80 }
+        },Estado = "Pendiente"
+    },
+
+
 };
 
         public List <OS> os = new List<OS>()
         {
 
-        }
-            
-            ;
+        };
+        public List<detalleOS> detalleOS = new List<detalleOS>();
 
         public List<Producto> productos = new List<Producto>
         {
@@ -57,10 +65,8 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
             new Producto{SKU = "ELEC-KEY-MEC-01",Descripcion = "Teclado Mecánico Español",Categoria = "Electrónica",PrecioUnitario = 55.00m,UbicacionAlmacen = "A-03-04"}
         };
 
-        internal bool AgregarProducto(Producto producto, int cantidad)
+        internal bool AgregarOS(string SKU, int cantidad)
         {
-            //material no necesita validarse pq el usuario no interviene ni lo modifica.
-
 
             if (cantidad <= 0)
             {
@@ -68,20 +74,11 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
                 return false;
             }
 
+            detalleOS.Add(new detalleOS { SKU = SKU, Cantidad = cantidad });
+
             //aca pueden ir otras validaciones de negocio.
             //....
 
-            //foreach (var det in os)
-            //{
-            //    if (det.Productos.Any(p => p.SKU == producto.SKU))
-            //    {
-            //        det.Productos.canti += cantidad;
-            //        return true;
-            //    }
-            //}
-
-
-            //detalle.Add(new DetalleSolicitud { IdMaterial = material.Id, Cantidad = cantidad });
 
             return true; //para indicar que está todo bien
         }
