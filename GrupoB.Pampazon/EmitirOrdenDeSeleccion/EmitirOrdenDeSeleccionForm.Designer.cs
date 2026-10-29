@@ -43,7 +43,7 @@
             cancelarBTN = new Button();
             UbicacionCOL = new ColumnHeader();
             clienteBox = new ComboBox();
-            generarOSBTN = new Button();
+            emitirOSBTN = new Button();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
@@ -51,7 +51,7 @@
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             agregarBTN = new Button();
-            button2 = new Button();
+            quitarBTN = new Button();
             opselectLIST = new ListView();
             columnHeader8 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
@@ -73,7 +73,7 @@
             groupBox3 = new GroupBox();
             opDINLBLD = new Label();
             label2 = new Label();
-            listView2 = new ListView();
+            opselectdetailsLIST = new ListView();
             columnHeader11 = new ColumnHeader();
             columnHeader12 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
@@ -86,7 +86,7 @@
             label6 = new Label();
             groupBox4 = new GroupBox();
             agregartodasBTN = new Button();
-            button3 = new Button();
+            quitartodasBTN = new Button();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -194,15 +194,15 @@
             clienteBox.Size = new Size(409, 28);
             clienteBox.TabIndex = 14;
             // 
-            // generarOSBTN
+            // emitirOSBTN
             // 
-            generarOSBTN.Location = new Point(816, 890);
-            generarOSBTN.Name = "generarOSBTN";
-            generarOSBTN.Size = new Size(213, 29);
-            generarOSBTN.TabIndex = 22;
-            generarOSBTN.Text = "Emitir orden de selección";
-            generarOSBTN.UseVisualStyleBackColor = true;
-            generarOSBTN.Click += generarOSBTN_Click_1;
+            emitirOSBTN.Location = new Point(816, 890);
+            emitirOSBTN.Name = "emitirOSBTN";
+            emitirOSBTN.Size = new Size(213, 29);
+            emitirOSBTN.TabIndex = 22;
+            emitirOSBTN.Text = "Emitir orden de selección";
+            emitirOSBTN.UseVisualStyleBackColor = true;
+            emitirOSBTN.Click += generarOSBTN_Click_1;
             // 
             // columnHeader1
             // 
@@ -242,17 +242,17 @@
             agregarBTN.TabIndex = 20;
             agregarBTN.Text = "Agregar >";
             agregarBTN.UseVisualStyleBackColor = true;
-            agregarBTN.Click += button2_Click;
+            agregarBTN.Click += quitarBTN_Click;
             // 
-            // button2
+            // quitarBTN
             // 
-            button2.Location = new Point(537, 236);
-            button2.Name = "button2";
-            button2.Size = new Size(95, 29);
-            button2.TabIndex = 33;
-            button2.Text = "Quitar <";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
+            quitarBTN.Location = new Point(537, 236);
+            quitarBTN.Name = "quitarBTN";
+            quitarBTN.Size = new Size(95, 29);
+            quitarBTN.TabIndex = 33;
+            quitarBTN.Text = "Quitar <";
+            quitarBTN.UseVisualStyleBackColor = true;
+            quitarBTN.Click += quitarBTN_Click;
             // 
             // opselectLIST
             // 
@@ -266,6 +266,7 @@
             opselectLIST.TabIndex = 34;
             opselectLIST.UseCompatibleStateImageBehavior = false;
             opselectLIST.View = View.Details;
+            opselectLIST.SelectedIndexChanged += opselectLIST_SelectedIndexChanged;
             // 
             // columnHeader8
             // 
@@ -389,7 +390,7 @@
             // 
             groupBox3.Controls.Add(opDINLBLD);
             groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(listView2);
+            groupBox3.Controls.Add(opselectdetailsLIST);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(645, 81);
             groupBox3.Name = "groupBox3";
@@ -418,16 +419,16 @@
             label2.TabIndex = 42;
             label2.Text = "Detalle OP";
             // 
-            // listView2
+            // opselectdetailsLIST
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { columnHeader11, columnHeader12, columnHeader13, columnHeader14 });
-            listView2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            listView2.Location = new Point(13, 308);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(492, 158);
-            listView2.TabIndex = 41;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            opselectdetailsLIST.Columns.AddRange(new ColumnHeader[] { columnHeader11, columnHeader12, columnHeader13, columnHeader14 });
+            opselectdetailsLIST.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            opselectdetailsLIST.Location = new Point(13, 308);
+            opselectdetailsLIST.Name = "opselectdetailsLIST";
+            opselectdetailsLIST.Size = new Size(492, 158);
+            opselectdetailsLIST.TabIndex = 41;
+            opselectdetailsLIST.UseCompatibleStateImageBehavior = false;
+            opselectdetailsLIST.View = View.Details;
             // 
             // columnHeader11
             // 
@@ -536,29 +537,30 @@
             agregartodasBTN.UseVisualStyleBackColor = true;
             agregartodasBTN.Click += agregartodasBTN_Click;
             // 
-            // button3
+            // quitartodasBTN
             // 
-            button3.Location = new Point(537, 271);
-            button3.Name = "button3";
-            button3.Size = new Size(95, 52);
-            button3.TabIndex = 42;
-            button3.Text = "Quitar todas <<";
-            button3.UseVisualStyleBackColor = true;
+            quitartodasBTN.Location = new Point(537, 271);
+            quitartodasBTN.Name = "quitartodasBTN";
+            quitartodasBTN.Size = new Size(95, 52);
+            quitartodasBTN.TabIndex = 42;
+            quitartodasBTN.Text = "Quitar todas <<";
+            quitartodasBTN.UseVisualStyleBackColor = true;
+            quitartodasBTN.Click += quitartodasBTN_Click;
             // 
             // EmitirOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1174, 923);
-            Controls.Add(button3);
+            Controls.Add(quitartodasBTN);
             Controls.Add(agregartodasBTN);
             Controls.Add(listView1);
             Controls.Add(label4);
             Controls.Add(opdetailsLIST);
             Controls.Add(opselectLIST);
-            Controls.Add(button2);
+            Controls.Add(quitarBTN);
             Controls.Add(agregarBTN);
-            Controls.Add(generarOSBTN);
+            Controls.Add(emitirOSBTN);
             Controls.Add(cancelarBTN);
             Controls.Add(opLIST);
             Controls.Add(groupBox2);
@@ -601,7 +603,7 @@
         private ColumnHeader ModalidadCOL;
         private ComboBox clienteBox;
         private Button button5;
-        private Button generarOSBTN;
+        private Button emitirOSBTN;
         private ColumnHeader ClienteCOL;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
@@ -612,7 +614,7 @@
         private ColumnHeader columnHeader7;
         private ListView listView3;
         private Button agregarBTN;
-        private Button button2;
+        private Button quitarBTN;
         private ListView opselectLIST;
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
@@ -637,7 +639,7 @@
         private ColumnHeader detailMODALIDADCOL;
         private Label label6;
         private Label label2;
-        private ListView listView2;
+        private ListView opselectdetailsLIST;
         private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
         private ColumnHeader columnHeader13;
@@ -647,6 +649,6 @@
         private Label label3;
         private Label opDINLBLD;
         private Button buscarBTN;
-        private Button button3;
+        private Button quitartodasBTN;
     }
 }

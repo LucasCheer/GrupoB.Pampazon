@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "OP-1000", "09/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "OP-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "OP-1002", "10/10/2026" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "OP-1003", "11/10/2026" }, -1);
+            ListViewItem listViewItem5 = new ListViewItem(new string[] { "OP-1000", "09/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem6 = new ListViewItem(new string[] { "OP-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem7 = new ListViewItem(new string[] { "OP-1002", "10/10/2026" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
+            ListViewItem listViewItem8 = new ListViewItem(new string[] { "OP-1003", "11/10/2026" }, -1);
             groupBox1 = new GroupBox();
             listView1 = new ListView();
-            colPedido = new ColumnHeader();
+            colOP = new ColumnHeader();
             colFecha = new ColumnHeader();
             label1 = new Label();
             colEstado = new ColumnHeader();
             button1 = new Button();
-            button2 = new Button();
+            EmitirOrdenBTN = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,36 +48,33 @@
             groupBox1.Controls.Add(listView1);
             groupBox1.FlatStyle = FlatStyle.System;
             groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(10, 46);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(11, 61);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(371, 222);
+            groupBox1.Size = new Size(424, 296);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "SELECCIÓN DE PEDIDO PREPARADO";
+            groupBox1.Text = "SELECCIÓN DE ORDEN DE PREPARACIÓN";
             groupBox1.Enter += groupBox1_Enter;
             // 
             // listView1
             // 
             listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { colPedido, colFecha });
+            listView1.Columns.AddRange(new ColumnHeader[] { colOP, colFecha });
             listView1.ForeColor = SystemColors.InfoText;
-            listViewItem4.Tag = "";
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4 });
-            listView1.Location = new Point(5, 22);
-            listView1.Margin = new Padding(3, 2, 3, 2);
+            listViewItem8.Tag = "";
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem5, listViewItem6, listViewItem7, listViewItem8 });
+            listView1.Location = new Point(6, 29);
             listView1.Name = "listView1";
-            listView1.Size = new Size(360, 181);
+            listView1.Size = new Size(411, 240);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
-            // colPedido
+            // colOP
             // 
-            colPedido.Text = "N°Pedido";
-            colPedido.Width = 153;
+            colOP.Text = "N°OP";
+            colOP.Width = 153;
             // 
             // colFecha
             // 
@@ -88,9 +85,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(10, 7);
+            label1.Location = new Point(11, 9);
             label1.Name = "label1";
-            label1.Size = new Size(341, 32);
+            label1.Size = new Size(424, 41);
             label1.TabIndex = 1;
             label1.Text = "EMITIR ORDEN DE ENTREGA";
             // 
@@ -102,35 +99,32 @@
             // button1
             // 
             button1.FlatStyle = FlatStyle.System;
-            button1.Location = new Point(299, 272);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(342, 363);
             button1.Name = "button1";
-            button1.Size = new Size(82, 22);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 4;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // EmitirOrdenBTN
             // 
-            button2.FlatStyle = FlatStyle.System;
-            button2.Location = new Point(182, 272);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(111, 22);
-            button2.TabIndex = 5;
-            button2.Text = "Emitir Orden";
-            button2.UseVisualStyleBackColor = true;
+            EmitirOrdenBTN.FlatStyle = FlatStyle.System;
+            EmitirOrdenBTN.Location = new Point(129, 363);
+            EmitirOrdenBTN.Name = "EmitirOrdenBTN";
+            EmitirOrdenBTN.Size = new Size(206, 29);
+            EmitirOrdenBTN.TabIndex = 5;
+            EmitirOrdenBTN.Text = "Emitir Orden de preparación";
+            EmitirOrdenBTN.UseVisualStyleBackColor = true;
             // 
             // EmitirOrdenDeEntregaForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(399, 304);
-            Controls.Add(button2);
+            ClientSize = new Size(456, 405);
+            Controls.Add(EmitirOrdenBTN);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(groupBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "EmitirOrdenDeEntregaForm";
             Text = "EmitirOrdenDeEntrega";
             Load += EmitirOrdenDeEntrega_Load;
@@ -144,7 +138,7 @@
         private GroupBox groupBox1;
         private Label label1;
         private ListView listView1;
-        private ColumnHeader colPedido;
+        private ColumnHeader colOP;
         private ColumnHeader colFecha;
 
         public ColumnHeader colSKUu { get; private set; }
@@ -154,7 +148,7 @@
         private ColumnHeader columnHeader3;
         private ColumnHeader colEstado;
         private Button button1;
-        private Button button2;
+        private Button EmitirOrdenBTN;
         private ListViewItem listViewItem1;
         private ListViewItem listViewItem2;
     }

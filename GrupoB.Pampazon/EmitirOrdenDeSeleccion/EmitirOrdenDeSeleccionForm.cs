@@ -44,7 +44,7 @@ namespace GrupoB.Pampazon
                 {
                     ListViewItem item = new ListViewItem(orden.NumeroOP);
                     item.SubItems.Add(orden.FechaRecibida.ToShortDateString());
-                    //item.SubItems.Add(orden.RazonSocial);
+                    item.SubItems.Add(orden.RazonSocial);
 
 
                     // Guardamos el objeto OP completo en la propiedad Tag para no perder sus datos
@@ -55,150 +55,6 @@ namespace GrupoB.Pampazon
         }
 
 
-        private void buscarBTN_Click(object sender, EventArgs e)
-        {
-            if (this.clienteBox.SelectedValue == null)
-            {
-                MessageBox.Show("Por favor, seleccione un cliente para filtrar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            List<OP> ordenesFiltradas = modelo.ops.Where(o => o.RazonSocial == this.clienteBox.Text).ToList();
-            CargarOrdenesEnListView(ordenesFiltradas);
-        }
-
-        private void agregaraOSBTN_Click(object sender, EventArgs e)
-        {
-            for (int i = opLIST.SelectedItems.Count - 1; i >= 0; i--)
-            {
-                ListViewItem itemSeleccionado = opLIST.SelectedItems[i];
-
-                // Recuperar la entidad OP asociada a la fila
-                OP opOriginal = itemSeleccionado.Tag as OP;
-
-                string op = itemSeleccionado.Text;
-                string producto = itemSeleccionado.SubItems[3].Text;
-                string cantidadStr = itemSeleccionado.SubItems[4].Text;
-
-                string sku = "SKU-" + producto.Replace(" ", "").ToUpper();
-                string descripcion = producto;
-                string cantidad = cantidadStr;
-                string opAsociada = op;
-
-                ListViewItem itemExistente = null;
-                foreach (ListViewItem itemConsolidado in opdetailsLIST.Items)
-                {
-                    if (itemConsolidado.Text == sku)
-                    {
-                        itemExistente = itemConsolidado;
-                        break;
-                    }
-                }
-
-                if (itemExistente != null)
-                {
-                    // Si el SKU ya existe en osLIST: actualizar cantidades y OPs asociadas
-                    int cantidadActual = int.Parse(itemExistente.SubItems[2].Text);
-                    int cantidadSumar = int.Parse(cantidad);
-                    itemExistente.SubItems[2].Text = (cantidadActual + cantidadSumar).ToString();
-
-                    string opsActuales = itemExistente.SubItems[4].Text;
-                    if (!opsActuales.Contains(opAsociada))
-                    {
-                        itemExistente.SubItems[4].Text = opsActuales + ", " + opAsociada;
-                    }
-
-                    // Agregar la OP a la lista guardada en Tag
-                    if (opOriginal != null)
-                    {
-                        var listaGuardada = itemExistente.Tag as List<OP>;
-                        listaGuardada?.Add(opOriginal);
-                    }
-                }
-                else
-                {
-                    // Si NO existe: Crear nueva fila en osLIST
-                    ListViewItem nuevoItem = new ListViewItem(sku);
-                    nuevoItem.SubItems.Add(descripcion);
-                    nuevoItem.SubItems.Add(cantidad);
-                    nuevoItem.SubItems.Add(opAsociada);
-
-                    // Guardamos una lista con la OP dentro del Tag de la nueva fila
-                    var listaOPs = new List<OP>();
-                    if (opOriginal != null) listaOPs.Add(opOriginal);
-                    nuevoItem.Tag = listaOPs;
-
-                    opdetailLIST.Items.Add(nuevoItem);
-                }
-
-                // 1. Remover de opLIST
-                opLIST.Items.Remove(itemSeleccionado);
-
-                // 2. Remover del modelo
-                if (opOriginal != null)
-                {
-                    modelo.ops.Remove(opOriginal);
-                }
-            }
-
-        }
-
-
-        private void quitardeOSBTN_Click_1(object sender, EventArgs e)
-        {
-            if (opdetailsLIST.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Por favor, seleccione un elemento del consolidado para quitar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            for (int i = opdetailsLIST.SelectedItems.Count - 1; i >= 0; i--)
-            {
-                ListViewItem itemConsolidado = opdetailsLIST.SelectedItems[i];
-
-                // Recuperar todas las OPs asociadas guardadas en Tag
-                List<OP> opsAsociadas = itemConsolidado.Tag as List<OP>;
-
-                if (opsAsociadas != null)
-                {
-                    foreach (var opRestaurar in opsAsociadas)
-                    {
-                        // 1. Devolver la OP al modelo
-                        modelo.ops.Add(opRestaurar);
-                    }
-                }
-
-                // 2. Eliminar el ítem consolidado de osLIST
-                opdetailsLIST.Items.Remove(itemConsolidado);
-            }
-
-            // 3. Refrescar la lista de arriba respetando el filtro actual (si lo hay)
-            if (this.clienteBox.SelectedIndex != -1 && this.clienteBox.SelectedValue != null)
-            {
-                List<OP> ordenesFiltradas = modelo.ops.Where(o => o.RazonSocial == this.clienteBox.Text).ToList();
-                CargarOrdenesEnListView(ordenesFiltradas);
-            }
-            else
-            {
-                CargarOrdenesEnListView(modelo.ops);
-            }
-        }
-
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show(
-                "¿Salir?",
-                "Confirmar salida",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (resultado == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
         private void generarOSBTN_Click_1(object sender, EventArgs e)
         {
             if (this.opdetailsLIST.Items.Count == 0)
@@ -216,7 +72,7 @@ namespace GrupoB.Pampazon
             try
             {
                 // Deshabilitar el botón temporalmente para evitar doble clic
-                generarOSBTN.Enabled = false;
+                emitirOSBTN.Enabled = false;
 
 
                 MessageBox.Show(
@@ -241,7 +97,7 @@ namespace GrupoB.Pampazon
             finally
             {
                 // Volver a habilitar el botón
-                generarOSBTN.Enabled = true;
+                emitirOSBTN.Enabled = true;
             }
         }
 
@@ -249,33 +105,49 @@ namespace GrupoB.Pampazon
         {
             ListView listaActual = sender as ListView;
 
+            // 1. Validar que la lista no sea nula y tenga al menos un elemento seleccionado
             if (listaActual == null || listaActual.SelectedItems.Count == 0)
+            {
+                opdetailsLIST.Items.Clear();
                 return;
+            }
+
 
             // Guardar la OP seleccionada antes de modificar las selecciones
             ListViewItem itemSeleccionado = listaActual.SelectedItems[0];
             OP opSeleccionada = itemSeleccionado.Tag as OP;
 
-            if (opSeleccionada == null)
-                return;
-
-            // Deseleccionar la otra lista
-            if (listaActual == this.opLIST)
-                this.opselectLIST.SelectedItems.Clear();
-            else
-                this.opLIST.SelectedItems.Clear();
-
+            this.opDINLBLI.Text = opSeleccionada.NumeroOP;
             // Cargar el detalle de la OP seleccionada
-            CargarDetalleDeOrden(opSeleccionada);
+            CargarDetalleDeOrden(opSeleccionada, this.opdetailsLIST);
         }
 
-        private void CargarDetalleDeOrden(OP op)
+        private void opselectLIST_SelectedIndexChanged(object sender, EventArgs e)
         {
-            opdetailsLIST.BeginUpdate();
+            ListView listaActual = sender as ListView;
+
+            // 1. Validar que la lista no sea nula y tenga al menos un elemento seleccionado
+            if (listaActual == null || listaActual.SelectedItems.Count == 0)
+            {
+
+                opselectdetailsLIST.Items.Clear();
+                return;
+            }
+            // Guardar la OP seleccionada antes de modificar las selecciones
+            ListViewItem itemSeleccionado = listaActual.SelectedItems[0];
+            OP opSeleccionada = itemSeleccionado.Tag as OP;
+            this.opDINLBLD.Text= opSeleccionada.NumeroOP;
+            // Cargar el detalle de la OP seleccionada
+            CargarDetalleDeOrden(opSeleccionada, this.opselectdetailsLIST);
+        }
+
+        private void CargarDetalleDeOrden(OP op, ListView listaDestino)
+        {
+            listaDestino.BeginUpdate();
 
             try
             {
-                opdetailsLIST.Items.Clear();
+                listaDestino.Items.Clear();
 
                 foreach (DetalleOP detalle in op.Productos)
                 {
@@ -283,36 +155,29 @@ namespace GrupoB.Pampazon
                     item.SubItems.Add(detalle.Descripcion);
                     item.SubItems.Add(detalle.Cantidad.ToString());
 
-                    opdetailsLIST.Items.Add(item);
+                    listaDestino.Items.Add(item);
                 }
             }
             finally
             {
-                opdetailsLIST.EndUpdate();
+                listaDestino.EndUpdate();
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MoverElementosSeleccionados(this.opLIST, this.opselectLIST);
-        }
 
-        private void button2_Click_1(object sender, EventArgs e)
+
+        private void quitarBTN_Click(object sender, EventArgs e)
         {
             // Mover de la lista derecha (oplistpendientes) a la izquierda (oplist)
             MoverElementosSeleccionados(this.opselectLIST, this.opLIST);
         }
 
-        //Método auxiliar para mover los ítems seleccionados de una lista de origen a una de destino.
 
         private void MoverElementosSeleccionados(ListView origen, ListView destino)
         {
             // Validar si hay al menos un elemento seleccionado
             if (origen.SelectedItems.Count > 0)
             {
-                // Desactivar temporalmente el rediseño visual para mejorar el rendimiento
-                origen.BeginUpdate();
-                destino.BeginUpdate();
 
                 // Recorrer de atrás hacia adelante para evitar saltos de índice al eliminar
                 int i = origen.SelectedItems.Count - 1;
@@ -392,5 +257,49 @@ namespace GrupoB.Pampazon
             this.clienteBox.SelectedIndex = -1;
             CargarOrdenesEnListView(modelo.ops);
         }
+
+        private void quitartodasBTN_Click(object sender, EventArgs e)
+        {
+            // 1. Validar que existan elementos para quitar en la lista derecha
+            if (this.opselectLIST.Items.Count == 0)
+            {
+                MessageBox.Show(
+                    "No hay órdenes de preparación seleccionadas para quitar.",
+                    "Atención",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+
+            // 2. Seleccionar todos los ítems de la lista derecha (opselectLIST)
+            foreach (ListViewItem item in this.opselectLIST.Items)
+            {
+                item.Selected = true;
+            }
+
+            // 3. Mover todos los elementos seleccionados de opselectLIST hacia opLIST
+            MoverElementosSeleccionados(this.opselectLIST, this.opLIST);
+
+            // 4. Limpiar la lista de detalles de productos para evitar incongruencias
+            this.opdetailsLIST.Items.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Salir?",
+                "Confirmar salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+
     }
 }
