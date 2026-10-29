@@ -12,17 +12,11 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
     public partial class ControlarMermasEIncidenciasForm : Form
     {
         private readonly ControlarMermasEIncidenciasModelo modelo = new();
-        private IncidenciaMerma incidenciaSeleccionada;
+        
         public ControlarMermasEIncidenciasForm()
         {
             InitializeComponent();
-
-            // Vinculamos los eventos a sus respectivos métodos
-            this.Load += ControlarMermasEIncidenciasForm_Load;
-            IncidenciasPendientesListView.SelectedIndexChanged += IncidenciasPendientesListView_SelectedIndexChanged;
-
-            AprobarBtn.Click += AprobarBtn_Click;
-            RechazarBtn.Click += RechazarBtn_Click;
+            modelo = new ControlarMermasEIncidenciasModelo();
         }
 
         private void ControlarMermasEIncidenciasForm_Load(object sender, EventArgs e)
@@ -34,7 +28,6 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
         private void CargarGrillaIncidencias()
         {
             IncidenciasPendientesListView.Items.Clear();
-
             var lista = modelo.ObtenerIncidenciasPendientes();
 
             foreach (var inc in lista)
@@ -42,14 +35,13 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
                 var item = new ListViewItem(inc.NumeroIncidencia);
                 item.SubItems.Add(inc.FechaHora.ToString("dd/MM/yyyy HH:mm"));
                 item.SubItems.Add(inc.OperarioReportante);
-                item.SubItems.Add(inc.SKUAfectado?.ToString());
+                item.SubItems.Add(inc.SKUAfectado != null ? $"{inc.SKUAfectado.CodigoSKU} - {inc.SKUAfectado.Descripcion}" : "");
                 item.SubItems.Add(inc.Ubicacion);
                 item.SubItems.Add(inc.Cantidad.ToString());
                 item.SubItems.Add(inc.CausaReportada);
 
                 // Guardamos el objeto completo en Tag para recuperarlo al hacer clic
                 item.Tag = inc;
-
                 IncidenciasPendientesListView.Items.Add(item);
             }
 
@@ -61,71 +53,71 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
         {
             if (IncidenciasPendientesListView.SelectedItems.Count > 0)
             {
-                // Recuperamos el objeto guardado en la propiedad Tag
-                incidenciaSeleccionada = (IncidenciaMerma)IncidenciasPendientesListView.SelectedItems[0].Tag;
-
-                if (incidenciaSeleccionada != null)
+                var inc = IncidenciasPendientesListView.SelectedItems[0].Tag as IncidenciaMerma; 
+                if (inc != null)
                 {
-                    JustificacionOperadorText.Text = incidenciaSeleccionada.JustificacionOperador;
-                    JustificacionAuditoriaText.Text = ""; // Limpia para redactar la auditoría
+                    JustificacionOperadorText.Text = inc.JustificacionOperador;
                 }
+            }
+            else
+            {
+                JustificacionOperadorText.Clear();
             }
         }
 
         // Botón: APROBAR BAJA DEFINITIVA
         private void AprobarBtn_Click(object sender, EventArgs e)
         {
-            if (incidenciaSeleccionada == null)
+            try
             {
-                MessageBox.Show("Debe seleccionar una incidencia de la lista superior.",
-                    "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                IncidenciaMerma incidenciaSeleccionada = null; 
+                if (IncidenciasPendientesListView.SelectedItems.Count > 0)
+                {
+                    incidenciaSeleccionada = IncidenciasPendientesListView.SelectedItems[0].Tag as IncidenciaMerma;
+                }
 
-            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text) || JustificacionAuditoriaText.Text.Trim().Length < 10)
+                string dictamen = JustificacionAuditoriaText.Text; 
+
+                modelo.AprobarIncidencia(incidenciaSeleccionada, dictamen); 
+
+                MessageBox.Show($"Incidencia {incidenciaSeleccionada.NumeroIncidencia} aprobada con éxito para Baja Definitiva.",
+                    "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarGrillaIncidencias();
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("El dictamen del supervisor debe contener al menos 10 caracteres explicativos.",
-                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show(ex.Message, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            modelo.AprobarBajaDefinitiva(incidenciaSeleccionada, JustificacionAuditoriaText.Text.Trim());
-
-            MessageBox.Show($"Incidencia {incidenciaSeleccionada.NumeroIncidencia} aprobada para 'Baja Definitiva'.",
-                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Refresca el ListView (la incidencia desaparece)
-            CargarGrillaIncidencias();
         }
 
         // Botón: RECHAZAR / REINTEGRAR
         private void RechazarBtn_Click(object sender, EventArgs e)
         {
-            if (incidenciaSeleccionada == null)
+            try
             {
-                MessageBox.Show("Debe seleccionar una incidencia de la lista superior.",
-                    "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                IncidenciaMerma incidenciaSeleccionada = null; 
+                if (IncidenciasPendientesListView.SelectedItems.Count > 0)
+                {
+                    incidenciaSeleccionada = IncidenciasPendientesListView.SelectedItems[0].Tag as IncidenciaMerma;
+                }
 
-            if (string.IsNullOrWhiteSpace(JustificacionAuditoriaText.Text))
+                string dictamen = JustificacionAuditoriaText.Text; 
+
+                modelo.RechazarIncidencia(incidenciaSeleccionada, dictamen); 
+                
+                MessageBox.Show($"Incidencia {incidenciaSeleccionada.NumeroIncidencia} rechazada.",
+                    "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarGrillaIncidencias();
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe ingresar el dictamen o motivo de rechazo.",
-                    "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show(ex.Message, "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            modelo.RechazarYReintegrar(incidenciaSeleccionada, JustificacionAuditoriaText.Text.Trim());
-
-            MessageBox.Show($"Incidencia {incidenciaSeleccionada.NumeroIncidencia} rechazada. Las {incidenciaSeleccionada.Cantidad} unidades se reintegraron al inventario disponible.",
-                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Refresca el ListView
-            CargarGrillaIncidencias();
         }
         private void LimpiarCampos()
         {
-            incidenciaSeleccionada = null;
             JustificacionOperadorText.Text = "";
             JustificacionAuditoriaText.Text = "";
         }
