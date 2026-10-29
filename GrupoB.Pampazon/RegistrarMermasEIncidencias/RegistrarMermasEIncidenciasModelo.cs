@@ -48,7 +48,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
 
         public string GenerarNuevoNumeroIncidencia()
         {
-            return $"INC-2026-0000{listaIncidenciasRegistradas.Count + 1}";
+            return "INC-2026-00001";
         }
 
         public string ObtenerFechaHoraActual()
