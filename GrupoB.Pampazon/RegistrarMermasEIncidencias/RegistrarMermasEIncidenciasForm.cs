@@ -70,7 +70,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 // Extrae los valores directamente de los controles de pantalla
                 string sector = SectorDepositoCombo.SelectedItem?.ToString();
                 string etapa = EtapaOperativaCombo.SelectedItem?.ToString();
-                string coordenada = CoordenadaText.Text.Trim();
+                string coordenada = CoordenadaText.Text;
                 SKUMerma skuSeleccionado = SKUProductoCombo.SelectedItem as SKUMerma;
                 string tipoCausa = TipoCausaIncidenciaCombo.SelectedItem?.ToString();
                 string cantidadTexto = CantAfectadaText.Text;
