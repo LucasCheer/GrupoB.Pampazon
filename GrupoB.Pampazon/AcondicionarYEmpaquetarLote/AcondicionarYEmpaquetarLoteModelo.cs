@@ -9,7 +9,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
             new("PROD-D", "Mouse inalámbrico", 60)
         ];
 
-        private readonly List<BultoDePrueba> bultos = [];
+        private bool loteConfirmado;
 
         public string NumeroOrdenPreparacion { get; } = "OP001";
 
@@ -19,43 +19,22 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
 
         public IReadOnlyList<ProductoParaEmpaquetar> Productos => productos;
 
-        public IReadOnlyList<BultoDePrueba> Bultos => bultos;
-
-        public BultoDePrueba AgregarBulto(
-            ProductoParaEmpaquetar producto,
-            string tipoEmbalaje,
-            decimal peso)
+        public bool ConfirmarLotePreparado()
         {
-            if (!productos.Contains(producto))
+            if (productos.Count == 0)
             {
-                throw new InvalidOperationException("El SKU ya fue empaquetado.");
+                throw new InvalidOperationException("La orden de preparación no contiene mercadería para empaquetar.");
             }
 
-            var bulto = new BultoDePrueba(
-                $"BUL-{bultos.Count + 1:000}",
-                tipoEmbalaje,
-                producto.Sku,
-                producto.Cantidad,
-                peso,
-                "Sin generar");
+            if (loteConfirmado)
+            {
+                throw new InvalidOperationException("El lote ya fue confirmado como preparado.");
+            }
 
-            bultos.Add(bulto);
-            productos.Remove(producto);
-
-            return bulto;
+            loteConfirmado = true;
+            return true;
         }
     }
 
     internal record ProductoParaEmpaquetar(string Sku, string Descripcion, int Cantidad);
-
-    internal record BultoDePrueba(
-        string Numero,
-        string TipoEmbalaje,
-        string Sku,
-        int Cantidad,
-        decimal Peso,
-        string Etiqueta)
-    {
-        public string Productos => $"{Cantidad} × {Sku}";
-    }
 }
