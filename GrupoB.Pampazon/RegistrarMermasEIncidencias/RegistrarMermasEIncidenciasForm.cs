@@ -86,7 +86,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                     justificacion
                 );
 
-                MessageBox.Show($"Incidencia de merma registrada con éxito en estado 'A Revisión'.\\n\\nNúmero Identificador: {numeroIncidencia}",
+                MessageBox.Show($"Incidencia de merma registrada con éxito en estado 'A Revisión'.Número Identificador: {numeroIncidencia}",
                     "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LimpiarTodo();
