@@ -157,6 +157,7 @@
             AprobarBtn.TabIndex = 8;
             AprobarBtn.Text = "APROBAR BAJA DEFINITIVA";
             AprobarBtn.UseVisualStyleBackColor = true;
+            AprobarBtn.Click += AprobarBtn_Click;
             // 
             // RechazarBtn
             // 
@@ -166,6 +167,7 @@
             RechazarBtn.TabIndex = 9;
             RechazarBtn.Text = "RECHAZAR / REINTEGRAR";
             RechazarBtn.UseVisualStyleBackColor = true;
+            RechazarBtn.Click += RechazarBtn_Click;
             // 
             // ControlarMermasEIncidenciasForm
             // 
