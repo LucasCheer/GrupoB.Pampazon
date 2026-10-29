@@ -56,7 +56,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             if (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase))
             {
                 // Limpiamos espacios en blanco externos e internos que pueda enviar el control de WinForms
-                string coordenadaLimpia = coordenada?.Trim().Replace(" ", "") ?? "";
+                string coordenadaLimpia = Regex.Replace(coordenada ?? "", @"[^\\d-]", "").Trim();
 
                 if (!Regex.IsMatch(coordenadaLimpia, @"^\\d{2}-\\d{2}-\\d{2}$"))
                 {
@@ -113,7 +113,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 OperarioResponsable = ObtenerOperarioLogueado(),
                 Sector = sector,
                 EtapaOperativa = etapa,
-                CoordenadaXYZ = (sector == "Almacén") ? coordenada.Trim() : "N/A",
+                CoordenadaXYZ = (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase)) ? Regex.Replace(coordenada ?? "", @"[^\d-]", "").Trim() : "N/A",
                 SKU = skuEncontrado.CodigoSKU,
                 TipoCausa = tipoCausa,
                 CantidadAfectada = cantidad,
