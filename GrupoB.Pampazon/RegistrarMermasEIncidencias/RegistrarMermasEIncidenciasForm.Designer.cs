@@ -148,6 +148,7 @@
             SectorDepositoCombo.Name = "SectorDepositoCombo";
             SectorDepositoCombo.Size = new Size(289, 33);
             SectorDepositoCombo.TabIndex = 9;
+            SectorDepositoCombo.SelectedIndexChanged += SectorDepositoCombo_SelectedIndexChanged;
             // 
             // EtapaOperativaCombo
             // 
@@ -262,6 +263,7 @@
             ReportarBtn.TabIndex = 35;
             ReportarBtn.Text = "Reportar Incidencia";
             ReportarBtn.UseVisualStyleBackColor = true;
+            ReportarBtn.Click += ReportarBtn_Click;
             // 
             // CancelarBtn
             // 

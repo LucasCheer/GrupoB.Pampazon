@@ -49,12 +49,18 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
 
         private void SectorDepositoCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sector = SectorDepositoCombo.SelectedItem?.ToString(); 
-            CoordenadaText.Enabled = (sector == "Almacén"); 
-            if (!CoordenadaText.Enabled)
-            {
-                CoordenadaText.Clear();
+            string sector = SectorDepositoCombo.SelectedItem?.ToString();
+
+            // Habilita coordenadas únicamente si el sector seleccionado es "Almacén"
+            if (sector != null && sector.Equals("Almacén", StringComparison.OrdinalIgnoreCase)) 
+            { 
+                CoordenadaText.Enabled = true; 
             }
+            else
+            {
+                CoordenadaText.Enabled = false; 
+                CoordenadaText.Clear();
+            }       
         }
 
         private void ReportarBtn_Click(object sender, EventArgs e)
@@ -62,12 +68,12 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             try
             {
                 // Extrae los valores directamente de los controles de pantalla
-                string sector = SectorDepositoCombo.SelectedItem?.ToString(); 
-                string etapa = EtapaOperativaCombo.SelectedItem?.ToString(); 
-                string coordenada = CoordenadaText.Text; 
-                SKUMerma skuSeleccionado = SKUProductoCombo.SelectedItem as SKUMerma; 
-                string tipoCausa = TipoCausaIncidenciaCombo.SelectedItem?.ToString(); 
-                string cantidadTexto = CantAfectadaText.Text; 
+                string sector = SectorDepositoCombo.SelectedItem?.ToString();
+                string etapa = EtapaOperativaCombo.SelectedItem?.ToString();
+                string coordenada = CoordenadaText.Text;
+                SKUMerma skuSeleccionado = SKUProductoCombo.SelectedItem as SKUMerma;
+                string tipoCausa = TipoCausaIncidenciaCombo.SelectedItem?.ToString();
+                string cantidadTexto = CantAfectadaText.Text;
                 string justificacion = JustificacionIncidenciaText.Text;
 
                 string numeroIncidencia = modelo.RegistrarIncidencia(
@@ -91,24 +97,24 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             }
         }
 
-        private void CancelarBtn_Click(object sender, EventArgs e) 
-        { 
-            this.Close(); 
+        private void CancelarBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void LimpiarTodo()
         {
-            SectorDepositoCombo.SelectedIndex = -1; 
-            EtapaOperativaCombo.SelectedIndex = -1; 
-            CoordenadaText.Clear(); 
-            CoordenadaText.Enabled = false; 
-            SKUProductoCombo.SelectedIndex = -1; 
-            TipoCausaIncidenciaCombo.SelectedIndex = -1; 
-            CantAfectadaText.Clear(); 
+            SectorDepositoCombo.SelectedIndex = -1;
+            EtapaOperativaCombo.SelectedIndex = -1;
+            CoordenadaText.Clear();
+            CoordenadaText.Enabled = false;
+            SKUProductoCombo.SelectedIndex = -1;
+            TipoCausaIncidenciaCombo.SelectedIndex = -1;
+            CantAfectadaText.Clear();
             JustificacionIncidenciaText.Clear();
 
             // Refresca el correlativo y datos del servidor
-            NumeroIncidenciaText.Text = modelo.GenerarNuevoNumeroIncidencia(); 
+            NumeroIncidenciaText.Text = modelo.GenerarNuevoNumeroIncidencia();
             FechaYHoraText.Text = modelo.ObtenerFechaHoraActual();
         }
     }
