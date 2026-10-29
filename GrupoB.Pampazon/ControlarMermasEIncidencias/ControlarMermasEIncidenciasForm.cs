@@ -17,6 +17,8 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
         {
             InitializeComponent();
             modelo = new ControlarMermasEIncidenciasModelo();
+
+            CargarGrillaIncidencias();
         }
 
         private void ControlarMermasEIncidenciasForm_Load(object sender, EventArgs e)
