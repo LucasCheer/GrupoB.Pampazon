@@ -137,10 +137,36 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 return;
             }
 
-            MessageBox.Show($"Incidencia {NumeroIncidenciaText.Text} registrada con éxito. Las {cantidad} unidades del SKU {sku.CodigoSKU} han pasado a estado 'En Revision.",
-                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // A) Obtenemos el objeto SKU seleccionado en el ComboBox
+            SKUMerma skuSeleccionado = (SKUMerma)SKUProductoCombo.SelectedItem;
 
-            CargarDatosIniciales();
+            // B) Armamos el objeto 'nuevaIncidencia' con la información ingresada por el usuario
+            IncidenciaMerma nuevaIncidencia = new IncidenciaMerma
+            {
+                NumeroIncidencia = NumeroIncidenciaText.Text,
+                FechaHora = FechaYHoraText.Text,
+                OperarioResponsable = OperarioText.Text,
+                Sector = SectorDepositoCombo.SelectedItem.ToString(),
+                EtapaOperativa = EtapaOperativaCombo.SelectedItem.ToString(),
+                CoordenadaXYZ = CoordenadaText.Enabled ? CoordenadaText.Text.Trim() : "N/A",
+                SKU = skuSeleccionado.CodigoSKU,
+                TipoCausa = TipoCausaIncidenciaCombo.SelectedItem.ToString(),
+                CantidadAfectada = cantidad,
+                JustificacionTecnica = JustificacionIncidenciaText.Text.Trim()
+            };
+
+            // C) Le pasamos los datos al Modelo para que ejecute la operación
+            bool exito = modelo.RegistrarIncidencia(nuevaIncidencia);
+
+            if (exito)
+            {
+                MessageBox.Show($"Incidencia {nuevaIncidencia.NumeroIncidencia} registrada exitosamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CargarDatosIniciales();
+            }
+
+           
         }
 
         // Botón Cancelar: Cierra la ventana sin pedir confirmación
