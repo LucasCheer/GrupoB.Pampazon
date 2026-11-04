@@ -31,33 +31,44 @@ namespace GrupoB.Pampazon
             // Desselecciona el elemento inicial para que quede el campo en blanco
             this.clienteBox.SelectedIndex = -1;
 
-            CargarOrdenesEnListView(modelo.ops);
+            List<OP> ordenesPendientes = modelo.ObtenerOrdenesPendientes();
+            CargarOrdenesEnListView(ordenesPendientes);
         }
 
         //Funcion que carga las ordenes en la lista de ordenes pendientes
         private void CargarOrdenesEnListView(List<OP> ordenes)
         {
             this.opLIST.Items.Clear();
+
+            // 1. Guardar en un HashSet los IDs de las órdenes que YA están en la lista derecha (seleccionadas)
+            HashSet<string> seleccionadas = new HashSet<string>();
+            foreach (ListViewItem item in this.opselectLIST.Items)
+            {
+                if (item.Tag != null)
+                {
+                    seleccionadas.Add(item.Tag.ToString());
+                }
+            }
+
+            // 2. Cargar únicamente las órdenes que NO estén ya seleccionadas
             foreach (var orden in ordenes)
             {
-                if (orden.Estado == "Pendiente")
+                if (!seleccionadas.Contains(orden.NumeroOP))
                 {
                     ListViewItem item = new ListViewItem(orden.NumeroOP);
                     item.SubItems.Add(orden.FechaRecibida.ToShortDateString());
                     item.SubItems.Add(orden.RazonSocial);
 
-
-                    // Guardamos el objeto OP completo en la propiedad Tag para no perder sus datos
-                    item.Tag = orden;
+                    item.Tag = orden.NumeroOP;
                     this.opLIST.Items.Add(item);
                 }
             }
         }
 
-
-        private void generarOSBTN_Click_1(object sender, EventArgs e)
+        private void emitirOSBTN_Click(object sender, EventArgs e)
         {
-            if (this.opdetailsLIST.Items.Count == 0)
+            //validacion OS vacia
+            if (this.opselectLIST.Items.Count == 0)
             {
                 MessageBox.Show(
                     "Debe agregar al menos un producto a la orden.",
@@ -71,10 +82,10 @@ namespace GrupoB.Pampazon
             // 2. Procesar la generación de la orden
             try
             {
+                OS newOS = new OS { };
+                modelo.AgregarOS(newOS);
                 // Deshabilitar el botón temporalmente para evitar doble clic
                 emitirOSBTN.Enabled = false;
-
-
                 MessageBox.Show(
                     "La orden de selección se ha generado correctamente.",
                     "Éxito",
@@ -115,11 +126,11 @@ namespace GrupoB.Pampazon
 
             // Guardar la OP seleccionada antes de modificar las selecciones
             ListViewItem itemSeleccionado = listaActual.SelectedItems[0];
-            OP opSeleccionada = itemSeleccionado.Tag as OP;
+            string numeroOP = itemSeleccionado.Tag.ToString();
 
-            this.opDINLBLI.Text = opSeleccionada.NumeroOP;
+            this.opDINLBLI.Text = numeroOP;
             // Cargar el detalle de la OP seleccionada
-            CargarDetalleDeOrden(opSeleccionada, this.opdetailsLIST);
+            CargarDetalleDeOrden(numeroOP, this.opdetailsLIST);
         }
 
         private void opselectLIST_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,19 +140,21 @@ namespace GrupoB.Pampazon
             // 1. Validar que la lista no sea nula y tenga al menos un elemento seleccionado
             if (listaActual == null || listaActual.SelectedItems.Count == 0)
             {
-
                 opselectdetailsLIST.Items.Clear();
+                opDINLBLD.Text = string.Empty;
                 return;
             }
             // Guardar la OP seleccionada antes de modificar las selecciones
             ListViewItem itemSeleccionado = listaActual.SelectedItems[0];
-            OP opSeleccionada = itemSeleccionado.Tag as OP;
-            this.opDINLBLD.Text= opSeleccionada.NumeroOP;
-            // Cargar el detalle de la OP seleccionada
-            CargarDetalleDeOrden(opSeleccionada, this.opselectdetailsLIST);
+            // Extraemos únicamente el ID (NumeroOP) guardado como string
+            string numeroOP = itemSeleccionado.Tag.ToString();
+            this.opDINLBLD.Text = numeroOP;
+
+            // Se le pide al modelo que busque los detalles pasando solo el ID
+            CargarDetalleDeOrden(numeroOP, this.opselectdetailsLIST);
         }
 
-        private void CargarDetalleDeOrden(OP op, ListView listaDestino)
+        private void CargarDetalleDeOrden(string numeroOP, ListView listaDestino)
         {
             listaDestino.BeginUpdate();
 
@@ -149,11 +162,15 @@ namespace GrupoB.Pampazon
             {
                 listaDestino.Items.Clear();
 
-                foreach (DetalleOP detalle in op.Productos)
+                // El modelo devuelve la lista de detalles/DTOs
+                var detalles = modelo.ObtenerDetallesPorOP(numeroOP);
+
+                foreach (var detalle in detalles)
                 {
                     ListViewItem item = new ListViewItem(detalle.SKU);
                     item.SubItems.Add(detalle.Descripcion);
                     item.SubItems.Add(detalle.Cantidad.ToString());
+                    item.SubItems.Add(detalle.Modalidad);
 
                     listaDestino.Items.Add(item);
                 }
@@ -164,13 +181,22 @@ namespace GrupoB.Pampazon
             }
         }
 
-
-
         private void quitarBTN_Click(object sender, EventArgs e)
         {
             // Mover de la lista derecha (oplistpendientes) a la izquierda (oplist)
             MoverElementosSeleccionados(this.opselectLIST, this.opLIST);
+            // Reset total de la vista derecha
+            this.opselectdetailsLIST.Items.Clear();
+            this.opDINLBLD.Text = string.Empty;
+            ActualizarConsolidado();
         }
+        private void agregarBTN_Click(object sender, EventArgs e)
+        {
+            // Mover de la lista derecha (oplistpendientes) a la izquierda (oplist)
+            MoverElementosSeleccionados(this.opLIST, this.opselectLIST);
+            ActualizarConsolidado();
+        }
+
 
 
         private void MoverElementosSeleccionados(ListView origen, ListView destino)
@@ -194,10 +220,6 @@ namespace GrupoB.Pampazon
 
                     i = i - 1;
                 }
-
-                // Reactivar el rediseño visual
-                origen.EndUpdate();
-                destino.EndUpdate();
             }
         }
 
@@ -206,28 +228,23 @@ namespace GrupoB.Pampazon
             string cliente = clienteBox.Text;
             string numeroOP = opTX.Text.Trim();
 
-            var ordenesFiltradas = modelo.ops
-                .Where(op =>
-                    op.Estado == "Pendiente" &&
-                    (cliente == "" || op.RazonSocial == cliente) &&
-                    (numeroOP == "" || op.NumeroOP.ToString() == numeroOP)
-                )
-                .ToList();
+            // El modelo resuelve la búsqueda y devuelve la lista filtrada
+            var ordenesFiltradas = modelo.ObtenerOpsfiltradas(cliente, numeroOP);
+            if (ordenesFiltradas.Count == 0)
+            {
+                MessageBox.Show(
+                    "No se encontraron órdenes de preparación con los criterios seleccionados.",
+                    "Sin resultados",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
 
             opLIST.Items.Clear();
 
-            foreach (var op in ordenesFiltradas)
-            {
-                var item = new ListViewItem(op.NumeroOP.ToString());
-                item.SubItems.Add(op.FechaRecibida.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(op.RazonSocial);
-
-                opLIST.Items.Add(item);
-            }
+            CargarOrdenesEnListView(ordenesFiltradas);
         }
-
-
-
 
         private void agregartodasBTN_Click(object sender, EventArgs e)
         {
@@ -250,12 +267,19 @@ namespace GrupoB.Pampazon
 
             // Mover todas las órdenes a la lista derecha
             MoverElementosSeleccionados(opLIST, opselectLIST);
+
+
+            this.opselectdetailsLIST.Items.Clear();
+            this.opDINLBLD.Text = string.Empty;
+            ActualizarConsolidado();
+
         }
 
         private void limpiarBTN_Click_1(object sender, EventArgs e)
         {
             this.clienteBox.SelectedIndex = -1;
-            CargarOrdenesEnListView(modelo.ops);
+            opTX.Clear();
+            CargarOrdenesEnListView(modelo.ObtenerOrdenesPendientes());
         }
 
         private void quitartodasBTN_Click(object sender, EventArgs e)
@@ -282,10 +306,12 @@ namespace GrupoB.Pampazon
             MoverElementosSeleccionados(this.opselectLIST, this.opLIST);
 
             // 4. Limpiar la lista de detalles de productos para evitar incongruencias
-            this.opdetailsLIST.Items.Clear();
+            this.opselectdetailsLIST.Items.Clear();
+            this.opDINLBLD.Text = string.Empty;
+            ActualizarConsolidado();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void cancelarBTN_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show(
                 "¿Salir?",
@@ -297,6 +323,48 @@ namespace GrupoB.Pampazon
             if (resultado == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void ActualizarConsolidado()
+        {
+            this.consoLIST.BeginUpdate();
+
+            try
+            {
+                this.consoLIST.Items.Clear();
+
+                // Extraemos los IDs de las OPs presentes en la lista derecha
+                List<string> numerosOPSeleccionados = new List<string>();
+                foreach (ListViewItem item in this.opselectLIST.Items)
+                {
+                    if (item.Tag != null)
+                    {
+                        numerosOPSeleccionados.Add(item.Tag.ToString());
+                    }
+                }
+
+                // El modelo devuelve el objeto OS consolidado
+                OS ordenSeleccion = modelo.ConsolidarOrdenDeSeleccion(numerosOPSeleccionados);
+
+                // Poblamos consoLIST leyendo la lista Productos de la OS
+                foreach (var detalle in ordenSeleccion.Productos)
+                {
+                    ListViewItem item = new ListViewItem(detalle.SKU);
+
+                    // Si necesitas mostrar la descripción en la grilla, se la podés pedir al modelo por SKU
+                    string descripcion = modelo.ObtenerDescripcionProducto(detalle.SKU);
+
+                    item.SubItems.Add(descripcion);
+                    item.SubItems.Add(detalle.Cantidad.ToString());
+                    item.SubItems.Add(detalle.Modalidad);
+
+                    this.consoLIST.Items.Add(item);
+                }
+            }
+            finally
+            {
+                this.consoLIST.EndUpdate();
             }
         }
 

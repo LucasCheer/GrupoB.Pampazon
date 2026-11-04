@@ -11,42 +11,40 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
         {
             new Cliente{ClienteID = 1,RazonSocial = "TechNew"},
             new Cliente{ClienteID = 2,RazonSocial = "Materiales S.A."},
-            new Cliente{ClienteID = 3,RazonSocial = "Energia S.R.L"}
+            new Cliente{ClienteID = 3,RazonSocial = "A S.A"}
         };
 
         public List<OP> ops = new List<OP>
-{
-    new OP{NumeroOP = "OP001",FechaRecibida = DateTime.Now.AddDays(-5),RazonSocial = "TechNew",Productos = new List<DetalleOP>
         {
-            new DetalleOP { SKU = "ELEC-MEM-8GB-01", Descripcion = "Memoria RAM 8GB DDR4", Cantidad = 100 },
-            new DetalleOP { SKU = "ELEC-PRO-I7-02", Descripcion = "Procesador Intel i7 12va Gen", Cantidad = 50 },
-            new DetalleOP { SKU = "ELEC-SSD-512-03", Descripcion = "Disco Sólido NVMe 512GB", Cantidad = 30 }
-        },Estado = "Pendiente"
-    },
-    new OP{NumeroOP = "OP002",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "Materiales S.A.",
-        Productos = new List<DetalleOP>
-        {
-            new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 200 },
-            new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 80 }
-        },Estado = "Pendiente"
-    },
-    new OP{NumeroOP = "OP003",FechaRecibida = DateTime.Now.AddDays(-1),RazonSocial = "Energia S.R.L",
-        Productos = new List<DetalleOP>
-        {
-            new DetalleOP { SKU = "CAB-COB-04MM-05", Descripcion = "Rollo Cable Cobre 4mm (100m)", Cantidad = 150 },
-            new DetalleOP { SKU = "ELEC-KEY-MEC-01", Descripcion = "Teclado Mecánico Español", Cantidad = 45 }
-        },Estado = "Finalizada"
-    },
-        new OP{NumeroOP = "OP006",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "A S.A",
-        Productos = new List<DetalleOP>
-        {
-            new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 200 },
-            new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 80 }
-        },Estado = "Pendiente"
-    },
-
-
-};
+            new OP{NumeroOP = "OP001",FechaRecibida = DateTime.Now.AddDays(-5),RazonSocial = "TechNew",Productos = new List<DetalleOP>
+                {
+                    new DetalleOP { SKU = "ELEC-MEM-8GB-01", Descripcion = "Memoria RAM 8GB DDR4", Cantidad = 100,Modalidad = "Fullfilment" },
+                    new DetalleOP { SKU = "ELEC-PRO-I7-02", Descripcion = "Procesador Intel i7 12va Gen", Cantidad = 50,Modalidad = "Fullfilment" },
+                    new DetalleOP { SKU = "ELEC-SSD-512-03", Descripcion = "Disco Sólido NVMe 512GB", Cantidad = 30,Modalidad = "Fullfilment" }
+                },Estado = "Pendiente"
+            },
+            new OP{NumeroOP = "OP002",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "Materiales S.A.",
+                Productos = new List<DetalleOP>
+                {
+                    new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 2,Modalidad = "Pallet" },
+                    new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 4,Modalidad = "Pallet" }
+                },Estado = "Pendiente"
+            },
+            new OP{NumeroOP = "OP003",FechaRecibida = DateTime.Now.AddDays(-1),RazonSocial = "Energia S.R.L",
+                Productos = new List<DetalleOP>
+                {
+                    new DetalleOP { SKU = "CAB-COB-04MM-05", Descripcion = "Rollo Cable Cobre 4mm (100m)", Cantidad = 150,Modalidad = "Fullfilment" },
+                    new DetalleOP { SKU = "ELEC-KEY-MEC-01", Descripcion = "Teclado Mecánico Español", Cantidad = 45,Modalidad = "Fullfilment" }
+                },Estado = "Finalizada"
+            },
+            new OP{NumeroOP = "OP006",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "A S.A",
+            Productos = new List<DetalleOP>
+            {
+                new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 20,Modalidad = "Fullfilment" },
+                new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 10,Modalidad = "Fullfilment" }
+            },Estado = "Pendiente"
+            },
+        };
 
         public List <OS> os = new List<OS>()
         {
@@ -65,25 +63,94 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
             new Producto{SKU = "ELEC-KEY-MEC-01",Descripcion = "Teclado Mecánico Español",Categoria = "Electrónica",PrecioUnitario = 55.00m,UbicacionAlmacen = "A-03-04"}
         };
 
-        internal bool AgregarOS(string SKU, int cantidad)
+        internal bool AgregarOS(OS os)
         {
-
-            if (cantidad <= 0)
-            {
-                MessageBox.Show("La cantidad debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            detalleOS.Add(new detalleOS { SKU = SKU, Cantidad = cantidad });
-
-            //aca pueden ir otras validaciones de negocio.
-            //....
-
-
-            return true; //para indicar que está todo bien
+            return true;
         }
 
+        public List<OP> ObtenerOpsfiltradas(string cliente, string numeroOP)
+        {
+            string filtroCliente = cliente?.Trim() ?? string.Empty;
 
+            // Extraer solo los números ingresados por el usuario (ej: "001" -> 1)
+            string digitosIngresados = new string((numeroOP ?? "").Where(char.IsDigit).ToArray());
 
+            return ops
+                .Where(op =>
+                    // 1. Filtrar únicamente órdenes en estado Pendiente
+                    op.Estado == "Pendiente" &&
+
+                    // 2. Filtrar por cliente si se especificó uno
+                    (string.IsNullOrEmpty(filtroCliente) ||
+                     op.RazonSocial.Equals(filtroCliente, StringComparison.OrdinalIgnoreCase)) &&
+
+                    // 3. Comparación numérica exacta ignorando las letras "OP"
+                    (string.IsNullOrEmpty(digitosIngresados) ||
+                     new string(op.NumeroOP.Where(char.IsDigit).ToArray())
+                         .TrimStart('0')
+                         .Equals(digitosIngresados.TrimStart('0')))
+                )
+                .ToList();
+        }
+
+        public List<OP> ObtenerOrdenesPendientes()
+        {
+            // El modelo consulta al almacén y filtra antes de entregar la lista
+
+            List<OP> pendientes = new List<OP>();
+
+            foreach (var orden in ops)
+            {
+                if (orden.Estado == "Pendiente")
+                {
+                    pendientes.Add(orden);
+                }
+            }
+
+            return pendientes;
+        }
+
+        public List<DetalleOP> ObtenerDetallesPorOP(string numeroOP)
+        {
+            var op = ops.FirstOrDefault(o => o.NumeroOP.Trim().Equals(numeroOP.Trim(), StringComparison.OrdinalIgnoreCase));
+
+            // Devolvemos una nueva lista para no exponer la colección interna de la entidad
+            return op != null ? op.Productos.ToList() : new List<DetalleOP>();
+        }
+
+        public OS ConsolidarOrdenDeSeleccion(List<string> numerosOP)
+        {
+            OS nuevaOS = new OS { FechaRecibida = DateTime.Now, Productos = new List<detalleOS>() };
+
+            if (numerosOP == null || numerosOP.Count == 0)
+            {
+                return nuevaOS;
+            }
+
+            // Buscamos las OPs seleccionadas
+            var opsSeleccionadas = ops
+                .Where(o => numerosOP.Contains(o.NumeroOP.Trim(), StringComparer.OrdinalIgnoreCase))
+                .ToList();
+
+            // Agrupamos por la combinación de SKU y Modalidad
+            nuevaOS.Productos = opsSeleccionadas
+                .SelectMany(o => o.Productos)
+                .GroupBy(p => new { p.SKU, p.Modalidad })
+                .Select(g => new detalleOS
+                {
+                    SKU = g.Key.SKU,
+                    Modalidad = g.Key.Modalidad,
+                    Cantidad = g.Sum(p => p.Cantidad)
+                })
+                .ToList();
+
+            return nuevaOS;
+        }
+
+        public string ObtenerDescripcionProducto(string sku)
+        {
+            var prod = productos.FirstOrDefault(p => p.SKU.Trim().Equals(sku.Trim(), StringComparison.OrdinalIgnoreCase));
+            return prod != null ? prod.Descripcion : "";
+        }
     }
 }

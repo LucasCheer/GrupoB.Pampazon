@@ -179,7 +179,7 @@
             cancelarBTN.TabIndex = 9;
             cancelarBTN.Text = "Cancelar";
             cancelarBTN.UseVisualStyleBackColor = true;
-            cancelarBTN.Click += button4_Click;
+            cancelarBTN.Click += cancelarBTN_Click;
             // 
             // UbicacionCOL
             // 
@@ -202,7 +202,7 @@
             emitirOSBTN.TabIndex = 22;
             emitirOSBTN.Text = "Emitir orden de selección";
             emitirOSBTN.UseVisualStyleBackColor = true;
-            emitirOSBTN.Click += generarOSBTN_Click_1;
+            emitirOSBTN.Click += emitirOSBTN_Click;
             // 
             // columnHeader1
             // 
@@ -242,7 +242,7 @@
             agregarBTN.TabIndex = 20;
             agregarBTN.Text = "Agregar >";
             agregarBTN.UseVisualStyleBackColor = true;
-            agregarBTN.Click += quitarBTN_Click;
+            agregarBTN.Click += agregarBTN_Click;
             // 
             // quitarBTN
             // 
