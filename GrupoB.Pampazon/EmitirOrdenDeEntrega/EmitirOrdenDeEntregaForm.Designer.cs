@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem5 = new ListViewItem(new string[] { "OP-1000", "09/10/2026", "Mercado 1", "4" }, -1, SystemColors.ControlText, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem6 = new ListViewItem(new string[] { "OP-1001", "10/10/2026", "Mercado 2", "2" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem7 = new ListViewItem(new string[] { "OP-1002", "10/10/2026" }, -1, Color.Empty, SystemColors.GradientActiveCaption, null);
-            ListViewItem listViewItem8 = new ListViewItem(new string[] { "OP-1003", "11/10/2026" }, -1);
             groupBox1 = new GroupBox();
-            listView1 = new ListView();
+            OPLIST = new ListView();
             colOP = new ColumnHeader();
             colFecha = new ColumnHeader();
             label1 = new Label();
@@ -45,7 +41,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(listView1);
+            groupBox1.Controls.Add(OPLIST);
             groupBox1.FlatStyle = FlatStyle.System;
             groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(11, 61);
@@ -54,22 +50,19 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "SELECCIÓN DE ORDEN DE PREPARACIÓN";
-            groupBox1.Enter += groupBox1_Enter;
             // 
-            // listView1
+            // OPLIST
             // 
-            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            listView1.Columns.AddRange(new ColumnHeader[] { colOP, colFecha });
-            listView1.ForeColor = SystemColors.InfoText;
-            listViewItem8.Tag = "";
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem5, listViewItem6, listViewItem7, listViewItem8 });
-            listView1.Location = new Point(6, 29);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(411, 240);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            OPLIST.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            OPLIST.Columns.AddRange(new ColumnHeader[] { colOP, colFecha });
+            OPLIST.ForeColor = SystemColors.InfoText;
+            OPLIST.FullRowSelect = true;
+            OPLIST.Location = new Point(6, 29);
+            OPLIST.Name = "OPLIST";
+            OPLIST.Size = new Size(411, 240);
+            OPLIST.TabIndex = 2;
+            OPLIST.UseCompatibleStateImageBehavior = false;
+            OPLIST.View = View.Details;
             // 
             // colOP
             // 
@@ -105,6 +98,7 @@
             button1.TabIndex = 4;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // EmitirOrdenBTN
             // 
@@ -113,8 +107,9 @@
             EmitirOrdenBTN.Name = "EmitirOrdenBTN";
             EmitirOrdenBTN.Size = new Size(206, 29);
             EmitirOrdenBTN.TabIndex = 5;
-            EmitirOrdenBTN.Text = "Emitir Orden de preparación";
+            EmitirOrdenBTN.Text = "Emitir Orden de entrega";
             EmitirOrdenBTN.UseVisualStyleBackColor = true;
+            EmitirOrdenBTN.Click += EmitirOrdenBTN_Click;
             // 
             // EmitirOrdenDeEntregaForm
             // 
@@ -127,7 +122,7 @@
             Controls.Add(groupBox1);
             Name = "EmitirOrdenDeEntregaForm";
             Text = "EmitirOrdenDeEntrega";
-            Load += EmitirOrdenDeEntrega_Load;
+            Load += EmitirOrdenDeEntregaForm_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -137,7 +132,7 @@
 
         private GroupBox groupBox1;
         private Label label1;
-        private ListView listView1;
+        private ListView OPLIST;
         private ColumnHeader colOP;
         private ColumnHeader colFecha;
 
