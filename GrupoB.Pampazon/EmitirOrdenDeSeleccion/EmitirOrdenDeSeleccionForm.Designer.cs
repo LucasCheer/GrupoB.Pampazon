@@ -65,7 +65,7 @@
             detailCANTCOL = new ColumnHeader();
             detailMODALIDADCOL = new ColumnHeader();
             label4 = new Label();
-            listView1 = new ListView();
+            opafectadasLIST = new ListView();
             opAfectadasCOL = new ColumnHeader();
             groupBox2 = new GroupBox();
             opDINLBLI = new Label();
@@ -144,6 +144,7 @@
             consoLIST.TabIndex = 7;
             consoLIST.UseCompatibleStateImageBehavior = false;
             consoLIST.View = View.Details;
+            consoLIST.SelectedIndexChanged += consoLIST_SelectedIndexChanged_1;
             // 
             // SKUCOL
             // 
@@ -340,15 +341,15 @@
             label4.TabIndex = 35;
             label4.Text = "Detalle OP";
             // 
-            // listView1
+            // opafectadasLIST
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { opAfectadasCOL });
-            listView1.Location = new Point(823, 621);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(331, 253);
-            listView1.TabIndex = 36;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            opafectadasLIST.Columns.AddRange(new ColumnHeader[] { opAfectadasCOL });
+            opafectadasLIST.Location = new Point(823, 621);
+            opafectadasLIST.Name = "opafectadasLIST";
+            opafectadasLIST.Size = new Size(331, 253);
+            opafectadasLIST.TabIndex = 36;
+            opafectadasLIST.UseCompatibleStateImageBehavior = false;
+            opafectadasLIST.View = View.Details;
             // 
             // opAfectadasCOL
             // 
@@ -554,7 +555,7 @@
             ClientSize = new Size(1174, 923);
             Controls.Add(quitartodasBTN);
             Controls.Add(agregartodasBTN);
-            Controls.Add(listView1);
+            Controls.Add(opafectadasLIST);
             Controls.Add(label4);
             Controls.Add(opdetailsLIST);
             Controls.Add(opselectLIST);
@@ -628,7 +629,7 @@
         private ColumnHeader detailDESCCOL;
         private ColumnHeader detailCANTCOL;
         private Label label4;
-        private ListView listView1;
+        private ListView opafectadasLIST;
         private ColumnHeader opAfectadasCOL;
         private GroupBox groupBox2;
         private GroupBox groupBox3;

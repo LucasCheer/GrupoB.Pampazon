@@ -44,13 +44,17 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
                 new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 10,Modalidad = "Fullfilment" }
             },Estado = "Pendiente"
             },
+            new OP{NumeroOP = "OP010",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "A S.A",
+            Productos = new List<DetalleOP>
+            {
+                new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 3,Modalidad = "Pallet" }
+                
+            },Estado = "Pendiente"
+            }
         };
 
-        public List <OS> os = new List<OS>()
-        {
+        public List<OS> os = new List<OS>();
 
-        };
-        public List<detalleOS> detalleOS = new List<detalleOS>();
 
         public List<Producto> productos = new List<Producto>
         {
@@ -63,8 +67,35 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
             new Producto{SKU = "ELEC-KEY-MEC-01",Descripcion = "Teclado Mecánico Español",Categoria = "Electrónica",PrecioUnitario = 55.00m,UbicacionAlmacen = "A-03-04"}
         };
 
-        internal bool AgregarOS(OS os)
+        public bool AgregarOS(OS nuevaOS, List<string> numerosOPSeleccionadas)
         {
+            if (nuevaOS == null || numerosOPSeleccionadas == null || numerosOPSeleccionadas.Count == 0)
+            {
+                return false;
+            }
+
+            // 1. Generar número correlativo dinámico (ej: OS001, OS002...)
+            int proximoNumero = os.Count + 1;
+            nuevaOS.NumeroOS = $"OS{proximoNumero:D3}";
+            nuevaOS.FechaRecibida = DateTime.Now;
+            nuevaOS.Estado = "Emitida";
+
+            // 2. Asociar explícitamente la lista de OPs a la OS
+            nuevaOS.OrdenesPreparacion = new List<string>(numerosOPSeleccionadas);
+
+            // 3. Guardar la OS en la lista interna del modelo
+            os.Add(nuevaOS);
+
+            // 4. Cambiar el estado de las OPs seleccionadas para quitarlas de pendientes
+            foreach (var numeroOP in numerosOPSeleccionadas)
+            {
+                var op = ops.FirstOrDefault(o => o.NumeroOP.Equals(numeroOP.Trim(), StringComparison.OrdinalIgnoreCase));
+                if (op != null)
+                {
+                    op.Estado = "En selección"; // Cambia el estado para que ObtenerOrdenesPendientes() ya no la devuelva
+                }
+            }
+
             return true;
         }
 
@@ -120,7 +151,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
 
         public OS ConsolidarOrdenDeSeleccion(List<string> numerosOP)
         {
-            OS nuevaOS = new OS { FechaRecibida = DateTime.Now, Productos = new List<detalleOS>() };
+            OS nuevaOS = new OS { FechaRecibida = DateTime.Now, Productos = new List<DetalleOS>(), Estado = "Pendiente" };
 
             if (numerosOP == null || numerosOP.Count == 0)
             {
@@ -136,7 +167,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
             nuevaOS.Productos = opsSeleccionadas
                 .SelectMany(o => o.Productos)
                 .GroupBy(p => new { p.SKU, p.Modalidad })
-                .Select(g => new detalleOS
+                .Select(g => new DetalleOS
                 {
                     SKU = g.Key.SKU,
                     Modalidad = g.Key.Modalidad,
@@ -152,5 +183,28 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
             var prod = productos.FirstOrDefault(p => p.SKU.Trim().Equals(sku.Trim(), StringComparison.OrdinalIgnoreCase));
             return prod != null ? prod.Descripcion : "";
         }
+
+        public List<string> ObtenerOpsAfectadasPorProducto(List<string> numerosOPSeleccionadas, string sku, string modalidad)
+        {
+            if (numerosOPSeleccionadas == null || numerosOPSeleccionadas.Count == 0 || string.IsNullOrEmpty(sku))
+            {
+                return new List<string>();
+            }
+
+            return ops
+                .Where(o => numerosOPSeleccionadas.Contains(o.NumeroOP.Trim(), StringComparer.OrdinalIgnoreCase))
+                .Where(o => o.Productos.Any(p => p.SKU.Equals(sku.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                                                p.Modalidad.Equals(modalidad.Trim(), StringComparison.OrdinalIgnoreCase)))
+                .Select(o => o.NumeroOP)
+                .ToList();
+        }
+
+
+
+
+
+
+
+
     }
 }

@@ -67,11 +67,11 @@ namespace GrupoB.Pampazon
 
         private void emitirOSBTN_Click(object sender, EventArgs e)
         {
-            //validacion OS vacia
+            // 1. Validación: comprobar que haya OPs en la lista derecha
             if (this.opselectLIST.Items.Count == 0)
             {
                 MessageBox.Show(
-                    "Debe agregar al menos un producto a la orden.",
+                    "Debe agregar al menos una orden de preparación a la orden de selección.",
                     "Validación",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -79,22 +79,44 @@ namespace GrupoB.Pampazon
                 return;
             }
 
-            // 2. Procesar la generación de la orden
             try
             {
-                OS newOS = new OS { };
-                modelo.AgregarOS(newOS);
-                // Deshabilitar el botón temporalmente para evitar doble clic
                 emitirOSBTN.Enabled = false;
-                MessageBox.Show(
-                    "La orden de selección se ha generado correctamente.",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
 
+                // 2. Extraer los IDs de las OPs en opselectLIST
+                List<string> numerosOPSeleccionados = new List<string>();
+                foreach (ListViewItem item in this.opselectLIST.Items)
+                {
+                    if (item.Tag != null)
+                    {
+                        numerosOPSeleccionados.Add(item.Tag.ToString());
+                    }
+                }
 
+                // 3. Consolidar la OS usando tu método de LINQ
+                OS nuevaOS = modelo.ConsolidarOrdenDeSeleccion(numerosOPSeleccionados);
 
+                // 4. Guardar la OS en el modelo y actualizar los estados de las OPs
+                bool guardadoExitoso = modelo.AgregarOS(nuevaOS, numerosOPSeleccionados);
+
+                if (guardadoExitoso)
+                {
+                    MessageBox.Show(
+                        $"La Orden de Selección N° {nuevaOS.NumeroOS} se ha generado correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    // 5. Limpieza de controles visuales derechos y consolidado
+                    this.opselectLIST.Items.Clear();
+                    this.opselectdetailsLIST.Items.Clear();
+                    this.consoLIST.Items.Clear();
+                    this.opDINLBLD.Text = string.Empty;
+
+                    // 6. Recargar la lista de OPs pendientes (las OPs emitidas ya no figurarán)
+                    CargarOrdenesEnListView(modelo.ObtenerOrdenesPendientes());
+                }
             }
             catch (Exception ex)
             {
@@ -107,7 +129,6 @@ namespace GrupoB.Pampazon
             }
             finally
             {
-                // Volver a habilitar el botón
                 emitirOSBTN.Enabled = true;
             }
         }
@@ -120,6 +141,7 @@ namespace GrupoB.Pampazon
             if (listaActual == null || listaActual.SelectedItems.Count == 0)
             {
                 opdetailsLIST.Items.Clear();
+                this.opDINLBLI.Text = string.Empty;
                 return;
             }
 
@@ -194,6 +216,8 @@ namespace GrupoB.Pampazon
         {
             // Mover de la lista derecha (oplistpendientes) a la izquierda (oplist)
             MoverElementosSeleccionados(this.opLIST, this.opselectLIST);
+            this.opdetailsLIST.Items.Clear();
+            this.opDINLBLI.Text = string.Empty;
             ActualizarConsolidado();
         }
 
@@ -270,7 +294,7 @@ namespace GrupoB.Pampazon
 
 
             this.opselectdetailsLIST.Items.Clear();
-            this.opDINLBLD.Text = string.Empty;
+            this.opDINLBLI.Text = string.Empty;
             ActualizarConsolidado();
 
         }
@@ -322,9 +346,11 @@ namespace GrupoB.Pampazon
 
             if (resultado == DialogResult.Yes)
             {
-                Application.Exit();
+                this.Close();
             }
         }
+
+
 
         private void ActualizarConsolidado()
         {
@@ -368,6 +394,50 @@ namespace GrupoB.Pampazon
             }
         }
 
+        private void consoLIST_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            ListView listaConsolidada = sender as ListView;
 
+            if (listaConsolidada == null || listaConsolidada.SelectedItems.Count == 0)
+            {
+                this.opafectadasLIST.Items.Clear();
+                return;
+            }
+
+            ListViewItem itemSeleccionado = listaConsolidada.SelectedItems[0];
+
+            // SKU está en la 1ra posición (SubItems[0] o Text)
+            string sku = itemSeleccionado.Text;
+
+            // Modalidad está en SubItems[3] por el orden de creación en el código
+            string modalidad = itemSeleccionado.SubItems.Count > 3 ? itemSeleccionado.SubItems[3].Text : string.Empty;
+
+            List<string> numerosOPSeleccionados = new List<string>();
+            foreach (ListViewItem item in this.opselectLIST.Items)
+            {
+                if (item.Tag != null)
+                {
+                    numerosOPSeleccionados.Add(item.Tag.ToString());
+                }
+            }
+
+            // Buscamos las OPs en el modelo
+            List<string> opsAfectadas = modelo.ObtenerOpsAfectadasPorProducto(numerosOPSeleccionados, sku, modalidad);
+
+            this.opafectadasLIST.BeginUpdate();
+            try
+            {
+                this.opafectadasLIST.Items.Clear();
+                foreach (string numeroOP in opsAfectadas)
+                {
+                    ListViewItem itemOP = new ListViewItem(numeroOP);
+                    this.opafectadasLIST.Items.Add(itemOP);
+                }
+            }
+            finally
+            {
+                this.opafectadasLIST.EndUpdate();
+            }
+        }
     }
 }
