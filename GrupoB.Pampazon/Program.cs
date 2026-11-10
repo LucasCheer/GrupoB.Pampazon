@@ -1,3 +1,5 @@
+using GrupoB.Pampazon.AcondicionarYEmpaquetarLote;
+using GrupoB.Pampazon.DespachoCargaTransporte;
 using GrupoB.Pampazon.EmitirOrdenDeEntrega;
 using GrupoB.Pampazon.RegistrarMermasEIncidencias;
 
@@ -14,7 +16,7 @@ namespace GrupoB.Pampazon
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EmitirOrdenDeEntregaForm());
+            Application.Run(new EmitirOrdenDeSeleccionForm());
         }
     }
 }

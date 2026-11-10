@@ -9,7 +9,6 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
         public string SKU { get; set; }
         public string Descripcion { get; set; }
         public string Categoria { get; set; }
-        public decimal PrecioUnitario { get; set; }
         public string UbicacionAlmacen { get; set; } // Formato de pasillo/estantería (X-Y-Z)
     }
 }
