@@ -1,1 +1,34 @@
-﻿
+﻿[
+  {
+    "CUITCliente": "30-71458963-2",
+    "RazonSocial": "Distribuidora Norte S.A."
+  },
+  {
+    "CUITCliente": "30-68923410-9",
+    "RazonSocial": "Logística del Sur S.R.L."
+  },
+  {
+    "CUITCliente": "33-70112233-9",
+    "RazonSocial": "Comercializadora Río de la Plata S.A."
+  },
+  {
+    "CUITCliente": "30-54896321-4",
+    "RazonSocial": "Supermercados El Sol S.A."
+  },
+  {
+    "CUITCliente": "30-71987654-1",
+    "RazonSocial": "Tecnología y Hogar S.R.L."
+  },
+  {
+    "CUITCliente": "30-65432198-7",
+    "RazonSocial": "Alimentos del Centro S.A."
+  },
+  {
+    "CUITCliente": "33-71234567-9",
+    "RazonSocial": "Ferretería Industrial Oeste S.A."
+  },
+  {
+    "CUITCliente": "30-70998877-5",
+    "RazonSocial": "Importadora Atlántico S.R.L."
+  }
+]

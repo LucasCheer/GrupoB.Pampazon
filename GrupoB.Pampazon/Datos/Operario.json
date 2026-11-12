@@ -1,0 +1,27 @@
+﻿[
+  {
+    "Legajo": "LEG-101",
+    "Nombre": "Carlos",
+    "Apellido": "Gómez"
+  },
+  {
+    "Legajo": "LEG-102",
+    "Nombre": "Martín",
+    "Apellido": "Fernández"
+  },
+  {
+    "Legajo": "LEG-103",
+    "Nombre": "Lucas",
+    "Apellido": "Rodríguez"
+  },
+  {
+    "Legajo": "LEG-104",
+    "Nombre": "Sofía",
+    "Apellido": "Martínez"
+  },
+  {
+    "Legajo": "LEG-105",
+    "Nombre": "Diego",
+    "Apellido": "López"
+  }
+]

@@ -1,1 +1,58 @@
-﻿
+﻿[
+  {
+    "CUITCliente": "30-71458963-2",
+    "SKU": "SKU-1001",
+    "CantidadDisponible": 120,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-A-EST-01-NIV-01"
+  },
+  {
+    "CUITCliente": "30-71458963-2",
+    "SKU": "SKU-1002",
+    "CantidadDisponible": 85,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-A-EST-01-NIV-02"
+  },
+  {
+    "CUITCliente": "30-68923410-9",
+    "SKU": "SKU-1004",
+    "CantidadDisponible": 40,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-B-EST-03-NIV-01"
+  },
+  {
+    "CUITCliente": "33-70112233-9",
+    "SKU": "SKU-1005",
+    "CantidadDisponible": 200,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-C-EST-02-NIV-03"
+  },
+  {
+    "CUITCliente": "33-70112233-9",
+    "SKU": "SKU-1006",
+    "CantidadDisponible": 60,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-C-EST-02-NIV-04"
+  },
+  {
+    "CUITCliente": "33-70112233-9",
+    "SKU": "SKU-1003",
+    "CantidadDisponible": 15,
+    "Estado": "EnCuarentena",
+    "UbicacionAlmacen": "ZONA-REV-01"
+  },
+  {
+    "CUITCliente": "30-54896321-4",
+    "SKU": "SKU-1007",
+    "CantidadDisponible": 50,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-D-EST-01-NIV-01"
+  },
+  {
+    "CUITCliente": "30-71987654-1",
+    "SKU": "SKU-1008",
+    "CantidadDisponible": 95,
+    "Estado": "Disponible",
+    "UbicacionAlmacen": "PAS-E-EST-04-NIV-02"
+  }
+]

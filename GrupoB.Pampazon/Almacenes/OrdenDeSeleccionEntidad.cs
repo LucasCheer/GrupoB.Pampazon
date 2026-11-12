@@ -7,12 +7,17 @@ namespace GrupoB.Pampazon.Almacenes
 {
     internal class OrdenDeSeleccionEntidad
     {
-        public string NumeroOp { get; set; }
-        public DateTime FechaSolicitada { get; set; }
-        public string CUITCliente { get; set; }
-        public string DNITransportista { get; set; }
-        public string NombreEmpresa { get; set; }
-        public EstadoOrdenPreparacionEnum Estado { get; set; }
-        public List<DetalleOP> Detalle { get; set; } = new List<DetalleOP>();
+        public string NumeroOS { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public EstadoOrdenSeleccionEnum Estado { get; set; }
+        public List<DetalleOS> DetalleOS { get; set; } = new List<DetalleOS>();
+        public List<string> OrdenesPreparacion { get; set; } = new List<string>();
+        public string LegajoOperario { get; set; }
+    }
+
+    public enum EstadoOrdenSeleccionEnum
+    {
+        Emitida,
+        Finalizada
     }
 }

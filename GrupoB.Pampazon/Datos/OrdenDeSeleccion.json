@@ -1,1 +1,71 @@
-﻿
+﻿[
+  {
+    "NumeroOS": "OS-2026-0001",
+    "FechaEmision": "2026-11-10T11:00:00",
+    "Estado": 0,
+    "DetalleOS": [
+      {
+        "SKU": "SKU-1004",
+        "Cantidad": 6,
+        "Modalidad": 0
+      }
+    ],
+    "OrdenesPreparacion": [
+      "OP-2026-0002"
+    ],
+    "LegajoOperario": "LEG-101"
+  },
+  {
+    "NumeroOS": "OS-2026-0002",
+    "FechaEmision": "2026-11-11T09:30:00",
+    "Estado": 1,
+    "DetalleOS": [
+      {
+        "SKU": "SKU-1005",
+        "Cantidad": 50,
+        "Modalidad": 1
+      },
+      {
+        "SKU": "SKU-1006",
+        "Cantidad": 15,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1003",
+        "Cantidad": 30,
+        "Modalidad": 1
+      },
+      {
+        "SKU": "SKU-1007",
+        "Cantidad": 12,
+        "Modalidad": 0
+      }
+    ],
+    "OrdenesPreparacion": [
+      "OP-2026-0003",
+      "OP-2026-0004"
+    ],
+    "LegajoOperario": "LEG-102"
+  },
+  {
+    "NumeroOS": "OS-2026-0003",
+    "FechaEmision": "2026-11-09T17:15:00",
+    "Estado": 1,
+    "DetalleOS": [
+      {
+        "SKU": "SKU-1008",
+        "Cantidad": 20,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1001",
+        "Cantidad": 5,
+        "Modalidad": 1
+      }
+    ],
+    "OrdenesPreparacion": [
+      "OP-2026-0005"
+    ],
+    "LegajoOperario": "LEG-101"
+  }
+]

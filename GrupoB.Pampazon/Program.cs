@@ -26,6 +26,7 @@ namespace GrupoB.Pampazon
             IncidenciaMermaAlmacen.Guardar();
             OrdenDeSeleccionAlmacen.Guardar();
             ProductoAlmacen.Guardar();
+            OperarioAlmacen.Guardar();
 
         }
     }

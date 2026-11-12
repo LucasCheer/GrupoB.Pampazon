@@ -1,1 +1,97 @@
-﻿
+﻿[
+  {
+    "NumeroOP": "OP-2026-0001",
+    "FechaSolicitada": "2026-11-10T08:30:00",
+    "CUITCliente": "30-71458963-2",
+    "DNITransportista": "32456789",
+    "NombreEmpresa": "Transportes Rápidos S.A.",
+    "Estado": 0,
+    "Detalle": [
+      {
+        "SKU": "SKU-1001",
+        "CantidadPedida": 10,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1002",
+        "CantidadPedida": 25,
+        "Modalidad": 1
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0002",
+    "FechaSolicitada": "2026-11-10T10:15:00",
+    "CUITCliente": "30-68923410-9",
+    "DNITransportista": "28901234",
+    "NombreEmpresa": "Expreso del Sur S.R.L.",
+    "Estado": 1,
+    "Detalle": [
+      {
+        "SKU": "SKU-1004",
+        "CantidadPedida": 6,
+        "Modalidad": 0
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0003",
+    "FechaSolicitada": "2026-11-11T09:00:00",
+    "CUITCliente": "33-70112233-9",
+    "DNITransportista": "35678901",
+    "NombreEmpresa": "Logística Integral S.A.",
+    "Estado": 2,
+    "Detalle": [
+      {
+        "SKU": "SKU-1005",
+        "CantidadPedida": 50,
+        "Modalidad": 1
+      },
+      {
+        "SKU": "SKU-1006",
+        "CantidadPedida": 15,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1003",
+        "CantidadPedida": 30,
+        "Modalidad": 1
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0004",
+    "FechaSolicitada": "2026-11-11T14:20:00",
+    "CUITCliente": "30-54896321-4",
+    "DNITransportista": "30112233",
+    "NombreEmpresa": "Fletes del Centro S.R.L.",
+    "Estado": 3,
+    "Detalle": [
+      {
+        "SKU": "SKU-1007",
+        "CantidadPedida": 12,
+        "Modalidad": 0
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0005",
+    "FechaSolicitada": "2026-11-09T16:45:00",
+    "CUITCliente": "30-71987654-1",
+    "DNITransportista": "29445566",
+    "NombreEmpresa": "Carga Segura S.A.",
+    "Estado": 4,
+    "Detalle": [
+      {
+        "SKU": "SKU-1008",
+        "CantidadPedida": 20,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1001",
+        "CantidadPedida": 5,
+        "Modalidad": 1
+      }
+    ]
+  }
+]

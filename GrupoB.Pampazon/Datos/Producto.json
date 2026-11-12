@@ -1,1 +1,42 @@
-﻿
+﻿[
+  {
+    "SKU": "SKU-1001",
+    "Descripcion": "Monitor LED 24 pulgadas Full HD",
+    "Categoria": "Electrónica"
+  },
+  {
+    "SKU": "SKU-1002",
+    "Descripcion": "Teclado Mecánico Inalámbrico RGB",
+    "Categoria": "Periféricos"
+  },
+  {
+    "SKU": "SKU-1003",
+    "Descripcion": "Mouse Óptico Ergonómico 16000 DPI",
+    "Categoria": "Periféricos"
+  },
+  {
+    "SKU": "SKU-1004",
+    "Descripcion": "Silla Ergonómica de Oficina Negra",
+    "Categoria": "Mobiliario"
+  },
+  {
+    "SKU": "SKU-1005",
+    "Descripcion": "Disco Sólido SSD NVMe 1TB",
+    "Categoria": "Almacenamiento"
+  },
+  {
+    "SKU": "SKU-1006",
+    "Descripcion": "Auriculares Over-Ear con Cancelación de Ruido",
+    "Categoria": "Audio"
+  },
+  {
+    "SKU": "SKU-1007",
+    "Descripcion": "Cafetera Express Automática 15 Bares",
+    "Categoria": "Electrodomésticos"
+  },
+  {
+    "SKU": "SKU-1008",
+    "Descripcion": "Taladro Percutor Inalámbrico 20V",
+    "Categoria": "Herramientas"
+  }
+]
