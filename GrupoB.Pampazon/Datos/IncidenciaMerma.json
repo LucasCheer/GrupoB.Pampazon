@@ -4,64 +4,64 @@
     "FechaHora": "2026-11-10T14:30:00",
     "Sector": 0,
     "EtapaOperativa": 2,
-    "SKU": "SKU-PMP-001",
+    "SKU": "SKU-1001",
     "TipoCausa": 1,
     "CantidadAfectada": 5,
-    "JustificacionTecnica": "Caja de lámparas LED cayó del rack superior durante el proceso de extracción.",
+    "JustificacionTecnica": "Caja de monitores LED cayó del rack superior durante el proceso de extracción.",
     "Estado": "A Revisión",
-    "CoordenadaXYZ": "05-12-03",
-    "LegajoOperario": "4812"
+    "CoordenadaXYZ": "A-05-03",
+    "LegajoOperario": "LEG-101"
   },
   {
     "NumeroIncidencia": "INC-2026-00002",
     "FechaHora": "2026-11-11T09:15:00",
     "Sector": 2,
     "EtapaOperativa": 3,
-    "SKU": "SKU-PMP-002",
+    "SKU": "SKU-1002",
     "TipoCausa": 4,
     "CantidadAfectada": 2,
     "JustificacionTecnica": "Faltante detectado al momento de armar la caja para el cliente. Stock en sistema difiere del físico.",
     "Estado": "Baja Definitiva",
     "CoordenadaXYZ": "N/A",
-    "LegajoOperario": "4815"
+    "LegajoOperario": "LEG-102"
   },
   {
     "NumeroIncidencia": "INC-2026-00003",
     "FechaHora": "2026-11-12T11:45:00",
     "Sector": 0,
     "EtapaOperativa": 0,
-    "SKU": "SKU-PMP-003",
+    "SKU": "SKU-1003",
     "TipoCausa": 2,
     "CantidadAfectada": 10,
-    "JustificacionTecnica": "Filtración de agua desde el techo mojó varios rollos de cinta de embalaje.",
+    "JustificacionTecnica": "Filtración de agua desde el techo mojó varios mouses ópticos.",
     "Estado": "Rechazada",
-    "CoordenadaXYZ": "02-05-01",
-    "LegajoOperario": "4812"
+    "CoordenadaXYZ": "B-02-01",
+    "LegajoOperario": "LEG-101"
   },
   {
     "NumeroIncidencia": "INC-2026-00004",
     "FechaHora": "2026-11-12T16:20:00",
     "Sector": 1,
     "EtapaOperativa": 1,
-    "SKU": "SKU-PMP-002",
+    "SKU": "SKU-1002",
     "TipoCausa": 3,
     "CantidadAfectada": 1,
-    "JustificacionTecnica": "El envoltorio plástico del cuaderno está rasgado, no apto para la venta.",
+    "JustificacionTecnica": "El envoltorio plástico del teclado mecánico está rasgado, no apto para la venta.",
     "Estado": "A Revisión",
     "CoordenadaXYZ": "N/A",
-    "LegajoOperario": "4820"
+    "LegajoOperario": "LEG-104"
   },
   {
     "NumeroIncidencia": "INC-2026-00005",
     "FechaHora": "2026-11-12T17:05:00",
     "Sector": 0,
     "EtapaOperativa": 0,
-    "SKU": "SKU-PMP-001",
+    "SKU": "SKU-1001",
     "TipoCausa": 0,
     "CantidadAfectada": 15,
     "JustificacionTecnica": "Palet mal estibado provocó aplastamiento de cajas en la base del rack.",
     "Estado": "A Revisión",
-    "CoordenadaXYZ": "10-01-01",
-    "LegajoOperario": "4812"
+    "CoordenadaXYZ": "C-10-01",
+    "LegajoOperario": "LEG-101"
   }
 ]
