@@ -8,7 +8,7 @@
     "TipoCausa": 1,
     "CantidadAfectada": 5,
     "JustificacionTecnica": "Caja de monitores LED cayó del rack superior durante el proceso de extracción.",
-    "Estado": "A Revisión",
+    "Estado": 0,
     "CoordenadaXYZ": "A-05-03",
     "LegajoOperario": "LEG-101"
   },
@@ -21,7 +21,7 @@
     "TipoCausa": 4,
     "CantidadAfectada": 2,
     "JustificacionTecnica": "Faltante detectado al momento de armar la caja para el cliente. Stock en sistema difiere del físico.",
-    "Estado": "Baja Definitiva",
+    "Estado": 1,
     "CoordenadaXYZ": "N/A",
     "LegajoOperario": "LEG-102"
   },
@@ -34,7 +34,7 @@
     "TipoCausa": 2,
     "CantidadAfectada": 10,
     "JustificacionTecnica": "Filtración de agua desde el techo mojó varios mouses ópticos.",
-    "Estado": "Rechazada",
+    "Estado": 2,
     "CoordenadaXYZ": "B-02-01",
     "LegajoOperario": "LEG-101"
   },
@@ -47,7 +47,7 @@
     "TipoCausa": 3,
     "CantidadAfectada": 1,
     "JustificacionTecnica": "El envoltorio plástico del teclado mecánico está rasgado, no apto para la venta.",
-    "Estado": "A Revisión",
+    "Estado": 0,
     "CoordenadaXYZ": "N/A",
     "LegajoOperario": "LEG-104"
   },
@@ -60,7 +60,7 @@
     "TipoCausa": 0,
     "CantidadAfectada": 15,
     "JustificacionTecnica": "Palet mal estibado provocó aplastamiento de cajas en la base del rack.",
-    "Estado": "A Revisión",
+    "Estado": 0,
     "CoordenadaXYZ": "C-10-01",
     "LegajoOperario": "LEG-101"
   }

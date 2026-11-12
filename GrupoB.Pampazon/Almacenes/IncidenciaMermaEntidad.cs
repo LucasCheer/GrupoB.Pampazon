@@ -14,7 +14,7 @@ namespace GrupoB.Pampazon.Almacenes
         public TipoCausaIncidenciaEnum TipoCausa { get; set; }
         public int CantidadAfectada { get; set; }
         public string JustificacionTecnica { get; set; }
-        public string Estado { get; set; }
+        public EstadoIncidenciaMermaEnum Estado { get; set; }
         public string CoordenadaXYZ { get; set; }
         public string LegajoOperario { get; set; }
     }
