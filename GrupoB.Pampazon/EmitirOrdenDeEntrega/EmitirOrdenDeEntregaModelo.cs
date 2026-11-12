@@ -58,7 +58,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
             {
                 NumeroOE = numeroOEGenerado,
                 FechaEmision = DateTime.Now,
-                Estado = "Emitida",
+                Estado = EstadoOrdenEntregaEnum.Emitida,
                 // Nueva instancia de lista para evitar referencias compartidas con el Form
                 OrdenesPreparacion = numerosOPSeleccionadas.Select(n => n.Trim()).ToList()
             };
@@ -69,7 +69,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
             {
                 NumeroOE = nuevaOEEntidad.NumeroOE,
                 FechaEmision = nuevaOEEntidad.FechaEmision,
-                Estado = nuevaOEEntidad.Estado,
+                Estado = nuevaOEEntidad.Estado.ToString(),
                 OrdenesPreparacion = new List<string>(nuevaOEEntidad.OrdenesPreparacion)
             });
 

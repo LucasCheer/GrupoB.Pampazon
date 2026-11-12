@@ -8,7 +8,7 @@ namespace GrupoB.Pampazon.Almacenes
     {
         public string NumeroOE { get; set; }
         public DateTime FechaEmision { get; set; }
-        public string Estado { get; set; }
+        public EstadoOrdenEntregaEnum Estado { get; set; }
         public List<string> OrdenesPreparacion { get; set; }
     }
 }

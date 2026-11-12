@@ -9,7 +9,6 @@ namespace GrupoB.Pampazon.Almacenes
         public string CUITCliente { get; set; }
         public string SKU { get; set; }
         public int CantidadDisponible { get; set; }
-        public string Estado { get; set; }
         public string UbicacionAlmacen { get; set; }
     }
 }
