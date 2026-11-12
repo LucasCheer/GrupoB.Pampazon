@@ -35,7 +35,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
             foreach (var orden in ordenesPendientesDespacho)
             {
                 ListViewItem item = new ListViewItem(orden.NumeroOP);
-                item.SubItems.Add(orden.FechaRecibida.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(orden.FechaEmision.ToString("dd/MM/yyyy"));
 
                 // ASIGNACIÓN CLAVE: Se asigna el ID/Número de OP al Tag
                 item.Tag = orden.NumeroOP;

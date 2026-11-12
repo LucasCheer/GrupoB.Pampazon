@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoB.Pampazon.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -7,66 +8,51 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
 {
     internal class EmitirOrdenDeSeleccionModelo
     {
-        public List<Cliente> clientes = new List<Cliente>
-        {
-            new Cliente{ClienteID = 1,RazonSocial = "TechNew"},
-            new Cliente{ClienteID = 2,RazonSocial = "Materiales S.A."},
-            new Cliente{ClienteID = 3,RazonSocial = "A S.A"}
-        };
+        public List<Cliente> clientes = new List<Cliente>();
 
-        public List<OP> ops = new List<OP>
-        {
-            new OP{NumeroOP = "OP001",FechaRecibida = DateTime.Now.AddDays(-5),RazonSocial = "TechNew",Productos = new List<DetalleOP>
-                {
-                    new DetalleOP { SKU = "ELEC-MEM-8GB-01", Descripcion = "Memoria RAM 8GB DDR4", Cantidad = 100,Modalidad = "Fullfilment" },
-                    new DetalleOP { SKU = "ELEC-PRO-I7-02", Descripcion = "Procesador Intel i7 12va Gen", Cantidad = 50,Modalidad = "Fullfilment" },
-                    new DetalleOP { SKU = "ELEC-SSD-512-03", Descripcion = "Disco Sólido NVMe 512GB", Cantidad = 30,Modalidad = "Fullfilment" }
-                },Estado = "Pendiente"
-            },
-            new OP{NumeroOP = "OP002",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "Materiales S.A.",
-                Productos = new List<DetalleOP>
-                {
-                    new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 2,Modalidad = "Pallet" },
-                    new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 4,Modalidad = "Pallet" }
-                },Estado = "Pendiente"
-            },
-            new OP{NumeroOP = "OP003",FechaRecibida = DateTime.Now.AddDays(-1),RazonSocial = "Energia S.R.L",
-                Productos = new List<DetalleOP>
-                {
-                    new DetalleOP { SKU = "CAB-COB-04MM-05", Descripcion = "Rollo Cable Cobre 4mm (100m)", Cantidad = 150,Modalidad = "Fullfilment" },
-                    new DetalleOP { SKU = "ELEC-KEY-MEC-01", Descripcion = "Teclado Mecánico Español", Cantidad = 45,Modalidad = "Fullfilment" }
-                },Estado = "Finalizada"
-            },
-            new OP{NumeroOP = "OP006",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "A S.A",
-            Productos = new List<DetalleOP>
-            {
-                new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 20,Modalidad = "Fullfilment" },
-                new DetalleOP { SKU = "HERR-AMM-450-02", Descripcion = "Amoladora Angular 4.5\"", Cantidad = 10,Modalidad = "Fullfilment" }
-            },Estado = "Pendiente"
-            },
-            new OP{NumeroOP = "OP010",FechaRecibida = DateTime.Now.AddDays(-3),RazonSocial = "A S.A",
-            Productos = new List<DetalleOP>
-            {
-                new DetalleOP { SKU = "HERR-TAL-18V-01", Descripcion = "Taladro Percutor 18V", Cantidad = 3,Modalidad = "Pallet" }
-                
-            },Estado = "Pendiente"
-            }
-        };
+        public List<OP> ops = new List<OP>();
+        
 
         public List<OS> os = new List<OS>();
 
 
-        public List<Producto> productos = new List<Producto>
+        public List<Producto> productos = new List<Producto>();
+        public EmitirOrdenDeSeleccionModelo()
         {
-            new Producto{SKU = "ELEC-MEM-8GB-01",Descripcion = "Memoria RAM 8GB DDR4",Categoria = "Electrónica",UbicacionAlmacen = "A-01-02"},
-            new Producto{SKU = "ELEC-PRO-I7-02",Descripcion = "Procesador Intel i7 12va Gen",Categoria = "Electrónica",UbicacionAlmacen = "A-01-05"},
-            new Producto{SKU = "ELEC-SSD-512-03",Descripcion = "Disco Sólido NVMe 512GB",Categoria = "Electrónica",UbicacionAlmacen = "A-02-01"},
-            new Producto{SKU = "HERR-TAL-18V-01",Descripcion = "Taladro Percutor 18V",Categoria = "Herramientas",UbicacionAlmacen = "B-04-03"},
-            new Producto{SKU = "HERR-AMM-450-02",Descripcion = "Amoladora Angular 4.5\"",Categoria = "Herramientas",UbicacionAlmacen = "B-04-08"    },
-            new Producto{SKU = "CAB-COB-04MM-05",Descripcion = "Rollo Cable Cobre 4mm (100m)",Categoria = "Materiales",UbicacionAlmacen = "C-02-01"},
-            new Producto{SKU = "ELEC-KEY-MEC-01",Descripcion = "Teclado Mecánico Español",Categoria = "Electrónica",UbicacionAlmacen = "A-03-04"}
-        };
+            CargarClientes();
+            CargarProductos();
+        }
 
+        public List<Cliente> CargarClientes()
+        {
+            var clientesEntidad = ClienteAlmacen.Cliente;
+
+            clientes = clientesEntidad
+                .Select(c => new Cliente
+                {
+                    CUITCliente = c.CUITCliente,
+                    RazonSocial = c.RazonSocial
+                })
+                .ToList();
+
+            return clientes;
+        }
+        public List<Producto> CargarProductos()
+        {
+            // Consultamos la lista estática del almacén (verificá si se llama Productos o Producto)
+            var productosEntidad = ProductoAlmacen.Producto;
+
+            // Mapeamos a instancias nuevas de Producto (DTO) para no devolver referencias a la entidad
+            productos = productosEntidad
+                .Select(p => new Producto
+                {
+                    SKU = p.SKU,
+                    Descripcion = p.Descripcion
+                })
+                .ToList();
+
+            return productos;
+        }
         public bool AgregarOS(OS nuevaOS, List<string> numerosOPSeleccionadas)
         {
             if (nuevaOS == null || numerosOPSeleccionadas == null || numerosOPSeleccionadas.Count == 0)
@@ -74,25 +60,52 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
                 return false;
             }
 
-            // 1. Generar número correlativo dinámico (ej: OS001, OS002...)
-            int proximoNumero = os.Count + 1;
-            nuevaOS.NumeroOS = $"OS{proximoNumero:D3}";
+            // 1. Generar número correlativo mirando el almacén real
+            int proximoNumero = OrdenDeSeleccionAlmacen.OrdenDeSeleccion.Count + 1;
+            nuevaOS.NumeroOS = $"OS-2026-{proximoNumero:D4}";
             nuevaOS.FechaRecibida = DateTime.Now;
-            nuevaOS.Estado = "Emitida";
+            nuevaOS.OrdenesPreparacion = numerosOPSeleccionadas.Select(n => n.Trim()).ToList();
 
-            // 2. Asociar explícitamente la lista de OPs a la OS
-            nuevaOS.OrdenesPreparacion = new List<string>(numerosOPSeleccionadas);
+            // 2. Mapear y guardar la nueva OrdenDeSeleccionEntidad en el almacén
+            var nuevaOSEntidad = new OrdenDeSeleccionEntidad
+            {
+                NumeroOS = nuevaOS.NumeroOS,
+                FechaEmision = nuevaOS.FechaRecibida,
+                Estado = EstadoOrdenSeleccionEnum.Emitida,
+                OrdenesPreparacion = new List<string>(nuevaOS.OrdenesPreparacion),
+                DetalleOS = nuevaOS.Productos.Select(p => new Almacenes.DetalleOS
+                {
+                    SKU = p.SKU,
+                    Cantidad = p.Cantidad,
+                    Modalidad = Enum.TryParse<ModalidadEnum>(p.Modalidad, true, out var mod)
+                        ? mod
+                        : ModalidadEnum.Pallet
+                }).ToList()
+            };
+            OrdenDeSeleccionAlmacen.OrdenDeSeleccion.Add(nuevaOSEntidad);
 
-            // 3. Guardar la OS en la lista interna del modelo
+            // Mantenemos sincronizada la lista local del modelo
             os.Add(nuevaOS);
 
-            // 4. Cambiar el estado de las OPs seleccionadas para quitarlas de pendientes
+            // 3. Actualizar el estado de las entidades reales en OrdenDePreparacionAlmacen
             foreach (var numeroOP in numerosOPSeleccionadas)
             {
-                var op = ops.FirstOrDefault(o => o.NumeroOP.Equals(numeroOP.Trim(), StringComparison.OrdinalIgnoreCase));
-                if (op != null)
+                string numLimpio = numeroOP.Trim();
+
+                // Actualizamos en el almacén
+                var opEntidad = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                    .FirstOrDefault(o => o.NumeroOP.Equals(numLimpio, StringComparison.OrdinalIgnoreCase));
+
+                if (opEntidad != null)
                 {
-                    op.Estado = "En selección"; // Cambia el estado para que ObtenerOrdenesPendientes() ya no la devuelva
+                    opEntidad.Estado = EstadoOrdenPreparacionEnum.EnSeleccion;
+                }
+
+                // Actualizamos en la lista local 'ops' para los filtros inmediatos
+                var opLocal = ops.FirstOrDefault(o => o.NumeroOP.Equals(numLimpio, StringComparison.OrdinalIgnoreCase));
+                if (opLocal != null)
+                {
+                    opLocal.Estado = "En selección";
                 }
             }
 
@@ -126,18 +139,40 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
 
         public List<OP> ObtenerOrdenesPendientes()
         {
-            // El modelo consulta al almacén y filtra antes de entregar la lista
-
+            var opEntidad = OrdenDePreparacionAlmacen.OrdenesDePreparacion;
+            var clientesEntidad = ClienteAlmacen.Cliente;
             List<OP> pendientes = new List<OP>();
 
-            foreach (var orden in ops)
+            foreach (var entidad in opEntidad)
             {
-                if (orden.Estado == "Pendiente")
+                if (entidad.Estado == EstadoOrdenPreparacionEnum.Pendiente)
                 {
-                    pendientes.Add(orden);
+                    // Buscamos la Razón Social por CUIT
+                    var clienteEncontrado = clientesEntidad
+                        .FirstOrDefault(c => c.CUITCliente == entidad.CUITCliente);
+
+                    // Mapeamos a instancias nuevas de OP y DetalleOP (cero referencias compartidas)
+                    pendientes.Add(new OP
+                    {
+                        NumeroOP = entidad.NumeroOP,
+                        FechaRecibida = entidad.FechaSolicitada,
+                        RazonSocial = clienteEncontrado != null ? clienteEncontrado.RazonSocial : entidad.CUITCliente,
+                        Estado = "Pendiente",
+                        Productos = entidad.Detalle != null
+                            ? entidad.Detalle.Select(d => new DetalleOP
+                            {
+                                SKU = d.SKU,
+                                Descripcion = ObtenerDescripcionProducto(d.SKU),
+                                Cantidad = d.Cantidad,
+                                Modalidad = d.Modalidad.ToString()
+                            }).ToList()
+                            : new List<DetalleOP>()
+                    });
                 }
             }
 
+            // Actualizamos la lista interna 'ops' para que los filtros, detalles y consolidación funcionen con estos datos
+            ops = pendientes;
             return pendientes;
         }
 

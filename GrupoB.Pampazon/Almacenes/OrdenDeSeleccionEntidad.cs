@@ -14,10 +14,4 @@ namespace GrupoB.Pampazon.Almacenes
         public List<string> OrdenesPreparacion { get; set; } = new List<string>();
         public string LegajoOperario { get; set; }
     }
-
-    public enum EstadoOrdenSeleccionEnum
-    {
-        Emitida,
-        Finalizada
-    }
 }

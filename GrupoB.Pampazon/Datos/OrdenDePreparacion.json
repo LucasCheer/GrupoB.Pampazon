@@ -9,12 +9,12 @@
     "Detalle": [
       {
         "SKU": "SKU-1001",
-        "CantidadPedida": 10,
+        "Cantidad": 10,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1002",
-        "CantidadPedida": 25,
+        "Cantidad": 25,
         "Modalidad": 1
       }
     ]
@@ -29,7 +29,7 @@
     "Detalle": [
       {
         "SKU": "SKU-1004",
-        "CantidadPedida": 6,
+        "Cantidad": 6,
         "Modalidad": 0
       }
     ]
@@ -44,17 +44,17 @@
     "Detalle": [
       {
         "SKU": "SKU-1005",
-        "CantidadPedida": 50,
+        "Cantidad": 50,
         "Modalidad": 1
       },
       {
         "SKU": "SKU-1006",
-        "CantidadPedida": 15,
+        "Cantidad": 15,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1003",
-        "CantidadPedida": 30,
+        "Cantidad": 30,
         "Modalidad": 1
       }
     ]
@@ -69,7 +69,7 @@
     "Detalle": [
       {
         "SKU": "SKU-1007",
-        "CantidadPedida": 12,
+        "Cantidad": 12,
         "Modalidad": 0
       }
     ]
@@ -84,12 +84,32 @@
     "Detalle": [
       {
         "SKU": "SKU-1008",
-        "CantidadPedida": 20,
+        "Cantidad": 20,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1001",
-        "CantidadPedida": 5,
+        "Cantidad": 5,
+        "Modalidad": 1
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0006",
+    "FechaSolicitada": "2026-11-12T08:00:00",
+    "CUITCliente": "30-71458963-2",
+    "DNITransportista": "32456789",
+    "NombreEmpresa": "Transportes Rápidos S.A.",
+    "Estado": 3,
+    "Detalle": [
+      {
+        "SKU": "SKU-1001",
+        "Cantidad": 18,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1002",
+        "Cantidad": 40,
         "Modalidad": 1
       }
     ]

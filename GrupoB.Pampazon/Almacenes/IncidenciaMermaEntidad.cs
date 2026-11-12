@@ -18,27 +18,4 @@ namespace GrupoB.Pampazon.Almacenes
         public string CoordenadaXYZ { get; set; }
         public string LegajoOperario { get; set; }
     }
-    public enum SectorIncidenciaEnum
-    {
-        Almacen,
-        Preparacion,
-        Recepcion,
-        Despacho
-    }
-    public enum TipoCausaIncidenciaEnum
-    {
-        Aplastamiento,
-        CaidaRotura,
-        HumedadFiltracion,
-        EnvoltorioDanado,
-        FaltanteFisico
-    }
-    public enum EtapaOperativaIncidenciaEnum
-    {
-        AlmacenamientoEstiba,
-        Picking,
-        Packing,
-        Recepcion,
-        Despacho
-    }
 }

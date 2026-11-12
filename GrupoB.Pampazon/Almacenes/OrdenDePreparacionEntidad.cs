@@ -15,12 +15,4 @@ namespace GrupoB.Pampazon.Almacenes
         public EstadoOrdenPreparacionEnum Estado { get; set; }
         public List<DetalleOP> Detalle { get; set; }
     }
-    public enum EstadoOrdenPreparacionEnum
-    {
-        Pendiente,
-        EnSeleccion,
-        EnPreparacion,
-        EnDespacho,
-        Finalizada
-    }
 }
