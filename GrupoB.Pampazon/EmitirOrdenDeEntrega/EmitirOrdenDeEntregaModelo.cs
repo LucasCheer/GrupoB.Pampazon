@@ -51,7 +51,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
 
             // 1. Correlativo calculado sobre el almacén real para no repetir números existentes
             int proximoNumero = OrdenDeEntregaAlmacen.OrdenesDeEntrega.Count + 1;
-            string numeroOEGenerado = $"OE{proximoNumero:D3}";
+            string numeroOEGenerado = $"OE-2026-{proximoNumero:D4}"; ;
 
             // 2. Creamos y persistimos la entidad en OrdenDeEntregaAlmacen
             var nuevaOEEntidad = new OrdenDeEntregaEntidad

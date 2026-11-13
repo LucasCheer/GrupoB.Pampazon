@@ -113,5 +113,85 @@
         "Modalidad": 1
       }
     ]
+  },
+  {
+    "NumeroOP": "OP-2026-0007",
+    "FechaSolicitada": "2026-11-12T09:30:00",
+    "CUITCliente": "30-68923410-9",
+    "DNITransportista": "28901234",
+    "NombreEmpresa": "Expreso del Sur S.R.L.",
+    "Estado": 0,
+    "Detalle": [
+      {
+        "SKU": "SKU-1003",
+        "Cantidad": 14,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1005",
+        "Cantidad": 35,
+        "Modalidad": 1
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0008",
+    "FechaSolicitada": "2026-11-12T11:15:00",
+    "CUITCliente": "33-70112233-9",
+    "DNITransportista": "35678901",
+    "NombreEmpresa": "Logística Integral S.A.",
+    "Estado": 0,
+    "Detalle": [
+      {
+        "SKU": "SKU-1001",
+        "Cantidad": 8,
+        "Modalidad": 0
+      },
+      {
+        "SKU": "SKU-1004",
+        "Cantidad": 22,
+        "Modalidad": 1
+      },
+      {
+        "SKU": "SKU-1008",
+        "Cantidad": 10,
+        "Modalidad": 0
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0009",
+    "FechaSolicitada": "2026-11-12T14:40:00",
+    "CUITCliente": "30-54896321-4",
+    "DNITransportista": "30112233",
+    "NombreEmpresa": "Fletes del Centro S.R.L.",
+    "Estado": 0,
+    "Detalle": [
+      {
+        "SKU": "SKU-1006",
+        "Cantidad": 16,
+        "Modalidad": 0
+      }
+    ]
+  },
+  {
+    "NumeroOP": "OP-2026-0010",
+    "FechaSolicitada": "2026-11-12T16:10:00",
+    "CUITCliente": "30-71987654-1",
+    "DNITransportista": "29445566",
+    "NombreEmpresa": "Carga Segura S.A.",
+    "Estado": 0,
+    "Detalle": [
+      {
+        "SKU": "SKU-1002",
+        "Cantidad": 30,
+        "Modalidad": 1
+      },
+      {
+        "SKU": "SKU-1007",
+        "Cantidad": 9,
+        "Modalidad": 0
+      }
+    ]
   }
 ]
