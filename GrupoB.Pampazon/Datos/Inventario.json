@@ -3,56 +3,48 @@
     "CUITCliente": "30-71458963-2",
     "SKU": "SKU-1001",
     "CantidadDisponible": 120,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "A-01-01"
   },
   {
     "CUITCliente": "30-71458963-2",
     "SKU": "SKU-1002",
     "CantidadDisponible": 85,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "A-01-02"
   },
   {
     "CUITCliente": "30-68923410-9",
     "SKU": "SKU-1004",
     "CantidadDisponible": 40,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "B-03-01"
   },
   {
     "CUITCliente": "33-70112233-9",
     "SKU": "SKU-1005",
     "CantidadDisponible": 200,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "C-02-03"
   },
   {
     "CUITCliente": "33-70112233-9",
     "SKU": "SKU-1006",
     "CantidadDisponible": 60,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "C-02-04"
   },
   {
     "CUITCliente": "33-70112233-9",
     "SKU": "SKU-1003",
     "CantidadDisponible": 15,
-    "Estado": "EnCuarentena",
     "CoordenadaXYZ": "Z-01-01"
   },
   {
     "CUITCliente": "30-54896321-4",
     "SKU": "SKU-1007",
     "CantidadDisponible": 50,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "D-01-01"
   },
   {
     "CUITCliente": "30-71987654-1",
     "SKU": "SKU-1008",
     "CantidadDisponible": 95,
-    "Estado": "Disponible",
     "CoordenadaXYZ": "E-04-02"
   }
 ]
