@@ -52,7 +52,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             string sector = SectorDepositoCombo.SelectedItem?.ToString();
 
             // Habilita coordenadas únicamente si el sector seleccionado es "Almacén"
-            if (sector != null && sector.Equals("Almacén", StringComparison.OrdinalIgnoreCase)) 
+            if (sector != null && sector.Equals("Almacen", StringComparison.OrdinalIgnoreCase)) 
             { 
                 CoordenadaText.Enabled = true; 
             }
