@@ -113,7 +113,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 OperarioResponsable = ObtenerOperarioLogueado(),
                 Sector = sector,
                 EtapaOperativa = etapa,
-                CoordenadaXYZ = (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase)) ? (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "") : "N/A",
+                CoordenadaXYZ = (sector != null && sector.StartsWith("Almacen", StringComparison.OrdinalIgnoreCase)) ? (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "") : "N/A",
                 SKU = skuEncontrado.CodigoSKU,
                 TipoCausa = tipoCausa,
                 CantidadAfectada = cantidad,
