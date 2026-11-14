@@ -80,7 +80,21 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
 
         public string ObtenerFechaHoraActual() => DateTime.Now.ToString("dd/MM/yyyy HH:mm");
 
-        public string ObtenerOperarioLogueado() => "Op. Juan Pérez (Legajo 4812)";
+        // Definimos el legajo hardcodeado del operario logueado actualmente
+        private readonly string legajoOperarioActual = "LEG-101";
+
+        public string ObtenerOperarioLogueado()
+        {
+            var operario = OperarioAlmacen.Operario ?
+                .FirstOrDefault(o => string.Equals(o.Legajo, legajoOperarioActual, StringComparison.OrdinalIgnoreCase));
+
+            if (operario != null) 
+            { 
+                return $"Op. {operario.Nombre} {operario.Apellido} (Legajo {operario.Legajo})"; 
+            }
+
+            return $"Op. Legajo {legajoOperarioActual}";
+        }
 
         // Recibe los datos brutos de la pantalla, ejecuta las validaciones de negocio
 
@@ -165,7 +179,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             {
                 NumeroIncidencia = numeroIncidencia,
                 FechaHora = DateTime.Now,
-                LegajoOperario = "LEG-101",
+                LegajoOperario = legajoOperarioActual, // "LEG-101"
                 Sector = sectorEnum,
                 EtapaOperativa = etapaEnum,
                 CoordenadaXYZ = (sectorEnum == SectorIncidenciaEnum.Almacen)
