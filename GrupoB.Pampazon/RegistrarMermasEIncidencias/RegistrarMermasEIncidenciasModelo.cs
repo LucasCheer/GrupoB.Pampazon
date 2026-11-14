@@ -27,11 +27,21 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             {
                 listaSKUs = InventarioAlmacen.Inventario
                     .GroupBy(i => i.SKU)
-                    .Select(g => new SKUMerma
+                    .Select(g =>
                     {
-                        CodigoSKU = g.Key,
-                        Descripcion = $"Producto {g.Key}",
-                        InventarioDisponible = g.Sum(x => x.CantidadDisponible)
+                        // Buscamos el producto correspondiente en el Almacén de Productos (Producto.json)
+                        var productoEncontrado = ProductoAlmacen.Producto ?
+                        .FirstOrDefault(p => string.Equals(p.SKU, g.Key, StringComparison.OrdinalIgnoreCase));
+
+                        // Si se encuentra, usamos su descripción real; de lo contrario, dejamos una por defecto
+                        string descripcionReal = productoEncontrado != null ? productoEncontrado.Descripcion : $"Producto {g.Key}";
+
+                        return new SKUMerma
+                        {
+                            CodigoSKU = g.Key,
+                            Descripcion = descripcionReal,
+                            InventarioDisponible = g.Sum(x => x.CantidadDisponible)
+                        };
                     })
                     .ToList();
             }
