@@ -53,7 +53,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             }
 
             // Excepción 5.3: Coordenada en Almacén debe tener el formato estricto 'A-XX-XX' (ej: A-01-02)
-            if (sector != null && sector.StartsWith("Almacen", StringComparison.OrdinalIgnoreCase))
+            if (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase))
             {
                 // Limpiamos espacios en blanco externos e internos que pueda enviar el control de WinForms
                 string coordenadaLimpia = (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "");
