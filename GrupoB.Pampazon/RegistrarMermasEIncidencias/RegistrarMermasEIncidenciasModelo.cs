@@ -52,15 +52,15 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                 throw new InvalidOperationException("Debe seleccionar la Etapa Operativa.");
             }
 
-            // Excepción 5.3: Coordenada en Almacén debe ser numérica XX-XX-XX if (sector == "Almacén")
-            if (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase))
+            // Excepción 5.3: Coordenada en Almacén debe tener el formato estricto 'A-XX-XX' (ej: A-01-02)
+            if (sector != null && sector.StartsWith("Almacen", StringComparison.OrdinalIgnoreCase))
             {
                 // Limpiamos espacios en blanco externos e internos que pueda enviar el control de WinForms
                 string coordenadaLimpia = (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "");
 
-                if (!Regex.IsMatch(coordenadaLimpia, @"^\d{2}-\d{2}-\d{2}$"))
+                if (!Regex.IsMatch(coordenadaLimpia, @"^[a-zA-Z]-\d{2}-\d{2}$"))
                 {
-                    throw new FormatException("La coordenada física debe ser estrictamente numérica con formato 'XX-XX-XX' (ej: 01-12-03).");
+                    throw new FormatException("La coordenada física debe tener el formato estricto 'A-XX-XX' (ejemplo: A-01-02).");
                 }
             }
 
