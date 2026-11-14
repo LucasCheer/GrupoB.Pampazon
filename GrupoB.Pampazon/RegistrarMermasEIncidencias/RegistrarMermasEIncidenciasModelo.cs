@@ -102,7 +102,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             }
 
             // 1 Descuenta el inventario disponible
-            skuEncontrado.InventarioDisponible -= cantidad;
+            //skuEncontrado.InventarioDisponible -= cantidad;
 
             // 2 Crea y guarda la entidad de la incidencia
             string numeroIncidencia = GenerarNuevoNumeroIncidencia();
