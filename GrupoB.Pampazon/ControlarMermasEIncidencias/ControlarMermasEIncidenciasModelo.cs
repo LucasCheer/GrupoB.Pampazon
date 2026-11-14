@@ -3,40 +3,68 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
+using GrupoB.Pampazon.Almacenes;
+
 namespace GrupoB.Pampazon.ControlarMermasEIncidencias
 {
     internal class ControlarMermasEIncidenciasModelo
     {
-        private readonly List<IncidenciaMerma> listaIncidenciasPendientes = new List<IncidenciaMerma>
+        public List<IncidenciaMerma> ObtenerIncidenciasPendientes()
         {
-            new IncidenciaMerma
-            {
-                NumeroIncidencia = "INC-2026-00001", 
-                FechaHora = DateTime.Now, 
-                OperarioReportante = "Op. Juan Pérez (Legajo 4812)", 
-                SKUAfectado = new SKUMerma { CodigoSKU = "SKU-PMP-001", Descripcion = "Lámpara LED 10W", InventarioDisponible = 150 }, 
-                Ubicacion = "01-12-03", Cantidad = 5, 
-                CausaReportada = "Aplastamiento por estiba",
-                JustificacionOperador = "Empaque mojado por filtración cerca de la zona de recepción.", 
-                Estado = "A Revisión"
-            },
-            new IncidenciaMerma
-            {
-                NumeroIncidencia = "INC-2026-00002", 
-                FechaHora = DateTime.Now, 
-                OperarioReportante = "Op. María González (Legajo 3102)", 
-                SKUAfectado = new SKUMerma { CodigoSKU = "SKU-PMP-002", Descripcion = "Cuaderno Espiral A4", InventarioDisponible = 80 }, 
-                Ubicacion = "N/A", 
-                Cantidad = 2, 
-                CausaReportada = "Caída / Rotura de envase", 
-                JustificacionOperador = "Caja caída desde el pallet durante el traslado con el apilador.", 
-                Estado = "A Revisión"
-            }
-        };
+            var incidenciasPendientes = new List<IncidenciaMerma>();
 
-        public List<IncidenciaMerma> ObtenerIncidenciasPendientes() 
-        { 
-            return listaIncidenciasPendientes; 
+            if (IncidenciaMermaAlmacen.IncidenciaMerma != null)
+            {
+                // 1. Filtrar únicamente las incidencias que están en estado ARevision
+                var entidadesPendientes = IncidenciaMermaAlmacen.IncidenciaMerma
+                    .Where(i => i.Estado == EstadoIncidenciaMermaEnum.ARevision).ToList();
+
+                foreach (var entidad in entidadesPendientes)
+                {
+                    // 2. Buscar datos del operario reportante en OperarioAlmacen
+                    var operario = OperarioAlmacen.Operario ?
+                        .FirstOrDefault(o => string.Equals(o.Legajo, entidad.LegajoOperario, StringComparison.OrdinalIgnoreCase));
+
+                    string nombreOperario = operario != null
+                        ? $"Op. {operario.Nombre} {operario.Apellido} ({operario.Legajo})"
+                        : $"Op. Legajo {entidad.LegajoOperario}";
+
+                    // 3. Buscar datos del producto y calcular stock disponible en InventarioAlmacen
+                    var producto = ProductoAlmacen.Producto ?
+                        .FirstOrDefault(p => string.Equals(p.SKU, entidad.SKU, StringComparison.OrdinalIgnoreCase));
+
+                    int stockDisponible = InventarioAlmacen.Inventario != null
+                        ? InventarioAlmacen.Inventario
+                        .Where(inv => string.Equals(inv.SKU, entidad.SKU, StringComparison.OrdinalIgnoreCase))
+                        .Sum(inv => inv.CantidadDisponible) : 0;
+
+                    string descProducto = producto != null ? producto.Descripcion : $"Producto {entidad.SKU}";
+
+                    var skuObj = new SKUMerma
+                    {
+                        CodigoSKU = entidad.SKU,
+                        Descripcion = $"{entidad.SKU} - {descProducto}",
+                        InventarioDisponible = stockDisponible
+                    };
+
+                    // 4. Mapear a la clase de vista IncidenciaMerma que consume el Formulario
+                    incidenciasPendientes.Add(new IncidenciaMerma
+                    {
+                        NumeroIncidencia = entidad.NumeroIncidencia,
+                        FechaHora = entidad.FechaHora,
+                        OperarioReportante = nombreOperario,
+                        SKUAfectado = skuObj,
+                        Ubicacion = entidad.CoordenadaXYZ,
+                        Cantidad = entidad.CantidadAfectada,
+                        CausaReportada = entidad.TipoCausa.ToString(),
+                        JustificacionOperador = entidad.JustificacionTecnica,
+                        Estado = "A Revisión"
+                    });
+                }
+            }
+
+            return incidenciasPendientes;
+
         }
 
         public void AprobarIncidencia(IncidenciaMerma incidencia, string dictamenSupervisor)
@@ -52,9 +80,17 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
                 throw new InvalidOperationException("Debe ingresar un dictamen / justificación de auditoría de al menos 10 caracteres.");
             }
 
-            incidencia.Estado = "Baja Definitiva"; 
-            incidencia.DictamenSupervisor = dictamenLimpio; 
-            listaIncidenciasPendientes.Remove(incidencia);
+            // Buscar la entidad real en el almacén por su número correlativo de incidencia
+            var entidadAlmacen = IncidenciaMermaAlmacen.IncidenciaMerma ?
+                .FirstOrDefault(i => i.NumeroIncidencia == incidencia.NumeroIncidencia);
+
+            if (entidadAlmacen != null)
+            {
+                // Se actualiza el estado en el almacén estático global
+                entidadAlmacen.Estado = EstadoIncidenciaMermaEnum.BajaDefinitiva;
+            }
+
+            incidencia.Estado = "Baja Definitiva";
         }
 
         public void RechazarIncidencia(IncidenciaMerma incidencia, string dictamenSupervisor)
@@ -71,9 +107,18 @@ namespace GrupoB.Pampazon.ControlarMermasEIncidencias
 
             }
 
-            incidencia.Estado = "Rechazada"; 
-            incidencia.DictamenSupervisor = dictamenLimpio; 
-            listaIncidenciasPendientes.Remove(incidencia);
+            // Buscar la entidad real en el almacén por su número correlativo de incidencia
+            var entidadAlmacen = IncidenciaMermaAlmacen.IncidenciaMerma ?
+                .FirstOrDefault(i => i.NumeroIncidencia == incidencia.NumeroIncidencia);
+
+            if (entidadAlmacen != null)
+            {
+                // Se actualiza el estado en el almacén estático global
+                entidadAlmacen.Estado = EstadoIncidenciaMermaEnum.Recahzada;
+            }
+
+            incidencia.Estado = "Rechazada";
+
         }
     }
 }
