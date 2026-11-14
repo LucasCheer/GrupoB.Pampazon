@@ -21,7 +21,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
 
         // Métodos que alimentan los combos y campos iniciales de la pantalla
         public List<SKUMerma> ObtenerSKUsDePrueba() => listaSKUs;
-        public List<string> ObtenerSectores() => new List<string> { "- Seleccionar Sector -", "Almacén", "Picking", "Packing", "Recepción" };
+        public List<string> ObtenerSectores() => new List<string> { "- Seleccionar Sector -", "Almacen", "Picking", "Packing", "Recepción" };
         public List<string> ObtenerEtapas() => new List<string> { "- Seleccionar Etapa -", "Almacenamiento/Estiba", "Picking", "Packing", "Recepción" };
         public List<string> ObtenerTipoCausa() => new List<string> { "- Seleccionar Causa -", "Aplastamiento por estiba", "Caída / Rotura de envase", "Humedad / Filtración", "Envoltorio dañado", "Faltante físico" };
 
@@ -53,7 +53,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             }
 
             // Excepción 5.3: Coordenada en Almacén debe tener el formato estricto 'A-XX-XX' (ej: A-01-02)
-            if (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase))
+            if (sector != null && sector.StartsWith("Almacen", StringComparison.OrdinalIgnoreCase))
             {
                 // Limpiamos espacios en blanco externos e internos que pueda enviar el control de WinForms
                 string coordenadaLimpia = (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "");
