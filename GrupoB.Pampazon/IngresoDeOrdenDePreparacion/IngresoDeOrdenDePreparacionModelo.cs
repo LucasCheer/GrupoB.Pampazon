@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoB.Pampazon.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -7,58 +8,43 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
     public class IngresoDeOrdenDePreparacionModelo
     {
         private List<DetalleOrdenDTO> detalleProductos;
-        private Dictionary<string, List<ProductoSKUDTO>> catalogoClientes;
+
+        // Texto que muestra el combo de modalidad -> valor del enum que se guarda en la OP
+        private readonly Dictionary<string, ModalidadEnum> modalidades = new Dictionary<string, ModalidadEnum>
+        {
+            { "Palet Cerrado", ModalidadEnum.Pallet },
+            { "Fulfillment", ModalidadEnum.Fullfilment }
+        };
 
         public List<DetalleOrdenDTO> DetalleProductos => detalleProductos;
 
         public IngresoDeOrdenDePreparacionModelo()
         {
             detalleProductos = new List<DetalleOrdenDTO>();
-            CargarCatalogoMock();
         }
 
-        /// <summary>
-        /// Datos mock de clientes y sus SKUs con stock disponible en racks
-        /// </summary>
-        private void CargarCatalogoMock()
+        public List<string> ObtenerModalidades()
         {
-            catalogoClientes = new Dictionary<string, List<ProductoSKUDTO>>
-            {
-                {
-                    "Empresa Alfa S.A.", new List<ProductoSKUDTO>
-                    {
-                        new ProductoSKUDTO { SKU = "SKU-101", Descripcion = "Caja de Galletitas 500g", StockDisponible = 150 },
-                        new ProductoSKUDTO { SKU = "SKU-102", Descripcion = "Pack Aceite de Girasol 1L", StockDisponible = 80 }
-                    }
-                },
-                {
-                    "Logística Beta S.R.L.", new List<ProductoSKUDTO>
-                    {
-                        new ProductoSKUDTO { SKU = "SKU-201", Descripcion = "Bolsa Detergente 5kg", StockDisponible = 50 },
-                        new ProductoSKUDTO { SKU = "SKU-202", Descripcion = "Caja Jabón Líquido 3L", StockDisponible = 200 }
-                    }
-                }
-            };
+            return new List<string>(modalidades.Keys);
         }
-
-        // CUIT de cada cliente del mock (datos de prueba; 11 dígitos para pasar ValidarCabecera)
-        private readonly Dictionary<string, string> cuitClientes = new Dictionary<string, string>
-        {
-            { "Empresa Alfa S.A.", "30-71234567-8" },
-            { "Logística Beta S.R.L.", "30-79876543-2" }
-        };
 
         public string ObtenerCuitPorCliente(string cliente)
         {
             if (string.IsNullOrWhiteSpace(cliente))
                 return string.Empty;
 
-            return cuitClientes.TryGetValue(cliente, out string? cuit) ? cuit : string.Empty;
+            // Buscamos el cliente por razón social en ClienteAlmacen
+            var clienteEncontrado = ClienteAlmacen.Cliente.FirstOrDefault(c => c.RazonSocial == cliente);
+            return clienteEncontrado != null ? clienteEncontrado.CUITCliente : string.Empty;
         }
 
         public List<string> ObtenerClientesActivos()
         {
-            return new List<string>(catalogoClientes.Keys);
+            // Clientes del almacén ordenados por razón social
+            return ClienteAlmacen.Cliente
+                .Select(c => c.RazonSocial)
+                .OrderBy(r => r)
+                .ToList();
         }
 
         public List<ProductoSKUDTO> ObtenerSKUsPorCliente(string cliente)
@@ -66,10 +52,29 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             if (string.IsNullOrWhiteSpace(cliente))
                 throw new ArgumentException("Debe seleccionar un cliente.");
 
-            if (catalogoClientes.ContainsKey(cliente))
-                return catalogoClientes[cliente];
+            string cuit = ObtenerCuitPorCliente(cliente);
+            if (string.IsNullOrEmpty(cuit))
+                return new List<ProductoSKUDTO>();
 
-            return new List<ProductoSKUDTO>();
+            List<ProductoSKUDTO> skus = new List<ProductoSKUDTO>();
+
+            // SKUs que el cliente tiene en InventarioAlmacen (un SKU puede estar en varias coordenadas)
+            foreach (var grupo in InventarioAlmacen.Inventario
+                .Where(i => i.CUITCliente == cuit && i.CantidadDisponible > 0)
+                .GroupBy(i => i.SKU))
+            {
+                // La descripción sale de ProductoAlmacen (nomenclador de SKUs)
+                var producto = ProductoAlmacen.Producto.FirstOrDefault(p => p.SKU == grupo.Key);
+
+                skus.Add(new ProductoSKUDTO
+                {
+                    SKU = grupo.Key,
+                    Descripcion = producto != null ? producto.Descripcion : grupo.Key,
+                    StockDisponible = grupo.Sum(i => i.CantidadDisponible)
+                });
+            }
+
+            return skus;
         }
 
         public void ValidarCabecera(string cliente, string cuit, string transporte, string dniTransportista)
@@ -107,7 +112,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 throw new InvalidOperationException($"La cantidad supera el stock disponible ({producto.StockDisponible}).");
 
             // Excepción 11.3
-            if (string.IsNullOrWhiteSpace(modalidad))
+            if (string.IsNullOrWhiteSpace(modalidad) || !modalidades.ContainsKey(modalidad))
                 throw new InvalidOperationException("Debe seleccionar una modalidad.");
 
             // Excepción 12.1: Acumular o verificar duplicados
@@ -142,7 +147,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             }
         }
 
-        public string RegistrarOrdenPreparacion(string cliente, string cuit, string transporte, string dniTransportista)
+        public string RegistrarOrdenPreparacion(string cliente, string cuit, string transporte, string dniTransportista, DateTime fechaSolicitada)
         {
             // Paso 15: Validar cabecera y grilla de detalle
             ValidarCabecera(cliente, cuit, transporte, dniTransportista);
@@ -151,14 +156,51 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             if (detalleProductos.Count == 0)
                 throw new InvalidOperationException("Debe agregar al menos un producto.");
 
-            // Paso 16: Generar correlativo
-            Random rnd = new Random();
-            string numeroOP = $"OP-{DateTime.Now:yyyyMMdd}-{rnd.Next(1000, 9999)}";
+            // Paso 16: Generar correlativo sobre el almacén real para no repetir números existentes
+            string numeroOP = GenerarNumeroOP();
+
+            // Creamos la entidad y la agregamos a OrdenDePreparacionAlmacen (se persiste al cerrar la aplicación)
+            var nuevaOP = new OrdenDePreparacionEntidad
+            {
+                NumeroOP = numeroOP,
+                FechaSolicitada = fechaSolicitada,
+                CUITCliente = cuit.Trim(),
+                DNITransportista = dniTransportista.Replace("-", "").Trim(),
+                NombreEmpresa = transporte.Trim(),
+                Estado = EstadoOrdenPreparacionEnum.Pendiente,
+                Detalle = detalleProductos.Select(d => new DetalleOP
+                {
+                    SKU = d.SKU,
+                    Descripcion = d.Descripcion,
+                    Cantidad = d.CantidadPedida,
+                    Modalidad = modalidades[d.Modalidad]
+                }).ToList()
+            };
+            OrdenDePreparacionAlmacen.OrdenesDePreparacion.Add(nuevaOP);
 
             // Limpiar datos internos para nueva orden
             detalleProductos.Clear();
 
             return numeroOP;
+        }
+
+        private string GenerarNumeroOP()
+        {
+            // Formato de los datos existentes: OP-AAAA-NNNN
+            string prefijo = $"OP-{DateTime.Now.Year}-";
+            int ultimoNumero = 0;
+
+            foreach (var op in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
+            {
+                if (op.NumeroOP != null && op.NumeroOP.StartsWith(prefijo)
+                    && int.TryParse(op.NumeroOP.Substring(prefijo.Length), out int numero)
+                    && numero > ultimoNumero)
+                {
+                    ultimoNumero = numero;
+                }
+            }
+
+            return $"{prefijo}{ultimoNumero + 1:D4}";
         }
 
         public void LimpiarTodo()

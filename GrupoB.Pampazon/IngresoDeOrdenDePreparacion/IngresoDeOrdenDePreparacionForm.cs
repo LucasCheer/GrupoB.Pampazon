@@ -21,11 +21,10 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             FechaSolicitadaDateTimePicker.Value = DateTime.Now;
             CantDisponibleText.ReadOnly = true;
 
-            // Cargar modalidades (Fulfillment, Palet Cerrado, Consolidado)
+            // Cargar modalidades desde el modelo (Palet Cerrado / Fulfillment)
             ModalidadCombo.Items.Clear();
-            ModalidadCombo.Items.Add("Fulfillment");
-            ModalidadCombo.Items.Add("Palet Cerrado");
-            ModalidadCombo.Items.Add("Consolidado");
+            foreach (string modalidad in modelo.ObtenerModalidades())
+                ModalidadCombo.Items.Add(modalidad);
 
             // Cargar Lista de Clientes Activos (Paso 3)
             ClienteCombo.DataSource = modelo.ObtenerClientesActivos();
@@ -123,7 +122,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 string dniTransportista = DNITransportistaText.Text;
 
                 // Pasos 14, 15 y 16
-                string numeroOP = modelo.RegistrarOrdenPreparacion(cliente, cuit, transporte, dniTransportista);
+                string numeroOP = modelo.RegistrarOrdenPreparacion(cliente, cuit, transporte, dniTransportista, FechaSolicitadaDateTimePicker.Value);
 
                 MessageBox.Show(
                     $"Orden de Preparación registrada con éxito en estado 'Pendiente'.\n\nNúmero Identificador: {numeroOP}",
