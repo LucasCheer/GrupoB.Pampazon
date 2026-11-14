@@ -33,13 +33,15 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
                         var productoEncontrado = ProductoAlmacen.Producto ?
                         .FirstOrDefault(p => string.Equals(p.SKU, g.Key, StringComparison.OrdinalIgnoreCase));
 
-                        // Si se encuentra, usamos su descripción real; de lo contrario, dejamos una por defecto
-                        string descripcionReal = productoEncontrado != null ? productoEncontrado.Descripcion : $"Producto {g.Key}";
+                        // Concatenamos el Código de SKU con su Descripción real
+                        string descripcionConSKU = productoEncontrado != null
+                            ? $"{g.Key} - {productoEncontrado.Descripcion}"
+                            : $"{g.Key} - Producto Genérico";
 
                         return new SKUMerma
                         {
                             CodigoSKU = g.Key,
-                            Descripcion = descripcionReal,
+                            Descripcion = descripcionConSKU,
                             InventarioDisponible = g.Sum(x => x.CantidadDisponible)
                         };
                     })
