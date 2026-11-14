@@ -4,29 +4,70 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
+using GrupoB.Pampazon.Almacenes;
+
 namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
 {
     internal class RegistrarMermasEIncidenciasModelo
     {
 
         // Atributos de datos locales (Hardcodeados para el prototipo)
-        private List<SKUMerma> listaSKUs = new List<SKUMerma>
-        {
-            new SKUMerma { CodigoSKU = "SKU-PMP-001", Descripcion = "Lampara LED 10W", InventarioDisponible = 150 },
-            new SKUMerma { CodigoSKU = "SKU-PMP-002", Descripcion = "Cuaderno Espiral A4", InventarioDisponible = 80 },
-            new SKUMerma { CodigoSKU = "SKU-PMP-003", Descripcion = "Cinta de Embalaje 50m", InventarioDisponible = 200 }
-        };
-
+        private List<SKUMerma> listaSKUs = new List<SKUMerma>();
         private readonly List<IncidenciaMerma> listaIncidenciasRegistradas = new List<IncidenciaMerma>();
 
-        // Métodos que alimentan los combos y campos iniciales de la pantalla
-        public List<SKUMerma> ObtenerSKUsDePrueba() => listaSKUs;
-        public List<string> ObtenerSectores() => new List<string> { "- Seleccionar Sector -", "Almacén", "Picking", "Packing", "Recepción" };
-        public List<string> ObtenerEtapas() => new List<string> { "- Seleccionar Etapa -", "Almacenamiento/Estiba", "Picking", "Packing", "Recepción" };
-        public List<string> ObtenerTipoCausa() => new List<string> { "- Seleccionar Causa -", "Aplastamiento por estiba", "Caída / Rotura de envase", "Humedad / Filtración", "Envoltorio dañado", "Faltante físico" };
+        public RegistrarMermasEIncidenciasModelo() 
+        { 
+            CargarSKUsDesdeAlmacen(); 
+        }
 
-        public string GenerarNuevoNumeroIncidencia() => $"INC-2026-0000{listaIncidenciasRegistradas.Count + 1}";
+        private void CargarSKUsDesdeAlmacen()
+        {
+            // Se conecta con InventarioAlmacen.Inventario sin hardcodeo
+            if (InventarioAlmacen.Inventario != null)
+            {
+                listaSKUs = InventarioAlmacen.Inventario
+                    .GroupBy(i => i.SKU)
+                    .Select(g => new SKUMerma
+                    {
+                        CodigoSKU = g.Key,
+                        Descripcion = $"Producto {g.Key}",
+                        InventarioDisponible = g.Sum(x => x.CantidadDisponible)
+                    })
+                    .ToList();
+            }
+        }
+
+        public List<SKUMerma> ObtenerSKUsDePrueba() => listaSKUs;
+
+        public List<string> ObtenerSectores()
+        {
+            var sectores = new List<string> { "- Seleccionar Sector -" };
+            sectores.AddRange(Enum.GetNames(typeof(SectorIncidenciaEnum))); 
+            return sectores;
+        }
+
+        public List<string> ObtenerEtapas()
+        {
+            var etapas = new List<string> { "- Seleccionar Etapa -" };
+            etapas.AddRange(Enum.GetNames(typeof(EtapaOperativaIncidenciaEnum))); 
+            return etapas;
+        }
+
+        public List<string> ObtenerTipoCausa()
+        {
+            var causas = new List<string> { "- Seleccionar Causa -" };
+            causas.AddRange(Enum.GetNames(typeof(TipoCausaIncidenciaEnum))); 
+            return causas;
+        }
+
+        public string GenerarNuevoNumeroIncidencia()
+        {
+            int proximoNumero = (IncidenciaMermaAlmacen.IncidenciaMerma?.Count ?? listaIncidenciasRegistradas.Count) + 1;
+            return $"INC-2026-{proximoNumero:D5}";
+        }
+
         public string ObtenerFechaHoraActual() => DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
         public string ObtenerOperarioLogueado() => "Op. Juan Pérez (Legajo 4812)";
 
         // Recibe los datos brutos de la pantalla, ejecuta las validaciones de negocio
@@ -41,19 +82,19 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             string justificacion)
         {
             // Excepción 5.1: Sector obligatorio
-            if (string.IsNullOrWhiteSpace(sector) || sector.StartsWith("-"))
+            if (string.IsNullOrWhiteSpace(sector) || sector.StartsWith("-") || !Enum.TryParse<SectorIncidenciaEnum>(sector, true, out var sectorEnum))
             {
                 throw new InvalidOperationException("Debe seleccionar un Sector del Depósito.");
             }
 
             // Excepción 5.2: Etapa operativa obligatoria
-            if (string.IsNullOrWhiteSpace(etapa) || etapa.StartsWith("-"))
+            if (string.IsNullOrWhiteSpace(etapa) || etapa.StartsWith("-") || !Enum.TryParse<EtapaOperativaIncidenciaEnum>(etapa, true, out var etapaEnum))
             {
                 throw new InvalidOperationException("Debe seleccionar la Etapa Operativa.");
             }
 
             // Excepción 5.3: Coordenada en Almacén debe tener el formato estricto 'A-XX-XX' (ej: A-01-02)
-            if (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase))
+            if (sectorEnum == SectorIncidenciaEnum.Almacen)
             {
                 // Limpiamos espacios en blanco externos e internos que pueda enviar el control de WinForms
                 string coordenadaLimpia = (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "");
@@ -71,7 +112,7 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             }
 
             // Excepción 5.5: Causa obligatoria
-            if (string.IsNullOrWhiteSpace(tipoCausa) || tipoCausa.StartsWith("-")) 
+            if (string.IsNullOrWhiteSpace(tipoCausa) || tipoCausa.StartsWith("-") || !Enum.TryParse<TipoCausaIncidenciaEnum>(tipoCausa, true, out var tipoCausaEnum)) 
             { 
                 throw new InvalidOperationException("Debe seleccionar el Tipo / Causa de la Incidencia."); 
             }
@@ -104,25 +145,33 @@ namespace GrupoB.Pampazon.RegistrarMermasEIncidencias
             // 1 Descuenta el inventario disponible
             //skuEncontrado.InventarioDisponible -= cantidad;
 
-            // 2 Crea y guarda la entidad de la incidencia
+            // 2 Genera el correlativo y mapea hacia la entidad de Almacenes
             string numeroIncidencia = GenerarNuevoNumeroIncidencia();
-            IncidenciaMerma nuevaIncidencia = new IncidenciaMerma
+
+            // Instanciamos la entidad oficial usando las variables Enum ya validadas arriba
+            var nuevaIncidenciaEntidad = new IncidenciaMermaEntidad
             {
                 NumeroIncidencia = numeroIncidencia,
-                FechaHora = ObtenerFechaHoraActual(),
-                OperarioResponsable = ObtenerOperarioLogueado(),
-                Sector = sector,
-                EtapaOperativa = etapa,
-                CoordenadaXYZ = (sector != null && sector.StartsWith("Almacén", StringComparison.OrdinalIgnoreCase)) ? (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "") : "N/A",
+                FechaHora = DateTime.Now,
+                LegajoOperario = "LEG-101",
+                Sector = sectorEnum,
+                EtapaOperativa = etapaEnum,
+                CoordenadaXYZ = (sectorEnum == SectorIncidenciaEnum.Almacen)
+                                ? (coordenada ?? "").Trim().Replace("_", "").Replace(" ", "")
+                                : "N/A",
                 SKU = skuEncontrado.CodigoSKU,
-                TipoCausa = tipoCausa,
+                TipoCausa = tipoCausaEnum,
                 CantidadAfectada = cantidad,
                 JustificacionTecnica = justificacionLimpia,
-                Estado = "A Revisión"
+                Estado = EstadoIncidenciaMermaEnum.ARevision
             };
 
-            listaIncidenciasRegistradas.Add(nuevaIncidencia);
-            
+            // Agregamos únicamente a la lista estática del almacén en memoria
+            if (IncidenciaMermaAlmacen.IncidenciaMerma != null) 
+            { 
+                IncidenciaMermaAlmacen.IncidenciaMerma.Add(nuevaIncidenciaEntidad); 
+            }
+
             return numeroIncidencia;
         }
     }
