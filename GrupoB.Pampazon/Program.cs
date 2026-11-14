@@ -3,6 +3,7 @@ using GrupoB.Pampazon.Almacenes;
 using GrupoB.Pampazon.DespachoCargaTransporte;
 using GrupoB.Pampazon.EmitirOrdenDeEntrega;
 using GrupoB.Pampazon.RegistrarMermasEIncidencias;
+using GrupoB.Pampazon.ControlarMermasEIncidencias;
 
 namespace GrupoB.Pampazon
 {
