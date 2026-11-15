@@ -56,7 +56,7 @@ namespace GrupoB.Pampazon
                 if (!seleccionadas.Contains(orden.NumeroOP))
                 {
                     ListViewItem item = new ListViewItem(orden.NumeroOP);
-                    item.SubItems.Add(orden.FechaRecibida.ToShortDateString());
+                    item.SubItems.Add(orden.FechaEmision.ToShortDateString());
                     item.SubItems.Add(orden.RazonSocial);
 
                     item.Tag = orden.NumeroOP;
