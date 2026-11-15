@@ -9,7 +9,8 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
     {
         private List<DetalleOrdenDTO> detalleProductos;
 
-        // Texto que muestra el combo de modalidad -> valor del enum que se guarda en la OP
+        // Texto que muestra el combo de modalidad del formulario -> valor de ModalidadEnum que se guarda en la OP.
+        // "Consolidado" también aparece en el combo, pero ModalidadEnum no tiene un valor para esa modalidad.
         private readonly Dictionary<string, ModalidadEnum> modalidades = new Dictionary<string, ModalidadEnum>
         {
             { "Palet Cerrado", ModalidadEnum.Pallet },
@@ -21,11 +22,6 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
         public IngresoDeOrdenDePreparacionModelo()
         {
             detalleProductos = new List<DetalleOrdenDTO>();
-        }
-
-        public List<string> ObtenerModalidades()
-        {
-            return new List<string>(modalidades.Keys);
         }
 
         public string ObtenerCuitPorCliente(string cliente)
@@ -112,8 +108,12 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 throw new InvalidOperationException($"La cantidad supera el stock disponible ({producto.StockDisponible}).");
 
             // Excepción 11.3
-            if (string.IsNullOrWhiteSpace(modalidad) || !modalidades.ContainsKey(modalidad))
+            if (string.IsNullOrWhiteSpace(modalidad))
                 throw new InvalidOperationException("Debe seleccionar una modalidad.");
+
+            // La modalidad tiene que existir en ModalidadEnum para poder guardarse en la OP
+            if (!modalidades.ContainsKey(modalidad))
+                throw new InvalidOperationException($"La modalidad '{modalidad}' no está disponible. Seleccione Palet Cerrado o Fulfillment.");
 
             // Excepción 12.1: Acumular o verificar duplicados
             var itemExistente = detalleProductos.Find(d => d.SKU == producto.SKU);
@@ -147,7 +147,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             }
         }
 
-        public string RegistrarOrdenPreparacion(string cliente, string cuit, string transporte, string dniTransportista, DateTime fechaSolicitada)
+        public string RegistrarOrdenPreparacion(string cliente, string cuit, string transporte, string dniTransportista)
         {
             // Paso 15: Validar cabecera y grilla de detalle
             ValidarCabecera(cliente, cuit, transporte, dniTransportista);
@@ -163,7 +163,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             var nuevaOP = new OrdenDePreparacionEntidad
             {
                 NumeroOP = numeroOP,
-                FechaSolicitada = fechaSolicitada,
+                FechaSolicitada = DateTime.Now,
                 CUITCliente = cuit.Trim(),
                 DNITransportista = dniTransportista.Replace("-", "").Trim(),
                 NombreEmpresa = transporte.Trim(),
