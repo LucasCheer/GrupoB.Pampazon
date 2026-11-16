@@ -1,9 +1,10 @@
 using GrupoB.Pampazon.AcondicionarYEmpaquetarLote;
 using GrupoB.Pampazon.Almacenes;
+using GrupoB.Pampazon.ConsultarOrdenEntrega;
+using GrupoB.Pampazon.ControlarMermasEIncidencias;
 using GrupoB.Pampazon.DespachoCargaTransporte;
 using GrupoB.Pampazon.EmitirOrdenDeEntrega;
 using GrupoB.Pampazon.RegistrarMermasEIncidencias;
-using GrupoB.Pampazon.ControlarMermasEIncidencias;
 
 namespace GrupoB.Pampazon
 {
@@ -18,7 +19,7 @@ namespace GrupoB.Pampazon
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EmitirOrdenDeSeleccionForm());
+            Application.Run(new ConsultarOrdenEntregaForms());
 
             OrdenDeEntregaAlmacen.Guardar();
             OrdenDePreparacionAlmacen.Guardar();

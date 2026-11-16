@@ -90,5 +90,10 @@ namespace GrupoB.Pampazon.ConsultarOrdenEntrega
         {
             Close();
         }
+
+        private void comboBoxNumeroOrdenEntrega_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

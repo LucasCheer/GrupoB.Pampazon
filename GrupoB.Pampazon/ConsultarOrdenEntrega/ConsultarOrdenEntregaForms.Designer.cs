@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "P-1000", "10/10/2026", "Entregado" }, -1);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "P-1001", "10/10/2026", "Entregado" }, -1);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "P-1002", "11/10/2026", "Pendiente" }, -1);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "P-1003", "11/10/2026", "Pendiente" }, -1);
             contenedorConsultarOE = new GroupBox();
             botonCerrar = new Button();
             listaPedidos = new ListView();
@@ -55,9 +51,11 @@
             contenedorConsultarOE.Controls.Add(labelNumOrdenEntrega);
             contenedorConsultarOE.FlatStyle = FlatStyle.System;
             contenedorConsultarOE.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contenedorConsultarOE.Location = new Point(12, 12);
+            contenedorConsultarOE.Location = new Point(10, 9);
+            contenedorConsultarOE.Margin = new Padding(3, 2, 3, 2);
             contenedorConsultarOE.Name = "contenedorConsultarOE";
-            contenedorConsultarOE.Size = new Size(539, 376);
+            contenedorConsultarOE.Padding = new Padding(3, 2, 3, 2);
+            contenedorConsultarOE.Size = new Size(472, 282);
             contenedorConsultarOE.TabIndex = 10;
             contenedorConsultarOE.TabStop = false;
             contenedorConsultarOE.Text = "CONSULTAR ORDEN DE ENTREGA";
@@ -65,9 +63,10 @@
             // botonCerrar
             // 
             botonCerrar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonCerrar.Location = new Point(371, 323);
+            botonCerrar.Location = new Point(325, 242);
+            botonCerrar.Margin = new Padding(3, 2, 3, 2);
             botonCerrar.Name = "botonCerrar";
-            botonCerrar.Size = new Size(123, 36);
+            botonCerrar.Size = new Size(108, 27);
             botonCerrar.TabIndex = 22;
             botonCerrar.Text = "Cerrar";
             botonCerrar.UseVisualStyleBackColor = true;
@@ -78,10 +77,10 @@
             listaPedidos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             listaPedidos.Columns.AddRange(new ColumnHeader[] { colPedido, fechacol, estadoCol });
             listaPedidos.ForeColor = SystemColors.InfoText;
-            listaPedidos.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4 });
-            listaPedidos.Location = new Point(7, 132);
+            listaPedidos.Location = new Point(6, 99);
+            listaPedidos.Margin = new Padding(3, 2, 3, 2);
             listaPedidos.Name = "listaPedidos";
-            listaPedidos.Size = new Size(364, 184);
+            listaPedidos.Size = new Size(319, 139);
             listaPedidos.TabIndex = 21;
             listaPedidos.UseCompatibleStateImageBehavior = false;
             listaPedidos.View = View.Details;
@@ -104,12 +103,9 @@
             // checkBoxOrdenesConPendientes
             // 
             checkBoxOrdenesConPendientes.AutoSize = true;
-            checkBoxOrdenesConPendientes.Checked = false;
-            checkBoxOrdenesConPendientes.CheckState = CheckState.Unchecked;
-            checkBoxOrdenesConPendientes.Location = new Point(10, 73);
-            checkBoxOrdenesConPendientes.Margin = new Padding(3, 4, 3, 4);
+            checkBoxOrdenesConPendientes.Location = new Point(9, 55);
             checkBoxOrdenesConPendientes.Name = "checkBoxOrdenesConPendientes";
-            checkBoxOrdenesConPendientes.Size = new Size(450, 27);
+            checkBoxOrdenesConPendientes.Size = new Size(379, 23);
             checkBoxOrdenesConPendientes.TabIndex = 13;
             checkBoxOrdenesConPendientes.Text = "Mostrar órdenes de entrega con pedidos pendientes";
             checkBoxOrdenesConPendientes.UseVisualStyleBackColor = true;
@@ -118,19 +114,19 @@
             // comboBoxNumeroOrdenEntrega
             // 
             comboBoxNumeroOrdenEntrega.FormattingEnabled = true;
-            comboBoxNumeroOrdenEntrega.Location = new Point(221, 29);
-            comboBoxNumeroOrdenEntrega.Margin = new Padding(3, 4, 3, 4);
+            comboBoxNumeroOrdenEntrega.Location = new Point(193, 22);
             comboBoxNumeroOrdenEntrega.Name = "comboBoxNumeroOrdenEntrega";
-            comboBoxNumeroOrdenEntrega.Size = new Size(143, 31);
+            comboBoxNumeroOrdenEntrega.Size = new Size(126, 27);
             comboBoxNumeroOrdenEntrega.TabIndex = 12;
-            comboBoxNumeroOrdenEntrega.Text = "OE-1000-1";
+            comboBoxNumeroOrdenEntrega.SelectedIndexChanged += comboBoxNumeroOrdenEntrega_SelectedIndexChanged;
             // 
             // botonConsultar
             // 
             botonConsultar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            botonConsultar.Location = new Point(371, 28);
+            botonConsultar.Location = new Point(325, 21);
+            botonConsultar.Margin = new Padding(3, 2, 3, 2);
             botonConsultar.Name = "botonConsultar";
-            botonConsultar.Size = new Size(123, 36);
+            botonConsultar.Size = new Size(108, 27);
             botonConsultar.TabIndex = 9;
             botonConsultar.Text = "Consultar";
             botonConsultar.UseVisualStyleBackColor = true;
@@ -139,18 +135,19 @@
             // labelNumOrdenEntrega
             // 
             labelNumOrdenEntrega.AutoSize = true;
-            labelNumOrdenEntrega.Location = new Point(6, 35);
+            labelNumOrdenEntrega.Location = new Point(5, 26);
             labelNumOrdenEntrega.Name = "labelNumOrdenEntrega";
-            labelNumOrdenEntrega.Size = new Size(197, 23);
+            labelNumOrdenEntrega.Size = new Size(165, 19);
             labelNumOrdenEntrega.TabIndex = 3;
             labelNumOrdenEntrega.Text = "Nro. Orden de Entrega:";
             // 
             // ConsultarOrdenEntregaForms
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(576, 408);
+            ClientSize = new Size(504, 306);
             Controls.Add(contenedorConsultarOE);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ConsultarOrdenEntregaForms";
             Text = "ConsultarOrdenEntregaForms";
             contenedorConsultarOE.ResumeLayout(false);
