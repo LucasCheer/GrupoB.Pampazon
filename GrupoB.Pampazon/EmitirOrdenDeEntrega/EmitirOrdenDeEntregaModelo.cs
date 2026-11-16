@@ -31,7 +31,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeEntrega
                     pendientes.Add(new OP
                     {
                         NumeroOP = entidad.NumeroOP,
-                        FechaEmision = entidad.FechaEmision,
+                        FechaEmision = entidad.FechaSolicitada,
                         // Si lo encuentra devuelve la Razón Social; si no, muestra el CUIT como respaldo
                         RazonSocial = clienteEncontrado != null ? clienteEncontrado.RazonSocial : entidad.CUITCliente
                     });

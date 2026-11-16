@@ -155,7 +155,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
                     pendientes.Add(new OP
                     {
                         NumeroOP = entidad.NumeroOP,
-                        FechaEmision = entidad.FechaEmision,
+                        FechaEmision = entidad.FechaSolicitada,
                         RazonSocial = clienteEncontrado != null ? clienteEncontrado.RazonSocial : entidad.CUITCliente,
                         Estado = "Pendiente",
                         Productos = entidad.Detalle != null

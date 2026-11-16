@@ -163,7 +163,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             var nuevaOP = new OrdenDePreparacionEntidad
             {
                 NumeroOP = numeroOP,
-                FechaEmision = DateTime.Now,
+                FechaSolicitada = DateTime.Now,
                 CUITCliente = cuit.Trim(),
                 DNITransportista = dniTransportista.Replace("-", "").Trim(),
                 NombreEmpresa = transporte.Trim(),
