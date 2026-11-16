@@ -10,7 +10,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
         public string NumeroOrdenPreparacion => orden?.NumeroOP ?? "";
         public string Cliente => orden == null ? "" :
             ClienteAlmacen.Cliente.FirstOrDefault(c => c.CUITCliente == orden.CUITCliente)?.RazonSocial ?? orden.CUITCliente;
-        public DateTime? FechaRecepcion => orden?.FechaSolicitada;
+        public DateTime? FechaRecepcion => orden?.FechaEmision;
         public IReadOnlyList<ProductoParaEmpaquetar> Productos => orden?.Detalle.Select(d =>
             new ProductoParaEmpaquetar(d.SKU,
                 ProductoAlmacen.Producto.FirstOrDefault(p => p.SKU == d.SKU)?.Descripcion ?? d.SKU,

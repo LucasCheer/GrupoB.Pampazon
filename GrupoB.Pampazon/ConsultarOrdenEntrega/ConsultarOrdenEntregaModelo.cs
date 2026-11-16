@@ -32,7 +32,7 @@ namespace GrupoB.Pampazon.ConsultarOrdenEntrega
                                 o.NumeroOP.Equals(numLimpio, StringComparison.OrdinalIgnoreCase));
 
                             DateOnly fechaPedido = opEntidad != null
-                                ? DateOnly.FromDateTime(opEntidad.FechaSolicitada)
+                                ? DateOnly.FromDateTime(opEntidad.FechaEmision)
                                 : DateOnly.FromDateTime(oeEntidad.FechaEmision);
 
                             bool estaEntregado = oeEntidad.Estado == EstadoOrdenEntregaEnum.Finalizada

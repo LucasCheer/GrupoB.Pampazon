@@ -34,7 +34,7 @@
             label3 = new Label();
             CUITClienteText = new TextBox();
             label4 = new Label();
-            FechaSolicitadaDateTimePicker = new DateTimePicker();
+            FechaEmisionDateTimePicker = new DateTimePicker();
             label5 = new Label();
             ModalidadCombo = new ComboBox();
             label6 = new Label();
@@ -122,14 +122,14 @@
             label4.TabIndex = 5;
             label4.Text = "Fecha Solicitada:";
             // 
-            // FechaSolicitadaDateTimePicker
+            // FechaEmisionDateTimePicker
             // 
-            FechaSolicitadaDateTimePicker.Format = DateTimePickerFormat.Short;
-            FechaSolicitadaDateTimePicker.Location = new Point(194, 138);
-            FechaSolicitadaDateTimePicker.Margin = new Padding(2);
-            FechaSolicitadaDateTimePicker.Name = "FechaSolicitadaDateTimePicker";
-            FechaSolicitadaDateTimePicker.Size = new Size(189, 31);
-            FechaSolicitadaDateTimePicker.TabIndex = 6;
+            FechaEmisionDateTimePicker.Format = DateTimePickerFormat.Short;
+            FechaEmisionDateTimePicker.Location = new Point(194, 138);
+            FechaEmisionDateTimePicker.Margin = new Padding(2);
+            FechaEmisionDateTimePicker.Name = "FechaEmisionDateTimePicker";
+            FechaEmisionDateTimePicker.Size = new Size(189, 31);
+            FechaEmisionDateTimePicker.TabIndex = 6;
             // 
             // label5
             // 
@@ -372,7 +372,7 @@
             Controls.Add(label6);
             Controls.Add(ModalidadCombo);
             Controls.Add(label5);
-            Controls.Add(FechaSolicitadaDateTimePicker);
+            Controls.Add(FechaEmisionDateTimePicker);
             Controls.Add(label4);
             Controls.Add(CUITClienteText);
             Controls.Add(label3);
@@ -394,7 +394,7 @@
         private Label label3;
         private TextBox CUITClienteText;
         private Label label4;
-        private DateTimePicker FechaSolicitadaDateTimePicker;
+        private DateTimePicker FechaEmisionDateTimePicker;
         private Label label5;
         private ComboBox ModalidadCombo;
         private Label label6;

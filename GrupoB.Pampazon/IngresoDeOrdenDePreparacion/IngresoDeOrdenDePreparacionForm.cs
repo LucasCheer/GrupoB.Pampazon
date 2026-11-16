@@ -18,7 +18,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
         private void InicializarPantalla()
         {
             // Paso 2: Cargar fecha actual por defecto en Fecha Solicitada
-            FechaSolicitadaDateTimePicker.Value = DateTime.Now;
+            FechaEmisionDateTimePicker.Value = DateTime.Now;
             CantDisponibleText.ReadOnly = true;
 
             // Cargar modalidades (Fulfillment, Palet Cerrado, Consolidado)
@@ -173,7 +173,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             CUITClienteText.Clear();
             TransporteText.Clear();
             DNITransportistaText.Clear();
-            FechaSolicitadaDateTimePicker.Value = DateTime.Now;
+            FechaEmisionDateTimePicker.Value = DateTime.Now;
             LimpiarSeccionProducto();
             modelo.LimpiarTodo();
             ActualizarGrillaDetalle();
