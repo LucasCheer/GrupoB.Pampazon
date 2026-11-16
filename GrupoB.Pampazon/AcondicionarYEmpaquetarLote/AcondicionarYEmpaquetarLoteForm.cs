@@ -16,7 +16,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
         {
             txtOrdenPreparacion.Text = modelo.NumeroOrdenPreparacion;
             txtCliente.Text = modelo.Cliente;
-            txtFecha.Text = modelo.FechaRecepcion.ToString("dd/MM/yyyy");
+            txtFecha.Text = modelo.FechaRecepcion?.ToString("dd/MM/yyyy") ?? "";
             CargarProductosPendientes();
         }
 
@@ -64,3 +64,4 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
         }
     }
 }
+

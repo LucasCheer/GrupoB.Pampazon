@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +16,13 @@ namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
         {
             InitializeComponent();
             CargarHojaRutaBtn.Click += CargarHojaRutaBtn_Click;
+            OrdenSeleccionCombo.SelectedIndexChanged += (_, _) =>
+            {
+                OperarioAsignadoText.Clear();
+                ProductosHojaRutaListView.Items.Clear();
+                CoordenadasListView.Items.Clear();
+                FinalizarBtn.Enabled = false;
+            };
             ProductosHojaRutaListView.SelectedIndexChanged += ProductosHojaRutaListView_SelectedIndexChanged;
             FinalizarBtn.Click += FinalizarBtn_Click;
             CancelarBtn.Click += CancelarBtn_Click;
@@ -25,8 +32,9 @@ namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
         private void CargarDatosIniciales()
         {
             OrdenSeleccionCombo.Items.Clear();
-            OrdenSeleccionCombo.Items.Add(modelo.NumeroOrdenSeleccion);
-            OrdenSeleccionCombo.SelectedIndex = 0;
+            OrdenSeleccionCombo.Items.AddRange(modelo.ObtenerOrdenesEmitidas().ToArray());
+            if (OrdenSeleccionCombo.Items.Count > 0)
+                OrdenSeleccionCombo.SelectedIndex = 0;
 
             OperarioAsignadoText.Clear();
             ProductosHojaRutaListView.Items.Clear();
@@ -78,7 +86,8 @@ namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
             if (ProductosHojaRutaListView.SelectedItems.Count == 1 &&
                 ProductosHojaRutaListView.SelectedItems[0].Tag is ProductoHojaRuta producto)
             {
-                CoordenadasListView.Items.Add(producto.Coordenada);
+                foreach (string coordenada in producto.Coordenadas)
+                    CoordenadasListView.Items.Add(coordenada);
             }
         }
 
@@ -113,3 +122,5 @@ namespace GrupoB.Pampazon.CumplimentarOrdenDeSeleccion
         }
     }
 }
+
+

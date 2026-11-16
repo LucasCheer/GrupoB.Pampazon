@@ -1,37 +1,29 @@
+using GrupoB.Pampazon.Almacenes;
+
 namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
 {
     internal class AcondicionarYEmpaquetarLoteModelo
     {
-        private readonly List<ProductoParaEmpaquetar> productos =
-        [
-            new("PROD-B", "Monitor 24 Pulgadas", 100),
-            new("PROD-C", "Teclado mecánico", 40),
-            new("PROD-D", "Mouse inalámbrico", 60)
-        ];
+        private readonly OrdenDePreparacionEntidad? orden = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+            .FirstOrDefault(op => op.Estado == EstadoOrdenPreparacionEnum.EnPreparacion);
 
-        private bool loteConfirmado;
-
-        public string NumeroOrdenPreparacion { get; } = "OP001";
-
-        public string Cliente { get; } = "TechNew";
-
-        public DateTime FechaRecepcion { get; } = DateTime.Today.AddDays(-5);
-
-        public IReadOnlyList<ProductoParaEmpaquetar> Productos => productos;
+        public string NumeroOrdenPreparacion => orden?.NumeroOP ?? "";
+        public string Cliente => orden == null ? "" :
+            ClienteAlmacen.Cliente.FirstOrDefault(c => c.CUITCliente == orden.CUITCliente)?.RazonSocial ?? orden.CUITCliente;
+        public DateTime? FechaRecepcion => orden?.FechaSolicitada;
+        public IReadOnlyList<ProductoParaEmpaquetar> Productos => orden?.Detalle.Select(d =>
+            new ProductoParaEmpaquetar(d.SKU,
+                ProductoAlmacen.Producto.FirstOrDefault(p => p.SKU == d.SKU)?.Descripcion ?? d.SKU,
+                d.Cantidad)).ToList() ?? new List<ProductoParaEmpaquetar>();
 
         public bool ConfirmarLotePreparado()
         {
-            if (productos.Count == 0)
-            {
-                throw new InvalidOperationException("La orden de preparación no contiene mercadería para empaquetar.");
-            }
-
-            if (loteConfirmado)
-            {
+            if (orden == null || Productos.Count == 0)
+                throw new InvalidOperationException("No hay una orden de preparación con mercadería para empaquetar.");
+            if (orden.Estado != EstadoOrdenPreparacionEnum.EnPreparacion)
                 throw new InvalidOperationException("El lote ya fue confirmado como preparado.");
-            }
 
-            loteConfirmado = true;
+            orden.Estado = EstadoOrdenPreparacionEnum.PendienteDespacho;
             return true;
         }
     }
