@@ -9,6 +9,9 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
     {
         private List<DetalleOrdenDTO> detalleProductos;
 
+        // CUIT del cliente seleccionado: se usa para volver a consultar el stock en InventarioAlmacen
+        private string cuitClienteActual = string.Empty;
+
         // Texto que muestra el combo de modalidad del formulario -> valor de ModalidadEnum que se guarda en la OP.
         // "Consolidado" también aparece en el combo, pero ModalidadEnum no tiene un valor para esa modalidad.
         private readonly Dictionary<string, ModalidadEnum> modalidades = new Dictionary<string, ModalidadEnum>
@@ -49,6 +52,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 throw new ArgumentException("Debe seleccionar un cliente.");
 
             string cuit = ObtenerCuitPorCliente(cliente);
+            cuitClienteActual = cuit;
             if (string.IsNullOrEmpty(cuit))
                 return new List<ProductoSKUDTO>();
 
@@ -104,8 +108,10 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             if (!int.TryParse(cantidadTexto, out int cantidadPedida) || cantidadPedida <= 0)
                 throw new FormatException("Debe ingresar un número entero positivo para la cantidad.");
 
-            if (cantidadPedida > producto.StockDisponible)
-                throw new InvalidOperationException($"La cantidad supera el stock disponible ({producto.StockDisponible}).");
+            // La cantidad disponible se consulta en InventarioAlmacen al momento de validar
+            int stockDisponible = ConsultarStockDisponible(cuitClienteActual, producto.SKU);
+            if (cantidadPedida > stockDisponible)
+                throw new InvalidOperationException($"La cantidad supera el stock disponible ({stockDisponible}).");
 
             // Excepción 11.3
             if (string.IsNullOrWhiteSpace(modalidad))
@@ -119,8 +125,8 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             var itemExistente = detalleProductos.Find(d => d.SKU == producto.SKU);
             if (itemExistente != null)
             {
-                if (itemExistente.CantidadPedida + cantidadPedida > producto.StockDisponible)
-                    throw new InvalidOperationException($"La cantidad acumulada supera el stock disponible ({producto.StockDisponible}).");
+                if (itemExistente.CantidadPedida + cantidadPedida > stockDisponible)
+                    throw new InvalidOperationException($"La cantidad acumulada supera el stock disponible ({stockDisponible}).");
 
                 itemExistente.CantidadPedida += cantidadPedida;
                 itemExistente.Modalidad = modalidad;
@@ -156,6 +162,16 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             if (detalleProductos.Count == 0)
                 throw new InvalidOperationException("Debe agregar al menos un producto.");
 
+            // Antes de guardar, se vuelve a controlar cada línea contra el stock de InventarioAlmacen
+            // Mismo formato de CUIT que el guardado en ClienteAlmacen e InventarioAlmacen
+            string cuitCliente = cuit.Trim();
+            foreach (var linea in detalleProductos)
+            {
+                int stockDisponible = ConsultarStockDisponible(cuitCliente, linea.SKU);
+                if (linea.CantidadPedida > stockDisponible)
+                    throw new InvalidOperationException($"La cantidad del SKU {linea.SKU} supera el stock disponible ({stockDisponible}).");
+            }
+
             // Paso 16: Generar correlativo sobre el almacén real para no repetir números existentes
             string numeroOP = GenerarNumeroOP();
 
@@ -171,7 +187,6 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 Detalle = detalleProductos.Select(d => new DetalleOP
                 {
                     SKU = d.SKU,
-                    Descripcion = d.Descripcion,
                     Cantidad = d.CantidadPedida,
                     Modalidad = modalidades[d.Modalidad]
                 }).ToList()
@@ -182,6 +197,14 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
             detalleProductos.Clear();
 
             return numeroOP;
+        }
+
+        private int ConsultarStockDisponible(string cuit, string sku)
+        {
+            // Suma la cantidad disponible del SKU del cliente en todas sus coordenadas
+            return InventarioAlmacen.Inventario
+                .Where(i => i.CUITCliente == cuit && i.SKU == sku)
+                .Sum(i => i.CantidadDisponible);
         }
 
         private string GenerarNumeroOP()
