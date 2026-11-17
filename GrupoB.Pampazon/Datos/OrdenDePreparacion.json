@@ -9,12 +9,12 @@
     "Detalle": [
       {
         "SKU": "SKU-1001",
-        "Cantidad": 10,
+        "CantidadPedida": 10,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1002",
-        "Cantidad": 25,
+        "CantidadPedida": 25,
         "Modalidad": 1
       }
     ]
@@ -29,7 +29,7 @@
     "Detalle": [
       {
         "SKU": "SKU-1004",
-        "Cantidad": 6,
+        "CantidadPedida": 6,
         "Modalidad": 0
       }
     ]
@@ -44,17 +44,17 @@
     "Detalle": [
       {
         "SKU": "SKU-1005",
-        "Cantidad": 50,
+        "CantidadPedida": 50,
         "Modalidad": 1
       },
       {
         "SKU": "SKU-1006",
-        "Cantidad": 15,
+        "CantidadPedida": 15,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1003",
-        "Cantidad": 30,
+        "CantidadPedida": 30,
         "Modalidad": 1
       }
     ]
@@ -69,7 +69,7 @@
     "Detalle": [
       {
         "SKU": "SKU-1007",
-        "Cantidad": 12,
+        "CantidadPedida": 12,
         "Modalidad": 0
       }
     ]
@@ -84,12 +84,12 @@
     "Detalle": [
       {
         "SKU": "SKU-1008",
-        "Cantidad": 20,
+        "CantidadPedida": 20,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1001",
-        "Cantidad": 5,
+        "CantidadPedida": 5,
         "Modalidad": 1
       }
     ]
@@ -104,12 +104,12 @@
     "Detalle": [
       {
         "SKU": "SKU-1001",
-        "Cantidad": 18,
+        "CantidadPedida": 18,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1002",
-        "Cantidad": 40,
+        "CantidadPedida": 40,
         "Modalidad": 1
       }
     ]
@@ -124,12 +124,12 @@
     "Detalle": [
       {
         "SKU": "SKU-1003",
-        "Cantidad": 14,
+        "CantidadPedida": 14,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1005",
-        "Cantidad": 35,
+        "CantidadPedida": 35,
         "Modalidad": 1
       }
     ]
@@ -144,17 +144,17 @@
     "Detalle": [
       {
         "SKU": "SKU-1001",
-        "Cantidad": 8,
+        "CantidadPedida": 8,
         "Modalidad": 0
       },
       {
         "SKU": "SKU-1004",
-        "Cantidad": 22,
+        "CantidadPedida": 22,
         "Modalidad": 1
       },
       {
         "SKU": "SKU-1008",
-        "Cantidad": 10,
+        "CantidadPedida": 10,
         "Modalidad": 0
       }
     ]
@@ -169,7 +169,7 @@
     "Detalle": [
       {
         "SKU": "SKU-1006",
-        "Cantidad": 16,
+        "CantidadPedida": 16,
         "Modalidad": 0
       }
     ]
@@ -184,12 +184,12 @@
     "Detalle": [
       {
         "SKU": "SKU-1002",
-        "Cantidad": 30,
+        "CantidadPedida": 30,
         "Modalidad": 1
       },
       {
         "SKU": "SKU-1007",
-        "Cantidad": 9,
+        "CantidadPedida": 9,
         "Modalidad": 0
       }
     ]

@@ -14,7 +14,7 @@ namespace GrupoB.Pampazon.AcondicionarYEmpaquetarLote
         public IReadOnlyList<ProductoParaEmpaquetar> Productos => orden?.Detalle.Select(d =>
             new ProductoParaEmpaquetar(d.SKU,
                 ProductoAlmacen.Producto.FirstOrDefault(p => p.SKU == d.SKU)?.Descripcion ?? d.SKU,
-                d.Cantidad)).ToList() ?? new List<ProductoParaEmpaquetar>();
+                d.CantidadPedida)).ToList() ?? new List<ProductoParaEmpaquetar>();
 
         public bool ConfirmarLotePreparado()
         {

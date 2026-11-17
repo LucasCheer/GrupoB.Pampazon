@@ -187,7 +187,7 @@ namespace GrupoB.Pampazon.IngresoDeOrdenDePreparacion
                 Detalle = detalleProductos.Select(d => new DetalleOP
                 {
                     SKU = d.SKU,
-                    Cantidad = d.CantidadPedida,
+                    CantidadPedida = d.CantidadPedida,
                     Modalidad = modalidades[d.Modalidad]
                 }).ToList()
             };

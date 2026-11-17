@@ -7,7 +7,7 @@ namespace GrupoB.Pampazon.Almacenes
     public class DetalleOP
     {
         public string SKU { get; set; }
-        public int Cantidad { get; set; }
+        public int CantidadPedida { get; set; }
         public ModalidadEnum Modalidad { get; set; }
     }
 

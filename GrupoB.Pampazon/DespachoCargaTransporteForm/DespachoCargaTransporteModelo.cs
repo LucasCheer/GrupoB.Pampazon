@@ -54,7 +54,7 @@ namespace GrupoB.Pampazon.DespachoCargaTransporte
             {
                 foreach (var detalle in op.Detalle)
                 {
-                    cajas.Add($"{op.NumeroOP} | {detalle.SKU} x{detalle.Cantidad} ({detalle.Modalidad})");
+                    cajas.Add($"{op.NumeroOP} | {detalle.SKU} x{detalle.CantidadPedida} ({detalle.Modalidad})");
                 }
             }
 

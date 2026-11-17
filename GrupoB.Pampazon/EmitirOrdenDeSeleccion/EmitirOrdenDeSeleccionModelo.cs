@@ -163,7 +163,7 @@ namespace GrupoB.Pampazon.EmitirOrdenDeSeleccion
                             {
                                 SKU = d.SKU,
                                 Descripcion = ObtenerDescripcionProducto(d.SKU),
-                                Cantidad = d.Cantidad,
+                                Cantidad = d.CantidadPedida,
                                 Modalidad = d.Modalidad.ToString()
                             }).ToList()
                             : new List<DetalleOP>()
